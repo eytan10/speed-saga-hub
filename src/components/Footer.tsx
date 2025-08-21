@@ -51,11 +51,11 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Categories</h3>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Sports Cars</button></li>
-              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Electric Vehicles</button></li>
-              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Luxury Sedans</button></li>
-              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">SUVs</button></li>
-              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Classic Cars</button></li>
+              <li><button onClick={() => navigate('/category/sports-cars')} className="hover:text-racing-red transition-smooth text-left">Sports Cars</button></li>
+              <li><button onClick={() => navigate('/category/electric-vehicles')} className="hover:text-racing-red transition-smooth text-left">Electric Vehicles</button></li>
+              <li><button onClick={() => navigate('/category/luxury-sedans')} className="hover:text-racing-red transition-smooth text-left">Luxury Sedans</button></li>
+              <li><button onClick={() => navigate('/category/suvs')} className="hover:text-racing-red transition-smooth text-left">SUVs</button></li>
+              <li><button onClick={() => navigate('/category/classic-cars')} className="hover:text-racing-red transition-smooth text-left">Classic Cars</button></li>
             </ul>
           </div>
 

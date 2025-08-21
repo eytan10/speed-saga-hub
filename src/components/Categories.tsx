@@ -17,6 +17,18 @@ const Categories = () => {
       navigate("/news");
     } else if (categoryName === "Community") {
       navigate("/community");
+    } else if (categoryName === "Sports Cars") {
+      navigate("/category/sports-cars");
+    } else if (categoryName === "Electric Vehicles") {
+      navigate("/category/electric-vehicles");
+    } else if (categoryName === "Luxury Sedans") {
+      navigate("/category/luxury-sedans");
+    } else if (categoryName === "SUVs") {
+      navigate("/category/suvs");
+    } else if (categoryName === "Supercars") {
+      navigate("/category/supercars");
+    } else if (categoryName === "Classic Cars") {
+      navigate("/category/classic-cars");
     }
   };
 

@@ -7,6 +7,14 @@ import audiImage from "@/assets/audi-rs6.jpg";
 import mclarenImage from "@/assets/mclaren-720s.jpg";
 import lamborghiniImage from "@/assets/lamborghini-huracan.jpg";
 
+// Everyday car brands images
+import volkswagenGolf from "@/assets/volkswagen-golf.jpg";
+import hyundaiElantra from "@/assets/hyundai-elantra.jpg";
+import kiaOptima from "@/assets/kia-optima.jpg";
+import skodaOctavia from "@/assets/skoda-octavia.jpg";
+import mazdaCx5 from "@/assets/mazda-cx5.jpg";
+import subaruOutback from "@/assets/subaru-outback.jpg";
+
 // New high-quality images
 import ferrari488New from "@/assets/ferrari-488-new.jpg";
 import bmwM3New from "@/assets/bmw-m3-new.jpg";
@@ -360,8 +368,84 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("ford-fiesta", "Fiesta", "Ford", "האצ׳בק קטן", "$17,000", 120, 2023, teslaImage),
   createCar("ford-gt", "GT", "Ford", "סופרקאר", "$500,000", 647, 2023, teslaImage),
 
-  // Continue adding more cars to reach 200+...
-  // (Additional brands and models would continue here to reach the full 200+ target)
+  // Volkswagen Models (15 models)
+  createCar("volkswagen-golf", "Golf", "Volkswagen", "האצ׳בק", "$25,000", 150, 2024, volkswagenGolf),
+  createCar("volkswagen-golf-gti", "Golf GTI", "Volkswagen", "האצ׳בק ספורט", "$35,000", 241, 2024, volkswagenGolf),
+  createCar("volkswagen-passat", "Passat", "Volkswagen", "סדאן", "$28,000", 174, 2024, volkswagenGolf),
+  createCar("volkswagen-jetta", "Jetta", "Volkswagen", "סדאן", "$22,000", 147, 2024, volkswagenGolf),
+  createCar("volkswagen-tiguan", "Tiguan", "Volkswagen", "SUV", "$27,000", 184, 2024, volkswagenGolf),
+  createCar("volkswagen-atlas", "Atlas", "Volkswagen", "SUV גדול", "$35,000", 276, 2024, volkswagenGolf),
+  createCar("volkswagen-id4", "ID.4", "Volkswagen", "SUV חשמלי", "$42,000", 201, 2024, volkswagenGolf, true),
+  createCar("volkswagen-arteon", "Arteon", "Volkswagen", "סדאן יוקרה", "$38,000", 268, 2024, volkswagenGolf),
+  createCar("volkswagen-beetle", "Beetle", "Volkswagen", "רכב קלאסי", "$23,000", 174, 2024, volkswagenGolf),
+  createCar("volkswagen-polo", "Polo", "Volkswagen", "האצ׳בק קטן", "$18,000", 95, 2024, volkswagenGolf),
+  createCar("volkswagen-cc", "CC", "Volkswagen", "קופה יוקרה", "$32,000", 280, 2024, volkswagenGolf),
+  createCar("volkswagen-touareg", "Touareg", "Volkswagen", "SUV יוקרה", "$55,000", 335, 2024, volkswagenGolf),
+  createCar("volkswagen-gti-clubsport", "Golf GTI Clubsport", "Volkswagen", "האצ׳בק ספורט", "$42,000", 296, 2024, volkswagenGolf),
+  createCar("volkswagen-r32", "Golf R32", "Volkswagen", "האצ׳בק ספורט", "$38,000", 250, 2024, volkswagenGolf),
+  createCar("volkswagen-up", "Up!", "Volkswagen", "עירוני קטן", "$15,000", 75, 2024, volkswagenGolf),
+
+  // Hyundai Models (12 models)
+  createCar("hyundai-elantra", "Elantra", "Hyundai", "סדאן", "$21,000", 147, 2024, hyundaiElantra),
+  createCar("hyundai-sonata", "Sonata", "Hyundai", "סדאן", "$25,000", 191, 2024, hyundaiElantra),
+  createCar("hyundai-tucson", "Tucson", "Hyundai", "SUV", "$26,000", 187, 2024, hyundaiElantra),
+  createCar("hyundai-santa-fe", "Santa Fe", "Hyundai", "SUV", "$29,000", 277, 2024, hyundaiElantra),
+  createCar("hyundai-palisade", "Palisade", "Hyundai", "SUV גדול", "$35,000", 291, 2024, hyundaiElantra),
+  createCar("hyundai-kona", "Kona", "Hyundai", "SUV קומפקטי", "$23,000", 147, 2024, hyundaiElantra),
+  createCar("hyundai-ioniq5", "IONIQ 5", "Hyundai", "SUV חשמלי", "$45,000", 303, 2024, hyundaiElantra, true),
+  createCar("hyundai-genesis", "Genesis G90", "Hyundai", "סדאן יוקרה", "$75,000", 375, 2024, hyundaiElantra),
+  createCar("hyundai-i30", "i30", "Hyundai", "האצ׳בק", "$19,000", 120, 2024, hyundaiElantra),
+  createCar("hyundai-veloster", "Veloster N", "Hyundai", "האצ׳בק ספורט", "$35,000", 275, 2024, hyundaiElantra),
+  createCar("hyundai-accent", "Accent", "Hyundai", "סדאן קטן", "$17,000", 120, 2024, hyundaiElantra),
+  createCar("hyundai-venue", "Venue", "Hyundai", "SUV קטן", "$21,000", 121, 2024, hyundaiElantra),
+
+  // Kia Models (12 models)
+  createCar("kia-optima", "Optima", "Kia", "סדאן", "$24,000", 185, 2024, kiaOptima),
+  createCar("kia-forte", "Forte", "Kia", "סדאן", "$19,000", 147, 2024, kiaOptima),
+  createCar("kia-sportage", "Sportage", "Kia", "SUV", "$26,000", 187, 2024, kiaOptima),
+  createCar("kia-sorento", "Sorento", "Kia", "SUV", "$30,000", 281, 2024, kiaOptima),
+  createCar("kia-telluride", "Telluride", "Kia", "SUV גדול", "$35,000", 291, 2024, kiaOptima),
+  createCar("kia-soul", "Soul", "Kia", "האצ׳בק", "$20,000", 147, 2024, kiaOptima),
+  createCar("kia-ev6", "EV6", "Kia", "SUV חשמלי", "$42,000", 320, 2024, kiaOptima, true),
+  createCar("kia-stinger", "Stinger", "Kia", "סדאן ספורט", "$34,000", 365, 2024, kiaOptima),
+  createCar("kia-rio", "Rio", "Kia", "האצ׳בק קטן", "$17,000", 120, 2024, kiaOptima),
+  createCar("kia-cadenza", "Cadenza", "Kia", "סדאן יוקרה", "$32,000", 290, 2024, kiaOptima),
+  createCar("kia-seltos", "Seltos", "Kia", "SUV קומפקטי", "$23,000", 146, 2024, kiaOptima),
+  createCar("kia-niro", "Niro", "Kia", "היברידי", "$25,000", 139, 2024, kiaOptima),
+
+  // Skoda Models (10 models)
+  createCar("skoda-octavia", "Octavia", "Skoda", "האצ׳בק", "$22,000", 150, 2024, skodaOctavia),
+  createCar("skoda-superb", "Superb", "Skoda", "סדאן", "$28,000", 190, 2024, skodaOctavia),
+  createCar("skoda-kodiaq", "Kodiaq", "Skoda", "SUV", "$32,000", 190, 2024, skodaOctavia),
+  createCar("skoda-karoq", "Karoq", "Skoda", "SUV קומפקטי", "$26,000", 150, 2024, skodaOctavia),
+  createCar("skoda-scala", "Scala", "Skoda", "האצ׳בק", "$20,000", 115, 2024, skodaOctavia),
+  createCar("skoda-kamiq", "Kamiq", "Skoda", "SUV קטן", "$23,000", 115, 2024, skodaOctavia),
+  createCar("skoda-fabia", "Fabia", "Skoda", "האצ׳בק קטן", "$16,000", 95, 2024, skodaOctavia),
+  createCar("skoda-enyaq", "Enyaq iV", "Skoda", "SUV חשמלי", "$45,000", 204, 2024, skodaOctavia, true),
+  createCar("skoda-rapid", "Rapid", "Skoda", "סדאן", "$18,000", 110, 2024, skodaOctavia),
+  createCar("skoda-citigo", "Citigo", "Skoda", "עירוני קטן", "$14,000", 75, 2024, skodaOctavia),
+
+  // Mazda Models (10 models)
+  createCar("mazda-cx5", "CX-5", "Mazda", "SUV", "$28,000", 187, 2024, mazdaCx5),
+  createCar("mazda-mazda3", "Mazda3", "Mazda", "האצ׳בק", "$22,000", 155, 2024, mazdaCx5),
+  createCar("mazda-cx9", "CX-9", "Mazda", "SUV גדול", "$36,000", 227, 2024, mazdaCx5),
+  createCar("mazda-mx5", "MX-5 Miata", "Mazda", "רודסטר ספורט", "$28,000", 181, 2024, mazdaCx5),
+  createCar("mazda-mazda6", "Mazda6", "Mazda", "סדאן", "$25,000", 187, 2024, mazdaCx5),
+  createCar("mazda-cx30", "CX-30", "Mazda", "SUV קומפקטי", "$24,000", 155, 2024, mazdaCx5),
+  createCar("mazda-cx3", "CX-3", "Mazda", "SUV קטן", "$22,000", 148, 2024, mazdaCx5),
+  createCar("mazda-rx8", "RX-8", "Mazda", "קופה ספורט", "$35,000", 232, 2023, mazdaCx5),
+  createCar("mazda-cx50", "CX-50", "Mazda", "SUV", "$28,000", 187, 2024, mazdaCx5),
+  createCar("mazda-2", "Mazda2", "Mazda", "האצ׳בק קטן", "$18,000", 106, 2024, mazdaCx5),
+
+  // Subaru Models (8 models)
+  createCar("subaru-outback", "Outback", "Subaru", "סטיישן וואגון", "$28,000", 182, 2024, subaruOutback),
+  createCar("subaru-forester", "Forester", "Subaru", "SUV", "$26,000", 182, 2024, subaruOutback),
+  createCar("subaru-impreza", "Impreza", "Subaru", "האצ׳בק", "$20,000", 152, 2024, subaruOutback),
+  createCar("subaru-legacy", "Legacy", "Subaru", "סדאן", "$24,000", 182, 2024, subaruOutback),
+  createCar("subaru-ascent", "Ascent", "Subaru", "SUV גדול", "$34,000", 260, 2024, subaruOutback),
+  createCar("subaru-crosstrek", "Crosstrek", "Subaru", "SUV קומפקטי", "$24,000", 152, 2024, subaruOutback),
+  createCar("subaru-wrx", "WRX", "Subaru", "סדאן ספורט", "$32,000", 271, 2024, subaruOutback),
+  createCar("subaru-brz", "BRZ", "Subaru", "קופה ספורט", "$29,000", 228, 2024, subaruOutback),
 ];
 
 export { expandedBrands } from "./expandedCarsDatabase";
