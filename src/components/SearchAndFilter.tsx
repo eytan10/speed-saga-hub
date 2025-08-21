@@ -22,13 +22,13 @@ const SearchAndFilter = ({
   totalResults = 0 
 }: SearchAndFilterProps) => {
   const [filters, setFilters] = useState({
-    brand: "",
-    category: "",
-    fuelType: "",
+    brand: "all",
+    category: "all",
+    fuelType: "all",
     priceRange: [0, 200000],
     horsepowerRange: [0, 1000],
-    year: "",
-    bodyType: ""
+    year: "all",
+    bodyType: "all"
   });
 
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
@@ -56,24 +56,27 @@ const SearchAndFilter = ({
   ];
 
   const updateFilters = (key: string, value: any) => {
-    // Convert "all" back to empty string for filtering logic
-    const filterValue = value === "all" ? "" : value;
-    const newFilters = { ...filters, [key]: filterValue };
+    // Keep the display value in the internal state
+    const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
-    onFiltersChange(newFilters);
+    
+    // Convert "all" to empty string only for parent filtering logic
+    const filterValueForParent = value === "all" ? "" : value;
+    const filtersForParent = { ...newFilters, [key]: filterValueForParent };
+    onFiltersChange(filtersForParent);
 
     // Update active filters for display
     const newActiveFilters = [];
-    if (newFilters.brand) newActiveFilters.push(`מותג: ${newFilters.brand}`);
-    if (newFilters.category) newActiveFilters.push(`קטגוריה: ${newFilters.category}`);
-    if (newFilters.fuelType) newActiveFilters.push(`דלק: ${newFilters.fuelType}`);
-    if (newFilters.year) newActiveFilters.push(`שנה: ${newFilters.year}`);
-    if (newFilters.bodyType) newActiveFilters.push(`סוג מרכב: ${newFilters.bodyType}`);
-    if (newFilters.priceRange[0] > 0 || newFilters.priceRange[1] < 200000) {
-      newActiveFilters.push(`מחיר: $${newFilters.priceRange[0].toLocaleString()}-$${newFilters.priceRange[1].toLocaleString()}`);
+    if (filtersForParent.brand) newActiveFilters.push(`מותג: ${filtersForParent.brand}`);
+    if (filtersForParent.category) newActiveFilters.push(`קטגוריה: ${filtersForParent.category}`);
+    if (filtersForParent.fuelType) newActiveFilters.push(`דלק: ${filtersForParent.fuelType}`);
+    if (filtersForParent.year) newActiveFilters.push(`שנה: ${filtersForParent.year}`);
+    if (filtersForParent.bodyType) newActiveFilters.push(`סוג מרכב: ${filtersForParent.bodyType}`);
+    if (filtersForParent.priceRange[0] > 0 || filtersForParent.priceRange[1] < 200000) {
+      newActiveFilters.push(`מחיר: $${filtersForParent.priceRange[0].toLocaleString()}-$${filtersForParent.priceRange[1].toLocaleString()}`);
     }
-    if (newFilters.horsepowerRange[0] > 0 || newFilters.horsepowerRange[1] < 1000) {
-      newActiveFilters.push(`כוח: ${newFilters.horsepowerRange[0]}-${newFilters.horsepowerRange[1]} כ"ס`);
+    if (filtersForParent.horsepowerRange[0] > 0 || filtersForParent.horsepowerRange[1] < 1000) {
+      newActiveFilters.push(`כוח: ${filtersForParent.horsepowerRange[0]}-${filtersForParent.horsepowerRange[1]} כ"ס`);
     }
     
     setActiveFilters(newActiveFilters);
