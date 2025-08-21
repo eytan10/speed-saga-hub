@@ -12,11 +12,14 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Car className="h-8 w-8 text-racing-red" />
-          <span className="text-2xl font-bold">AutoHub</span>
+          <a href="/" className="text-2xl font-bold hover:text-racing-red transition-smooth cursor-pointer">AutoHub</a>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
+          <a href="/" className="text-foreground hover:text-racing-red transition-smooth">
+            Home
+          </a>
           <a href="/cars" className="text-foreground hover:text-racing-red transition-smooth">
             Cars
           </a>
@@ -65,6 +68,9 @@ const Header = () => {
               />
             </div>
             <div className="space-y-2">
+              <a href="/" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+                Home
+              </a>
               <a href="/cars" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
                 Cars
               </a>

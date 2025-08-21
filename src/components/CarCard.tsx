@@ -49,7 +49,10 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
 
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center">
-          <Button className="btn-hero">
+          <Button 
+            className="btn-hero"
+            onClick={() => window.location.href = `/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.id}`}
+          >
             View Details
           </Button>
         </div>
@@ -87,7 +90,11 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
             <p className="text-sm text-muted-foreground">Starting at</p>
             <p className="text-xl font-bold text-racing-red">{car.price}</p>
           </div>
-          <Button variant="outline" size="sm">
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={() => window.location.href = `/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.id}`}
+          >
             Compare
           </Button>
         </div>

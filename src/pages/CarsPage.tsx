@@ -94,7 +94,7 @@ const CarsPage = () => {
                 <Card 
                   key={brand.id} 
                   className="p-6 hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group"
-                  onClick={() => window.location.href = `/cars/${brand.id}`}
+                  onClick={() => window.location.href = `/brand/${brand.id}`}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">

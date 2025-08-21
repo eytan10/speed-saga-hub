@@ -102,7 +102,7 @@ const BrandPage = () => {
                   <Card 
                     key={car.id} 
                     className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group"
-                    onClick={() => window.location.href = `/cars/${brand}/${car.id}`}
+                    onClick={() => window.location.href = `/car/${brand}/${car.id}`}
                   >
                     <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
                       <img
