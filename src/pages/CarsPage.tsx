@@ -6,13 +6,13 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { brands } from "@/data/carsDatabase";
+import { expandedBrands, expandedCarsDatabase } from "@/data/expandedCarsDatabase";
 
 const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-  const filteredBrands = brands.filter(brand =>
+  const filteredBrands = expandedBrands.filter(brand =>
     brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     brand.description.toLowerCase().includes(searchTerm.toLowerCase())
   );

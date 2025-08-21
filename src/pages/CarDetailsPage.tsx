@@ -6,11 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { allCars } from "@/data/carsDatabase";
+import Car3DViewer from "@/components/Car3DViewer";
+import { expandedCarsDatabase } from "@/data/expandedCarsDatabase";
 
 const CarDetailsPage = () => {
   const { brand, model } = useParams();
-  const car = allCars.find(c => c.id === model);
+  const car = expandedCarsDatabase.find(c => c.id === model);
 
   if (!car) {
     return (
@@ -44,30 +45,36 @@ const CarDetailsPage = () => {
           </div>
         </section>
 
-        {/* Car Hero */}
+        {/* Car Hero Section */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Image */}
-              <div className="relative">
-                <img
-                  src={car.image}
-                  alt={`${car.brand} ${car.name}`}
-                  className="w-full h-96 object-cover rounded-lg shadow-automotive"
-                />
-                <div className="absolute top-4 left-4 flex gap-2">
-                  {car.isElectric && (
-                    <Badge className="bg-electric-blue text-electric-blue-foreground">
-                      <Zap className="h-3 w-3 mr-1" />
-                      חשמלי
-                    </Badge>
-                  )}
-                  <Badge variant="secondary">{car.type}</Badge>
-                </div>
-              </div>
-
-              {/* Info */}
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+              {/* Left Side - Traditional Info */}
               <div>
+                {/* Main Image */}
+                <div className="relative mb-8">
+                  <img
+                    src={car.image}
+                    alt={`${car.brand} ${car.name}`}
+                    className="w-full h-96 object-cover rounded-lg shadow-automotive"
+                  />
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    {car.isElectric && (
+                      <Badge className="bg-electric-blue text-electric-blue-foreground">
+                        <Zap className="h-3 w-3 mr-1" />
+                        חשמלי
+                      </Badge>
+                    )}
+                    {car.isNew && (
+                      <Badge className="bg-success text-white">
+                        חדש
+                      </Badge>
+                    )}
+                    <Badge variant="secondary">{car.type}</Badge>
+                  </div>
+                </div>
+
+                {/* Car Info */}
                 <div className="flex items-center justify-between mb-4">
                   <h1 className="text-4xl md:text-5xl font-bold">
                     {car.brand} <span className="text-racing-red">{car.name}</span>
@@ -88,6 +95,7 @@ const CarDetailsPage = () => {
                     <span className="font-semibold">{car.rating}</span>
                   </div>
                   <Badge variant="secondary">{car.year}</Badge>
+                  <Badge variant="outline">{car.specs.seating} מושבים</Badge>
                 </div>
 
                 <p className="text-lg text-muted-foreground mb-8">
@@ -105,9 +113,18 @@ const CarDetailsPage = () => {
                   </div>
                 </div>
 
-                <Button className="btn-racing text-lg w-full md:w-auto">
+                <Button className="btn-racing text-lg w-full">
                   צור קשר עם סוכן
                 </Button>
+              </div>
+
+              {/* Right Side - 3D Viewer */}
+              <div>
+                <Car3DViewer 
+                  carName={`${car.brand} ${car.name}`}
+                  colors={car.colors}
+                  interiorColors={car.interiorColors}
+                />
               </div>
             </div>
           </div>
@@ -117,9 +134,10 @@ const CarDetailsPage = () => {
         <section className="py-16 bg-secondary/20">
           <div className="container mx-auto px-4">
             <Tabs defaultValue="specs" className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="specs">מפרטים</TabsTrigger>
                 <TabsTrigger value="features">תכונות</TabsTrigger>
+                <TabsTrigger value="colors">צבעים</TabsTrigger>
                 <TabsTrigger value="pros-cons">יתרונות וחסרונות</TabsTrigger>
                 <TabsTrigger value="dealers">נציגויות</TabsTrigger>
               </TabsList>
@@ -141,6 +159,10 @@ const CarDetailsPage = () => {
                         <p className="text-sm text-muted-foreground">הנעה</p>
                         <p className="font-semibold">{car.specs.drivetrain}</p>
                       </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">מושבים</p>
+                        <p className="font-semibold">{car.specs.seating}</p>
+                      </div>
                     </div>
                     <div className="space-y-4">
                       <div>
@@ -154,6 +176,10 @@ const CarDetailsPage = () => {
                       <div>
                         <p className="text-sm text-muted-foreground">משקל</p>
                         <p className="font-semibold">{car.specs.weight}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">נפח תא מטען</p>
+                        <p className="font-semibold">{car.specs.cargo}</p>
                       </div>
                     </div>
                     <div className="space-y-4">
@@ -186,6 +212,40 @@ const CarDetailsPage = () => {
                     ))}
                   </div>
                 </Card>
+              </TabsContent>
+
+              <TabsContent value="colors" className="mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <Card className="p-8">
+                    <h3 className="text-2xl font-bold mb-6">צבעי גוף הרכב</h3>
+                    <div className="grid grid-cols-3 gap-4">
+                      {car.colors.map((color, index) => (
+                        <div key={index} className="text-center">
+                          <div 
+                            className="w-16 h-16 rounded-full mx-auto mb-2 border-4 border-gray-200"
+                            style={{ backgroundColor: color.hex }}
+                          />
+                          <p className="text-sm font-medium">{color.name}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                  
+                  <Card className="p-8">
+                    <h3 className="text-2xl font-bold mb-6">צבעי פנים הרכב</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      {car.interiorColors.map((color, index) => (
+                        <div key={index} className="text-center">
+                          <div 
+                            className="w-16 h-16 rounded-lg mx-auto mb-2 border-4 border-gray-200"
+                            style={{ backgroundColor: color.hex }}
+                          />
+                          <p className="text-sm font-medium">{color.name}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                </div>
               </TabsContent>
 
               <TabsContent value="pros-cons" className="mt-8">

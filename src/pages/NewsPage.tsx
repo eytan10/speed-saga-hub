@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { newsArticles } from "@/data/expandedCarsDatabase";
 
 const NewsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,58 +34,7 @@ const NewsPage = () => {
     trending: true
   };
 
-  const allNews = [
-    {
-      id: 2,
-      title: "פרארי מכריזה על חזרה למירוץ לה מאן 2024",
-      excerpt: "יצרנית הסופרקארים האיטלקית מאשרת את השתתפותה במירוץ 24 השעות המפורסם אחרי הפסקה של 50 שנה",
-      category: "Racing",
-      date: "2024-01-18",
-      readTime: "3 דקות קריאה",
-      author: "דוד שטיין",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 3,
-      title: "פורשה 911 היברידי: עתיד מכוניות הספורט",
-      excerpt: "פורשה חושפת פרטים על מערכת ההנעה ההיברידית החדשה עבור סדרת ה-911 האיקונית",
-      category: "Technology", 
-      date: "2024-01-16",
-      readTime: "4 דקות קריאה",
-      author: "שרון כהן",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 4,
-      title: "ב.מ.וו מציגה את הדגמים החשמליים החדשים לשנת 2024",
-      excerpt: "סדרת iX וi4 מקבלות שדרוגים משמעותיים בטווח, ביצועים וטכנולוגיית נהיגה אוטונומית",
-      category: "Electric",
-      date: "2024-01-14",
-      readTime: "6 דקות קריאה", 
-      author: "אלון נחמני",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 5,
-      title: "מכירות הרכבים החשמליים עולות ב-40% השנה",
-      excerpt: "נתונים חדשים מראים גידול משמעותי באימוץ הרכבים החשמליים ברחבי העולם, עם ישראל בחזית",
-      category: "Industry",
-      date: "2024-01-12",
-      readTime: "4 דקות קריאה",
-      author: "רונית לוי",
-      image: "/api/placeholder/400/250"
-    },
-    {
-      id: 6,
-      title: "ביקורת: מרצדס EQS - יוקרה חשמלית ברמה חדשה",
-      excerpt: "בדקנו את דגל החברה הגרמנית ברכבים החשמליים - האם זה באמת שווה את המחיר הגבוה?",
-      category: "Reviews",
-      date: "2024-01-10",
-      readTime: "8 דקות קריאה",
-      author: "יוסי אברהם",
-      image: "/api/placeholder/400/250"
-    }
-  ];
+  const allNews = newsArticles;
 
   const filteredNews = allNews.filter(article => {
     const matchesSearch = 
@@ -129,6 +79,11 @@ const NewsPage = () => {
             <Card className="overflow-hidden mb-16 hover:shadow-automotive transition-smooth">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative h-64 lg:h-auto bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800">
+                  <img
+                    src={featuredNews.image}
+                    alt={featuredNews.title}
+                    className="w-full h-full object-cover"
+                  />
                   {featuredNews.trending && (
                     <Badge className="absolute top-4 right-4 bg-racing-red text-white">
                       <TrendingUp className="h-3 w-3 mr-1" />
@@ -224,6 +179,11 @@ const NewsPage = () => {
                     className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth group cursor-pointer"
                   >
                     <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover"
+                      />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center">
                         <Button variant="ghost" className="text-white border-white hover:bg-white hover:text-black">
                           קרא עוד
