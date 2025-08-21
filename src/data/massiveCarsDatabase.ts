@@ -56,10 +56,40 @@ import toyotaCorolla from "@/assets/toyota-corolla.jpg";
 import toyotaCamry from "@/assets/toyota-camry.jpg";
 import toyotaRav4 from "@/assets/toyota-rav4.jpg";
 import toyotaSupra from "@/assets/toyota-supra.jpg";
+import toyotaHighlander from "@/assets/toyota-highlander.jpg";
+import toyota4Runner from "@/assets/toyota-4runner.jpg";
+import toyotaLandCruiser from "@/assets/toyota-land-cruiser.jpg";
+import toyotaPrado from "@/assets/toyota-prado.jpg";
+import toyotaHilux from "@/assets/toyota-hilux.jpg";
+import toyotaTacoma from "@/assets/toyota-tacoma.jpg";  
+import toyotaTundra from "@/assets/toyota-tundra.jpg";
+import toyota86 from "@/assets/toyota-86.jpg";
+import toyotaYaris from "@/assets/toyota-yaris.jpg";
+import toyotaAvalon from "@/assets/toyota-avalon.jpg";
 import hondaCivicBlue from "@/assets/honda-civic-blue.jpg";
 import hondaAccord from "@/assets/honda-accord.jpg";
 import hondaCrv from "@/assets/honda-crv.jpg";
 import hondaNsx from "@/assets/honda-nsx.jpg";
+import hondaPilot from "@/assets/honda-pilot.jpg";
+import hondaPassport from "@/assets/honda-passport.jpg";
+import hondaHrv from "@/assets/honda-hrv.jpg";
+import hondaS2000 from "@/assets/honda-s2000.jpg";
+import hondaTypeR from "@/assets/honda-type-r.jpg";
+import hondaFit from "@/assets/honda-fit.jpg";
+import hondaRidgeline from "@/assets/honda-ridgeline.jpg";
+import hondaInsight from "@/assets/honda-insight.jpg";
+import nissanAltima from "@/assets/nissan-altima.jpg";
+import nissanRogue from "@/assets/nissan-rogue.jpg";
+import nissanSentra from "@/assets/nissan-sentra.jpg";
+import nissan370z from "@/assets/nissan-370z.jpg";
+import nissanMurano from "@/assets/nissan-murano.jpg";
+import nissanPathfinder from "@/assets/nissan-pathfinder.jpg";
+import fordExplorer from "@/assets/ford-explorer.jpg";
+import fordBronco from "@/assets/ford-bronco.jpg";
+import fordEscape from "@/assets/ford-escape.jpg";
+import fordGt from "@/assets/ford-gt.jpg";
+import fordRanger from "@/assets/ford-ranger.jpg";
+import fordFocus from "@/assets/ford-focus.jpg";
 import volkswagenPassat from "@/assets/volkswagen-passat.jpg";
 import fordF150 from "@/assets/ford-f150.jpg";
 import nissanGtrSilver from "@/assets/nissan-gtr-silver.jpg";
@@ -316,43 +346,43 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("toyota-corolla", "Corolla", "Toyota", "סדאן", "$25,000", 139, 2024, toyotaCorolla),
   createCar("toyota-camry", "Camry", "Toyota", "סדאן", "$26,000", 203, 2024, toyotaCamry),
   createCar("toyota-rav4", "RAV4", "Toyota", "SUV", "$30,000", 203, 2024, toyotaRav4),
-  createCar("toyota-highlander", "Highlander", "Toyota", "SUV", "$37,000", 295, 2024, teslaImage),
-  createCar("toyota-4runner", "4Runner", "Toyota", "SUV שטח", "$40,000", 270, 2024, teslaImage),
-  createCar("toyota-land-cruiser", "Land Cruiser", "Toyota", "SUV שטח יוקרה", "$90,000", 409, 2024, teslaImage),
-  createCar("toyota-prado", "Prado", "Toyota", "SUV שטח", "$55,000", 163, 2024, teslaImage),
-  createCar("toyota-hilux", "Hilux", "Toyota", "טנדר", "$35,000", 201, 2024, teslaImage),
-  createCar("toyota-tacoma", "Tacoma", "Toyota", "טנדר", "$32,000", 278, 2024, teslaImage),
-  createCar("toyota-tundra", "Tundra", "Toyota", "טנדר גדול", "$42,000", 389, 2024, teslaImage),
+  createCar("toyota-highlander", "Highlander", "Toyota", "SUV", "$37,000", 295, 2024, toyotaHighlander),
+  createCar("toyota-4runner", "4Runner", "Toyota", "SUV שטח", "$40,000", 270, 2024, toyota4Runner),
+  createCar("toyota-land-cruiser", "Land Cruiser", "Toyota", "SUV שטח יוקרה", "$90,000", 409, 2024, toyotaLandCruiser),
+  createCar("toyota-prado", "Prado", "Toyota", "SUV שטח", "$55,000", 163, 2024, toyotaPrado),
+  createCar("toyota-hilux", "Hilux", "Toyota", "טנדר", "$35,000", 201, 2024, toyotaHilux),
+  createCar("toyota-tacoma", "Tacoma", "Toyota", "טנדר", "$32,000", 278, 2024, toyotaTacoma),
+  createCar("toyota-tundra", "Tundra", "Toyota", "טנדר גדול", "$42,000", 389, 2024, toyotaTundra),
   createCar("toyota-supra", "Supra", "Toyota", "מכונית ספורט", "$45,000", 382, 2024, toyotaSupra),
-  createCar("toyota-86", "86", "Toyota", "מכונית ספורט", "$29,000", 228, 2024, teslaImage),
-  createCar("toyota-yaris", "Yaris", "Toyota", "האצ׳בק", "$17,000", 106, 2024, teslaImage),
-  createCar("toyota-avalon", "Avalon", "Toyota", "סדאן יוקרה", "$37,000", 301, 2024, teslaImage),
+  createCar("toyota-86", "86", "Toyota", "מכונית ספורט", "$29,000", 228, 2024, toyota86),
+  createCar("toyota-yaris", "Yaris", "Toyota", "האצ׳בק", "$17,000", 106, 2024, toyotaYaris),
+  createCar("toyota-avalon", "Avalon", "Toyota", "סדאן יוקרה", "$37,000", 301, 2024, toyotaAvalon),
 
   // Honda Models (12 models)
   createCar("honda-civic", "Civic", "Honda", "סדאן", "$24,000", 158, 2024, hondaCivicBlue),
   createCar("honda-accord", "Accord", "Honda", "סדאן", "$27,000", 192, 2024, hondaAccord),
   createCar("honda-cr-v", "CR-V", "Honda", "SUV", "$28,000", 190, 2024, hondaCrv),
-  createCar("honda-pilot", "Pilot", "Honda", "SUV", "$40,000", 280, 2024, teslaImage),
-  createCar("honda-passport", "Passport", "Honda", "SUV", "$37,000", 280, 2024, teslaImage),
-  createCar("honda-ridgeline", "Ridgeline", "Honda", "טנדר", "$39,000", 280, 2024, teslaImage),
-  createCar("honda-hr-v", "HR-V", "Honda", "SUV קומפקטי", "$24,000", 158, 2024, teslaImage),
-  createCar("honda-fit", "Fit", "Honda", "האצ׳בק", "$18,000", 128, 2024, teslaImage),
-  createCar("honda-insight", "Insight", "Honda", "היברידי", "$26,000", 151, 2024, teslaImage),
+  createCar("honda-pilot", "Pilot", "Honda", "SUV", "$40,000", 280, 2024, hondaPilot),
+  createCar("honda-passport", "Passport", "Honda", "SUV", "$37,000", 280, 2024, hondaPassport),
+  createCar("honda-ridgeline", "Ridgeline", "Honda", "טנדר", "$39,000", 280, 2024, hondaRidgeline),
+  createCar("honda-hr-v", "HR-V", "Honda", "SUV קומפקטי", "$24,000", 158, 2024, hondaHrv),
+  createCar("honda-fit", "Fit", "Honda", "האצ׳בק", "$18,000", 128, 2024, hondaFit),
+  createCar("honda-insight", "Insight", "Honda", "היברידי", "$26,000", 151, 2024, hondaInsight),
   createCar("honda-nsx", "NSX", "Honda", "סופרקאר היברידי", "$169,000", 573, 2024, hondaNsx),
-  createCar("honda-s2000", "S2000", "Honda", "רודסטר ספורט", "$36,000", 237, 2023, teslaImage),
-  createCar("honda-type-r", "Civic Type R", "Honda", "האצ׳בק ספורט", "$45,000", 315, 2024, teslaImage),
+  createCar("honda-s2000", "S2000", "Honda", "רודסטר ספורט", "$36,000", 237, 2023, hondaS2000),
+  createCar("honda-type-r", "Civic Type R", "Honda", "האצ׳בק ספורט", "$45,000", 315, 2024, hondaTypeR),
 
   // Continue with more brands and models to reach 200+ cars...
   // Nissan Models (10 models)
-  createCar("nissan-altima", "Altima", "Nissan", "סדאן", "$25,000", 188, 2024, teslaImage),
-  createCar("nissan-sentra", "Sentra", "Nissan", "סדאן", "$20,000", 149, 2024, teslaImage),
-  createCar("nissan-rogue", "Rogue", "Nissan", "SUV", "$28,000", 181, 2024, teslaImage),
-  createCar("nissan-murano", "Murano", "Nissan", "SUV", "$33,000", 260, 2024, teslaImage),
-  createCar("nissan-pathfinder", "Pathfinder", "Nissan", "SUV", "$36,000", 284, 2024, teslaImage),
+  createCar("nissan-altima", "Altima", "Nissan", "סדאן", "$25,000", 188, 2024, nissanAltima),
+  createCar("nissan-sentra", "Sentra", "Nissan", "סדאן", "$20,000", 149, 2024, nissanSentra),
+  createCar("nissan-rogue", "Rogue", "Nissan", "SUV", "$28,000", 181, 2024, nissanRogue),
+  createCar("nissan-murano", "Murano", "Nissan", "SUV", "$33,000", 260, 2024, nissanMurano),
+  createCar("nissan-pathfinder", "Pathfinder", "Nissan", "SUV", "$36,000", 284, 2024, nissanPathfinder),
   createCar("nissan-armada", "Armada", "Nissan", "SUV גדול", "$50,000", 400, 2024, teslaImage),
   createCar("nissan-frontier", "Frontier", "Nissan", "טנדר", "$32,000", 310, 2024, teslaImage),
   createCar("nissan-titan", "Titan", "Nissan", "טנדר גדול", "$38,000", 400, 2024, teslaImage),
-  createCar("nissan-370z", "370Z", "Nissan", "מכונית ספורט", "$35,000", 332, 2023, teslaImage),
+  createCar("nissan-370z", "370Z", "Nissan", "מכונית ספורט", "$35,000", 332, 2023, nissan370z),
   createCar("nissan-gtr", "GT-R", "Nissan", "סופרקאר", "$115,000", 565, 2024, nissanGtrSilver),
 
   // Ford Models (15 models)
@@ -361,16 +391,16 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("ford-mustang", "Mustang", "Ford", "מכונית ספורט", "$32,000", 310, 2024, fordMustangRed),
   createCar("ford-mustang-gt", "Mustang GT", "Ford", "מכונית ספורט", "$38,000", 450, 2024, fordMustangGt),
   createCar("ford-mustang-mach-e", "Mustang Mach-E", "Ford", "SUV חשמלי", "$48,000", 312, 2024, fordMustangMachE, true),
-  createCar("ford-explorer", "Explorer", "Ford", "SUV", "$35,000", 300, 2024, teslaImage),
+  createCar("ford-explorer", "Explorer", "Ford", "SUV", "$35,000", 300, 2024, fordExplorer),
   createCar("ford-expedition", "Expedition", "Ford", "SUV גדול", "$55,000", 400, 2024, teslaImage),
-  createCar("ford-escape", "Escape", "Ford", "SUV קומפקטי", "$27,000", 191, 2024, teslaImage),
+  createCar("ford-escape", "Escape", "Ford", "SUV קומפקטי", "$27,000", 191, 2024, fordEscape),
   createCar("ford-edge", "Edge", "Ford", "SUV", "$36,000", 250, 2024, teslaImage),
-  createCar("ford-bronco", "Bronco", "Ford", "SUV שטח", "$35,000", 270, 2024, teslaImage),
-  createCar("ford-ranger", "Ranger", "Ford", "טנדר", "$27,000", 270, 2024, teslaImage),
+  createCar("ford-bronco", "Bronco", "Ford", "SUV שטח", "$35,000", 270, 2024, fordBronco),
+  createCar("ford-ranger", "Ranger", "Ford", "טנדר", "$27,000", 270, 2024, fordRanger),
   createCar("ford-fusion", "Fusion", "Ford", "סדאן", "$24,000", 175, 2023, teslaImage),
-  createCar("ford-focus", "Focus", "Ford", "האצ׳בק", "$21,000", 160, 2023, teslaImage),
+  createCar("ford-focus", "Focus", "Ford", "האצ׳בק", "$21,000", 160, 2023, fordFocus),
   createCar("ford-fiesta", "Fiesta", "Ford", "האצ׳בק קטן", "$17,000", 120, 2023, teslaImage),
-  createCar("ford-gt", "GT", "Ford", "סופרקאר", "$500,000", 647, 2023, teslaImage),
+  createCar("ford-gt", "GT", "Ford", "סופרקאר", "$500,000", 647, 2023, fordGt),
 
   // Volkswagen Models (15 models)
   createCar("volkswagen-golf", "Golf", "Volkswagen", "האצ׳בק", "$25,000", 150, 2024, volkswagenGolf),
