@@ -7,10 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { newsArticles } from "@/data/expandedCarsDatabase";
+import ArticleModal from "@/components/ArticleModal";
+import newsBackground from "@/assets/news-background.jpg";
+import newsTeslaBattery from "@/assets/news-tesla-battery.jpg";
 
 const NewsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [isArticleModalOpen, setIsArticleModalOpen] = useState(false);
 
   const categories = [
     { id: "all", name: "הכל", icon: "📰" },
@@ -30,7 +35,7 @@ const NewsPage = () => {
     date: "2024-01-20",
     readTime: "5 דקות קריאה",
     author: "מיכל רוזן",
-    image: "/api/placeholder/800/400",
+    image: newsTeslaBattery,
     trending: true
   };
 
@@ -49,13 +54,25 @@ const NewsPage = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const handleArticleClick = (article) => {
+    setSelectedArticle(article);
+    setIsArticleModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-24 pb-16">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-hero">
+        <section 
+          className="py-16 bg-gradient-hero relative"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${newsBackground})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
           <div className="container mx-auto px-4 text-center text-white">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               חדשות <span className="text-racing-red">רכב</span>
@@ -119,7 +136,10 @@ const NewsPage = () => {
                     </span>
                   </div>
 
-                  <Button className="btn-racing self-start">
+                  <Button 
+                    className="btn-racing self-start"
+                    onClick={() => handleArticleClick(featuredNews)}
+                  >
                     קרא עוד
                     <ArrowRight className="mr-2 h-4 w-4" />
                   </Button>
@@ -177,6 +197,7 @@ const NewsPage = () => {
                   <Card 
                     key={article.id} 
                     className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth group cursor-pointer"
+                    onClick={() => handleArticleClick(article)}
                   >
                     <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800">
                       <img
@@ -185,7 +206,14 @@ const NewsPage = () => {
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center">
-                        <Button variant="ghost" className="text-white border-white hover:bg-white hover:text-black">
+                        <Button 
+                          variant="ghost" 
+                          className="text-white border-white hover:bg-white hover:text-black"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleArticleClick(article);
+                          }}
+                        >
                           קרא עוד
                         </Button>
                       </div>
@@ -256,6 +284,15 @@ const NewsPage = () => {
       </main>
 
       <Footer />
+      
+      <ArticleModal 
+        article={selectedArticle}
+        isOpen={isArticleModalOpen}
+        onClose={() => {
+          setIsArticleModalOpen(false);
+          setSelectedArticle(null);
+        }}
+      />
     </div>
   );
 };

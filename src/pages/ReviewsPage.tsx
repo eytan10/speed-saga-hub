@@ -7,10 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ReviewModal from "@/components/ReviewModal";
 
 const ReviewsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
 
   const reviews = [
     {
@@ -245,7 +247,10 @@ const ReviewsPage = () => {
               <p className="text-muted-foreground mb-6">
                 שתף את החוויה שלך ועזור לאחרים לקבל החלטה מושכלת
               </p>
-              <Button className="btn-racing text-lg">
+              <Button 
+                className="btn-racing text-lg"
+                onClick={() => setIsReviewModalOpen(true)}
+              >
                 כתוב ביקורת
               </Button>
             </div>
@@ -254,6 +259,11 @@ const ReviewsPage = () => {
       </main>
 
       <Footer />
+      
+      <ReviewModal 
+        isOpen={isReviewModalOpen}
+        onClose={() => setIsReviewModalOpen(false)}
+      />
     </div>
   );
 };
