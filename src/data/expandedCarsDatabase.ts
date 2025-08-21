@@ -432,6 +432,258 @@ export const expandedBrands = [
     founded: 1916,
     country: "יפן",
     headquarters: "טוקיו, יפן"
+  },
+  {
+    id: "mitsubishi",
+    name: "Mitsubishi",
+    logo: "🔺",
+    description: "יצרנית רכב יפנית היסטורית",
+    founded: 1970,
+    country: "יפן",
+    headquarters: "טוקיו, יפן"
+  },
+  {
+    id: "suzuki",
+    name: "Suzuki",
+    logo: "🅂",
+    description: "יצרנית רכב ואופנועים יפנית",
+    founded: 1909,
+    country: "יפן",
+    headquarters: "המאמאצו, יפן"
+  },
+  {
+    id: "daihatsu",
+    name: "Daihatsu",
+    logo: "🔸",
+    description: "יצרנית רכבי עיר יפנית",
+    founded: 1907,
+    country: "יפן",
+    headquarters: "אוסקה, יפן"
+  },
+  {
+    id: "geely",
+    name: "Geely",
+    logo: "🟡",
+    description: "יצרנית רכב סינית מתפתחת",
+    founded: 1986,
+    country: "סין",
+    headquarters: "הנגז'ו, סין"
+  },
+  {
+    id: "byd",
+    name: "BYD",
+    logo: "🔋",
+    description: "יצרנית רכבים חשמליים סינית מובילה",
+    founded: 1995,
+    country: "סין",
+    headquarters: "שנזן, סין"
+  },
+  {
+    id: "great-wall",
+    name: "Great Wall",
+    logo: "🏯",
+    description: "יצרנית SUV וטנדרים סינית",
+    founded: 1984,
+    country: "סין",
+    headquarters: "באודינג, סין"
+  },
+  {
+    id: "maserati",
+    name: "Maserati",
+    logo: "🔱",
+    description: "יצרנית רכבי יוקרה איטלקית",
+    founded: 1914,
+    country: "איטליה",
+    headquarters: "מודנה, איטליה"
+  },
+  {
+    id: "alfa-romeo",
+    name: "Alfa Romeo",
+    logo: "🐍",
+    description: "יצרנית רכבי ספורט איטלקית",
+    founded: 1910,
+    country: "איטליה",
+    headquarters: "טורין, איטליה"
+  },
+  {
+    id: "polestar",
+    name: "Polestar",
+    logo: "⭐",
+    description: "מותג רכבים חשמליים של וולוו",
+    founded: 2017,
+    country: "שוודיה",
+    headquarters: "גטבורג, שוודיה"
+  },
+  {
+    id: "peugeot",
+    name: "Peugeot",
+    logo: "🦁",
+    description: "יצרנית רכב צרפתית היסטורית",
+    founded: 1810,
+    country: "צרפת",
+    headquarters: "פריז, צרפת"
+  },
+  {
+    id: "citroen",
+    name: "Citroën",
+    logo: "🔺",
+    description: "יצרנית רכב צרפתית חדשנית",
+    founded: 1919,
+    country: "צרפת",
+    headquarters: "פריז, צרפת"
+  },
+  {
+    id: "renault",
+    name: "Renault",
+    logo: "💎",
+    description: "יצרנית רכב צרפתית גלובלית",
+    founded: 1899,
+    country: "צרפת",
+    headquarters: "בולון-ביאנקור, צרפת"
+  },
+  {
+    id: "dacia",
+    name: "Dacia",
+    logo: "🛡️",
+    description: "מותג רכב רומני של רנו",
+    founded: 1966,
+    country: "רומניה",
+    headquarters: "מיובני, רומניה"
+  },
+  {
+    id: "fiat",
+    name: "Fiat",
+    logo: "🔴",
+    description: "יצרנית רכב איטלקית עממית",
+    founded: 1899,
+    country: "איטליה",
+    headquarters: "טורין, איטליה"
+  },
+  {
+    id: "opel",
+    name: "Opel",
+    logo: "⚡",
+    description: "יצרנית רכב גרמנית של PSA",
+    founded: 1862,
+    country: "גרמניה",
+    headquarters: "רוסלסהיים, גרמניה"
+  },
+  {
+    id: "seat",
+    name: "SEAT",
+    logo: "🔺",
+    description: "מותג רכב ספרדי של VW",
+    founded: 1950,
+    country: "ספרד",
+    headquarters: "מרטורל, ספרד"
+  },
+  {
+    id: "lada",
+    name: "Lada",
+    logo: "⛵",
+    description: "יצרנית רכב רוסית",
+    founded: 1966,
+    country: "רוסיה",
+    headquarters: "טוליאטי, רוסיה"
+  },
+  {
+    id: "gmc",
+    name: "GMC",
+    logo: "🔷",
+    description: "מותג משאיות ו-SUV של GM",
+    founded: 1901,
+    country: "ארצות הברית",
+    headquarters: "דטרויט, מישיגן"
+  },
+  {
+    id: "buick",
+    name: "Buick",
+    logo: "🔷",
+    description: "מותג יוקרה אמריקני של GM",
+    founded: 1903,
+    country: "ארצות הברית",
+    headquarters: "דטרויט, מישיגן"
+  },
+  {
+    id: "rivian",
+    name: "Rivian",
+    logo: "🔋",
+    description: "יצרנית רכבים חשמליים אמריקנית",
+    founded: 2009,
+    country: "ארצות הברית",
+    headquarters: "פליסנט פריירי, איליניוס"
+  },
+  {
+    id: "lucid",
+    name: "Lucid Motors",
+    logo: "💎",
+    description: "יצרנית רכבי יוקרה חשמליים",
+    founded: 2007,
+    country: "ארצות הברית",
+    headquarters: "נווארק, קליפורניה"
+  },
+  {
+    id: "nio",
+    name: "NIO",
+    logo: "🔵",
+    description: "יצרנית רכבים חשמליים סינית פרמיום",
+    founded: 2014,
+    country: "סין",
+    headquarters: "שנגחאי, סין"
+  },
+  {
+    id: "xpeng",
+    name: "XPeng",
+    logo: "❌",
+    description: "יצרנית רכבים חשמליים חכמים סינית",
+    founded: 2014,
+    country: "סין",
+    headquarters: "גואנגז'ו, סין"
+  },
+  {
+    id: "haval",
+    name: "Haval",
+    logo: "🏔️",
+    description: "מותג SUV של Great Wall Motors",
+    founded: 2013,
+    country: "סין",
+    headquarters: "באודינג, סין"
+  },
+  {
+    id: "chery",
+    name: "Chery",
+    logo: "🔴",
+    description: "יצרנית רכב סינית גלובלית",
+    founded: 1997,
+    country: "סין",
+    headquarters: "ווהו, סין"
+  },
+  {
+    id: "mg",
+    name: "MG",
+    logo: "🏁",
+    description: "מותג רכב בריטי-סיני",
+    founded: 1924,
+    country: "בריטניה/סין",
+    headquarters: "לונדון, בריטניה"
+  },
+  {
+    id: "tata",
+    name: "Tata Motors",
+    logo: "🔵",
+    description: "יצרנית רכב הודית גדולה",
+    founded: 1945,
+    country: "הודו",
+    headquarters: "מומבאי, הודו"
+  },
+  {
+    id: "mahindra",
+    name: "Mahindra",
+    logo: "🔺",
+    description: "יצרנית רכב ומשאיות הודית",
+    founded: 1945,
+    country: "הודו",
+    headquarters: "מומבאי, הודו"
   }
 ];
 
