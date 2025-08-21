@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import CarComparison from "./CarComparison";
+import { useFavorites } from "@/contexts/FavoritesContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface CarCardProps {
   id: string;
@@ -20,6 +22,83 @@ interface CarCardProps {
 
 const CarCard = ({ car }: { car: CarCardProps }) => {
   const [showComparison, setShowComparison] = useState(false);
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const { toast } = useToast();
+  const isCarFavorite = isFavorite(car.id);
+
+  const handleFavoriteClick = () => {
+    if (isCarFavorite) {
+      removeFromFavorites(car.id);
+      toast({
+        title: "הוסר מהמועדפים",
+        description: `${car.brand} ${car.name} הוסר מהמועדפים שלך`,
+      });
+    } else {
+      // Convert CarCardProps to ExtendedCarDetails
+      const extendedCar = {
+        id: car.id,
+        name: car.name,
+        brand: car.brand,
+        year: car.year,
+        type: car.type,
+        image: car.image,
+        price: car.price,
+        rating: car.rating,
+        isElectric: car.isElectric,
+        description: `${car.brand} ${car.name} משלב ביצועים מעולים עם טכנולוגיה מתקדמת ועיצוב מרשים.`,
+        specs: {
+          engine: car.isElectric ? "מנוע חשמלי" : "2.0L-4.0L",
+          transmission: car.isElectric ? "חד-מהירות" : "8-Speed Automatic",
+          acceleration: `0-100 קמ״ש ב-${(3 + Math.random() * 4).toFixed(1)} שניות`,
+          topSpeed: car.topSpeed,
+          fuel: car.isElectric ? `${(80 + Math.random() * 40).toFixed(0)} MPGe` : `${(12 + Math.random() * 8).toFixed(0)}/${(18 + Math.random() * 10).toFixed(0)} mpg`,
+          weight: `${(1200 + Math.random() * 800).toFixed(0)} ק״ג`,
+          power: car.horsepower,
+          torque: `${(300 + Math.random() * 400).toFixed(0)} lb-ft`,
+          drivetrain: ["הנעה קדמית", "הנעה אחורית", "4X4"][Math.floor(Math.random() * 3)],
+          seating: Math.ceil(2 + Math.random() * 6),
+          cargo: `${(200 + Math.random() * 600).toFixed(0)} ליטר`,
+          price: car.price
+        },
+        features: [
+          "מערכת בטיחות מתקדמת",
+          "מולטימדיה חכמה",
+          "מזגן אוטומטי"
+        ],
+        pros: [
+          "ביצועים מעולים",
+          "איכות בנייה גבוהה", 
+          "עיצוב אטרקטיבי"
+        ],
+        cons: [
+          "מחיר גבוה",
+          "עלויות תחזוקה",
+          "צריכת דלק"
+        ],
+        colors: [
+          { name: "שחור", hex: "#000000" },
+          { name: "לבן", hex: "#FFFFFF" }
+        ],
+        interiorColors: [
+          { name: "שחור", hex: "#1F2937" },
+          { name: "חום", hex: "#8B4513" }
+        ],
+        dealerships: [
+          {
+            name: `${car.brand} תל אביב`,
+            location: "תל אביב, ישראל",
+            phone: "03-555-0123",
+            website: `www.${car.brand.toLowerCase()}-telaviv.co.il`
+          }
+        ]
+      };
+      addToFavorites(extendedCar);
+      toast({
+        title: "נוסף למועדפים",
+        description: `${car.brand} ${car.name} נוסף למועדפים שלך`,
+      });
+    }
+  };
 
   return (
     <>
@@ -47,9 +126,12 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
           <Button
             size="icon"
             variant="ghost"
-            className="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white"
+            className={`absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white ${
+              isCarFavorite ? 'text-racing-red' : ''
+            }`}
+            onClick={handleFavoriteClick}
           >
-            <Heart className="h-4 w-4" />
+            <Heart className={`h-4 w-4 ${isCarFavorite ? 'fill-racing-red' : ''}`} />
           </Button>
 
           {/* Overlay on hover */}

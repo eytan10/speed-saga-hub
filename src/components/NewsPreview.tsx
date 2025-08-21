@@ -2,6 +2,9 @@ import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import teslaBatteryImage from "@/assets/news-tesla-battery.jpg";
+import ferrariLemansImage from "@/assets/news-ferrari-lemans.jpg";
+import porscheHybridImage from "@/assets/news-porsche-hybrid.jpg";
 
 const NewsPreview = () => {
   const news = [
@@ -12,7 +15,7 @@ const NewsPreview = () => {
       category: "Electric",
       date: "2024-01-15",
       readTime: "5 min read",
-      image: "/api/placeholder/400/250"
+      image: teslaBatteryImage
     },
     {
       id: 2,
@@ -21,7 +24,7 @@ const NewsPreview = () => {
       category: "Racing",
       date: "2024-01-14",
       readTime: "3 min read",
-      image: "/api/placeholder/400/250"
+      image: ferrariLemansImage
     },
     {
       id: 3,
@@ -30,7 +33,7 @@ const NewsPreview = () => {
       category: "Technology",
       date: "2024-01-13",
       readTime: "4 min read",
-      image: "/api/placeholder/400/250"
+      image: porscheHybridImage
     }
   ];
 
@@ -57,10 +60,15 @@ const NewsPreview = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {news.map((article) => (
             <Card key={article.id} className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth group cursor-pointer">
-              <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={article.image} 
+                  alt={article.title}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center">
                   <Button variant="ghost" className="text-white border-white hover:bg-white hover:text-black">
-                    Read More
+                    קרא עוד
                   </Button>
                 </div>
               </div>

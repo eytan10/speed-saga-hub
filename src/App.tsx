@@ -11,6 +11,7 @@ import CommunityPage from "./pages/CommunityPage";
 import CarDetailsPage from "./pages/CarDetailsPage";
 import BrandPage from "./pages/BrandPage";
 import CategoryPage from "./pages/CategoryPage";
+import FavoritesPage from "./pages/FavoritesPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,10 +1,12 @@
-import { Search, Menu, Car } from "lucide-react";
+import { Search, Menu, Car, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { useFavorites } from "@/contexts/FavoritesContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
 
   return (
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b border-border z-50">
@@ -18,31 +20,41 @@ const Header = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <a href="/" className="text-foreground hover:text-racing-red transition-smooth">
-            Home
+            בית
           </a>
           <a href="/cars" className="text-foreground hover:text-racing-red transition-smooth">
-            Cars
+            רכבים
           </a>
           <a href="/reviews" className="text-foreground hover:text-racing-red transition-smooth">
-            Reviews
+            ביקורות
           </a>
           <a href="/news" className="text-foreground hover:text-racing-red transition-smooth">
-            News
+            חדשות
           </a>
           <a href="/community" className="text-foreground hover:text-racing-red transition-smooth">
-            Community
+            קהילה
           </a>
         </div>
 
-        {/* Search Bar */}
+        {/* Search Bar & Favorites */}
         <div className="hidden md:flex items-center space-x-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search cars..."
+              placeholder="חפש רכבים..."
               className="pl-10 w-64"
             />
           </div>
+          <a href="/favorites" className="relative">
+            <Button variant="ghost" size="icon">
+              <Heart className="h-5 w-5" />
+              {favorites.length > 0 && (
+                <span className="absolute -top-1 -right-1 bg-racing-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {favorites.length}
+                </span>
+              )}
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -63,25 +75,29 @@ const Header = () => {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search cars..."
+                placeholder="חפש רכבים..."
                 className="pl-10 w-full"
               />
             </div>
             <div className="space-y-2">
               <a href="/" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
-                Home
+                בית
               </a>
               <a href="/cars" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
-                Cars
+                רכבים
               </a>
               <a href="/reviews" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
-                Reviews
+                ביקורות
               </a>
               <a href="/news" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
-                News
+                חדשות
               </a>
               <a href="/community" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
-                Community
+                קהילה
+              </a>
+              <a href="/favorites" className="flex items-center py-2 text-foreground hover:text-racing-red transition-smooth">
+                <Heart className="h-4 w-4 ml-2" />
+                מועדפים {favorites.length > 0 && `(${favorites.length})`}
               </a>
             </div>
           </div>
