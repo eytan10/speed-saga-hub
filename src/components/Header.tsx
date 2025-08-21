@@ -17,16 +17,16 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-foreground hover:text-racing-red transition-smooth">
+          <a href="/cars" className="text-foreground hover:text-racing-red transition-smooth">
             Cars
           </a>
-          <a href="#" className="text-foreground hover:text-racing-red transition-smooth">
+          <a href="/reviews" className="text-foreground hover:text-racing-red transition-smooth">
             Reviews
           </a>
-          <a href="#" className="text-foreground hover:text-racing-red transition-smooth">
+          <a href="/news" className="text-foreground hover:text-racing-red transition-smooth">
             News
           </a>
-          <a href="#" className="text-foreground hover:text-racing-red transition-smooth">
+          <a href="/community" className="text-foreground hover:text-racing-red transition-smooth">
             Community
           </a>
         </div>
@@ -65,16 +65,16 @@ const Header = () => {
               />
             </div>
             <div className="space-y-2">
-              <a href="#" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              <a href="/cars" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
                 Cars
               </a>
-              <a href="#" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              <a href="/reviews" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
                 Reviews
               </a>
-              <a href="#" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              <a href="/news" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
                 News
               </a>
-              <a href="#" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              <a href="/community" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
                 Community
               </a>
             </div>
