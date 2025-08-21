@@ -47,7 +47,12 @@ import porsche911New from "@/assets/porsche-911-turbo-s.jpg";
 import audiRs6New from "@/assets/audi-rs6-new.jpg";
 import audiRs6AvantGray from "@/assets/audi-rs6-avant-gray.jpg";
 import mclaren720sNew from "@/assets/mclaren-720s-new.jpg";
-import mclaren720sOrange from "@/assets/mclaren-720s-orange.jpg";
+// Additional car images for comprehensive database
+import toyotaCamry2024 from "@/assets/toyota-camry-2024.jpg";
+import hondaCivicTypeR2024 from "@/assets/honda-civic-type-r-2024.jpg";
+import fordMustangGt2024 from "@/assets/ford-mustang-gt-2024.jpg";
+import volkswagenGolfGti2024 from "@/assets/volkswagen-golf-gti-2024.jpg";
+import hyundaiTucson2024 from "@/assets/hyundai-tucson-2024.jpg";
 import lamborghiniHuracanEvoYellow from "@/assets/lamborghini-huracan-evo-yellow.jpg";
 import fordMustangRed from "@/assets/ford-mustang-red.jpg";
 import fordMustangGt from "@/assets/ford-mustang-gt.jpg";
@@ -320,7 +325,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("audi-tt", "TT", "Audi", "קופה ספורט", "$52,000", 228, 2024, audiImage),
 
   // McLaren Models (12 models)
-  createCar("mclaren-720s", "720S", "McLaren", "סופרקאר", "$310,000", 710, 2024, mclaren720sOrange),
+  createCar("mclaren-720s", "720S", "McLaren", "סופרקאר", "$310,000", 710, 2024, mclaren720sNew),
   createCar("mclaren-765lt", "765LT", "McLaren", "סופרקאר מסלול", "$382,000", 754, 2024, mclarenImage),
   createCar("mclaren-artura", "Artura", "McLaren", "היברידי ספורט", "$233,000", 671, 2024, mclarenImage, false, true),
   createCar("mclaren-p1", "P1", "McLaren", "היפרקאר", "$1,350,000", 903, 2023, mclarenImage),
@@ -411,9 +416,9 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("ford-fiesta", "Fiesta", "Ford", "האצ׳בק קטן", "$17,000", 120, 2023, fordFiesta),
   createCar("ford-gt", "GT", "Ford", "סופרקאר", "$500,000", 647, 2023, fordGt),
 
-  // Volkswagen Models (15 models)
+  // Volkswagen Models (15+ models)
   createCar("volkswagen-golf", "Golf", "Volkswagen", "האצ׳בק", "$25,000", 150, 2024, volkswagenGolf),
-  createCar("volkswagen-golf-gti", "Golf GTI", "Volkswagen", "האצ׳בק ספורט", "$35,000", 241, 2024, volkswagenGolf),
+  createCar("volkswagen-golf-gti", "Golf GTI", "Volkswagen", "האצ׳בק ספורט", "$35,000", 241, 2024, volkswagenGolfGti2024),
   createCar("volkswagen-passat", "Passat", "Volkswagen", "סדאן", "$28,000", 174, 2024, volkswagenPassat),
   createCar("volkswagen-jetta", "Jetta", "Volkswagen", "סדאן", "$22,000", 147, 2024, volkswagenGolf),
   createCar("volkswagen-tiguan", "Tiguan", "Volkswagen", "SUV", "$27,000", 184, 2024, volkswagenGolf),
@@ -428,10 +433,10 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("volkswagen-r32", "Golf R32", "Volkswagen", "האצ׳בק ספורט", "$38,000", 250, 2024, volkswagenGolf),
   createCar("volkswagen-up", "Up!", "Volkswagen", "עירוני קטן", "$15,000", 75, 2024, volkswagenGolf),
 
-  // Hyundai Models (12 models)
+  // Hyundai Models (15+ models)
   createCar("hyundai-elantra", "Elantra", "Hyundai", "סדאן", "$21,000", 147, 2024, hyundaiElantraWhite),
   createCar("hyundai-sonata", "Sonata", "Hyundai", "סדאן", "$25,000", 191, 2024, hyundaiElantra),
-  createCar("hyundai-tucson", "Tucson", "Hyundai", "SUV", "$26,000", 187, 2024, hyundaiElantra),
+  createCar("hyundai-tucson", "Tucson", "Hyundai", "SUV", "$28,000", 187, 2024, hyundaiTucson2024),
   createCar("hyundai-santa-fe", "Santa Fe", "Hyundai", "SUV", "$29,000", 277, 2024, hyundaiElantra),
   createCar("hyundai-palisade", "Palisade", "Hyundai", "SUV גדול", "$35,000", 291, 2024, hyundaiElantra),
   createCar("hyundai-kona", "Kona", "Hyundai", "SUV קומפקטי", "$23,000", 147, 2024, hyundaiElantra),

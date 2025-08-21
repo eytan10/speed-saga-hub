@@ -6,16 +6,23 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SearchAndFilter from "@/components/SearchAndFilter";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 
 const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [filters, setFilters] = useState<any>({});
 
-  const filteredBrands = expandedBrands.filter(brand =>
-    brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    brand.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredBrands = expandedBrands.filter(brand => {
+    const matchesSearch = brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         brand.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         brand.country.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesBrandFilter = !filters.brand || brand.name === filters.brand;
+    
+    return matchesSearch && matchesBrandFilter;
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -58,44 +65,15 @@ const CarsPage = () => {
           <div className="absolute top-40 right-20 text-5xl opacity-15 animate-pulse delay-300">🏎️</div>
         </section>
 
-        {/* Search and Filter Bar */}
-        <section className="py-8 bg-card border-b border-border">
+        {/* Enhanced Search and Filter */}
+        <section className="py-8">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="חפש מותג או מודל..."
-                  className="pl-10"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm">
-                  <Filter className="h-4 w-4 mr-2" />
-                  סינון
-                </Button>
-                
-                <div className="flex border border-border rounded-lg p-1">
-                  <Button
-                    variant={viewMode === "grid" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("grid")}
-                  >
-                    <Grid className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant={viewMode === "list" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("list")}
-                  >
-                    <List className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <SearchAndFilter
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
+              onFiltersChange={setFilters}
+              totalResults={filteredBrands.length}
+            />
           </div>
         </section>
 

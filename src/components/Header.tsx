@@ -1,11 +1,13 @@
-import { Search, Menu, Car, Heart } from "lucide-react";
+import { Search, Menu, Car, Heart, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import MegaMenu from "./MegaMenu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const { favorites } = useFavorites();
 
   return (
@@ -22,9 +24,15 @@ const Header = () => {
           <a href="/" className="text-foreground hover:text-racing-red transition-smooth">
             בית
           </a>
-          <a href="/cars" className="text-foreground hover:text-racing-red transition-smooth">
-            רכבים
-          </a>
+          <div className="relative group">
+            <button 
+              onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+              className="flex items-center gap-1 text-foreground hover:text-racing-red transition-smooth"
+            >
+              רכבים
+              <ChevronDown className="h-4 w-4" />
+            </button>
+          </div>
           <a href="/reviews" className="text-foreground hover:text-racing-red transition-smooth">
             ביקורות
           </a>
@@ -103,6 +111,12 @@ const Header = () => {
           </div>
         </div>
       )}
+      
+      {/* Mega Menu */}
+      <MegaMenu 
+        isOpen={isMegaMenuOpen} 
+        onClose={() => setIsMegaMenuOpen(false)} 
+      />
     </header>
   );
 };
