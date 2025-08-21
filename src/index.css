@@ -2,41 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Automotive Design System - Premium car enthusiast website 
+All colors MUST be HSL for consistency and theming.
 */
 
 @layer base {
   :root {
+    /* Base colors - Clean automotive palette */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 6%;
 
+    /* Surface colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 6%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 6%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand colors - Racing inspired */
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --racing-red: 0 84% 60%;
+    --racing-red-foreground: 0 0% 98%;
+    --electric-blue: 217 91% 60%;
+    --electric-blue-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary colors */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Interface */
+    --border: 0 0% 91%;
+    --input: 0 0% 91%;
+    --ring: 0 0% 9%;
+    --radius: 0.75rem;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Automotive gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(0 0% 12%) 100%);
+    --gradient-racing: linear-gradient(135deg, hsl(0 84% 60%) 0%, hsl(15 90% 55%) 100%);
+    --gradient-electric: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(230 89% 65%) 100%);
+    --gradient-chrome: linear-gradient(135deg, hsl(0 0% 85%) 0%, hsl(0 0% 95%) 50%, hsl(0 0% 85%) 100%);
+    
+    /* Shadows */
+    --shadow-automotive: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
+    --shadow-card: 0 10px 30px -15px hsl(0 0% 0% / 0.3);
+    --shadow-racing: 0 25px 50px -12px hsl(0 84% 60% / 0.25);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +79,37 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode automotive theme */
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --racing-red: 0 84% 65%;
+    --racing-red-foreground: 0 0% 98%;
+    --electric-blue: 217 91% 65%;
+    --electric-blue-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 98%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,5 +128,69 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Automotive utility classes */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-racing {
+    background: var(--gradient-racing);
+  }
+
+  .gradient-electric {
+    background: var(--gradient-electric);
+  }
+
+  .gradient-chrome {
+    background: var(--gradient-chrome);
+  }
+
+  .shadow-automotive {
+    box-shadow: var(--shadow-automotive);
+  }
+
+  .shadow-racing {
+    box-shadow: var(--shadow-racing);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Car card hover effects */
+  .car-card {
+    @apply bg-card border border-border rounded-lg overflow-hidden transition-smooth hover:shadow-automotive hover:-translate-y-2;
+  }
+
+  .car-card:hover .car-image {
+    @apply scale-110;
+  }
+
+  .car-image {
+    @apply transition-smooth duration-500;
+  }
+
+  /* Hero button styles */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-lg font-semibold transition-smooth hover:shadow-automotive hover:-translate-y-1;
+  }
+
+  .btn-racing {
+    background: var(--gradient-racing);
+    @apply text-racing-red-foreground hover:shadow-racing px-8 py-4 rounded-lg font-semibold transition-smooth hover:-translate-y-1;
+  }
+
+  .btn-electric {
+    background: var(--gradient-electric);
+    @apply text-electric-blue-foreground px-8 py-4 rounded-lg font-semibold transition-smooth hover:-translate-y-1;
   }
 }
