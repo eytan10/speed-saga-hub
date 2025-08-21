@@ -26,7 +26,10 @@ const FeaturedCars = () => {
 
         {/* View All Button */}
         <div className="text-center">
-          <Button className="btn-hero text-lg">
+          <Button 
+            className="btn-hero text-lg"
+            onClick={() => window.location.href = '/cars'}
+          >
             View All Cars
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

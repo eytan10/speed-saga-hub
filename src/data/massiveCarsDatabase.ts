@@ -7,6 +7,15 @@ import audiImage from "@/assets/audi-rs6.jpg";
 import mclarenImage from "@/assets/mclaren-720s.jpg";
 import lamborghiniImage from "@/assets/lamborghini-huracan.jpg";
 
+// New high-quality images
+import ferrari488New from "@/assets/ferrari-488-new.jpg";
+import bmwM3New from "@/assets/bmw-m3-new.jpg";
+import teslaModelSNew from "@/assets/tesla-model-s-new.jpg";
+import mercedesAmgNew from "@/assets/mercedes-amg-new.jpg";
+import porsche911New from "@/assets/porsche-911-new.jpg";
+import audiRs6New from "@/assets/audi-rs6-new.jpg";
+import mclaren720sNew from "@/assets/mclaren-720s-new.jpg";
+
 export interface ExtendedCarSpecs {
   engine: string;
   transmission: string;
@@ -143,7 +152,7 @@ const createCar = (
 // Massive car database with 200+ vehicles
 export const massiveCarsDatabase: ExtendedCarDetails[] = [
   // Ferrari Models (15 models)
-  createCar("ferrari-488-gtb", "488 GTB", "Ferrari", "מכונית ספורט", "$280,000", 661, 2024, ferrariImage),
+  createCar("ferrari-488-gtb", "488 GTB", "Ferrari", "מכונית ספורט", "$280,000", 661, 2024, ferrari488New),
   createCar("ferrari-f8-tributo", "F8 Tributo", "Ferrari", "מכונית ספורט", "$276,000", 710, 2024, ferrariImage),
   createCar("ferrari-sf90-stradale", "SF90 Stradale", "Ferrari", "היברידי ספורט", "$507,000", 986, 2024, ferrariImage),
   createCar("ferrari-roma", "Roma", "Ferrari", "GT יוקרה", "$243,000", 612, 2024, ferrariImage),
@@ -160,7 +169,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("ferrari-ff", "FF", "Ferrari", "GT משפחתי", "$295,000", 651, 2023, ferrariImage),
 
   // Tesla Models (12 models)  
-  createCar("tesla-model-s-plaid", "Model S Plaid", "Tesla", "רכב חשמלי", "$135,000", 1020, 2024, teslaImage, true, true),
+  createCar("tesla-model-s-plaid", "Model S Plaid", "Tesla", "רכב חשמלי", "$135,000", 1020, 2024, teslaModelSNew, true, true),
   createCar("tesla-model-s", "Model S", "Tesla", "רכב חשמלי", "$95,000", 670, 2024, teslaImage, true),
   createCar("tesla-model-3", "Model 3", "Tesla", "רכב חשמלי", "$40,000", 283, 2024, teslaImage, true),
   createCar("tesla-model-3-performance", "Model 3 Performance", "Tesla", "רכב חשמלי ספורט", "$53,000", 450, 2024, teslaImage, true),
@@ -174,7 +183,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("tesla-model-2", "Model 2", "Tesla", "רכב חשמלי קומפקטי", "$25,000", 200, 2025, teslaImage, true, true),
 
   // Porsche Models (18 models)
-  createCar("porsche-911-turbo-s", "911 Turbo S", "Porsche", "מכונית ספורט", "$230,000", 640, 2024, porscheImage),
+  createCar("porsche-911-turbo-s", "911 Turbo S", "Porsche", "מכונית ספורט", "$230,000", 640, 2024, porsche911New),
   createCar("porsche-911-carrera", "911 Carrera", "Porsche", "מכונית ספורט", "$106,000", 379, 2024, porscheImage),
   createCar("porsche-911-gt3", "911 GT3", "Porsche", "מכונית ספורט מסלול", "$173,000", 502, 2024, porscheImage),
   createCar("porsche-911-gt3-rs", "911 GT3 RS", "Porsche", "מכונית מסלול", "$223,000", 518, 2024, porscheImage),
@@ -194,7 +203,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("porsche-carrera-gt", "Carrera GT", "Porsche", "מהדורה מוגבלת", "$1,980,000", 612, 2023, porscheImage),
 
   // BMW Models (20 models)
-  createCar("bmw-m3-competition", "M3 Competition", "BMW", "רכב ספורט יוקרה", "$85,000", 503, 2024, bmwImage, false, true),
+  createCar("bmw-m3-competition", "M3 Competition", "BMW", "רכב ספורט יוקרה", "$85,000", 503, 2024, bmwM3New, false, true),
   createCar("bmw-m4-competition", "M4 Competition", "BMW", "קופה ספורט", "$87,000", 503, 2024, bmwImage),
   createCar("bmw-m5-competition", "M5 Competition", "BMW", "סדאן ספורט", "$112,000", 617, 2024, bmwImage),
   createCar("bmw-m8-competition", "M8 Competition", "BMW", "GT ספורט", "$146,000", 617, 2024, bmwImage),
@@ -216,7 +225,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("bmw-ix", "iX", "BMW", "SUV חשמלי", "$87,000", 516, 2024, bmwImage, true),
 
   // Mercedes-Benz Models (22 models)
-  createCar("mercedes-amg-gt-63s", "AMG GT 63 S", "Mercedes-Benz", "קופה ספורטיבי יוקרה", "$165,000", 630, 2024, mercedesImage, false, true),
+  createCar("mercedes-amg-gt-63s", "AMG GT 63 S", "Mercedes-Benz", "קופה ספורטיבי יוקרה", "$165,000", 630, 2024, mercedesAmgNew, false, true),
   createCar("mercedes-amg-c63s", "AMG C 63 S", "Mercedes-Benz", "סדאן ספורט", "$85,000", 469, 2024, mercedesImage),
   createCar("mercedes-amg-e63s", "AMG E 63 S", "Mercedes-Benz", "סדאן ספורט יוקרה", "$115,000", 603, 2024, mercedesImage),
   createCar("mercedes-amg-s63", "AMG S 63", "Mercedes-Benz", "סדאן יוקרה עילית", "$185,000", 630, 2024, mercedesImage),
@@ -240,7 +249,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("mercedes-amg-one", "AMG ONE", "Mercedes-Benz", "היפרקאר", "$2,720,000", 1063, 2024, mercedesImage),
 
   // Audi Models (18 models)
-  createCar("audi-rs6-avant", "RS6 Avant", "Audi", "סטיישן וואגון ספורט", "$125,000", 591, 2024, audiImage),
+  createCar("audi-rs6-avant", "RS6 Avant", "Audi", "סטיישן וואגון ספורט", "$125,000", 591, 2024, audiRs6New),
   createCar("audi-rs7", "RS7", "Audi", "ספורטבק יוקרה", "$125,000", 591, 2024, audiImage),
   createCar("audi-rs3", "RS3", "Audi", "האצ׳בק ספורט", "$65,000", 401, 2024, audiImage),
   createCar("audi-rs4-avant", "RS4 Avant", "Audi", "סטיישן וואגון ספורט", "$85,000", 444, 2024, audiImage),
@@ -260,7 +269,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("audi-tt", "TT", "Audi", "קופה ספורט", "$52,000", 228, 2024, audiImage),
 
   // McLaren Models (12 models)
-  createCar("mclaren-720s", "720S", "McLaren", "סופרקאר", "$310,000", 710, 2024, mclarenImage),
+  createCar("mclaren-720s", "720S", "McLaren", "סופרקאר", "$310,000", 710, 2024, mclaren720sNew),
   createCar("mclaren-765lt", "765LT", "McLaren", "סופרקאר מסלול", "$382,000", 754, 2024, mclarenImage),
   createCar("mclaren-artura", "Artura", "McLaren", "היברידי ספורט", "$233,000", 671, 2024, mclarenImage, false, true),
   createCar("mclaren-p1", "P1", "McLaren", "היפרקאר", "$1,350,000", 903, 2023, mclarenImage),

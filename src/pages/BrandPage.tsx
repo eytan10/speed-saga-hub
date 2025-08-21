@@ -101,8 +101,7 @@ const BrandPage = () => {
                 {filteredCars.map((car) => (
                   <Card 
                     key={car.id} 
-                    className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group"
-                    onClick={() => window.location.href = `/car/${brand}/${car.id}`}
+                    className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth group"
                   >
                     <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
                       <img
@@ -163,7 +162,14 @@ const BrandPage = () => {
                           <p className="text-sm text-muted-foreground">מחיר החל מ</p>
                           <p className="text-xl font-bold text-racing-red">{car.price}</p>
                         </div>
-                        <Button variant="outline" size="sm">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.location.href = `/car/${brand}/${car.id}`;
+                          }}
+                        >
                           פרטים
                         </Button>
                       </div>
