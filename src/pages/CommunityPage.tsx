@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReviewModal from "@/components/ReviewModal";
+import NewPostModal from "@/components/NewPostModal";
 import communityMeetingImage from "@/assets/community-meeting.jpg";
 import carReviewerImage from "@/assets/car-reviewer.jpg";
 import happyCustomerImage from "@/assets/happy-customer.jpg";
@@ -16,6 +17,7 @@ import happyCustomerImage from "@/assets/happy-customer.jpg";
 const CommunityPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showReviewModal, setShowReviewModal] = useState(false);
+  const [showNewPostModal, setShowNewPostModal] = useState(false);
 
   const communityStats = {
     totalMembers: 52834,
@@ -180,7 +182,10 @@ const CommunityPage = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </div>
-                    <Button className="btn-racing">
+                    <Button 
+                      className="btn-racing" 
+                      onClick={() => setShowNewPostModal(true)}
+                    >
                       <Plus className="h-4 w-4 mr-2" />
                       פוסט חדש
                     </Button>
@@ -412,6 +417,12 @@ const CommunityPage = () => {
       <ReviewModal 
         isOpen={showReviewModal} 
         onClose={() => setShowReviewModal(false)} 
+      />
+      
+      {/* New Post Modal */}
+      <NewPostModal 
+        isOpen={showNewPostModal} 
+        onClose={() => setShowNewPostModal(false)} 
       />
 
       <Footer />

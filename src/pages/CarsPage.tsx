@@ -23,15 +23,39 @@ const CarsPage = () => {
       
       <main className="pt-24 pb-16">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-hero">
-          <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Explore <span className="text-racing-red">Cars</span>
+        <section className="py-20 bg-gradient-hero relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="container mx-auto px-4 text-center text-white relative z-10">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              גלה את <span className="text-racing-red">עולם הרכב</span>
             </h1>
-            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-              גלה את המגוון הרחב של המותגים המובילים בעולם הרכב
+            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8">
+              מותגים מובילים, טכנולוגיה מתקדמת וחוויות נהיגה בלתי נשכחות
             </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-12">
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-racing-red mb-2">50+</div>
+                <div className="text-gray-300">מותגי יוקרה</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-electric-blue mb-2">1,000+</div>
+                <div className="text-gray-300">דגמים</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-racing-red mb-2">24/7</div>
+                <div className="text-gray-300">תמיכה</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-electric-blue mb-2">VIP</div>
+                <div className="text-gray-300">שירות</div>
+              </div>
+            </div>
           </div>
+          
+          {/* Floating car logos */}
+          <div className="absolute top-20 left-10 text-6xl opacity-20 animate-pulse">🚗</div>
+          <div className="absolute bottom-20 right-10 text-8xl opacity-10 animate-bounce">⚡</div>
+          <div className="absolute top-40 right-20 text-5xl opacity-15 animate-pulse delay-300">🏎️</div>
         </section>
 
         {/* Search and Filter Bar */}
@@ -93,36 +117,64 @@ const CarsPage = () => {
               {filteredBrands.map((brand) => (
                 <Card 
                   key={brand.id} 
-                  className="p-6 hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group"
+                  className="relative overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group"
                   onClick={() => window.location.href = `/brand/${brand.id}`}
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="text-4xl">{brand.logo}</div>
-                      <div>
-                        <h3 className="text-2xl font-bold group-hover:text-racing-red transition-smooth">
-                          {brand.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          נוסדה בשנת {brand.founded} • {brand.country}
-                        </p>
+                  {/* Background gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20 group-hover:to-primary/10 transition-smooth"></div>
+                  
+                  <div className="relative p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="relative">
+                          <div className="text-5xl transform group-hover:scale-110 transition-smooth">{brand.logo}</div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-racing-red/20 to-electric-blue/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-smooth"></div>
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold group-hover:text-racing-red transition-smooth">
+                            {brand.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground flex items-center gap-2">
+                            <span className="inline-block w-2 h-2 rounded-full bg-racing-red"></span>
+                            נוסדה {brand.founded} • {brand.country}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <Badge className="bg-gradient-to-r from-racing-red to-electric-blue text-white border-0">
+                          מותג יוקרה
+                        </Badge>
+                        <div className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-smooth">
+                          ⭐ דירוג 4.8/5
+                        </div>
                       </div>
                     </div>
-                    <Badge variant="secondary">מותג יוקרה</Badge>
+                    
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {brand.description}
+                    </p>
+
+                    <div className="flex items-center justify-between border-t border-border pt-4">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          🚗 <span className="font-medium">דגמים רבים</span>
+                        </span>
+                        <span className="flex items-center gap-1">
+                          ⚡ <span className="font-medium">חדשנות</span>
+                        </span>
+                      </div>
+                      <Button 
+                        variant="ghost" 
+                        className="text-racing-red hover:bg-racing-red hover:text-white transform group-hover:scale-105 transition-smooth"
+                      >
+                        עיין בדגמים →
+                      </Button>
+                    </div>
                   </div>
                   
-                  <p className="text-muted-foreground mb-4">
-                    {brand.description}
-                  </p>
-
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm text-muted-foreground">
-                      מגוון דגמים זמין
-                    </div>
-                    <Button variant="ghost" className="text-racing-red hover:bg-racing-red hover:text-white">
-                      צפה בדגמים
-                    </Button>
-                  </div>
+                  {/* Decorative elements */}
+                  <div className="absolute top-2 right-2 w-20 h-20 bg-gradient-to-br from-racing-red/10 to-electric-blue/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-smooth"></div>
+                  <div className="absolute bottom-2 left-2 w-16 h-16 bg-gradient-to-tr from-electric-blue/10 to-racing-red/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-smooth delay-100"></div>
                 </Card>
               ))}
             </div>

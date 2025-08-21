@@ -16,16 +16,16 @@ import mazdaCx5 from "@/assets/mazda-cx5.jpg";
 import subaruOutback from "@/assets/subaru-outback.jpg";
 
 // Electric vehicle specific images
-import teslaModel3 from "@/assets/tesla-model-3.jpg";
+import teslaModel3 from "@/assets/tesla-model-3-luxury.jpg";
 import teslaModelY from "@/assets/tesla-model-y.jpg";
 import teslaModelX from "@/assets/tesla-model-x.jpg";
 import teslaCybertruck from "@/assets/tesla-cybertruck.jpg";
 import porscheTaycan from "@/assets/porsche-taycan.jpg";
-import bmwI4 from "@/assets/bmw-i4.jpg";
+import bmwI4 from "@/assets/bmw-i4-m50-official.jpg";
 import bmwIX from "@/assets/bmw-ix.jpg";
 import mercedesEQS from "@/assets/mercedes-eqs.jpg";
 import mercedesEQC from "@/assets/mercedes-eqc.jpg";
-import audiEtronGT from "@/assets/audi-etron-gt.jpg";
+import audiEtronGT from "@/assets/audi-etron-gt-official.jpg";
 import audiEtron from "@/assets/audi-etron.jpg";
 import fordF150Lightning from "@/assets/ford-f150-lightning.jpg";
 import fordMustangMachE from "@/assets/ford-mustang-mach-e.jpg";
@@ -35,15 +35,15 @@ import kiaEV6 from "@/assets/kia-ev6.jpg";
 import skodaEnyaq from "@/assets/skoda-enyaq.jpg";
 
 // New high-quality images
-import ferrari488New from "@/assets/ferrari-488-new.jpg";
+import ferrari488New from "@/assets/ferrari-f8-tributo-red.jpg";
 import ferrari488Gtb from "@/assets/ferrari-488-gtb.jpg";
-import bmwM3New from "@/assets/bmw-m3-new.jpg";
+import bmwM3New from "@/assets/bmw-m3-competition.jpg";
 import bmwM4 from "@/assets/bmw-m4.jpg";
 import bmwM5 from "@/assets/bmw-m5.jpg";
 import teslaModelSNew from "@/assets/tesla-model-s-new.jpg";
-import mercedesAmgNew from "@/assets/mercedes-amg-new.jpg";
+import mercedesAmgNew from "@/assets/mercedes-amg-c63s-performance.jpg";
 import mercedesC63s from "@/assets/mercedes-c63s.jpg";
-import porsche911New from "@/assets/porsche-911-new.jpg";
+import porsche911New from "@/assets/porsche-911-turbo-s.jpg";
 import audiRs6New from "@/assets/audi-rs6-new.jpg";
 import audiRs6AvantGray from "@/assets/audi-rs6-avant-gray.jpg";
 import mclaren720sNew from "@/assets/mclaren-720s-new.jpg";
