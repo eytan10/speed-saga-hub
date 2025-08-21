@@ -1,8 +1,11 @@
 import { Car, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-16">
@@ -36,11 +39,11 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Car Reviews</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Latest News</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Buying Guides</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Car Comparisons</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Community</a></li>
+              <li><button onClick={() => navigate('/reviews')} className="hover:text-racing-red transition-smooth text-left">Car Reviews</button></li>
+              <li><button onClick={() => navigate('/news')} className="hover:text-racing-red transition-smooth text-left">Latest News</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Buying Guides</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Car Comparisons</button></li>
+              <li><button onClick={() => navigate('/community')} className="hover:text-racing-red transition-smooth text-left">Community</button></li>
             </ul>
           </div>
 
@@ -48,11 +51,11 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Categories</h3>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Sports Cars</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Electric Vehicles</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Luxury Sedans</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">SUVs</a></li>
-              <li><a href="#" className="hover:text-racing-red transition-smooth">Classic Cars</a></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Sports Cars</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Electric Vehicles</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Luxury Sedans</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">SUVs</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Classic Cars</button></li>
             </ul>
           </div>
 

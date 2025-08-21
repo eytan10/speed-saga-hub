@@ -1,8 +1,11 @@
 import { ArrowRight, Zap, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import heroCarImage from "@/assets/hero-car.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -31,11 +34,17 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button className="btn-racing text-lg">
+            <Button 
+              onClick={() => navigate('/cars')}
+              className="btn-racing text-lg"
+            >
               Explore Cars
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" className="text-lg border-white text-white hover:bg-white hover:text-black">
+            <Button 
+              onClick={() => navigate('/reviews')}
+              className="text-lg bg-white/20 text-white border-2 border-white hover:bg-white hover:text-black backdrop-blur-sm shadow-lg"
+            >
               Latest Reviews
             </Button>
           </div>

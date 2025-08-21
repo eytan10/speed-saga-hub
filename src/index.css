@@ -8,19 +8,19 @@ All colors MUST be HSL for consistency and theming.
 
 @layer base {
   :root {
-    /* Base colors - Clean automotive palette */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 6%;
+    /* Base colors - Dark automotive palette */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
     /* Surface colors */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 6%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 6%;
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
 
     /* Brand colors - Racing inspired */
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
     --racing-red: 0 84% 60%;
     --racing-red-foreground: 0 0% 98%;
     --electric-blue: 217 91% 60%;
