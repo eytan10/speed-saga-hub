@@ -7,11 +7,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Car3DViewer from "@/components/Car3DViewer";
-import { expandedCarsDatabase } from "@/data/expandedCarsDatabase";
+import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
 
 const CarDetailsPage = () => {
   const { brand, model } = useParams();
-  const car = expandedCarsDatabase.find(c => c.id === model);
+  const car = massiveCarsDatabase.find(c => c.id === model);
 
   if (!car) {
     return (

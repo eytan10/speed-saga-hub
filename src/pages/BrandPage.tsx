@@ -7,14 +7,14 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { expandedBrands, expandedCarsDatabase } from "@/data/expandedCarsDatabase";
+import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 
 const BrandPage = () => {
   const { brand } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
   
   const currentBrand = expandedBrands.find(b => b.id === brand);
-  const brandCars = expandedCarsDatabase.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
+  const brandCars = massiveCarsDatabase.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
   
   const filteredCars = brandCars.filter(car =>
     car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

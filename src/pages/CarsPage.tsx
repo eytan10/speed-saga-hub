@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { expandedBrands, expandedCarsDatabase } from "@/data/expandedCarsDatabase";
+import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 
 const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");

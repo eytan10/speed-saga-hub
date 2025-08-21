@@ -144,6 +144,294 @@ export const expandedBrands = [
     founded: 1994,
     country: "שוודיה",
     headquarters: "אנג'הולם, שוודיה"
+  },
+  {
+    id: "toyota",
+    name: "Toyota",
+    logo: "🚙",
+    description: "יצרנית רכב יפנית מובילה עולמית",
+    founded: 1937,
+    country: "יפן",
+    headquarters: "טויוטה, יפן"
+  },
+  {
+    id: "honda",
+    name: "Honda",
+    logo: "🅷",
+    description: "יצרנית רכב ואופנועים יפנית",
+    founded: 1948,
+    country: "יפן",
+    headquarters: "טוקיו, יפן"
+  },
+  {
+    id: "nissan",
+    name: "Nissan",
+    logo: "⚫",
+    description: "יצרנית רכב יפנית גלובלית",
+    founded: 1933,
+    country: "יפן",
+    headquarters: "יוקוהמה, יפן"
+  },
+  {
+    id: "mazda",
+    name: "Mazda",
+    logo: "🔴",
+    description: "יצרנית רכב יפנית ייחודית",
+    founded: 1920,
+    country: "יפן",
+    headquarters: "הירושימה, יפן"
+  },
+  {
+    id: "lexus",
+    name: "Lexus",
+    logo: "💎",
+    description: "מותג יוקרה של טויוטה",
+    founded: 1989,
+    country: "יפן",
+    headquarters: "נגויה, יפן"
+  },
+  {
+    id: "infiniti",
+    name: "Infiniti",
+    logo: "♾️",
+    description: "מותג יוקרה של ניסאן",
+    founded: 1989,
+    country: "יפן",
+    headquarters: "יוקוהמה, יפן"
+  },
+  {
+    id: "acura",
+    name: "Acura",
+    logo: "🔺",
+    description: "מותג יוקרה של הונדה",
+    founded: 1986,
+    country: "יפן",
+    headquarters: "טוקיו, יפן"
+  },
+  {
+    id: "ford",
+    name: "Ford",
+    logo: "🔷",
+    description: "יצרנית רכב אמריקנית היסטורית",
+    founded: 1903,
+    country: "ארצות הברית",
+    headquarters: "דירבורן, מישיגן"
+  },
+  {
+    id: "chevrolet",
+    name: "Chevrolet",
+    logo: "✖️",
+    description: "מותג GM אמריקני פופולרי",
+    founded: 1911,
+    country: "ארצות הברית",
+    headquarters: "דטרויט, מישיגן"
+  },
+  {
+    id: "cadillac",
+    name: "Cadillac",
+    logo: "👑",
+    description: "מותג יוקרה אמריקני של GM",
+    founded: 1902,
+    country: "ארצות הברית",
+    headquarters: "דטרויט, מישיגן"
+  },
+  {
+    id: "lincoln",
+    name: "Lincoln",
+    logo: "⭐",
+    description: "מותג יוקרה של פורד",
+    founded: 1917,
+    country: "ארצות הברית",
+    headquarters: "דירבורן, מישיגן"
+  },
+  {
+    id: "jeep",
+    name: "Jeep",
+    logo: "🅙",
+    description: "מותג רכבי שטח אמריקני",
+    founded: 1941,
+    country: "ארצות הברית",
+    headquarters: "טולדו, אוהיו"
+  },
+  {
+    id: "dodge",
+    name: "Dodge",
+    logo: "🐏",
+    description: "מותג רכב אמריקני ספורטיבי",
+    founded: 1900,
+    country: "ארצות הברית",
+    headquarters: "אובורן הילס, מישיגן"
+  },
+  {
+    id: "chrysler",
+    name: "Chrysler",
+    logo: "🔱",
+    description: "יצרנית רכב אמריקנית מסורתית",
+    founded: 1925,
+    country: "ארצות הברית",
+    headquarters: "אובורן הילס, מישיגן"
+  },
+  {
+    id: "ram",
+    name: "Ram",
+    logo: "🐏",
+    description: "מותג משאיות אמריקני",
+    founded: 2009,
+    country: "ארצות הברית",
+    headquarters: "אובורן הילס, מישיגן"
+  },
+  {
+    id: "hyundai",
+    name: "Hyundai",
+    logo: "🅷",
+    description: "יצרנית רכב דרום קוריאנית מובילה",
+    founded: 1967,
+    country: "דרום קוריאה",
+    headquarters: "סיאול, דרום קוריאה"
+  },
+  {
+    id: "kia",
+    name: "Kia",
+    logo: "🅺",
+    description: "יצרנית רכב דרום קוריאנית",
+    founded: 1944,
+    country: "דרום קוריאה",
+    headquarters: "סיאול, דרום קוריאה"
+  },
+  {
+    id: "genesis",
+    name: "Genesis",
+    logo: "💎",
+    description: "מותג יוקרה של יונדאי",
+    founded: 2015,
+    country: "דרום קוריאה",
+    headquarters: "סיאול, דרום קוריאה"
+  },
+  {
+    id: "volvo",
+    name: "Volvo",
+    logo: "♂️",
+    description: "יצרנית רכב שוודית בטוחה",
+    founded: 1927,
+    country: "שוודיה",
+    headquarters: "גטבורג, שוודיה"
+  },
+  {
+    id: "saab",
+    name: "Saab",
+    logo: "✈️",
+    description: "יצרנית רכב שוודית היסטורית",
+    founded: 1945,
+    country: "שוודיה",
+    headquarters: "טרולהטן, שוודיה"
+  },
+  {
+    id: "volkswagen",
+    name: "Volkswagen",
+    logo: "🔵",
+    description: "יצרנית רכב גרמנית עממית",
+    founded: 1937,
+    country: "גרמניה",
+    headquarters: "וולפסבורג, גרמניה"
+  },
+  {
+    id: "land-rover",
+    name: "Land Rover",
+    logo: "🟢",
+    description: "יצרנית רכבי שטח יוקרה בריטית",
+    founded: 1948,
+    country: "בריטניה",
+    headquarters: "קובנטרי, בריטניה"
+  },
+  {
+    id: "jaguar",
+    name: "Jaguar",
+    logo: "🐆",
+    description: "יצרנית רכבי יוקרה בריטית",
+    founded: 1922,
+    country: "בריטניה",
+    headquarters: "קובנטרי, בריטניה"
+  },
+  {
+    id: "bentley",
+    name: "Bentley",
+    logo: "🅱️",
+    description: "יצרנית רכבי יוקרה עילית בריטית",
+    founded: 1919,
+    country: "בריטניה",
+    headquarters: "קרו, בריטניה"
+  },
+  {
+    id: "rolls-royce",
+    name: "Rolls-Royce",
+    logo: "👑",
+    description: "יצרנית רכבי יוקרה עילית בריטית",
+    founded: 1904,
+    country: "בריטניה",
+    headquarters: "גודווד, בריטניה"
+  },
+  {
+    id: "aston-martin",
+    name: "Aston Martin",
+    logo: "🦅",
+    description: "יצרנית רכבי ספורט יוקרה בריטית",
+    founded: 1913,
+    country: "בריטניה",
+    headquarters: "גידון, בריטניה"
+  },
+  {
+    id: "mini",
+    name: "MINI",
+    logo: "⚫",
+    description: "מותג רכב קטן איקוני בריטי",
+    founded: 1959,
+    country: "בריטניה",
+    headquarters: "אוקספורד, בריטניה"
+  },
+  {
+    id: "lotus",
+    name: "Lotus",
+    logo: "🌸",
+    description: "יצרנית רכבי ספורט בריטית",
+    founded: 1948,
+    country: "בריטניה",
+    headquarters: "היתל, בריטניה"
+  },
+  {
+    id: "subaru",
+    name: "Subaru",
+    logo: "⭐",
+    description: "יצרנית רכב יפנית ייחודית",
+    founded: 1953,
+    country: "יפן",
+    headquarters: "טוקיו, יפן"
+  },
+  {
+    id: "mitsubishi",
+    name: "Mitsubishi",
+    logo: "🔺",
+    description: "יצרנית רכב יפנית היסטורית",
+    founded: 1970,
+    country: "יפן",
+    headquarters: "טוקיו, יפן"
+  },
+  {
+    id: "suzuki",
+    name: "Suzuki",
+    logo: "🅂",
+    description: "יצרנית רכב ואופנועים יפנית",
+    founded: 1909,
+    country: "יפן",
+    headquarters: "המאמאצו, יפן"
+  },
+  {
+    id: "isuzu",
+    name: "Isuzu",
+    logo: "🅸",
+    description: "יצרנית משאיות ורכב מסחרי יפנית",
+    founded: 1916,
+    country: "יפן",
+    headquarters: "טוקיו, יפן"
   }
 ];
 
