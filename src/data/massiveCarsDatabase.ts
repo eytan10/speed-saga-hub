@@ -24,52 +24,11 @@ import porsche911New from "@/assets/porsche-911-new.jpg";
 import audiRs6New from "@/assets/audi-rs6-new.jpg";
 import mclaren720sNew from "@/assets/mclaren-720s-new.jpg";
 
-export interface ExtendedCarSpecs {
-  engine: string;
-  transmission: string;
-  acceleration: string;
-  topSpeed: string;
-  fuel: string;
-  weight: string;
-  power: number;
-  torque: string;
-  drivetrain: string;
-  seating: number;
-  cargo: string;
-  price: string;
-}
+// Import interfaces from expandedCarsDatabase
+import { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabase";
 
-export interface ExtendedCarDetails {
-  id: string;
-  name: string;
-  brand: string;
-  year: number;
-  type: string;
-  image: string;
-  price: string;
-  rating: number;
-  isElectric?: boolean;
-  isNew?: boolean;
-  description: string;
-  specs: ExtendedCarSpecs;
-  features: string[];
-  pros: string[];
-  cons: string[];
-  colors: Array<{
-    name: string;
-    hex: string;
-  }>;
-  interiorColors: Array<{
-    name: string;
-    hex: string;
-  }>;
-  dealerships: Array<{
-    name: string;
-    location: string;
-    phone: string;
-    website: string;
-  }>;
-}
+// Re-export interfaces for backward compatibility  
+export type { ExtendedCarSpecs, ExtendedCarDetails };
 
 // Helper function to create car template
 const createCar = (
