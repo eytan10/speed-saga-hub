@@ -91,10 +91,10 @@ export const featuredCars: Car[] = [
 ];
 
 export const carCategories = [
-  { name: "Sports Cars", count: 245, icon: "🏎️" },
-  { name: "Electric Vehicles", count: 189, icon: "⚡" },
-  { name: "Luxury Sedans", count: 156, icon: "🚗" },
-  { name: "SUVs", count: 312, icon: "🚙" },
-  { name: "Supercars", count: 78, icon: "🏁" },
-  { name: "Classic Cars", count: 134, icon: "🚘" }
+  { name: "Sports Cars", count: 85, icon: "🏎️" },
+  { name: "Electric Vehicles", count: 24, icon: "⚡" },
+  { name: "Luxury Sedans", count: 18, icon: "🚗" },
+  { name: "SUVs", count: 42, icon: "🚙" },
+  { name: "Supercars", count: 38, icon: "🏁" },
+  { name: "Classic Cars", count: 12, icon: "🚘" }
 ];

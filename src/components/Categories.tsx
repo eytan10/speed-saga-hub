@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { carCategories } from "@/data/cars";
 import { useNavigate } from "react-router-dom";
-import { expandedBrands } from "@/data/massiveCarsDatabase";
+import { expandedBrands, massiveCarsDatabase } from "@/data/massiveCarsDatabase";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -36,7 +36,27 @@ const Categories = () => {
     navigate(`/brand/${brandId}`);
   };
 
-  const leadingBrands = expandedBrands.slice(0, 6);
+  // Get brands that actually have cars in the database with their count
+  const getBrandsWithCarCount = () => {
+    const brandCounts = new Map<string, number>();
+    
+    // Count cars for each brand
+    massiveCarsDatabase.forEach(car => {
+      const brandId = car.brand.toLowerCase().replace(/[^a-z]/g, '');
+      brandCounts.set(brandId, (brandCounts.get(brandId) || 0) + 1);
+    });
+    
+    // Filter brands that have cars and add car count
+    return expandedBrands
+      .filter(brand => brandCounts.has(brand.id))
+      .map(brand => ({
+        ...brand,
+        carCount: brandCounts.get(brand.id) || 0
+      }))
+      .sort((a, b) => b.carCount - a.carCount); // Sort by car count (most to least)
+  };
+
+  const leadingBrands = getBrandsWithCarCount();
 
   return (
     <section className="py-20 bg-secondary/20">
@@ -97,12 +117,12 @@ const Categories = () => {
             <span className="text-racing-red">מותגי רכב</span> מובילים
           </h3>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            גלה את המותגים המובילים בעולם הרכב ועיין במגוון הדגמים שלהם
+            גלה את המותגים המובילים עם דגמים זמינים באתר שלנו
           </p>
         </div>
 
         {/* Leading Brands Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-12">
           {leadingBrands.map((brand) => (
             <Card 
               key={brand.id} 
@@ -116,6 +136,11 @@ const Categories = () => {
               <p className="text-xs text-muted-foreground mt-1">
                 {brand.country}
               </p>
+              <div className="mt-2">
+                <span className="text-xs bg-racing-red text-white px-2 py-1 rounded-full">
+                  {brand.carCount} דגמים
+                </span>
+              </div>
             </Card>
           ))}
         </div>
