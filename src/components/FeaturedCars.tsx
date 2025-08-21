@@ -10,10 +10,10 @@ const FeaturedCars = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Featured <span className="text-racing-red">Vehicles</span>
+            רכבים <span className="text-racing-red">מומלצים</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover the most sought-after cars that define excellence in automotive engineering
+            גלה את הרכבים המבוקשים ביותר המגדירים מצוינות בהנדסה רכב
           </p>
         </div>
 
@@ -30,7 +30,7 @@ const FeaturedCars = () => {
             className="btn-hero text-lg"
             onClick={() => window.location.href = '/cars'}
           >
-            View All Cars
+            צפה בכל הרכבים
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
