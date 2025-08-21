@@ -8,9 +8,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ReviewModal from "@/components/ReviewModal";
+import communityMeetingImage from "@/assets/community-meeting.jpg";
+import carReviewerImage from "@/assets/car-reviewer.jpg";
+import happyCustomerImage from "@/assets/happy-customer.jpg";
 
 const CommunityPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showReviewModal, setShowReviewModal] = useState(false);
 
   const communityStats = {
     totalMembers: 52834,
@@ -116,8 +121,16 @@ const CommunityPage = () => {
       
       <main className="pt-24 pb-16">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-hero">
-          <div className="container mx-auto px-4 text-center text-white">
+        <section className="py-16 bg-gradient-hero relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0">
+            <img 
+              src={communityMeetingImage} 
+              alt="קהילת רכב" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="container mx-auto px-4 text-center text-white relative z-10">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="text-racing-red">קהילת</span> חובבי הרכב
             </h1>
@@ -259,14 +272,69 @@ const CommunityPage = () => {
                 </TabsContent>
 
                 <TabsContent value="reviews">
-                  <div className="text-center py-16">
-                    <h3 className="text-2xl font-bold mb-4">חוות דעת מהקהילה</h3>
-                    <p className="text-muted-foreground mb-6">
-                      קרא ביקורות אמיתיות מבעלי רכבים
-                    </p>
-                    <Button className="btn-racing">
-                      כתוב ביקורת
-                    </Button>
+                  <div className="space-y-6">
+                    {/* Header */}
+                    <div className="text-center py-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-lg">
+                      <img 
+                        src={carReviewerImage} 
+                        alt="ביקורות רכב" 
+                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                      />
+                      <h3 className="text-2xl font-bold mb-4">חוות דעת מהקהילה</h3>
+                      <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                        קרא ביקורות אמיתיות מבעלי רכבים ושתף את הביקורת שלך
+                      </p>
+                      <Button 
+                        className="btn-racing" 
+                        onClick={() => setShowReviewModal(true)}
+                      >
+                        כתוב ביקורת
+                      </Button>
+                    </div>
+
+                    {/* Sample Reviews */}
+                    <div className="space-y-4">
+                      <Card className="p-6">
+                        <div className="flex items-start gap-4">
+                          <img 
+                            src={happyCustomerImage} 
+                            alt="לקוח מרוצה" 
+                            className="w-12 h-12 rounded-full object-cover"
+                          />
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <h4 className="font-semibold">דוד כהן</h4>
+                              <div className="flex">
+                                {[1,2,3,4,5].map(star => (
+                                  <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                                ))}
+                              </div>
+                              <Badge variant="secondary">Tesla Model 3</Badge>
+                            </div>
+                            <h5 className="font-medium mb-2">רכב מעולה לשימוש יומיומי</h5>
+                            <p className="text-muted-foreground text-sm mb-3">
+                              אחרי שנה וחצי עם הטסלה מודל 3, אני יכול להגיד שזו הייתה החלטה מעולה. 
+                              הרכב חסכוני, שקט, ומלא בטכנולוגיה מתקדמת. הטעינה הביתית נוחה מאוד.
+                            </p>
+                            <div className="flex gap-4 text-xs text-muted-foreground">
+                              <span>✅ חסכוני מאוד</span>
+                              <span>✅ טכנולוגיה מתקדמת</span>
+                              <span>❌ מחיר שירות גבוה</span>
+                            </div>
+                          </div>
+                        </div>
+                      </Card>
+
+                      <div className="text-center py-8">
+                        <p className="text-muted-foreground mb-4">רוצה לראות עוד ביקורות או לכתוב ביקורת?</p>
+                        <Button 
+                          variant="outline" 
+                          onClick={() => setShowReviewModal(true)}
+                        >
+                          הוסף ביקורת שלך
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </TabsContent>
               </Tabs>
@@ -340,6 +408,11 @@ const CommunityPage = () => {
           </div>
         </div>
       </main>
+
+      <ReviewModal 
+        isOpen={showReviewModal} 
+        onClose={() => setShowReviewModal(false)} 
+      />
 
       <Footer />
     </div>

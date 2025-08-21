@@ -66,6 +66,8 @@ import toyotaTundra from "@/assets/toyota-tundra.jpg";
 import toyota86 from "@/assets/toyota-86.jpg";
 import toyotaYaris from "@/assets/toyota-yaris.jpg";
 import toyotaAvalon from "@/assets/toyota-avalon.jpg";
+import teslaRoadster from "@/assets/tesla-roadster.jpg";
+import teslaSemi from "@/assets/tesla-semi.jpg";
 import hondaCivicBlue from "@/assets/honda-civic-blue.jpg";
 import hondaAccord from "@/assets/honda-accord.jpg";
 import hondaCrv from "@/assets/honda-crv.jpg";
@@ -84,9 +86,16 @@ import nissanSentra from "@/assets/nissan-sentra.jpg";
 import nissan370z from "@/assets/nissan-370z.jpg";
 import nissanMurano from "@/assets/nissan-murano.jpg";
 import nissanPathfinder from "@/assets/nissan-pathfinder.jpg";
+import nissanArmada from "@/assets/nissan-armada.jpg";
+import nissanFrontier from "@/assets/nissan-frontier.jpg";
+import nissanTitan from "@/assets/nissan-titan.jpg";
 import fordExplorer from "@/assets/ford-explorer.jpg";
 import fordBronco from "@/assets/ford-bronco.jpg";
 import fordEscape from "@/assets/ford-escape.jpg";
+import fordExpedition from "@/assets/ford-expedition.jpg";
+import fordEdge from "@/assets/ford-edge.jpg";
+import fordFusion from "@/assets/ford-fusion.jpg";
+import fordFiesta from "@/assets/ford-fiesta.jpg";
 import fordGt from "@/assets/ford-gt.jpg";
 import fordRanger from "@/assets/ford-ranger.jpg";
 import fordFocus from "@/assets/ford-focus.jpg";
@@ -220,8 +229,8 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("tesla-model-x", "Model X", "Tesla", "SUV חשמלי יוקרה", "$99,000", 670, 2024, teslaModelX, true),
   createCar("tesla-model-x-plaid", "Model X Plaid", "Tesla", "SUV חשמלי ספורט", "$119,000", 1020, 2024, teslaModelX, true, true),
   createCar("tesla-cybertruck", "Cybertruck", "Tesla", "טנדר חשמלי", "$82,000", 600, 2024, teslaCybertruck, true, true),
-  createCar("tesla-roadster", "Roadster", "Tesla", "רודסטר חשמלי", "$200,000", 1000, 2025, teslaImage, true, true),
-  createCar("tesla-semi", "Semi", "Tesla", "משאית חשמלית", "$180,000", 500, 2024, teslaImage, true),
+  createCar("tesla-roadster", "Roadster", "Tesla", "רודסטר חשמלי", "$200,000", 1000, 2025, teslaRoadster, true, true),
+  createCar("tesla-semi", "Semi", "Tesla", "משאית חשמלית", "$180,000", 500, 2024, teslaSemi, true),
   createCar("tesla-model-2", "Model 2", "Tesla", "רכב חשמלי קומפקטי", "$25,000", 200, 2025, teslaModel3, true, true),
 
   // Porsche Models (18 models)
@@ -379,9 +388,9 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("nissan-rogue", "Rogue", "Nissan", "SUV", "$28,000", 181, 2024, nissanRogue),
   createCar("nissan-murano", "Murano", "Nissan", "SUV", "$33,000", 260, 2024, nissanMurano),
   createCar("nissan-pathfinder", "Pathfinder", "Nissan", "SUV", "$36,000", 284, 2024, nissanPathfinder),
-  createCar("nissan-armada", "Armada", "Nissan", "SUV גדול", "$50,000", 400, 2024, teslaImage),
-  createCar("nissan-frontier", "Frontier", "Nissan", "טנדר", "$32,000", 310, 2024, teslaImage),
-  createCar("nissan-titan", "Titan", "Nissan", "טנדר גדול", "$38,000", 400, 2024, teslaImage),
+  createCar("nissan-armada", "Armada", "Nissan", "SUV גדול", "$50,000", 400, 2024, nissanArmada),
+  createCar("nissan-frontier", "Frontier", "Nissan", "טנדר", "$32,000", 310, 2024, nissanFrontier),
+  createCar("nissan-titan", "Titan", "Nissan", "טנדר גדול", "$38,000", 400, 2024, nissanTitan),
   createCar("nissan-370z", "370Z", "Nissan", "מכונית ספורט", "$35,000", 332, 2023, nissan370z),
   createCar("nissan-gtr", "GT-R", "Nissan", "סופרקאר", "$115,000", 565, 2024, nissanGtrSilver),
 
@@ -392,14 +401,14 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("ford-mustang-gt", "Mustang GT", "Ford", "מכונית ספורט", "$38,000", 450, 2024, fordMustangGt),
   createCar("ford-mustang-mach-e", "Mustang Mach-E", "Ford", "SUV חשמלי", "$48,000", 312, 2024, fordMustangMachE, true),
   createCar("ford-explorer", "Explorer", "Ford", "SUV", "$35,000", 300, 2024, fordExplorer),
-  createCar("ford-expedition", "Expedition", "Ford", "SUV גדול", "$55,000", 400, 2024, teslaImage),
+  createCar("ford-expedition", "Expedition", "Ford", "SUV גדול", "$55,000", 400, 2024, fordExpedition),
   createCar("ford-escape", "Escape", "Ford", "SUV קומפקטי", "$27,000", 191, 2024, fordEscape),
-  createCar("ford-edge", "Edge", "Ford", "SUV", "$36,000", 250, 2024, teslaImage),
+  createCar("ford-edge", "Edge", "Ford", "SUV", "$36,000", 250, 2024, fordEdge),
   createCar("ford-bronco", "Bronco", "Ford", "SUV שטח", "$35,000", 270, 2024, fordBronco),
   createCar("ford-ranger", "Ranger", "Ford", "טנדר", "$27,000", 270, 2024, fordRanger),
-  createCar("ford-fusion", "Fusion", "Ford", "סדאן", "$24,000", 175, 2023, teslaImage),
+  createCar("ford-fusion", "Fusion", "Ford", "סדאן", "$24,000", 175, 2023, fordFusion),
   createCar("ford-focus", "Focus", "Ford", "האצ׳בק", "$21,000", 160, 2023, fordFocus),
-  createCar("ford-fiesta", "Fiesta", "Ford", "האצ׳בק קטן", "$17,000", 120, 2023, teslaImage),
+  createCar("ford-fiesta", "Fiesta", "Ford", "האצ׳בק קטן", "$17,000", 120, 2023, fordFiesta),
   createCar("ford-gt", "GT", "Ford", "סופרקאר", "$500,000", 647, 2023, fordGt),
 
   // Volkswagen Models (15 models)
