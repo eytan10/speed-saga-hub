@@ -54,8 +54,14 @@ import fordMustangGt from "@/assets/ford-mustang-gt.jpg";
 import toyotaPriusWhite from "@/assets/toyota-prius-white.jpg";
 import toyotaCorolla from "@/assets/toyota-corolla.jpg";
 import toyotaCamry from "@/assets/toyota-camry.jpg";
+import toyotaRav4 from "@/assets/toyota-rav4.jpg";
+import toyotaSupra from "@/assets/toyota-supra.jpg";
 import hondaCivicBlue from "@/assets/honda-civic-blue.jpg";
 import hondaAccord from "@/assets/honda-accord.jpg";
+import hondaCrv from "@/assets/honda-crv.jpg";
+import hondaNsx from "@/assets/honda-nsx.jpg";
+import volkswagenPassat from "@/assets/volkswagen-passat.jpg";
+import fordF150 from "@/assets/ford-f150.jpg";
 import nissanGtrSilver from "@/assets/nissan-gtr-silver.jpg";
 import mazdaCx5Blue from "@/assets/mazda-cx5-blue.jpg";
 import subaruOutbackGreen from "@/assets/subaru-outback-green.jpg";
@@ -307,9 +313,9 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   // Add more brands with 10+ models each...
   // Toyota Models (15 models)
   createCar("toyota-prius", "Prius", "Toyota", "היברידי", "$28,000", 121, 2024, toyotaPriusWhite, false, false),
-  createCar("toyota-corolla", "Corolla", "Toyota", "סדאן", "$25,000", 139, 2024, teslaImage),
-  createCar("toyota-camry", "Camry", "Toyota", "סדאן", "$26,000", 203, 2024, teslaImage),
-  createCar("toyota-rav4", "RAV4", "Toyota", "SUV", "$30,000", 203, 2024, teslaImage),
+  createCar("toyota-corolla", "Corolla", "Toyota", "סדאן", "$25,000", 139, 2024, toyotaCorolla),
+  createCar("toyota-camry", "Camry", "Toyota", "סדאן", "$26,000", 203, 2024, toyotaCamry),
+  createCar("toyota-rav4", "RAV4", "Toyota", "SUV", "$30,000", 203, 2024, toyotaRav4),
   createCar("toyota-highlander", "Highlander", "Toyota", "SUV", "$37,000", 295, 2024, teslaImage),
   createCar("toyota-4runner", "4Runner", "Toyota", "SUV שטח", "$40,000", 270, 2024, teslaImage),
   createCar("toyota-land-cruiser", "Land Cruiser", "Toyota", "SUV שטח יוקרה", "$90,000", 409, 2024, teslaImage),
@@ -317,22 +323,22 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("toyota-hilux", "Hilux", "Toyota", "טנדר", "$35,000", 201, 2024, teslaImage),
   createCar("toyota-tacoma", "Tacoma", "Toyota", "טנדר", "$32,000", 278, 2024, teslaImage),
   createCar("toyota-tundra", "Tundra", "Toyota", "טנדר גדול", "$42,000", 389, 2024, teslaImage),
-  createCar("toyota-supra", "Supra", "Toyota", "מכונית ספורט", "$45,000", 382, 2024, teslaImage),
+  createCar("toyota-supra", "Supra", "Toyota", "מכונית ספורט", "$45,000", 382, 2024, toyotaSupra),
   createCar("toyota-86", "86", "Toyota", "מכונית ספורט", "$29,000", 228, 2024, teslaImage),
   createCar("toyota-yaris", "Yaris", "Toyota", "האצ׳בק", "$17,000", 106, 2024, teslaImage),
   createCar("toyota-avalon", "Avalon", "Toyota", "סדאן יוקרה", "$37,000", 301, 2024, teslaImage),
 
   // Honda Models (12 models)
   createCar("honda-civic", "Civic", "Honda", "סדאן", "$24,000", 158, 2024, hondaCivicBlue),
-  createCar("honda-accord", "Accord", "Honda", "סדאן", "$27,000", 192, 2024, teslaImage),
-  createCar("honda-cr-v", "CR-V", "Honda", "SUV", "$28,000", 190, 2024, teslaImage),
+  createCar("honda-accord", "Accord", "Honda", "סדאן", "$27,000", 192, 2024, hondaAccord),
+  createCar("honda-cr-v", "CR-V", "Honda", "SUV", "$28,000", 190, 2024, hondaCrv),
   createCar("honda-pilot", "Pilot", "Honda", "SUV", "$40,000", 280, 2024, teslaImage),
   createCar("honda-passport", "Passport", "Honda", "SUV", "$37,000", 280, 2024, teslaImage),
   createCar("honda-ridgeline", "Ridgeline", "Honda", "טנדר", "$39,000", 280, 2024, teslaImage),
   createCar("honda-hr-v", "HR-V", "Honda", "SUV קומפקטי", "$24,000", 158, 2024, teslaImage),
   createCar("honda-fit", "Fit", "Honda", "האצ׳בק", "$18,000", 128, 2024, teslaImage),
   createCar("honda-insight", "Insight", "Honda", "היברידי", "$26,000", 151, 2024, teslaImage),
-  createCar("honda-nsx", "NSX", "Honda", "סופרקאר היברידי", "$169,000", 573, 2024, teslaImage),
+  createCar("honda-nsx", "NSX", "Honda", "סופרקאר היברידי", "$169,000", 573, 2024, hondaNsx),
   createCar("honda-s2000", "S2000", "Honda", "רודסטר ספורט", "$36,000", 237, 2023, teslaImage),
   createCar("honda-type-r", "Civic Type R", "Honda", "האצ׳בק ספורט", "$45,000", 315, 2024, teslaImage),
 
@@ -350,7 +356,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("nissan-gtr", "GT-R", "Nissan", "סופרקאר", "$115,000", 565, 2024, nissanGtrSilver),
 
   // Ford Models (15 models)
-  createCar("ford-f150", "F-150", "Ford", "טנדר", "$35,000", 290, 2024, teslaImage),
+  createCar("ford-f150", "F-150", "Ford", "טנדר", "$35,000", 290, 2024, fordF150),
   createCar("ford-f150-lightning", "F-150 Lightning", "Ford", "טנדר חשמלי", "$57,000", 563, 2024, fordF150Lightning, true, true),
   createCar("ford-mustang", "Mustang", "Ford", "מכונית ספורט", "$32,000", 310, 2024, fordMustangRed),
   createCar("ford-mustang-gt", "Mustang GT", "Ford", "מכונית ספורט", "$38,000", 450, 2024, fordMustangGt),
@@ -369,7 +375,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   // Volkswagen Models (15 models)
   createCar("volkswagen-golf", "Golf", "Volkswagen", "האצ׳בק", "$25,000", 150, 2024, volkswagenGolf),
   createCar("volkswagen-golf-gti", "Golf GTI", "Volkswagen", "האצ׳בק ספורט", "$35,000", 241, 2024, volkswagenGolf),
-  createCar("volkswagen-passat", "Passat", "Volkswagen", "סדאן", "$28,000", 174, 2024, volkswagenGolf),
+  createCar("volkswagen-passat", "Passat", "Volkswagen", "סדאן", "$28,000", 174, 2024, volkswagenPassat),
   createCar("volkswagen-jetta", "Jetta", "Volkswagen", "סדאן", "$22,000", 147, 2024, volkswagenGolf),
   createCar("volkswagen-tiguan", "Tiguan", "Volkswagen", "SUV", "$27,000", 184, 2024, volkswagenGolf),
   createCar("volkswagen-atlas", "Atlas", "Volkswagen", "SUV גדול", "$35,000", 276, 2024, volkswagenGolf),
