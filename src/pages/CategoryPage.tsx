@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ArrowRight, Home, Search, Grid3X3, List, Filter } from "lucide-react";
+import { ArrowRight, Home, Search, Grid3X3, List, Filter, Heart, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,6 +9,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
+import { useFavorites } from "@/contexts/FavoritesContext";
+import { useToast } from "@/hooks/use-toast";
 
 const CategoryPage = () => {
   const { category } = useParams<{ category: string }>();
@@ -16,6 +18,27 @@ const CategoryPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState("name");
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const { toast } = useToast();
+
+  const handleFavoriteClick = (car: any, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const isCarFavorite = isFavorite(car.id);
+    
+    if (isCarFavorite) {
+      removeFromFavorites(car.id);
+      toast({
+        title: "הוסר מהמועדפים",
+        description: `${car.brand} ${car.name} הוסר מהמועדפים שלך`,
+      });
+    } else {
+      addToFavorites(car);
+      toast({
+        title: "נוסף למועדפים",
+        description: `${car.brand} ${car.name} נוסף למועדפים שלך`,
+      });
+    }
+  };
   
   // Define category mappings
   const categoryMappings: Record<string, string[]> = {
@@ -176,12 +199,12 @@ const CategoryPage = () => {
                 {filteredCars.map((car) => (
                   <Card 
                     key={car.id} 
-                    className={`overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group ${
+                    className={`overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group relative ${
                       viewMode === "list" ? "flex" : ""
                     }`}
                     onClick={() => handleCarClick(car)}
                   >
-                    <div className={viewMode === "list" ? "w-1/3" : ""}>
+                    <div className={viewMode === "list" ? "w-1/3 relative" : "relative"}>
                       <img 
                         src={car.image} 
                         alt={car.name}
@@ -189,10 +212,32 @@ const CategoryPage = () => {
                           viewMode === "list" ? "h-48" : "h-48"
                         }`}
                       />
+                      
+                      {/* Badges */}
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        {car.isElectric && (
+                          <Badge className="bg-electric-blue text-electric-blue-foreground">
+                            <Zap className="h-3 w-3 mr-1" />
+                            חשמלי
+                          </Badge>
+                        )}
+                        <Badge variant="secondary">{car.type}</Badge>
+                      </div>
+
+                      {/* Favorite Button */}
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className={`absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white ${
+                          isFavorite(car.id) ? 'text-racing-red' : ''
+                        }`}
+                        onClick={(e) => handleFavoriteClick(car, e)}
+                      >
+                        <Heart className={`h-4 w-4 ${isFavorite(car.id) ? 'fill-racing-red' : ''}`} />
+                      </Button>
                     </div>
                     <div className={`p-6 ${viewMode === "list" ? "flex-1" : ""}`}>
                       <div className="flex items-center justify-between mb-2">
-                        <Badge variant="secondary">{car.type}</Badge>
                         <div className="flex items-center">
                           <span className="text-yellow-500 mr-1">★</span>
                           <span className="text-sm">{car.rating.toFixed(1)}</span>

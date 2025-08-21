@@ -8,10 +8,14 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
+import { useFavorites } from "@/contexts/FavoritesContext";
+import { useToast } from "@/hooks/use-toast";
 
 const BrandPage = () => {
   const { brand } = useParams();
   const [searchTerm, setSearchTerm] = useState("");
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const { toast } = useToast();
   
   const currentBrand = expandedBrands.find(b => b.id === brand);
   const brandCars = massiveCarsDatabase.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
@@ -20,6 +24,25 @@ const BrandPage = () => {
     car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     car.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleFavoriteClick = (car: any, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const isCarFavorite = isFavorite(car.id);
+    
+    if (isCarFavorite) {
+      removeFromFavorites(car.id);
+      toast({
+        title: "הוסר מהמועדפים",
+        description: `${car.brand} ${car.name} הוסר מהמועדפים שלך`,
+      });
+    } else {
+      addToFavorites(car);
+      toast({
+        title: "נוסף למועדפים",
+        description: `${car.brand} ${car.name} נוסף למועדפים שלך`,
+      });
+    }
+  };
 
   if (!currentBrand) {
     return (
@@ -125,9 +148,12 @@ const BrandPage = () => {
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white"
+                        className={`absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white ${
+                          isFavorite(car.id) ? 'text-racing-red' : ''
+                        }`}
+                        onClick={(e) => handleFavoriteClick(car, e)}
                       >
-                        <Heart className="h-4 w-4" />
+                        <Heart className={`h-4 w-4 ${isFavorite(car.id) ? 'fill-racing-red' : ''}`} />
                       </Button>
                     </div>
 
@@ -156,22 +182,24 @@ const BrandPage = () => {
                         </div>
                       </div>
 
-                      {/* Price and Action */}
+                      {/* Price and Actions */}
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-sm text-muted-foreground">מחיר החל מ</p>
                           <p className="text-xl font-bold text-racing-red">{car.price}</p>
                         </div>
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window.location.href = `/car/${brand}/${car.id}`;
-                          }}
-                        >
-                          פרטים
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              window.location.href = `/car/${brand}/${car.id}`;
+                            }}
+                          >
+                            פרטים
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </Card>

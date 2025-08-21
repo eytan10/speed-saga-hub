@@ -8,6 +8,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Car3DViewer from "@/components/Car3DViewer";
 import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
+import { useFavorites } from "@/contexts/FavoritesContext";
+import { useToast } from "@/hooks/use-toast";
 
 const CarDetailsPage = () => {
   const { brand, model } = useParams();
@@ -25,6 +27,26 @@ const CarDetailsPage = () => {
       </div>
     );
   }
+
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const { toast } = useToast();
+  const isCarFavorite = isFavorite(car.id);
+
+  const handleFavoriteClick = () => {
+    if (isCarFavorite) {
+      removeFromFavorites(car.id);
+      toast({
+        title: "הוסר מהמועדפים",
+        description: `${car.brand} ${car.name} הוסר מהמועדפים שלך`,
+      });
+    } else {
+      addToFavorites(car);
+      toast({
+        title: "נוסף למועדפים",
+        description: `${car.brand} ${car.name} נוסף למועדפים שלך`,
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -80,8 +102,13 @@ const CarDetailsPage = () => {
                     {car.brand} <span className="text-racing-red">{car.name}</span>
                   </h1>
                   <div className="flex gap-2">
-                    <Button size="icon" variant="outline">
-                      <Heart className="h-4 w-4" />
+                    <Button 
+                      size="icon" 
+                      variant="outline"
+                      className={`${isCarFavorite ? 'text-racing-red' : ''}`}
+                      onClick={handleFavoriteClick}
+                    >
+                      <Heart className={`h-4 w-4 ${isCarFavorite ? 'fill-racing-red' : ''}`} />
                     </Button>
                     <Button size="icon" variant="outline">
                       <Share2 className="h-4 w-4" />
