@@ -56,7 +56,9 @@ const SearchAndFilter = ({
   ];
 
   const updateFilters = (key: string, value: any) => {
-    const newFilters = { ...filters, [key]: value };
+    // Convert "all" back to empty string for filtering logic
+    const filterValue = value === "all" ? "" : value;
+    const newFilters = { ...filters, [key]: filterValue };
     setFilters(newFilters);
     onFiltersChange(newFilters);
 
@@ -79,6 +81,18 @@ const SearchAndFilter = ({
 
   const clearAllFilters = () => {
     const resetFilters = {
+      brand: "all",
+      category: "all", 
+      fuelType: "all",
+      priceRange: [0, 200000],
+      horsepowerRange: [0, 1000],
+      year: "all",
+      bodyType: "all"
+    };
+    setFilters(resetFilters);
+    setActiveFilters([]);
+    // Send empty values to parent for actual filtering
+    onFiltersChange({
       brand: "",
       category: "",
       fuelType: "",
@@ -86,10 +100,7 @@ const SearchAndFilter = ({
       horsepowerRange: [0, 1000],
       year: "",
       bodyType: ""
-    };
-    setFilters(resetFilters);
-    setActiveFilters([]);
-    onFiltersChange(resetFilters);
+    });
   };
 
   const FilterContent = () => (
@@ -102,7 +113,7 @@ const SearchAndFilter = ({
             <SelectValue placeholder="בחר מותג" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">כל המותגים</SelectItem>
+            <SelectItem value="all">כל המותגים</SelectItem>
             {brands.map(brand => (
               <SelectItem key={brand} value={brand}>{brand}</SelectItem>
             ))}
@@ -118,7 +129,7 @@ const SearchAndFilter = ({
             <SelectValue placeholder="בחר קטגוריה" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">כל הקטגוריות</SelectItem>
+            <SelectItem value="all">כל הקטגוריות</SelectItem>
             {categories.map(category => (
               <SelectItem key={category} value={category}>{category}</SelectItem>
             ))}
@@ -134,7 +145,7 @@ const SearchAndFilter = ({
             <SelectValue placeholder="בחר סוג מרכב" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">כל הסוגים</SelectItem>
+            <SelectItem value="all">כל הסוגים</SelectItem>
             {bodyTypes.map(type => (
               <SelectItem key={type} value={type}>{type}</SelectItem>
             ))}
@@ -150,7 +161,7 @@ const SearchAndFilter = ({
             <SelectValue placeholder="בחר סוג דלק" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">כל סוגי הדלק</SelectItem>
+            <SelectItem value="all">כל סוגי הדלק</SelectItem>
             {fuelTypes.map(fuel => (
               <SelectItem key={fuel} value={fuel}>{fuel}</SelectItem>
             ))}
@@ -166,7 +177,7 @@ const SearchAndFilter = ({
             <SelectValue placeholder="בחר שנה" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">כל השנים</SelectItem>
+            <SelectItem value="all">כל השנים</SelectItem>
             {years.map(year => (
               <SelectItem key={year} value={year}>{year}</SelectItem>
             ))}
@@ -240,7 +251,7 @@ const SearchAndFilter = ({
               <SelectValue placeholder="מותג" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">כל המותגים</SelectItem>
+              <SelectItem value="all">כל המותגים</SelectItem>
               {brands.slice(0, 8).map(brand => (
                 <SelectItem key={brand} value={brand}>{brand}</SelectItem>
               ))}
@@ -252,7 +263,7 @@ const SearchAndFilter = ({
               <SelectValue placeholder="קטגוריה" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">כל הקטגוריות</SelectItem>
+              <SelectItem value="all">כל הקטגוריות</SelectItem>
               {categories.map(category => (
                 <SelectItem key={category} value={category}>{category}</SelectItem>
               ))}
