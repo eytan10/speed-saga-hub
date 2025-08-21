@@ -15,6 +15,25 @@ import skodaOctavia from "@/assets/skoda-octavia.jpg";
 import mazdaCx5 from "@/assets/mazda-cx5.jpg";
 import subaruOutback from "@/assets/subaru-outback.jpg";
 
+// Electric vehicle specific images
+import teslaModel3 from "@/assets/tesla-model-3.jpg";
+import teslaModelY from "@/assets/tesla-model-y.jpg";
+import teslaModelX from "@/assets/tesla-model-x.jpg";
+import teslaCybertruck from "@/assets/tesla-cybertruck.jpg";
+import porscheTaycan from "@/assets/porsche-taycan.jpg";
+import bmwI4 from "@/assets/bmw-i4.jpg";
+import bmwIX from "@/assets/bmw-ix.jpg";
+import mercedesEQS from "@/assets/mercedes-eqs.jpg";
+import mercedesEQC from "@/assets/mercedes-eqc.jpg";
+import audiEtronGT from "@/assets/audi-etron-gt.jpg";
+import audiEtron from "@/assets/audi-etron.jpg";
+import fordF150Lightning from "@/assets/ford-f150-lightning.jpg";
+import fordMustangMachE from "@/assets/ford-mustang-mach-e.jpg";
+import volkswagenID4 from "@/assets/volkswagen-id4.jpg";
+import hyundaiIoniq5 from "@/assets/hyundai-ioniq5.jpg";
+import kiaEV6 from "@/assets/kia-ev6.jpg";
+import skodaEnyaq from "@/assets/skoda-enyaq.jpg";
+
 // New high-quality images
 import ferrari488New from "@/assets/ferrari-488-new.jpg";
 import bmwM3New from "@/assets/bmw-m3-new.jpg";
@@ -135,28 +154,28 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("ferrari-california", "California T", "Ferrari", "קברולייט", "$202,000", 553, 2023, ferrariImage),
   createCar("ferrari-ff", "FF", "Ferrari", "GT משפחתי", "$295,000", 651, 2023, ferrariImage),
 
-  // Tesla Models (12 models)  
+  // Tesla Models (12 models)
   createCar("tesla-model-s-plaid", "Model S Plaid", "Tesla", "רכב חשמלי", "$135,000", 1020, 2024, teslaModelSNew, true, true),
   createCar("tesla-model-s", "Model S", "Tesla", "רכב חשמלי", "$95,000", 670, 2024, teslaImage, true),
-  createCar("tesla-model-3", "Model 3", "Tesla", "רכב חשמלי", "$40,000", 283, 2024, teslaImage, true),
-  createCar("tesla-model-3-performance", "Model 3 Performance", "Tesla", "רכב חשמלי ספורט", "$53,000", 450, 2024, teslaImage, true),
-  createCar("tesla-model-y", "Model Y", "Tesla", "SUV חשמלי", "$52,000", 346, 2024, teslaImage, true),
-  createCar("tesla-model-y-performance", "Model Y Performance", "Tesla", "SUV חשמלי ספורט", "$58,000", 456, 2024, teslaImage, true),
-  createCar("tesla-model-x", "Model X", "Tesla", "SUV חשמלי יוקרה", "$99,000", 670, 2024, teslaImage, true),
-  createCar("tesla-model-x-plaid", "Model X Plaid", "Tesla", "SUV חשמלי ספורט", "$119,000", 1020, 2024, teslaImage, true, true),
-  createCar("tesla-cybertruck", "Cybertruck", "Tesla", "טנדר חשמלי", "$82,000", 600, 2024, teslaImage, true, true),
+  createCar("tesla-model-3", "Model 3", "Tesla", "רכב חשמלי", "$40,000", 283, 2024, teslaModel3, true),
+  createCar("tesla-model-3-performance", "Model 3 Performance", "Tesla", "רכב חשמלי ספורט", "$53,000", 450, 2024, teslaModel3, true),
+  createCar("tesla-model-y", "Model Y", "Tesla", "SUV חשמלי", "$52,000", 346, 2024, teslaModelY, true),
+  createCar("tesla-model-y-performance", "Model Y Performance", "Tesla", "SUV חשמלי ספורט", "$58,000", 456, 2024, teslaModelY, true),
+  createCar("tesla-model-x", "Model X", "Tesla", "SUV חשמלי יוקרה", "$99,000", 670, 2024, teslaModelX, true),
+  createCar("tesla-model-x-plaid", "Model X Plaid", "Tesla", "SUV חשמלי ספורט", "$119,000", 1020, 2024, teslaModelX, true, true),
+  createCar("tesla-cybertruck", "Cybertruck", "Tesla", "טנדר חשמלי", "$82,000", 600, 2024, teslaCybertruck, true, true),
   createCar("tesla-roadster", "Roadster", "Tesla", "רודסטר חשמלי", "$200,000", 1000, 2025, teslaImage, true, true),
   createCar("tesla-semi", "Semi", "Tesla", "משאית חשמלית", "$180,000", 500, 2024, teslaImage, true),
-  createCar("tesla-model-2", "Model 2", "Tesla", "רכב חשמלי קומפקטי", "$25,000", 200, 2025, teslaImage, true, true),
+  createCar("tesla-model-2", "Model 2", "Tesla", "רכב חשמלי קומפקטי", "$25,000", 200, 2025, teslaModel3, true, true),
 
   // Porsche Models (18 models)
   createCar("porsche-911-turbo-s", "911 Turbo S", "Porsche", "מכונית ספורט", "$230,000", 640, 2024, porsche911New),
   createCar("porsche-911-carrera", "911 Carrera", "Porsche", "מכונית ספורט", "$106,000", 379, 2024, porscheImage),
   createCar("porsche-911-gt3", "911 GT3", "Porsche", "מכונית ספורט מסלול", "$173,000", 502, 2024, porscheImage),
   createCar("porsche-911-gt3-rs", "911 GT3 RS", "Porsche", "מכונית מסלול", "$223,000", 518, 2024, porscheImage),
-  createCar("porsche-taycan-turbo-s", "Taycan Turbo S", "Porsche", "רכב חשמלי ספורט", "$187,000", 750, 2024, porscheImage, true),
-  createCar("porsche-taycan", "Taycan", "Porsche", "רכב חשמלי", "$86,000", 402, 2024, porscheImage, true),
-  createCar("porsche-taycan-cross-turismo", "Taycan Cross Turismo", "Porsche", "SUV חשמלי ספורט", "$92,000", 469, 2024, porscheImage, true),
+  createCar("porsche-taycan-turbo-s", "Taycan Turbo S", "Porsche", "רכב חשמלי ספורט", "$187,000", 750, 2024, porscheTaycan, true),
+  createCar("porsche-taycan", "Taycan", "Porsche", "רכב חשמלי", "$86,000", 402, 2024, porscheTaycan, true),
+  createCar("porsche-taycan-cross-turismo", "Taycan Cross Turismo", "Porsche", "SUV חשמלי ספורט", "$92,000", 469, 2024, porscheTaycan, true),
   createCar("porsche-cayenne", "Cayenne", "Porsche", "SUV יוקרה", "$79,000", 335, 2024, porscheImage),
   createCar("porsche-cayenne-turbo", "Cayenne Turbo", "Porsche", "SUV ספורט", "$130,000", 541, 2024, porscheImage),
   createCar("porsche-macan", "Macan", "Porsche", "SUV קומפקטי", "$57,000", 248, 2024, porscheImage),
@@ -188,8 +207,8 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("bmw-x5", "X5", "BMW", "SUV יוקרה", "$63,000", 335, 2024, bmwImage),
   createCar("bmw-x7", "X7", "BMW", "SUV יוקרה גדול", "$76,000", 375, 2024, bmwImage),
   createCar("bmw-z4", "Z4", "BMW", "רודסטר", "$51,000", 255, 2024, bmwImage),
-  createCar("bmw-i4", "i4", "BMW", "רכב חשמלי", "$57,000", 536, 2024, bmwImage, true),
-  createCar("bmw-ix", "iX", "BMW", "SUV חשמלי", "$87,000", 516, 2024, bmwImage, true),
+  createCar("bmw-i4", "i4", "BMW", "רכב חשמלי", "$57,000", 536, 2024, bmwI4, true),
+  createCar("bmw-ix", "iX", "BMW", "SUV חשמלי", "$87,000", 516, 2024, bmwIX, true),
 
   // Mercedes-Benz Models (22 models)
   createCar("mercedes-amg-gt-63s", "AMG GT 63 S", "Mercedes-Benz", "קופה ספורטיבי יוקרה", "$165,000", 630, 2024, mercedesAmgNew, false, true),
@@ -207,10 +226,10 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("mercedes-gls", "GLS", "Mercedes-Benz", "SUV יוקרה גדול", "$79,000", 362, 2024, mercedesImage),
   createCar("mercedes-g-class", "G-Class", "Mercedes-Benz", "SUV שטח יוקרה", "$139,000", 416, 2024, mercedesImage),
   createCar("mercedes-amg-g63", "AMG G 63", "Mercedes-Benz", "SUV שטח ספורט", "$185,000", 577, 2024, mercedesImage),
-  createCar("mercedes-eqc", "EQC", "Mercedes-Benz", "SUV חשמלי", "$71,000", 402, 2024, mercedesImage, true),
-  createCar("mercedes-eqs", "EQS", "Mercedes-Benz", "סדאן חשמלי יוקרה", "$108,000", 516, 2024, mercedesImage, true),
-  createCar("mercedes-eqe", "EQE", "Mercedes-Benz", "סדאן חשמלי", "$78,000", 288, 2024, mercedesImage, true),
-  createCar("mercedes-eqv", "EQV", "Mercedes-Benz", "וואן חשמלי", "$85,000", 201, 2024, mercedesImage, true),
+  createCar("mercedes-eqc", "EQC", "Mercedes-Benz", "SUV חשמלי", "$71,000", 402, 2024, mercedesEQC, true),
+  createCar("mercedes-eqs", "EQS", "Mercedes-Benz", "סדאן חשמלי יוקרה", "$108,000", 516, 2024, mercedesEQS, true),
+  createCar("mercedes-eqe", "EQE", "Mercedes-Benz", "סדאן חשמלי", "$78,000", 288, 2024, mercedesEQS, true),
+  createCar("mercedes-eqv", "EQV", "Mercedes-Benz", "וואן חשמלי", "$85,000", 201, 2024, mercedesEQC, true),
   createCar("mercedes-slc", "SLC", "Mercedes-Benz", "רודסטר", "$52,000", 241, 2024, mercedesImage),
   createCar("mercedes-sl", "SL", "Mercedes-Benz", "רודסטר יוקרה", "$96,000", 429, 2024, mercedesImage),
   createCar("mercedes-amg-one", "AMG ONE", "Mercedes-Benz", "היפרקאר", "$2,720,000", 1063, 2024, mercedesImage),
@@ -231,8 +250,8 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("audi-q5", "Q5", "Audi", "SUV יוקרה", "$47,000", 261, 2024, audiImage),
   createCar("audi-q7", "Q7", "Audi", "SUV יוקרה", "$59,000", 335, 2024, audiImage),
   createCar("audi-q8", "Q8", "Audi", "SUV קופה יוקרה", "$72,000", 335, 2024, audiImage),
-  createCar("audi-e-tron", "e-tron", "Audi", "SUV חשמלי", "$67,000", 402, 2024, audiImage, true),
-  createCar("audi-e-tron-gt", "e-tron GT", "Audi", "GT חשמלי", "$108,000", 469, 2024, audiImage, true),
+  createCar("audi-e-tron", "e-tron", "Audi", "SUV חשמלי", "$67,000", 402, 2024, audiEtron, true),
+  createCar("audi-e-tron-gt", "e-tron GT", "Audi", "GT חשמלי", "$108,000", 469, 2024, audiEtronGT, true),
   createCar("audi-tt", "TT", "Audi", "קופה ספורט", "$52,000", 228, 2024, audiImage),
 
   // McLaren Models (12 models)
@@ -312,10 +331,10 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
 
   // Ford Models (15 models)
   createCar("ford-f150", "F-150", "Ford", "טנדר", "$35,000", 290, 2024, teslaImage),
-  createCar("ford-f150-lightning", "F-150 Lightning", "Ford", "טנדר חשמלי", "$57,000", 563, 2024, teslaImage, true, true),
+  createCar("ford-f150-lightning", "F-150 Lightning", "Ford", "טנדר חשמלי", "$57,000", 563, 2024, fordF150Lightning, true, true),
   createCar("ford-mustang", "Mustang", "Ford", "מכונית ספורט", "$32,000", 310, 2024, teslaImage),
   createCar("ford-mustang-gt", "Mustang GT", "Ford", "מכונית ספורט", "$38,000", 450, 2024, teslaImage),
-  createCar("ford-mustang-mach-e", "Mustang Mach-E", "Ford", "SUV חשמלי", "$48,000", 312, 2024, teslaImage, true),
+  createCar("ford-mustang-mach-e", "Mustang Mach-E", "Ford", "SUV חשמלי", "$48,000", 312, 2024, fordMustangMachE, true),
   createCar("ford-explorer", "Explorer", "Ford", "SUV", "$35,000", 300, 2024, teslaImage),
   createCar("ford-expedition", "Expedition", "Ford", "SUV גדול", "$55,000", 400, 2024, teslaImage),
   createCar("ford-escape", "Escape", "Ford", "SUV קומפקטי", "$27,000", 191, 2024, teslaImage),
@@ -334,7 +353,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("volkswagen-jetta", "Jetta", "Volkswagen", "סדאן", "$22,000", 147, 2024, volkswagenGolf),
   createCar("volkswagen-tiguan", "Tiguan", "Volkswagen", "SUV", "$27,000", 184, 2024, volkswagenGolf),
   createCar("volkswagen-atlas", "Atlas", "Volkswagen", "SUV גדול", "$35,000", 276, 2024, volkswagenGolf),
-  createCar("volkswagen-id4", "ID.4", "Volkswagen", "SUV חשמלי", "$42,000", 201, 2024, volkswagenGolf, true),
+  createCar("volkswagen-id4", "ID.4", "Volkswagen", "SUV חשמלי", "$42,000", 201, 2024, volkswagenID4, true),
   createCar("volkswagen-arteon", "Arteon", "Volkswagen", "סדאן יוקרה", "$38,000", 268, 2024, volkswagenGolf),
   createCar("volkswagen-beetle", "Beetle", "Volkswagen", "רכב קלאסי", "$23,000", 174, 2024, volkswagenGolf),
   createCar("volkswagen-polo", "Polo", "Volkswagen", "האצ׳בק קטן", "$18,000", 95, 2024, volkswagenGolf),
@@ -351,7 +370,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("hyundai-santa-fe", "Santa Fe", "Hyundai", "SUV", "$29,000", 277, 2024, hyundaiElantra),
   createCar("hyundai-palisade", "Palisade", "Hyundai", "SUV גדול", "$35,000", 291, 2024, hyundaiElantra),
   createCar("hyundai-kona", "Kona", "Hyundai", "SUV קומפקטי", "$23,000", 147, 2024, hyundaiElantra),
-  createCar("hyundai-ioniq5", "IONIQ 5", "Hyundai", "SUV חשמלי", "$45,000", 303, 2024, hyundaiElantra, true),
+  createCar("hyundai-ioniq5", "IONIQ 5", "Hyundai", "SUV חשמלי", "$45,000", 303, 2024, hyundaiIoniq5, true),
   createCar("hyundai-genesis", "Genesis G90", "Hyundai", "סדאן יוקרה", "$75,000", 375, 2024, hyundaiElantra),
   createCar("hyundai-i30", "i30", "Hyundai", "האצ׳בק", "$19,000", 120, 2024, hyundaiElantra),
   createCar("hyundai-veloster", "Veloster N", "Hyundai", "האצ׳בק ספורט", "$35,000", 275, 2024, hyundaiElantra),
@@ -365,7 +384,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("kia-sorento", "Sorento", "Kia", "SUV", "$30,000", 281, 2024, kiaOptima),
   createCar("kia-telluride", "Telluride", "Kia", "SUV גדול", "$35,000", 291, 2024, kiaOptima),
   createCar("kia-soul", "Soul", "Kia", "האצ׳בק", "$20,000", 147, 2024, kiaOptima),
-  createCar("kia-ev6", "EV6", "Kia", "SUV חשמלי", "$42,000", 320, 2024, kiaOptima, true),
+  createCar("kia-ev6", "EV6", "Kia", "SUV חשמלי", "$42,000", 320, 2024, kiaEV6, true),
   createCar("kia-stinger", "Stinger", "Kia", "סדאן ספורט", "$34,000", 365, 2024, kiaOptima),
   createCar("kia-rio", "Rio", "Kia", "האצ׳בק קטן", "$17,000", 120, 2024, kiaOptima),
   createCar("kia-cadenza", "Cadenza", "Kia", "סדאן יוקרה", "$32,000", 290, 2024, kiaOptima),
@@ -380,7 +399,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("skoda-scala", "Scala", "Skoda", "האצ׳בק", "$20,000", 115, 2024, skodaOctavia),
   createCar("skoda-kamiq", "Kamiq", "Skoda", "SUV קטן", "$23,000", 115, 2024, skodaOctavia),
   createCar("skoda-fabia", "Fabia", "Skoda", "האצ׳בק קטן", "$16,000", 95, 2024, skodaOctavia),
-  createCar("skoda-enyaq", "Enyaq iV", "Skoda", "SUV חשמלי", "$45,000", 204, 2024, skodaOctavia, true),
+  createCar("skoda-enyaq", "Enyaq iV", "Skoda", "SUV חשמלי", "$45,000", 204, 2024, skodaEnyaq, true),
   createCar("skoda-rapid", "Rapid", "Skoda", "סדאן", "$18,000", 110, 2024, skodaOctavia),
   createCar("skoda-citigo", "Citigo", "Skoda", "עירוני קטן", "$14,000", 75, 2024, skodaOctavia),
 
