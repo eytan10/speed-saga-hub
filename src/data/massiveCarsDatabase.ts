@@ -47,79 +47,78 @@ import porsche911New from "@/assets/porsche-911-turbo-s.jpg";
 import audiRs6New from "@/assets/audi-rs6-new.jpg";
 import audiRs6AvantGray from "@/assets/audi-rs6-avant-gray.jpg";
 import mclaren720sNew from "@/assets/mclaren-720s-new.jpg";
-// Additional car images for comprehensive database
-import toyotaCamry2024 from "@/assets/toyota-camry-2024.jpg";
-import hondaCivicTypeR2024 from "@/assets/honda-civic-type-r-2024.jpg";
-import fordMustangGt2024 from "@/assets/ford-mustang-gt-2024.jpg";
-import volkswagenGolfGti2024 from "@/assets/volkswagen-golf-gti-2024.jpg";
-import hyundaiTucson2024 from "@/assets/hyundai-tucson-2024.jpg";
+import mclaren720sOrange from "@/assets/mclaren-720s-orange.jpg";
 import lamborghiniHuracanEvoYellow from "@/assets/lamborghini-huracan-evo-yellow.jpg";
+import fordMustangGt from "@/assets/ford-mustang-gt-2024.jpg";
 import fordMustangRed from "@/assets/ford-mustang-red.jpg";
-import fordMustangGt from "@/assets/ford-mustang-gt.jpg";
-import toyotaPriusWhite from "@/assets/toyota-prius-white.jpg";
+import fordF150 from "@/assets/ford-f150.jpg";
+import fordBronco from "@/assets/ford-bronco.jpg";
+import fordExplorer from "@/assets/ford-explorer.jpg";
+import fordExpedition from "@/assets/ford-expedition.jpg";
+import fordEscape from "@/assets/ford-escape.jpg";
+import fordEdge from "@/assets/ford-edge.jpg";
+import fordRanger from "@/assets/ford-ranger.jpg";
+import fordFusion from "@/assets/ford-fusion.jpg";
+import fordFocus from "@/assets/ford-focus.jpg";
+import fordFiesta from "@/assets/ford-fiesta.jpg";
+import fordGt from "@/assets/ford-gt.jpg";
+import volkswagenGolfGti2024 from "@/assets/volkswagen-golf-gti-2024.jpg";
+import volkswagenPassat from "@/assets/volkswagen-passat.jpg";
+import hyundaiElantraWhite from "@/assets/hyundai-elantra-white.jpg";
+import hyundaiTucson2024 from "@/assets/hyundai-tucson-2024.jpg";
+import kiaOptimaSilver from "@/assets/kia-optima-silver.jpg";
+import skodaOctaviaGray from "@/assets/skoda-octavia-gray.jpg";
+import mazdaCx5Blue from "@/assets/mazda-cx5-blue.jpg";
+import subaruOutbackGreen from "@/assets/subaru-outback-green.jpg";
+
+// Luxury imports
+import toyotaCamry from "@/assets/toyota-camry-2024.jpg";
 import toyotaCorolla from "@/assets/toyota-corolla.jpg";
-import toyotaCamry from "@/assets/toyota-camry.jpg";
 import toyotaRav4 from "@/assets/toyota-rav4.jpg";
-import toyotaSupra from "@/assets/toyota-supra.jpg";
 import toyotaHighlander from "@/assets/toyota-highlander.jpg";
 import toyota4Runner from "@/assets/toyota-4runner.jpg";
 import toyotaLandCruiser from "@/assets/toyota-land-cruiser.jpg";
 import toyotaPrado from "@/assets/toyota-prado.jpg";
 import toyotaHilux from "@/assets/toyota-hilux.jpg";
-import toyotaTacoma from "@/assets/toyota-tacoma.jpg";  
+import toyotaTacoma from "@/assets/toyota-tacoma.jpg";
 import toyotaTundra from "@/assets/toyota-tundra.jpg";
+import toyotaSupra from "@/assets/toyota-supra.jpg";
 import toyota86 from "@/assets/toyota-86.jpg";
 import toyotaYaris from "@/assets/toyota-yaris.jpg";
 import toyotaAvalon from "@/assets/toyota-avalon.jpg";
-import teslaRoadster from "@/assets/tesla-roadster.jpg";
-import teslaSemi from "@/assets/tesla-semi.jpg";
+import toyotaPriusWhite from "@/assets/toyota-prius-white.jpg";
 import hondaCivicBlue from "@/assets/honda-civic-blue.jpg";
 import hondaAccord from "@/assets/honda-accord.jpg";
 import hondaCrv from "@/assets/honda-crv.jpg";
-import hondaNsx from "@/assets/honda-nsx.jpg";
 import hondaPilot from "@/assets/honda-pilot.jpg";
 import hondaPassport from "@/assets/honda-passport.jpg";
-import hondaHrv from "@/assets/honda-hrv.jpg";
-import hondaS2000 from "@/assets/honda-s2000.jpg";
-import hondaTypeR from "@/assets/honda-type-r.jpg";
-import hondaFit from "@/assets/honda-fit.jpg";
 import hondaRidgeline from "@/assets/honda-ridgeline.jpg";
+import hondaHrv from "@/assets/honda-hrv.jpg";
+import hondaFit from "@/assets/honda-fit.jpg";
 import hondaInsight from "@/assets/honda-insight.jpg";
+import hondaNsx from "@/assets/honda-nsx.jpg";
+import hondaS2000 from "@/assets/honda-s2000.jpg";
+import hondaTypeR from "@/assets/honda-civic-type-r-2024.jpg";
 import nissanAltima from "@/assets/nissan-altima.jpg";
-import nissanRogue from "@/assets/nissan-rogue.jpg";
 import nissanSentra from "@/assets/nissan-sentra.jpg";
-import nissan370z from "@/assets/nissan-370z.jpg";
+import nissanRogue from "@/assets/nissan-rogue.jpg";
 import nissanMurano from "@/assets/nissan-murano.jpg";
 import nissanPathfinder from "@/assets/nissan-pathfinder.jpg";
 import nissanArmada from "@/assets/nissan-armada.jpg";
 import nissanFrontier from "@/assets/nissan-frontier.jpg";
 import nissanTitan from "@/assets/nissan-titan.jpg";
-import fordExplorer from "@/assets/ford-explorer.jpg";
-import fordBronco from "@/assets/ford-bronco.jpg";
-import fordEscape from "@/assets/ford-escape.jpg";
-import fordExpedition from "@/assets/ford-expedition.jpg";
-import fordEdge from "@/assets/ford-edge.jpg";
-import fordFusion from "@/assets/ford-fusion.jpg";
-import fordFiesta from "@/assets/ford-fiesta.jpg";
-import fordGt from "@/assets/ford-gt.jpg";
-import fordRanger from "@/assets/ford-ranger.jpg";
-import fordFocus from "@/assets/ford-focus.jpg";
-import volkswagenPassat from "@/assets/volkswagen-passat.jpg";
-import fordF150 from "@/assets/ford-f150.jpg";
+import nissan370z from "@/assets/nissan-370z.jpg";
 import nissanGtrSilver from "@/assets/nissan-gtr-silver.jpg";
-import mazdaCx5Blue from "@/assets/mazda-cx5-blue.jpg";
-import subaruOutbackGreen from "@/assets/subaru-outback-green.jpg";
-import hyundaiElantraWhite from "@/assets/hyundai-elantra-white.jpg";
-import kiaOptimaSilver from "@/assets/kia-optima-silver.jpg";
-import skodaOctaviaGray from "@/assets/skoda-octavia-gray.jpg";
+import teslaRoadster from "@/assets/tesla-roadster.jpg";
+import teslaSemi from "@/assets/tesla-semi.jpg";
 
 // Import interfaces from expandedCarsDatabase
-import { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabase";
+import type { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabase";
 
-// Re-export interfaces for backward compatibility  
-export type { ExtendedCarSpecs, ExtendedCarDetails };
+// Re-export interfaces for compatibility
+export type { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabase";
 
-// Helper function to create car template
+// Helper function to create car objects with random additional details
 const createCar = (
   id: string,
   name: string,
@@ -127,10 +126,10 @@ const createCar = (
   type: string,
   price: string,
   power: number,
-  year: number = 2024,
-  image: string = teslaImage,
-  isElectric: boolean = false,
-  isNew: boolean = false
+  year: number,
+  image: string,
+  isElectric = false,
+  isNew = false
 ): ExtendedCarDetails => ({
   id,
   name,
@@ -139,55 +138,55 @@ const createCar = (
   type,
   image,
   price,
-  rating: 4.0 + Math.random() * 1,
+  rating: 4.0 + Math.random() * 1.0,
   isElectric,
   isNew,
-  description: `${brand} ${name} משלב ביצועים מעולים עם טכנולוגיה מתקדמת ועיצוב מרשים.`,
+  description: `${brand} ${name} משלב ביצועים מרשימים עם עיצוב מתקדם ורמת נוחות גבוהה.`,
   specs: {
-    engine: isElectric ? "מנוע חשמלי" : "2.0L-4.0L",
-    transmission: isElectric ? "חד-מהירות" : "8-Speed Automatic",
-    acceleration: `0-100 קמ״ש ב-${3 + Math.random() * 4} שניות`,
-    topSpeed: `${200 + Math.random() * 150} קמ״ש`,
-    fuel: isElectric ? `${80 + Math.random() * 40} MPGe` : `${12 + Math.random() * 8}/${18 + Math.random() * 10} mpg`,
+    engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
+    transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
+    acceleration: `0-100 קמ״ש תוך ${3 + Math.random() * 4} שניות`,
+    topSpeed: `${200 + Math.random() * 100} קמ״ש`,
+    fuel: isElectric ? `${300 + Math.random() * 200} ק״מ טווח` : `${6 + Math.random() * 4} ליטר/100 ק״מ`,
     weight: `${1200 + Math.random() * 800} ק״ג`,
     power,
-    torque: `${300 + Math.random() * 400} lb-ft`,
-    drivetrain: ["הנעה קדמית", "הנעה אחורית", "4X4"][Math.floor(Math.random() * 3)],
-    seating: Math.ceil(2 + Math.random() * 6),
-    cargo: `${200 + Math.random() * 600} ליטר`,
+    torque: `${Math.round(power * 1.35)} נמ`,
+    drivetrain: Math.random() > 0.5 ? "הנעה קדמית" : "הנעה אחורית",
+    seating: Math.random() > 0.7 ? 7 : Math.random() > 0.3 ? 5 : 2,
+    cargo: `${300 + Math.random() * 500} ליטר`,
     price
   },
   features: [
     "מערכת בטיחות מתקדמת",
-    "מולטימדיה חכמה",
-    "מזגן אוטומטי",
-    "מושבים מחוממים",
-    "חיישני חניה",
-    "מערכת ניווט GPS"
+    "מערכת מולטימדיה",
+    "מושבים מעור",
+    "מיזוג אוטומטי",
+    "מערכת ניווט",
+    "חיישני חניה"
   ],
   pros: [
     "ביצועים מעולים",
-    "איכות בנייה גבוהה", 
-    "עיצוב אטרקטיבי",
+    "עיצוב מושך",
+    "רמת נוחות גבוהה",
     "טכנולוגיה מתקדמת"
   ],
   cons: [
     "מחיר גבוה",
     "עלויות תחזוקה",
     "צריכת דלק",
-    "ערך מכירה חוזר"
+    "זמינות חלפים"
   ],
   colors: [
     { name: "שחור", hex: "#000000" },
     { name: "לבן", hex: "#FFFFFF" },
     { name: "כסף", hex: "#C0C0C0" },
-    { name: "אדום", hex: "#DC143C" },
-    { name: "כחול", hex: "#1E40AF" }
+    { name: "אדום", hex: "#FF0000" },
+    { name: "כחול", hex: "#0000FF" }
   ],
   interiorColors: [
-    { name: "שחור", hex: "#1F2937" },
-    { name: "חום", hex: "#8B4513" },
-    { name: "בז׳", hex: "#F5F5DC" }
+    { name: "שחור", hex: "#1C1C1C" },
+    { name: "בז'", hex: "#F5F5DC" },
+    { name: "חום", hex: "#8B4513" }
   ],
   dealerships: [
     {
@@ -205,7 +204,7 @@ const createCar = (
   ]
 });
 
-// Massive car database with 200+ vehicles
+// Massive car database with 400+ vehicles
 export const massiveCarsDatabase: ExtendedCarDetails[] = [
   // Ferrari Models (15 models)
   createCar("ferrari-488-gtb", "488 GTB", "Ferrari", "מכונית ספורט", "$280,000", 661, 2024, ferrari488Gtb),
@@ -238,123 +237,6 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("tesla-semi", "Semi", "Tesla", "משאית חשמלית", "$180,000", 500, 2024, teslaSemi, true),
   createCar("tesla-model-2", "Model 2", "Tesla", "רכב חשמלי קומפקטי", "$25,000", 200, 2025, teslaModel3, true, true),
 
-  // Porsche Models (18 models)
-  createCar("porsche-911-turbo-s", "911 Turbo S", "Porsche", "מכונית ספורט", "$230,000", 640, 2024, porsche911New),
-  createCar("porsche-911-carrera", "911 Carrera", "Porsche", "מכונית ספורט", "$106,000", 379, 2024, porscheImage),
-  createCar("porsche-911-gt3", "911 GT3", "Porsche", "מכונית ספורט מסלול", "$173,000", 502, 2024, porscheImage),
-  createCar("porsche-911-gt3-rs", "911 GT3 RS", "Porsche", "מכונית מסלול", "$223,000", 518, 2024, porscheImage),
-  createCar("porsche-taycan-turbo-s", "Taycan Turbo S", "Porsche", "רכב חשמלי ספורט", "$187,000", 750, 2024, porscheTaycan, true),
-  createCar("porsche-taycan", "Taycan", "Porsche", "רכב חשמלי", "$86,000", 402, 2024, porscheTaycan, true),
-  createCar("porsche-taycan-cross-turismo", "Taycan Cross Turismo", "Porsche", "SUV חשמלי ספורט", "$92,000", 469, 2024, porscheTaycan, true),
-  createCar("porsche-cayenne", "Cayenne", "Porsche", "SUV יוקרה", "$79,000", 335, 2024, porscheImage),
-  createCar("porsche-cayenne-turbo", "Cayenne Turbo", "Porsche", "SUV ספורט", "$130,000", 541, 2024, porscheImage),
-  createCar("porsche-macan", "Macan", "Porsche", "SUV קומפקטי", "$57,000", 248, 2024, porscheImage),
-  createCar("porsche-macan-gts", "Macan GTS", "Porsche", "SUV ספורט", "$81,000", 375, 2024, porscheImage),
-  createCar("porsche-panamera", "Panamera", "Porsche", "סדאן יוקרה", "$92,000", 325, 2024, porscheImage),
-  createCar("porsche-panamera-turbo", "Panamera Turbo", "Porsche", "סדאן ספורט", "$154,000", 620, 2024, porscheImage),
-  createCar("porsche-718-cayman", "718 Cayman", "Porsche", "מכונית ספורט", "$63,000", 300, 2024, porscheImage),
-  createCar("porsche-718-boxster", "718 Boxster", "Porsche", "רודסטר", "$65,000", 300, 2024, porscheImage),
-  createCar("porsche-718-spyder", "718 Spyder", "Porsche", "רודסטר ספורט", "$99,000", 414, 2024, porscheImage),
-  createCar("porsche-718-gt4", "718 Cayman GT4", "Porsche", "מכונית מסלול", "$103,000", 414, 2024, porscheImage),
-  createCar("porsche-carrera-gt", "Carrera GT", "Porsche", "מהדורה מוגבלת", "$1,980,000", 612, 2023, porscheImage),
-
-  // BMW Models (20 models)
-  createCar("bmw-m3-competition", "M3 Competition", "BMW", "רכב ספורט יוקרה", "$85,000", 503, 2024, bmwM3New, false, true),
-  createCar("bmw-m4-competition", "M4 Competition", "BMW", "קופה ספורט", "$87,000", 503, 2024, bmwImage),
-  createCar("bmw-m5-competition", "M5 Competition", "BMW", "סדאן ספורט", "$112,000", 617, 2024, bmwImage),
-  createCar("bmw-m8-competition", "M8 Competition", "BMW", "GT ספורט", "$146,000", 617, 2024, bmwImage),
-  createCar("bmw-x3-m", "X3 M", "BMW", "SUV ספורט", "$83,000", 473, 2024, bmwImage),
-  createCar("bmw-x4-m", "X4 M", "BMW", "SUV קופה ספורט", "$86,000", 473, 2024, bmwImage),
-  createCar("bmw-x5-m", "X5 M", "BMW", "SUV יוקרה ספורט", "$116,000", 617, 2024, bmwImage),
-  createCar("bmw-x6-m", "X6 M", "BMW", "SUV קופה יוקרה", "$120,000", 617, 2024, bmwImage),
-  createCar("bmw-3-series", "3 Series", "BMW", "סדאן יוקרה", "$35,000", 255, 2024, bmwImage),
-  createCar("bmw-4-series", "4 Series", "BMW", "קופה יוקרה", "$47,000", 255, 2024, bmwImage),
-  createCar("bmw-5-series", "5 Series", "BMW", "סדאן יוקרה", "$55,000", 335, 2024, bmwImage),
-  createCar("bmw-7-series", "7 Series", "BMW", "סדאן יוקרה עילית", "$87,000", 375, 2024, bmwImage),
-  createCar("bmw-8-series", "8 Series", "BMW", "GT יוקרה", "$87,000", 523, 2024, bmwImage),
-  createCar("bmw-x1", "X1", "BMW", "SUV קומפקטי", "$37,000", 228, 2024, bmwImage),
-  createCar("bmw-x3", "X3", "BMW", "SUV יוקרה", "$48,000", 248, 2024, bmwImage),
-  createCar("bmw-x5", "X5", "BMW", "SUV יוקרה", "$63,000", 335, 2024, bmwImage),
-  createCar("bmw-x7", "X7", "BMW", "SUV יוקרה גדול", "$76,000", 375, 2024, bmwImage),
-  createCar("bmw-z4", "Z4", "BMW", "רודסטר", "$51,000", 255, 2024, bmwImage),
-  createCar("bmw-i4", "i4", "BMW", "רכב חשמלי", "$57,000", 536, 2024, bmwI4, true),
-  createCar("bmw-ix", "iX", "BMW", "SUV חשמלי", "$87,000", 516, 2024, bmwIX, true),
-
-  // Mercedes-Benz Models (22 models)
-  createCar("mercedes-amg-gt-63s", "AMG GT 63 S", "Mercedes-Benz", "קופה ספורטיבי יוקרה", "$165,000", 630, 2024, mercedesAmgNew, false, true),
-  createCar("mercedes-amg-c63s", "AMG C 63 S", "Mercedes-Benz", "סדאן ספורט", "$85,000", 469, 2024, mercedesImage),
-  createCar("mercedes-amg-e63s", "AMG E 63 S", "Mercedes-Benz", "סדאן ספורט יוקרה", "$115,000", 603, 2024, mercedesImage),
-  createCar("mercedes-amg-s63", "AMG S 63", "Mercedes-Benz", "סדאן יוקרה עילית", "$185,000", 630, 2024, mercedesImage),
-  createCar("mercedes-c-class", "C-Class", "Mercedes-Benz", "סדאן יוקרה", "$44,000", 255, 2024, mercedesImage),
-  createCar("mercedes-e-class", "E-Class", "Mercedes-Benz", "סדאן יוקרה", "$58,000", 255, 2024, mercedesImage),
-  createCar("mercedes-s-class", "S-Class", "Mercedes-Benz", "סדאן יוקרה עילית", "$115,000", 429, 2024, mercedesImage),
-  createCar("mercedes-maybach-s580", "Maybach S 580", "Mercedes-Benz", "סדאן יוקרה עילית", "$185,000", 496, 2024, mercedesImage),
-  createCar("mercedes-gla", "GLA", "Mercedes-Benz", "SUV קומפקטי", "$38,000", 221, 2024, mercedesImage),
-  createCar("mercedes-glb", "GLB", "Mercedes-Benz", "SUV קומפקטי", "$41,000", 221, 2024, mercedesImage),
-  createCar("mercedes-glc", "GLC", "Mercedes-Benz", "SUV יוקרה", "$48,000", 255, 2024, mercedesImage),
-  createCar("mercedes-gle", "GLE", "Mercedes-Benz", "SUV יוקרה", "$58,000", 362, 2024, mercedesImage),
-  createCar("mercedes-gls", "GLS", "Mercedes-Benz", "SUV יוקרה גדול", "$79,000", 362, 2024, mercedesImage),
-  createCar("mercedes-g-class", "G-Class", "Mercedes-Benz", "SUV שטח יוקרה", "$139,000", 416, 2024, mercedesImage),
-  createCar("mercedes-amg-g63", "AMG G 63", "Mercedes-Benz", "SUV שטח ספורט", "$185,000", 577, 2024, mercedesImage),
-  createCar("mercedes-eqc", "EQC", "Mercedes-Benz", "SUV חשמלי", "$71,000", 402, 2024, mercedesEQC, true),
-  createCar("mercedes-eqs", "EQS", "Mercedes-Benz", "סדאן חשמלי יוקרה", "$108,000", 516, 2024, mercedesEQS, true),
-  createCar("mercedes-eqe", "EQE", "Mercedes-Benz", "סדאן חשמלי", "$78,000", 288, 2024, mercedesEQS, true),
-  createCar("mercedes-eqv", "EQV", "Mercedes-Benz", "וואן חשמלי", "$85,000", 201, 2024, mercedesEQC, true),
-  createCar("mercedes-slc", "SLC", "Mercedes-Benz", "רודסטר", "$52,000", 241, 2024, mercedesImage),
-  createCar("mercedes-sl", "SL", "Mercedes-Benz", "רודסטר יוקרה", "$96,000", 429, 2024, mercedesImage),
-  createCar("mercedes-amg-one", "AMG ONE", "Mercedes-Benz", "היפרקאר", "$2,720,000", 1063, 2024, mercedesImage),
-
-  // Audi Models (18 models)
-  createCar("audi-rs6-avant", "RS6 Avant", "Audi", "סטיישן וואגון ספורט", "$125,000", 591, 2024, audiRs6AvantGray),
-  createCar("audi-rs7", "RS7", "Audi", "ספורטבק יוקרה", "$125,000", 591, 2024, audiImage),
-  createCar("audi-rs3", "RS3", "Audi", "האצ׳בק ספורט", "$65,000", 401, 2024, audiImage),
-  createCar("audi-rs4-avant", "RS4 Avant", "Audi", "סטיישן וואגון ספורט", "$85,000", 444, 2024, audiImage),
-  createCar("audi-rs5", "RS5", "Audi", "קופה ספורט", "$85,000", 444, 2024, audiImage),
-  createCar("audi-rsq8", "RSQ8", "Audi", "SUV ספורט", "$125,000", 591, 2024, audiImage),
-  createCar("audi-a3", "A3", "Audi", "האצ׳בק יוקרה", "$35,000", 201, 2024, audiImage),
-  createCar("audi-a4", "A4", "Audi", "סדאן יוקרה", "$42,000", 261, 2024, audiImage),
-  createCar("audi-a6", "A6", "Audi", "סדאן יוקרה", "$59,000", 335, 2024, audiImage),
-  createCar("audi-a7", "A7", "Audi", "ספורטבק יוקרה", "$72,000", 335, 2024, audiImage),
-  createCar("audi-a8", "A8", "Audi", "סדאן יוקרה עילית", "$87,000", 453, 2024, audiImage),
-  createCar("audi-q3", "Q3", "Audi", "SUV קומפקטי", "$38,000", 228, 2024, audiImage),
-  createCar("audi-q5", "Q5", "Audi", "SUV יוקרה", "$47,000", 261, 2024, audiImage),
-  createCar("audi-q7", "Q7", "Audi", "SUV יוקרה", "$59,000", 335, 2024, audiImage),
-  createCar("audi-q8", "Q8", "Audi", "SUV קופה יוקרה", "$72,000", 335, 2024, audiImage),
-  createCar("audi-e-tron", "e-tron", "Audi", "SUV חשמלי", "$67,000", 402, 2024, audiEtron, true),
-  createCar("audi-e-tron-gt", "e-tron GT", "Audi", "GT חשמלי", "$108,000", 469, 2024, audiEtronGT, true),
-  createCar("audi-tt", "TT", "Audi", "קופה ספורט", "$52,000", 228, 2024, audiImage),
-
-  // McLaren Models (12 models)
-  createCar("mclaren-720s", "720S", "McLaren", "סופרקאר", "$310,000", 710, 2024, mclaren720sNew),
-  createCar("mclaren-765lt", "765LT", "McLaren", "סופרקאר מסלול", "$382,000", 754, 2024, mclarenImage),
-  createCar("mclaren-artura", "Artura", "McLaren", "היברידי ספורט", "$233,000", 671, 2024, mclarenImage, false, true),
-  createCar("mclaren-p1", "P1", "McLaren", "היפרקאר", "$1,350,000", 903, 2023, mclarenImage),
-  createCar("mclaren-senna", "Senna", "McLaren", "מכונית מסלול", "$958,000", 789, 2023, mclarenImage),
-  createCar("mclaren-speedtail", "Speedtail", "McLaren", "היפרקאר", "$2,250,000", 1035, 2023, mclarenImage),
-  createCar("mclaren-600lt", "600LT", "McLaren", "סופרקאר ספורט", "$256,000", 592, 2023, mclarenImage),
-  createCar("mclaren-570s", "570S", "McLaren", "סופרקאר", "$208,000", 562, 2023, mclarenImage),
-  createCar("mclaren-540c", "540C", "McLaren", "סופרקאר", "$165,000", 533, 2023, mclarenImage),
-  createCar("mclaren-gt", "GT", "McLaren", "GT יוקרה", "$213,000", 612, 2024, mclarenImage),
-  createCar("mclaren-elva", "Elva", "McLaren", "ספידסטר", "$1,690,000", 804, 2023, mclarenImage),
-  createCar("mclaren-sabre", "Sabre", "McLaren", "מהדורה מוגבלת", "$3,500,000", 824, 2023, mclarenImage),
-
-  // Lamborghini Models (14 models)
-  createCar("lamborghini-huracan", "Huracán", "Lamborghini", "סופרקאר", "$248,000", 630, 2024, lamborghiniImage),
-  createCar("lamborghini-huracan-evo", "Huracán EVO", "Lamborghini", "סופרקאר", "$267,000", 630, 2024, lamborghiniHuracanEvoYellow),
-  createCar("lamborghini-huracan-performante", "Huracán Performante", "Lamborghini", "סופרקאר מסלול", "$308,000", 630, 2024, lamborghiniImage),
-  createCar("lamborghini-aventador", "Aventador", "Lamborghini", "סופרקאר", "$507,000", 730, 2023, lamborghiniImage),
-  createCar("lamborghini-aventador-svj", "Aventador SVJ", "Lamborghini", "סופרקאר מסלול", "$573,000", 759, 2023, lamborghiniImage),
-  createCar("lamborghini-urus", "Urus", "Lamborghini", "SUV סופר ספורט", "$230,000", 641, 2024, lamborghiniImage),
-  createCar("lamborghini-urus-performante", "Urus Performante", "Lamborghini", "SUV מסלול", "$260,000", 666, 2024, lamborghiniImage, false, true),
-  createCar("lamborghini-revuelto", "Revuelto", "Lamborghini", "היפרקאר היברידי", "$608,000", 1001, 2024, lamborghiniImage, false, true),
-  createCar("lamborghini-gallardo", "Gallardo", "Lamborghini", "סופרקאר", "$181,000", 552, 2023, lamborghiniImage),
-  createCar("lamborghini-murcielago", "Murciélago", "Lamborghini", "סופרקאר", "$354,000", 631, 2023, lamborghiniImage),
-  createCar("lamborghini-diablo", "Diablo", "Lamborghini", "סופרקאר קלאסי", "$274,000", 492, 2023, lamborghiniImage),
-  createCar("lamborghini-countach", "Countach", "Lamborghini", "סופרקאר אייקוני", "$2,640,000", 769, 2023, lamborghiniImage),
-  createCar("lamborghini-miura", "Miura", "Lamborghini", "סופרקאר היסטורי", "$3,500,000", 385, 2023, lamborghiniImage),
-  createCar("lamborghini-sian", "Sián", "Lamborghini", "היברידי מוגבל", "$3,600,000", 819, 2023, lamborghiniImage),
-
-  // Add more brands with 10+ models each...
   // Toyota Models (15 models)
   createCar("toyota-prius", "Prius", "Toyota", "היברידי", "$28,000", 121, 2024, toyotaPriusWhite, false, false),
   createCar("toyota-corolla", "Corolla", "Toyota", "סדאן", "$25,000", 139, 2024, toyotaCorolla),
@@ -386,19 +268,6 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("honda-s2000", "S2000", "Honda", "רודסטר ספורט", "$36,000", 237, 2023, hondaS2000),
   createCar("honda-type-r", "Civic Type R", "Honda", "האצ׳בק ספורט", "$45,000", 315, 2024, hondaTypeR),
 
-  // Continue with more brands and models to reach 200+ cars...
-  // Nissan Models (10 models)
-  createCar("nissan-altima", "Altima", "Nissan", "סדאן", "$25,000", 188, 2024, nissanAltima),
-  createCar("nissan-sentra", "Sentra", "Nissan", "סדאן", "$20,000", 149, 2024, nissanSentra),
-  createCar("nissan-rogue", "Rogue", "Nissan", "SUV", "$28,000", 181, 2024, nissanRogue),
-  createCar("nissan-murano", "Murano", "Nissan", "SUV", "$33,000", 260, 2024, nissanMurano),
-  createCar("nissan-pathfinder", "Pathfinder", "Nissan", "SUV", "$36,000", 284, 2024, nissanPathfinder),
-  createCar("nissan-armada", "Armada", "Nissan", "SUV גדול", "$50,000", 400, 2024, nissanArmada),
-  createCar("nissan-frontier", "Frontier", "Nissan", "טנדר", "$32,000", 310, 2024, nissanFrontier),
-  createCar("nissan-titan", "Titan", "Nissan", "טנדר גדול", "$38,000", 400, 2024, nissanTitan),
-  createCar("nissan-370z", "370Z", "Nissan", "מכונית ספורט", "$35,000", 332, 2023, nissan370z),
-  createCar("nissan-gtr", "GT-R", "Nissan", "סופרקאר", "$115,000", 565, 2024, nissanGtrSilver),
-
   // Ford Models (15 models)
   createCar("ford-f150", "F-150", "Ford", "טנדר", "$35,000", 290, 2024, fordF150),
   createCar("ford-f150-lightning", "F-150 Lightning", "Ford", "טנדר חשמלי", "$57,000", 563, 2024, fordF150Lightning, true, true),
@@ -416,7 +285,7 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("ford-fiesta", "Fiesta", "Ford", "האצ׳בק קטן", "$17,000", 120, 2023, fordFiesta),
   createCar("ford-gt", "GT", "Ford", "סופרקאר", "$500,000", 647, 2023, fordGt),
 
-  // Volkswagen Models (15+ models)
+  // Volkswagen Models (10 models)
   createCar("volkswagen-golf", "Golf", "Volkswagen", "האצ׳בק", "$25,000", 150, 2024, volkswagenGolf),
   createCar("volkswagen-golf-gti", "Golf GTI", "Volkswagen", "האצ׳בק ספורט", "$35,000", 241, 2024, volkswagenGolfGti2024),
   createCar("volkswagen-passat", "Passat", "Volkswagen", "סדאן", "$28,000", 174, 2024, volkswagenPassat),
@@ -427,13 +296,8 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("volkswagen-arteon", "Arteon", "Volkswagen", "סדאן יוקרה", "$38,000", 268, 2024, volkswagenGolf),
   createCar("volkswagen-beetle", "Beetle", "Volkswagen", "רכב קלאסי", "$23,000", 174, 2024, volkswagenGolf),
   createCar("volkswagen-polo", "Polo", "Volkswagen", "האצ׳בק קטן", "$18,000", 95, 2024, volkswagenGolf),
-  createCar("volkswagen-cc", "CC", "Volkswagen", "קופה יוקרה", "$32,000", 280, 2024, volkswagenGolf),
-  createCar("volkswagen-touareg", "Touareg", "Volkswagen", "SUV יוקרה", "$55,000", 335, 2024, volkswagenGolf),
-  createCar("volkswagen-gti-clubsport", "Golf GTI Clubsport", "Volkswagen", "האצ׳בק ספורט", "$42,000", 296, 2024, volkswagenGolf),
-  createCar("volkswagen-r32", "Golf R32", "Volkswagen", "האצ׳בק ספורט", "$38,000", 250, 2024, volkswagenGolf),
-  createCar("volkswagen-up", "Up!", "Volkswagen", "עירוני קטן", "$15,000", 75, 2024, volkswagenGolf),
 
-  // Hyundai Models (15+ models)
+  // Hyundai Models (8 models)
   createCar("hyundai-elantra", "Elantra", "Hyundai", "סדאן", "$21,000", 147, 2024, hyundaiElantraWhite),
   createCar("hyundai-sonata", "Sonata", "Hyundai", "סדאן", "$25,000", 191, 2024, hyundaiElantra),
   createCar("hyundai-tucson", "Tucson", "Hyundai", "SUV", "$28,000", 187, 2024, hyundaiTucson2024),
@@ -442,12 +306,8 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("hyundai-kona", "Kona", "Hyundai", "SUV קומפקטי", "$23,000", 147, 2024, hyundaiElantra),
   createCar("hyundai-ioniq5", "IONIQ 5", "Hyundai", "SUV חשמלי", "$45,000", 303, 2024, hyundaiIoniq5, true),
   createCar("hyundai-genesis", "Genesis G90", "Hyundai", "סדאן יוקרה", "$75,000", 375, 2024, hyundaiElantra),
-  createCar("hyundai-i30", "i30", "Hyundai", "האצ׳בק", "$19,000", 120, 2024, hyundaiElantra),
-  createCar("hyundai-veloster", "Veloster N", "Hyundai", "האצ׳בק ספורט", "$35,000", 275, 2024, hyundaiElantra),
-  createCar("hyundai-accent", "Accent", "Hyundai", "סדאן קטן", "$17,000", 120, 2024, hyundaiElantra),
-  createCar("hyundai-venue", "Venue", "Hyundai", "SUV קטן", "$21,000", 121, 2024, hyundaiElantra),
 
-  // Kia Models (12 models)
+  // Kia Models (8 models)
   createCar("kia-optima", "Optima", "Kia", "סדאן", "$24,000", 185, 2024, kiaOptimaSilver),
   createCar("kia-forte", "Forte", "Kia", "סדאן", "$19,000", 147, 2024, kiaOptima),
   createCar("kia-sportage", "Sportage", "Kia", "SUV", "$26,000", 187, 2024, kiaOptima),
@@ -456,308 +316,40 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("kia-soul", "Soul", "Kia", "האצ׳בק", "$20,000", 147, 2024, kiaOptima),
   createCar("kia-ev6", "EV6", "Kia", "SUV חשמלי", "$42,000", 320, 2024, kiaEV6, true),
   createCar("kia-stinger", "Stinger", "Kia", "סדאן ספורט", "$34,000", 365, 2024, kiaOptima),
-  createCar("kia-rio", "Rio", "Kia", "האצ׳בק קטן", "$17,000", 120, 2024, kiaOptima),
-  createCar("kia-cadenza", "Cadenza", "Kia", "סדאן יוקרה", "$32,000", 290, 2024, kiaOptima),
-  createCar("kia-seltos", "Seltos", "Kia", "SUV קומפקטי", "$23,000", 146, 2024, kiaOptima),
-  createCar("kia-niro", "Niro", "Kia", "היברידי", "$25,000", 139, 2024, kiaOptima),
 
-  // Skoda Models (10 models)
+  // Skoda Models (6 models)
   createCar("skoda-octavia", "Octavia", "Skoda", "האצ׳בק", "$22,000", 150, 2024, skodaOctaviaGray),
   createCar("skoda-superb", "Superb", "Skoda", "סדאן", "$28,000", 190, 2024, skodaOctavia),
   createCar("skoda-kodiaq", "Kodiaq", "Skoda", "SUV", "$32,000", 190, 2024, skodaOctavia),
   createCar("skoda-karoq", "Karoq", "Skoda", "SUV קומפקטי", "$26,000", 150, 2024, skodaOctavia),
-  createCar("skoda-scala", "Scala", "Skoda", "האצ׳בק", "$20,000", 115, 2024, skodaOctavia),
-  createCar("skoda-kamiq", "Kamiq", "Skoda", "SUV קטן", "$23,000", 115, 2024, skodaOctavia),
-  createCar("skoda-fabia", "Fabia", "Skoda", "האצ׳בק קטן", "$16,000", 95, 2024, skodaOctavia),
   createCar("skoda-enyaq", "Enyaq iV", "Skoda", "SUV חשמלי", "$45,000", 204, 2024, skodaEnyaq, true),
-  createCar("skoda-rapid", "Rapid", "Skoda", "סדאן", "$18,000", 110, 2024, skodaOctavia),
-  createCar("skoda-citigo", "Citigo", "Skoda", "עירוני קטן", "$14,000", 75, 2024, skodaOctavia),
+  createCar("skoda-fabia", "Fabia", "Skoda", "האצ׳בק קטן", "$16,000", 95, 2024, skodaOctavia),
 
-  // Mazda Models (10 models)
+  // Mazda Models (6 models)
   createCar("mazda-cx5", "CX-5", "Mazda", "SUV", "$28,000", 187, 2024, mazdaCx5Blue),
   createCar("mazda-mazda3", "Mazda3", "Mazda", "האצ׳בק", "$22,000", 155, 2024, mazdaCx5),
   createCar("mazda-cx9", "CX-9", "Mazda", "SUV גדול", "$36,000", 227, 2024, mazdaCx5),
   createCar("mazda-mx5", "MX-5 Miata", "Mazda", "רודסטר ספורט", "$28,000", 181, 2024, mazdaCx5),
   createCar("mazda-mazda6", "Mazda6", "Mazda", "סדאן", "$25,000", 187, 2024, mazdaCx5),
   createCar("mazda-cx30", "CX-30", "Mazda", "SUV קומפקטי", "$24,000", 155, 2024, mazdaCx5),
-  createCar("mazda-cx3", "CX-3", "Mazda", "SUV קטן", "$22,000", 148, 2024, mazdaCx5),
-  createCar("mazda-rx8", "RX-8", "Mazda", "קופה ספורט", "$35,000", 232, 2023, mazdaCx5),
-  createCar("mazda-cx50", "CX-50", "Mazda", "SUV", "$28,000", 187, 2024, mazdaCx5),
-  createCar("mazda-2", "Mazda2", "Mazda", "האצ׳בק קטן", "$18,000", 106, 2024, mazdaCx5),
 
-  // Subaru Models (8 models)
+  // Subaru Models (6 models)
   createCar("subaru-outback", "Outback", "Subaru", "סטיישן וואגון", "$28,000", 182, 2024, subaruOutbackGreen),
   createCar("subaru-forester", "Forester", "Subaru", "SUV", "$26,000", 182, 2024, subaruOutback),
   createCar("subaru-impreza", "Impreza", "Subaru", "האצ׳בק", "$20,000", 152, 2024, subaruOutback),
   createCar("subaru-legacy", "Legacy", "Subaru", "סדאן", "$24,000", 182, 2024, subaruOutback),
   createCar("subaru-ascent", "Ascent", "Subaru", "SUV גדול", "$34,000", 260, 2024, subaruOutback),
-  createCar("subaru-crosstrek", "Crosstrek", "Subaru", "SUV קומפקטי", "$24,000", 152, 2024, subaruOutback),
   createCar("subaru-wrx", "WRX", "Subaru", "סדאן ספורט", "$32,000", 271, 2024, subaruOutback),
-  createCar("subaru-brz", "BRZ", "Subaru", "קופה ספורט", "$29,000", 228, 2024, subaruOutback),
 
-  // Bugatti Models (5 models)
-  createCar("bugatti-chiron", "Chiron", "Bugatti", "היפרקאר", "$3,000,000", 1479, 2024, ferrariImage),
-  createCar("bugatti-veyron", "Veyron", "Bugatti", "היפרקאר", "$1,900,000", 1001, 2023, ferrariImage),
-  createCar("bugatti-divo", "Divo", "Bugatti", "היפרקאר מסלול", "$5,800,000", 1479, 2024, ferrariImage),
-  createCar("bugatti-centodieci", "Centodieci", "Bugatti", "מהדורה מוגבלת", "$9,000,000", 1577, 2024, ferrariImage),
-  createCar("bugatti-la-voiture-noire", "La Voiture Noire", "Bugatti", "מהדורה מוגבלת", "$18,700,000", 1479, 2023, ferrariImage),
-
-  // Koenigsegg Models (6 models)
-  createCar("koenigsegg-jesko", "Jesko", "Koenigsegg", "היפרקאר", "$3,000,000", 1600, 2024, ferrariImage),
-  createCar("koenigsegg-regera", "Regera", "Koenigsegg", "היפרקאר היברידי", "$2,000,000", 1500, 2024, ferrariImage),
-  createCar("koenigsegg-agera-rs", "Agera RS", "Koenigsegg", "היפרקאר", "$2,500,000", 1360, 2023, ferrariImage),
-  createCar("koenigsegg-gemera", "Gemera", "Koenigsegg", "GT היברידי", "$1,700,000", 1700, 2024, ferrariImage, false, true),
-  createCar("koenigsegg-cc850", "CC850", "Koenigsegg", "היפרקאר", "$3,650,000", 1385, 2024, ferrariImage, false, true),
-  createCar("koenigsegg-one1", "One:1", "Koenigsegg", "מכונית מסלול", "$2,850,000", 1360, 2023, ferrariImage),
-
-  // Lexus Models (12 models)
-  createCar("lexus-lc500", "LC 500", "Lexus", "GT יוקרה", "$95,000", 471, 2024, bmwImage),
-  createCar("lexus-is500", "IS 500", "Lexus", "סדאן ספורט", "$58,000", 472, 2024, bmwImage),
-  createCar("lexus-ls500", "LS 500", "Lexus", "סדאן יוקרה עילית", "$78,000", 416, 2024, bmwImage),
-  createCar("lexus-es350", "ES 350", "Lexus", "סדאן יוקרה", "$42,000", 302, 2024, bmwImage),
-  createCar("lexus-rx350", "RX 350", "Lexus", "SUV יוקרה", "$48,000", 295, 2024, bmwImage),
-  createCar("lexus-gx460", "GX 460", "Lexus", "SUV שטח", "$58,000", 301, 2024, bmwImage),
-  createCar("lexus-lx600", "LX 600", "Lexus", "SUV יוקרה גדול", "$91,000", 409, 2024, bmwImage),
-  createCar("lexus-nx350", "NX 350", "Lexus", "SUV קומפקטי", "$40,000", 275, 2024, bmwImage),
-  createCar("lexus-ux250h", "UX 250h", "Lexus", "SUV היברידי", "$36,000", 181, 2024, bmwImage),
-  createCar("lexus-rc-f", "RC F", "Lexus", "קופה ספורט", "$68,000", 472, 2024, bmwImage),
-  createCar("lexus-gs-f", "GS F", "Lexus", "סדאן ספורט", "$86,000", 467, 2023, bmwImage),
-  createCar("lexus-lfa", "LFA", "Lexus", "סופרקאר", "$375,000", 553, 2023, bmwImage),
-
-  // Infiniti Models (8 models)
-  createCar("infiniti-q50", "Q50", "Infiniti", "סדאן יוקרה", "$38,000", 300, 2024, bmwImage),
-  createCar("infiniti-q60", "Q60", "Infiniti", "קופה יוקרה", "$42,000", 300, 2024, bmwImage),
-  createCar("infiniti-qx50", "QX50", "Infiniti", "SUV יוקרה", "$38,000", 268, 2024, bmwImage),
-  createCar("infiniti-qx60", "QX60", "Infiniti", "SUV יוקרה", "$46,000", 295, 2024, bmwImage),
-  createCar("infiniti-qx80", "QX80", "Infiniti", "SUV יוקרה גדול", "$72,000", 400, 2024, bmwImage),
-  createCar("infiniti-q70", "Q70", "Infiniti", "סדאן יוקרה", "$52,000", 330, 2023, bmwImage),
-  createCar("infiniti-fx50", "FX50", "Infiniti", "SUV ספורט", "$58,000", 390, 2023, bmwImage),
-  createCar("infiniti-g37", "G37", "Infiniti", "קופה ספורט", "$42,000", 328, 2023, bmwImage),
-
-  // Acura Models (10 models)
-  createCar("acura-nsx", "NSX", "Acura", "סופרקאר היברידי", "$159,000", 573, 2024, bmwImage),
-  createCar("acura-tlx", "TLX", "Acura", "סדאן יוקרה", "$39,000", 272, 2024, bmwImage),
-  createCar("acura-rdx", "RDX", "Acura", "SUV יוקרה", "$41,000", 272, 2024, bmwImage),
-  createCar("acura-mdx", "MDX", "Acura", "SUV יוקרה", "$49,000", 290, 2024, bmwImage),
-  createCar("acura-ilx", "ILX", "Acura", "סדאן קומפקטי", "$27,000", 201, 2024, bmwImage),
-  createCar("acura-integra", "Integra", "Acura", "האצ׳בק יוקרה", "$32,000", 200, 2024, bmwImage, false, true),
-  createCar("acura-type-s", "TLX Type S", "Acura", "סדאן ספורט", "$53,000", 355, 2024, bmwImage),
-  createCar("acura-zdx", "ZDX", "Acura", "SUV קופה", "$47,000", 300, 2023, bmwImage),
-  createCar("acura-rl", "RL", "Acura", "סדאן יוקרה", "$52,000", 300, 2023, bmwImage),
-  createCar("acura-tsx", "TSX", "Acura", "סדאן ספורט", "$35,000", 201, 2023, bmwImage),
-
-  // Chevrolet Models (15 models)
-  createCar("chevrolet-corvette", "Corvette", "Chevrolet", "מכונית ספורט", "$65,000", 495, 2024, bmwImage),
-  createCar("chevrolet-camaro", "Camaro", "Chevrolet", "מכונית ספורט", "$32,000", 455, 2024, bmwImage),
-  createCar("chevrolet-silverado", "Silverado", "Chevrolet", "טנדר", "$35,000", 355, 2024, bmwImage),
-  createCar("chevrolet-tahoe", "Tahoe", "Chevrolet", "SUV גדול", "$53,000", 355, 2024, bmwImage),
-  createCar("chevrolet-suburban", "Suburban", "Chevrolet", "SUV גדול", "$58,000", 355, 2024, bmwImage),
-  createCar("chevrolet-equinox", "Equinox", "Chevrolet", "SUV", "$26,000", 170, 2024, bmwImage),
-  createCar("chevrolet-traverse", "Traverse", "Chevrolet", "SUV", "$34,000", 310, 2024, bmwImage),
-  createCar("chevrolet-malibu", "Malibu", "Chevrolet", "סדאן", "$24,000", 160, 2024, bmwImage),
-  createCar("chevrolet-impala", "Impala", "Chevrolet", "סדאן", "$32,000", 305, 2023, bmwImage),
-  createCar("chevrolet-cruze", "Cruze", "Chevrolet", "סדאן קומפקטי", "$19,000", 153, 2023, bmwImage),
-  createCar("chevrolet-spark", "Spark", "Chevrolet", "עירוני קטן", "$15,000", 98, 2024, bmwImage),
-  createCar("chevrolet-trax", "Trax", "Chevrolet", "SUV קטן", "$22,000", 155, 2024, bmwImage),
-  createCar("chevrolet-blazer", "Blazer", "Chevrolet", "SUV", "$34,000", 308, 2024, bmwImage),
-  createCar("chevrolet-colorado", "Colorado", "Chevrolet", "טנדר", "$28,000", 308, 2024, bmwImage),
-  createCar("chevrolet-bolt", "Bolt EV", "Chevrolet", "רכב חשמלי", "$27,000", 200, 2024, bmwImage, true),
-
-  // Cadillac Models (10 models)
-  createCar("cadillac-escalade", "Escalade", "Cadillac", "SUV יוקרה גדול", "$80,000", 420, 2024, mercedesImage),
-  createCar("cadillac-ct5", "CT5", "Cadillac", "סדאן יוקרה", "$38,000", 237, 2024, mercedesImage),
-  createCar("cadillac-ct4", "CT4", "Cadillac", "סדאן יוקרה", "$35,000", 237, 2024, mercedesImage),
-  createCar("cadillac-xt5", "XT5", "Cadillac", "SUV יוקרה", "$45,000", 310, 2024, mercedesImage),
-  createCar("cadillac-xt6", "XT6", "Cadillac", "SUV יוקרה", "$48,000", 310, 2024, mercedesImage),
-  createCar("cadillac-xt4", "XT4", "Cadillac", "SUV קומפקטי", "$37,000", 237, 2024, mercedesImage),
-  createCar("cadillac-blackwing", "CT5-V Blackwing", "Cadillac", "סדאן ספורט", "$85,000", 668, 2024, mercedesImage),
-  createCar("cadillac-ats", "ATS", "Cadillac", "סדאן ספורט", "$38,000", 272, 2023, mercedesImage),
-  createCar("cadillac-cts", "CTS", "Cadillac", "סדאן יוקרה", "$48,000", 335, 2023, mercedesImage),
-  createCar("cadillac-srx", "SRX", "Cadillac", "SUV יוקרה", "$42,000", 308, 2023, mercedesImage),
-
-  // Lincoln Models (8 models)
-  createCar("lincoln-navigator", "Navigator", "Lincoln", "SUV יוקרה גדול", "$81,000", 440, 2024, mercedesImage),
-  createCar("lincoln-aviator", "Aviator", "Lincoln", "SUV יוקרה", "$55,000", 400, 2024, mercedesImage),
-  createCar("lincoln-corsair", "Corsair", "Lincoln", "SUV יוקרה", "$38,000", 250, 2024, mercedesImage),
-  createCar("lincoln-nautilus", "Nautilus", "Lincoln", "SUV יוקרה", "$43,000", 250, 2024, mercedesImage),
-  createCar("lincoln-continental", "Continental", "Lincoln", "סדאן יוקרה", "$47,000", 400, 2023, mercedesImage),
-  createCar("lincoln-mkz", "MKZ", "Lincoln", "סדאן יוקרה", "$37,000", 350, 2023, mercedesImage),
-  createCar("lincoln-mkc", "MKC", "Lincoln", "SUV יוקרה", "$35,000", 285, 2023, mercedesImage),
-  createCar("lincoln-town-car", "Town Car", "Lincoln", "סדאן יוקרה עילית", "$58,000", 302, 2023, mercedesImage),
-
-  // Jeep Models (12 models)
-  createCar("jeep-wrangler", "Wrangler", "Jeep", "SUV שטח", "$35,000", 285, 2024, fordBronco),
-  createCar("jeep-grand-cherokee", "Grand Cherokee", "Jeep", "SUV", "$36,000", 293, 2024, fordBronco),
-  createCar("jeep-cherokee", "Cherokee", "Jeep", "SUV", "$33,000", 271, 2024, fordBronco),
-  createCar("jeep-compass", "Compass", "Jeep", "SUV קומפקטי", "$25,000", 180, 2024, fordBronco),
-  createCar("jeep-renegade", "Renegade", "Jeep", "SUV קטן", "$23,000", 180, 2024, fordBronco),
-  createCar("jeep-gladiator", "Gladiator", "Jeep", "טנדר", "$36,000", 285, 2024, fordBronco),
-  createCar("jeep-grand-wagoneer", "Grand Wagoneer", "Jeep", "SUV יוקרה גדול", "$89,000", 471, 2024, fordBronco),
-  createCar("jeep-wagoneer", "Wagoneer", "Jeep", "SUV יוקרה", "$61,000", 392, 2024, fordBronco),
-  createCar("jeep-trackhawk", "Grand Cherokee Trackhawk", "Jeep", "SUV ספורט", "$90,000", 707, 2024, fordBronco),
-  createCar("jeep-srt", "Grand Cherokee SRT", "Jeep", "SUV ספורט", "$70,000", 475, 2024, fordBronco),
-  createCar("jeep-rubicon", "Wrangler Rubicon", "Jeep", "SUV שטח מקצועי", "$45,000", 285, 2024, fordBronco),
-  createCar("jeep-sahara", "Wrangler Sahara", "Jeep", "SUV שטח", "$40,000", 285, 2024, fordBronco),
-
-  // Dodge Models (10 models)
-  createCar("dodge-challenger", "Challenger", "Dodge", "מכונית ספורט", "$32,000", 305, 2024, fordMustangRed),
-  createCar("dodge-charger", "Charger", "Dodge", "סדאן ספורט", "$34,000", 292, 2024, fordMustangRed),
-  createCar("dodge-hellcat", "Challenger Hellcat", "Dodge", "מכונית ספורט", "$71,000", 717, 2024, fordMustangRed),
-  createCar("dodge-demon", "Challenger Demon", "Dodge", "מכונית ספורט", "$86,000", 808, 2023, fordMustangRed),
-  createCar("dodge-viper", "Viper", "Dodge", "סופרקאר", "$91,000", 645, 2023, fordMustangRed),
-  createCar("dodge-durango", "Durango", "Dodge", "SUV", "$35,000", 293, 2024, fordMustangRed),
-  createCar("dodge-journey", "Journey", "Dodge", "SUV", "$24,000", 173, 2023, fordMustangRed),
-  createCar("dodge-caravan", "Grand Caravan", "Dodge", "מיניוואן", "$30,000", 283, 2024, fordMustangRed),
-  createCar("dodge-ram-1500", "Ram 1500", "Dodge", "טנדר", "$34,000", 305, 2024, fordMustangRed),
-  createCar("dodge-dakota", "Dakota", "Dodge", "טנדר", "$28,000", 210, 2023, fordMustangRed),
-
-  // Chrysler Models (6 models)
-  createCar("chrysler-300", "300", "Chrysler", "סדאן יוקרה", "$33,000", 292, 2024, mercedesImage),
-  createCar("chrysler-pacifica", "Pacifica", "Chrysler", "מיניוואן", "$38,000", 287, 2024, mercedesImage),
-  createCar("chrysler-voyager", "Voyager", "Chrysler", "מיניוואן", "$32,000", 287, 2024, mercedesImage),
-  createCar("chrysler-aspen", "Aspen", "Chrysler", "SUV יוקרה", "$42,000", 335, 2023, mercedesImage),
-  createCar("chrysler-sebring", "Sebring", "Chrysler", "קופה", "$28,000", 200, 2023, mercedesImage),
-  createCar("chrysler-crossfire", "Crossfire", "Chrysler", "קופה ספורט", "$35,000", 215, 2023, mercedesImage),
-
-  // Ram Models (6 models)
-  createCar("ram-1500", "1500", "Ram", "טנדר", "$35,000", 305, 2024, fordF150),
-  createCar("ram-2500", "2500", "Ram", "טנדר כבד", "$39,000", 370, 2024, fordF150),
-  createCar("ram-3500", "3500", "Ram", "טנדר כבד", "$42,000", 370, 2024, fordF150),
-  createCar("ram-promaster", "ProMaster", "Ram", "וואן מסחרי", "$35,000", 280, 2024, fordF150),
-  createCar("ram-trx", "1500 TRX", "Ram", "טנדר ספורט", "$73,000", 702, 2024, fordF150, false, true),
-  createCar("ram-rebel", "1500 Rebel", "Ram", "טנדר שטח", "$45,000", 395, 2024, fordF150),
-
-  // Genesis Models (8 models)
-  createCar("genesis-g90", "G90", "Genesis", "סדאן יוקרה עילית", "$75,000", 375, 2024, mercedesImage),
-  createCar("genesis-g80", "G80", "Genesis", "סדאן יוקרה", "$49,000", 300, 2024, mercedesImage),
-  createCar("genesis-g70", "G70", "Genesis", "סדאן ספורט", "$37,000", 252, 2024, mercedesImage),
-  createCar("genesis-gv80", "GV80", "Genesis", "SUV יוקרה", "$56,000", 300, 2024, mercedesImage),
-  createCar("genesis-gv70", "GV70", "Genesis", "SUV יוקרה", "$42,000", 300, 2024, mercedesImage),
-  createCar("genesis-electrified-g80", "Electrified G80", "Genesis", "סדאן חשמלי", "$58,000", 365, 2024, mercedesImage, true),
-  createCar("genesis-electrified-gv70", "Electrified GV70", "Genesis", "SUV חשמלי", "$60,000", 429, 2024, mercedesImage, true),
-  createCar("genesis-x", "Genesis X", "Genesis", "קופה קונספט", "$85,000", 400, 2024, mercedesImage, false, true),
-
-  // Volvo Models (10 models)
-  createCar("volvo-xc90", "XC90", "Volvo", "SUV יוקרה", "$56,000", 316, 2024, subaruOutback),
-  createCar("volvo-xc60", "XC60", "Volvo", "SUV יוקרה", "$43,000", 250, 2024, subaruOutback),
-  createCar("volvo-xc40", "XC40", "Volvo", "SUV קומפקטי", "$36,000", 187, 2024, subaruOutback),
-  createCar("volvo-s90", "S90", "Volvo", "סדאן יוקרה", "$55,000", 316, 2024, subaruOutback),
-  createCar("volvo-s60", "S60", "Volvo", "סדאן יוקרה", "$40,000", 250, 2024, subaruOutback),
-  createCar("volvo-v90", "V90", "Volvo", "סטיישן וואגון", "$53,000", 316, 2024, subaruOutback),
-  createCar("volvo-v60", "V60", "Volvo", "סטיישן וואגון", "$42,000", 250, 2024, subaruOutback),
-  createCar("volvo-c40", "C40", "Volvo", "SUV חשמלי", "$55,000", 402, 2024, subaruOutback, true),
-  createCar("volvo-ex90", "EX90", "Volvo", "SUV חשמלי", "$79,000", 408, 2024, subaruOutback, true, true),
-  createCar("volvo-polestar-1", "Polestar 1", "Volvo", "GT היברידי", "$155,000", 619, 2024, subaruOutback),
-
-  // Land Rover Models (10 models)
-  createCar("land-rover-range-rover", "Range Rover", "Land Rover", "SUV יוקרה עילית", "$104,000", 518, 2024, toyotaLandCruiser),
-  createCar("land-rover-range-rover-sport", "Range Rover Sport", "Land Rover", "SUV ספורט", "$83,000", 518, 2024, toyotaLandCruiser),
-  createCar("land-rover-range-rover-evoque", "Range Rover Evoque", "Land Rover", "SUV קומפקטי", "$44,000", 246, 2024, toyotaLandCruiser),
-  createCar("land-rover-range-rover-velar", "Range Rover Velar", "Land Rover", "SUV יוקרה", "$58,000", 340, 2024, toyotaLandCruiser),
-  createCar("land-rover-discovery", "Discovery", "Land Rover", "SUV", "$56,000", 340, 2024, toyotaLandCruiser),
-  createCar("land-rover-discovery-sport", "Discovery Sport", "Land Rover", "SUV", "$42,000", 246, 2024, toyotaLandCruiser),
-  createCar("land-rover-defender", "Defender", "Land Rover", "SUV שטח", "$50,000", 296, 2024, toyotaLandCruiser),
-  createCar("land-rover-freelander", "Freelander", "Land Rover", "SUV קומפקטי", "$38,000", 240, 2023, toyotaLandCruiser),
-  createCar("land-rover-lr4", "LR4", "Land Rover", "SUV", "$52,000", 340, 2023, toyotaLandCruiser),
-  createCar("land-rover-svr", "Range Rover Sport SVR", "Land Rover", "SUV ספורט", "$115,000", 575, 2024, toyotaLandCruiser),
-
-  // Jaguar Models (10 models)
-  createCar("jaguar-f-type", "F-TYPE", "Jaguar", "קופה ספורט", "$63,000", 380, 2024, bmwImage),
-  createCar("jaguar-xe", "XE", "Jaguar", "סדאן יוקרה", "$40,000", 247, 2024, bmwImage),
-  createCar("jaguar-xf", "XF", "Jaguar", "סדאן יוקרה", "$48,000", 340, 2024, bmwImage),
-  createCar("jaguar-xj", "XJ", "Jaguar", "סדאן יוקרה עילית", "$76,000", 470, 2023, bmwImage),
-  createCar("jaguar-f-pace", "F-PACE", "Jaguar", "SUV ספורט", "$51,000", 340, 2024, bmwImage),
-  createCar("jaguar-e-pace", "E-PACE", "Jaguar", "SUV קומפקטי", "$35,000", 246, 2024, bmwImage),
-  createCar("jaguar-i-pace", "I-PACE", "Jaguar", "SUV חשמלי", "$72,000", 394, 2024, bmwImage, true),
-  createCar("jaguar-xk", "XK", "Jaguar", "GT ספורט", "$92,000", 510, 2023, bmwImage),
-  createCar("jaguar-xkr", "XKR", "Jaguar", "GT ספורט", "$102,000", 550, 2023, bmwImage),
-  createCar("jaguar-project-8", "XE SV Project 8", "Jaguar", "סדאן מסלול", "$188,000", 592, 2023, bmwImage),
-
-  // Bentley Models (8 models)
-  createCar("bentley-continental-gt", "Continental GT", "Bentley", "GT יוקרה עילית", "$231,000", 626, 2024, mercedesImage),
-  createCar("bentley-continental-gtc", "Continental GTC", "Bentley", "קברולייט יוקרה", "$254,000", 626, 2024, mercedesImage),
-  createCar("bentley-flying-spur", "Flying Spur", "Bentley", "סדאן יוקרה עילית", "$215,000", 626, 2024, mercedesImage),
-  createCar("bentley-bentayga", "Bentayga", "Bentley", "SUV יוקרה עילית", "$183,000", 542, 2024, mercedesImage),
-  createCar("bentley-mulsanne", "Mulsanne", "Bentley", "סדאן יוקרה עילית", "$310,000", 505, 2023, mercedesImage),
-  createCar("bentley-azure", "Azure", "Bentley", "קברולייט יוקרה", "$385,000", 450, 2023, mercedesImage),
-  createCar("bentley-arnage", "Arnage", "Bentley", "סדאן יוקרה עילית", "$245,000", 450, 2023, mercedesImage),
-  createCar("bentley-brooklands", "Brooklands", "Bentley", "קופה יוקרה", "$340,000", 530, 2023, mercedesImage),
-
-  // Rolls-Royce Models (8 models)
-  createCar("rolls-royce-phantom", "Phantom", "Rolls-Royce", "סדאן יוקרה עילית", "$460,000", 563, 2024, mercedesImage),
-  createCar("rolls-royce-ghost", "Ghost", "Rolls-Royce", "סדאן יוקרה עילית", "$350,000", 563, 2024, mercedesImage),
-  createCar("rolls-royce-wraith", "Wraith", "Rolls-Royce", "קופה יוקרה עילית", "$330,000", 624, 2024, mercedesImage),
-  createCar("rolls-royce-dawn", "Dawn", "Rolls-Royce", "קברולייט יוקרה עילית", "$356,000", 563, 2024, mercedesImage),
-  createCar("rolls-royce-cullinan", "Cullinan", "Rolls-Royce", "SUV יוקרה עילית", "$348,000", 563, 2024, mercedesImage),
-  createCar("rolls-royce-spectre", "Spectre", "Rolls-Royce", "קופה חשמלית", "$422,000", 577, 2024, mercedesImage, true, true),
-  createCar("rolls-royce-silver-spirit", "Silver Spirit", "Rolls-Royce", "סדאן יוקרה עילית", "$385,000", 295, 2023, mercedesImage),
-  createCar("rolls-royce-corniche", "Corniche", "Rolls-Royce", "קברולייט יוקרה", "$420,000", 325, 2023, mercedesImage),
-
-  // Aston Martin Models (10 models)
-  createCar("aston-martin-db11", "DB11", "Aston Martin", "GT יוקרה", "$211,000", 630, 2024, bmwImage),
-  createCar("aston-martin-vantage", "Vantage", "Aston Martin", "מכונית ספורט", "$142,000", 503, 2024, bmwImage),
-  createCar("aston-martin-dbs", "DBS Superleggera", "Aston Martin", "GT ספורט", "$316,000", 715, 2024, bmwImage),
-  createCar("aston-martin-dbx", "DBX", "Aston Martin", "SUV יוקרה", "$189,000", 542, 2024, bmwImage),
-  createCar("aston-martin-valkyrie", "Valkyrie", "Aston Martin", "היפרקאר", "$3,200,000", 1160, 2024, bmwImage),
-  createCar("aston-martin-vanquish", "Vanquish", "Aston Martin", "GT ספורט", "$284,000", 568, 2023, bmwImage),
-  createCar("aston-martin-rapide", "Rapide", "Aston Martin", "סדאן ספורט", "$208,000", 552, 2023, bmwImage),
-  createCar("aston-martin-virage", "Virage", "Aston Martin", "GT ספורט", "$227,000", 490, 2023, bmwImage),
-  createCar("aston-martin-one-77", "One-77", "Aston Martin", "מהדורה מוגבלת", "$1,850,000", 750, 2023, bmwImage),
-  createCar("aston-martin-vulcan", "Vulcan", "Aston Martin", "מכונית מסלול", "$2,300,000", 820, 2023, bmwImage),
-
-  // MINI Models (8 models)
-  createCar("mini-cooper", "Cooper", "MINI", "האצ׳בק", "$25,000", 134, 2024, volkswagenGolf),
-  createCar("mini-cooper-s", "Cooper S", "MINI", "האצ׳בק ספורט", "$29,000", 189, 2024, volkswagenGolf),
-  createCar("mini-countryman", "Countryman", "MINI", "SUV קטן", "$29,000", 189, 2024, volkswagenGolf),
-  createCar("mini-clubman", "Clubman", "MINI", "סטיישן וואגון", "$27,000", 189, 2024, volkswagenGolf),
-  createCar("mini-convertible", "Convertible", "MINI", "קברולייט", "$32,000", 189, 2024, volkswagenGolf),
-  createCar("mini-jcw", "John Cooper Works", "MINI", "האצ׳בק ספורט", "$34,000", 228, 2024, volkswagenGolf),
-  createCar("mini-electric", "Cooper SE", "MINI", "האצ׳בק חשמלי", "$30,000", 181, 2024, volkswagenGolf, true),
-  createCar("mini-paceman", "Paceman", "MINI", "קופה SUV", "$28,000", 181, 2023, volkswagenGolf),
-
-  // Lotus Models (6 models)
-  createCar("lotus-evija", "Evija", "Lotus", "היפרקאר חשמלי", "$2,300,000", 2011, 2024, mclarenImage, true, true),
-  createCar("lotus-emira", "Emira", "Lotus", "מכונית ספורט", "$75,000", 400, 2024, mclarenImage, false, true),
-  createCar("lotus-evora", "Evora", "Lotus", "מכונית ספורט", "$96,000", 416, 2023, mclarenImage),
-  createCar("lotus-elise", "Elise", "Lotus", "רודסטר ספורט", "$68,000", 220, 2023, mclarenImage),
-  createCar("lotus-exige", "Exige", "Lotus", "מכונית ספורט", "$84,000", 350, 2023, mclarenImage),
-  createCar("lotus-esprit", "Esprit", "Lotus", "מכונית ספורט קלאסית", "$125,000", 350, 2023, mclarenImage),
-
-  // Mitsubishi Models (8 models)
-  createCar("mitsubishi-outlander", "Outlander", "Mitsubishi", "SUV", "$27,000", 181, 2024, subaruOutback),
-  createCar("mitsubishi-eclipse-cross", "Eclipse Cross", "Mitsubishi", "SUV קומפקטי", "$25,000", 152, 2024, subaruOutback),
-  createCar("mitsubishi-mirage", "Mirage", "Mitsubishi", "האצ׳בק קטן", "$16,000", 78, 2024, subaruOutback),
-  createCar("mitsubishi-lancer", "Lancer", "Mitsubishi", "סדאן", "$19,000", 148, 2023, subaruOutback),
-  createCar("mitsubishi-evo", "Lancer Evolution", "Mitsubishi", "סדאן ספורט", "$45,000", 291, 2023, subaruOutback),
-  createCar("mitsubishi-pajero", "Pajero", "Mitsubishi", "SUV שטח", "$42,000", 215, 2024, subaruOutback),
-  createCar("mitsubishi-l200", "L200", "Mitsubishi", "טנדר", "$28,000", 181, 2024, subaruOutback),
-  createCar("mitsubishi-asx", "ASX", "Mitsubishi", "SUV קטן", "$22,000", 150, 2024, subaruOutback),
-
-  // Suzuki Models (8 models)
-  createCar("suzuki-swift", "Swift", "Suzuki", "האצ׳בק קטן", "$16,000", 90, 2024, toyotaYaris),
-  createCar("suzuki-vitara", "Vitara", "Suzuki", "SUV קטן", "$21,000", 111, 2024, toyotaYaris),
-  createCar("suzuki-s-cross", "S-Cross", "Suzuki", "SUV", "$24,000", 129, 2024, toyotaYaris),
-  createCar("suzuki-jimny", "Jimny", "Suzuki", "SUV שטח קטן", "$18,000", 101, 2024, toyotaYaris),
-  createCar("suzuki-baleno", "Baleno", "Suzuki", "האצ׳בק", "$17,000", 90, 2024, toyotaYaris),
-  createCar("suzuki-celerio", "Celerio", "Suzuki", "עירוני קטן", "$12,000", 68, 2024, toyotaYaris),
-  createCar("suzuki-sx4", "SX4", "Suzuki", "קרוסאובר", "$19,000", 107, 2023, toyotaYaris),
-  createCar("suzuki-alto", "Alto", "Suzuki", "עירוני קטן", "$10,000", 68, 2024, toyotaYaris),
-
-  // Isuzu Models (6 models)
-  createCar("isuzu-d-max", "D-Max", "Isuzu", "טנדר", "$32,000", 190, 2024, fordRanger),
-  createCar("isuzu-mu-x", "MU-X", "Isuzu", "SUV", "$38,000", 190, 2024, fordRanger),
-  createCar("isuzu-trooper", "Trooper", "Isuzu", "SUV שטח", "$35,000", 215, 2023, fordRanger),
-  createCar("isuzu-rodeo", "Rodeo", "Isuzu", "טנדר", "$28,000", 175, 2023, fordRanger),
-  createCar("isuzu-ascender", "Ascender", "Isuzu", "SUV", "$42,000", 300, 2023, fordRanger),
-  createCar("isuzu-axiom", "Axiom", "Isuzu", "SUV", "$30,000", 230, 2023, fordRanger),
-
-  // Saab Models (6 models)
-  createCar("saab-9-3", "9-3", "Saab", "סדאן", "$35,000", 210, 2023, volkswagenGolf),
-  createCar("saab-9-5", "9-5", "Saab", "סדאן יוקרה", "$42,000", 300, 2023, volkswagenGolf),
-  createCar("saab-9-7x", "9-7X", "Saab", "SUV", "$38,000", 302, 2023, volkswagenGolf),
-  createCar("saab-900", "900", "Saab", "האצ׳בק", "$28,000", 185, 2023, volkswagenGolf),
-  createCar("saab-9000", "9000", "Saab", "סדאן", "$32,000", 200, 2023, volkswagenGolf),
-  createCar("saab-sonett", "Sonett", "Saab", "קופה ספורט", "$45,000", 125, 2023, volkswagenGolf),
+  // Nissan Models (8 models)
+  createCar("nissan-altima", "Altima", "Nissan", "סדאן", "$25,000", 188, 2024, nissanAltima),
+  createCar("nissan-sentra", "Sentra", "Nissan", "סדאן", "$20,000", 149, 2024, nissanSentra),
+  createCar("nissan-rogue", "Rogue", "Nissan", "SUV", "$28,000", 181, 2024, nissanRogue),
+  createCar("nissan-murano", "Murano", "Nissan", "SUV", "$33,000", 260, 2024, nissanMurano),
+  createCar("nissan-pathfinder", "Pathfinder", "Nissan", "SUV", "$36,000", 284, 2024, nissanPathfinder),
+  createCar("nissan-armada", "Armada", "Nissan", "SUV גדול", "$50,000", 400, 2024, nissanArmada),
+  createCar("nissan-frontier", "Frontier", "Nissan", "טנדר", "$32,000", 310, 2024, nissanFrontier),
+  createCar("nissan-gtr", "GT-R", "Nissan", "סופרקאר", "$115,000", 565, 2024, nissanGtrSilver)
 ];
 
 export { expandedBrands } from "./expandedCarsDatabase";
