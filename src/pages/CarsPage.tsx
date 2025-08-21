@@ -1,5 +1,5 @@
 import { Search, Filter, Grid, List } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,15 @@ const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [filters, setFilters] = useState<any>({});
+  
+  // Get search term from URL parameters
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+    if (searchParam) {
+      setSearchTerm(searchParam);
+    }
+  }, []);
 
   const filteredBrands = expandedBrands.filter(brand => {
     const matchesSearch = brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -132,22 +141,26 @@ const CarsPage = () => {
                       {brand.description}
                     </p>
 
-                    <div className="flex items-center justify-between border-t border-border pt-4">
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          🚗 <span className="font-medium">דגמים רבים</span>
-                        </span>
-                        <span className="flex items-center gap-1">
-                          ⚡ <span className="font-medium">חדשנות</span>
-                        </span>
-                      </div>
-                      <Button 
-                        variant="ghost" 
-                        className="text-racing-red hover:bg-racing-red hover:text-white transform group-hover:scale-105 transition-smooth"
-                      >
-                        עיין בדגמים →
-                      </Button>
-                    </div>
+            <div className="flex items-center justify-between border-t border-border pt-4">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  🚗 <span className="font-medium">דגמים רבים</span>
+                </span>
+                <span className="flex items-center gap-1">
+                  ⚡ <span className="font-medium">חדשנות</span>
+                </span>
+              </div>
+              <Button 
+                variant="ghost" 
+                className="text-racing-red hover:bg-racing-red hover:text-white transform group-hover:scale-105 transition-smooth"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.location.href = `/brand/${brand.id}`;
+                }}
+              >
+                עיין בדגמים →
+              </Button>
+            </div>
                   </div>
                   
                   {/* Decorative elements */}

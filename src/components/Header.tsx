@@ -1,14 +1,16 @@
 import { Search, Menu, Car, Heart, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import MegaMenu from "./MegaMenu";
+import SmartSearch from "./SmartSearch";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const { favorites } = useFavorites();
+  const navigate = useNavigate();
 
   return (
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b border-border z-50">
@@ -46,18 +48,12 @@ const Header = () => {
 
         {/* Search Bar & Favorites */}
         <div className="hidden md:flex items-center space-x-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="חפש רכבים..."
-              className="pl-10 w-64"
-            />
-          </div>
+          <SmartSearch className="w-80" />
           <a href="/favorites" className="relative">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="hover:bg-racing-red/10 hover:text-racing-red transition-smooth">
               <Heart className="h-5 w-5" />
               {favorites.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-racing-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-racing-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
                   {favorites.length}
                 </span>
               )}
@@ -80,13 +76,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-card border-t border-border">
           <div className="px-4 py-4 space-y-4">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="חפש רכבים..."
-                className="pl-10 w-full"
-              />
-            </div>
+            <SmartSearch />
             <div className="space-y-2">
               <a href="/" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
                 בית

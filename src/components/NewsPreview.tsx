@@ -2,11 +2,13 @@ import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 import teslaBatteryImage from "@/assets/news-tesla-battery.jpg";
 import ferrariLemansImage from "@/assets/news-ferrari-lemans.jpg";
 import porscheHybridImage from "@/assets/news-porsche-hybrid.jpg";
 
 const NewsPreview = () => {
+  const navigate = useNavigate();
   const news = [
     {
       id: 1,
@@ -50,8 +52,11 @@ const NewsPreview = () => {
               Stay updated with the latest automotive news, reviews, and industry insights
             </p>
           </div>
-          <Button className="btn-hero mt-6 md:mt-0">
-            All Articles
+          <Button 
+            className="btn-hero mt-6 md:mt-0"
+            onClick={() => navigate('/news')}
+          >
+            כל הכתבות
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
@@ -59,15 +64,26 @@ const NewsPreview = () => {
         {/* News Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {news.map((article) => (
-            <Card key={article.id} className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth group cursor-pointer">
+            <Card 
+              key={article.id} 
+              className="overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth group cursor-pointer"
+              onClick={() => navigate(`/news/${article.id}`)}
+            >
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src={article.image} 
                   alt={article.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center">
-                  <Button variant="ghost" className="text-white border-white hover:bg-white hover:text-black">
+                  <Button 
+                    variant="ghost" 
+                    className="text-white border-white hover:bg-white hover:text-black"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/news/${article.id}`);
+                    }}
+                  >
                     קרא עוד
                   </Button>
                 </div>
@@ -75,7 +91,10 @@ const NewsPreview = () => {
 
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <Badge variant="secondary" className="text-xs">
+                  <Badge 
+                    variant="secondary" 
+                    className="text-xs hover:bg-racing-red hover:text-white cursor-pointer transition-smooth"
+                  >
                     {article.category}
                   </Badge>
                   <div className="flex items-center text-xs text-muted-foreground">
@@ -95,9 +114,9 @@ const NewsPreview = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4 mr-2" />
-                    {new Date(article.date).toLocaleDateString()}
+                    {new Date(article.date).toLocaleDateString('he-IL')}
                   </div>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-racing-red transition-smooth" />
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-racing-red group-hover:translate-x-1 transition-all" />
                 </div>
               </div>
             </Card>

@@ -126,21 +126,27 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
           <Button
             size="icon"
             variant="ghost"
-            className={`absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white ${
-              isCarFavorite ? 'text-racing-red' : ''
+            className={`absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white transition-all ${
+              isCarFavorite ? 'text-racing-red scale-110' : ''
             }`}
-            onClick={handleFavoriteClick}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleFavoriteClick();
+            }}
           >
-            <Heart className={`h-4 w-4 ${isCarFavorite ? 'fill-racing-red' : ''}`} />
+            <Heart className={`h-4 w-4 transition-all ${isCarFavorite ? 'fill-racing-red animate-pulse' : ''}`} />
           </Button>
 
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center">
             <Button 
               className="btn-hero"
-              onClick={() => window.location.href = `/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.id}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                window.location.href = `/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.id}`;
+              }}
             >
-              View Details
+              צפה בפרטים
             </Button>
           </div>
         </div>
@@ -162,11 +168,11 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
           {/* Specs */}
           <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
             <div>
-              <p className="text-muted-foreground">Power</p>
-              <p className="font-semibold">{car.horsepower} HP</p>
+              <p className="text-muted-foreground">כוח</p>
+              <p className="font-semibold">{car.horsepower} כ״ס</p>
             </div>
             <div>
-              <p className="text-muted-foreground">Top Speed</p>
+              <p className="text-muted-foreground">מהירות מרבית</p>
               <p className="font-semibold">{car.topSpeed}</p>
             </div>
           </div>
@@ -174,15 +180,19 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
           {/* Price */}
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Starting at</p>
+              <p className="text-sm text-muted-foreground">מחיר התחלתי</p>
               <p className="text-xl font-bold text-racing-red">{car.price}</p>
             </div>
             <Button 
               variant="outline" 
               size="sm"
-              onClick={() => setShowComparison(true)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowComparison(true);
+              }}
+              className="hover:bg-racing-red hover:text-white transition-smooth"
             >
-              Compare
+              השווה
             </Button>
           </div>
         </div>
