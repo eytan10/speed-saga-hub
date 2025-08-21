@@ -12,14 +12,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 rtl:space-x-reverse">
               <Car className="h-8 w-8 text-racing-red" />
               <span className="text-2xl font-bold">AutoHub</span>
             </div>
             <p className="text-primary-foreground/80">
-              Your ultimate destination for everything automotive. Discover, explore, and connect with the world's most extraordinary vehicles.
+              האב הרכב שלך - גלה, חקור והתחבר לעולם הרכב המרהיב ביותר. כל מה שאתה צריך לדעת על רכבים במקום אחד.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 rtl:space-x-reverse">
               <Button size="icon" variant="ghost" className="text-primary-foreground hover:text-racing-red">
                 <Facebook className="h-5 w-5" />
               </Button>
@@ -37,41 +37,41 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold">קישורים מהירים</h3>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li><button onClick={() => navigate('/reviews')} className="hover:text-racing-red transition-smooth text-left">Car Reviews</button></li>
-              <li><button onClick={() => navigate('/news')} className="hover:text-racing-red transition-smooth text-left">Latest News</button></li>
-              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Buying Guides</button></li>
-              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-left">Car Comparisons</button></li>
-              <li><button onClick={() => navigate('/community')} className="hover:text-racing-red transition-smooth text-left">Community</button></li>
+              <li><button onClick={() => navigate('/reviews')} className="hover:text-racing-red transition-smooth text-right">ביקורות רכב</button></li>
+              <li><button onClick={() => navigate('/news')} className="hover:text-racing-red transition-smooth text-right">חדשות עדכניות</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-right">מדריכי קנייה</button></li>
+              <li><button onClick={() => navigate('/cars')} className="hover:text-racing-red transition-smooth text-right">השוואות רכבים</button></li>
+              <li><button onClick={() => navigate('/community')} className="hover:text-racing-red transition-smooth text-right">קהילה</button></li>
             </ul>
           </div>
 
           {/* Categories */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Categories</h3>
+            <h3 className="text-lg font-semibold">קטגוריות</h3>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li><button onClick={() => navigate('/category/sports-cars')} className="hover:text-racing-red transition-smooth text-left">Sports Cars</button></li>
-              <li><button onClick={() => navigate('/category/electric-vehicles')} className="hover:text-racing-red transition-smooth text-left">Electric Vehicles</button></li>
-              <li><button onClick={() => navigate('/category/luxury-sedans')} className="hover:text-racing-red transition-smooth text-left">Luxury Sedans</button></li>
-              <li><button onClick={() => navigate('/category/suvs')} className="hover:text-racing-red transition-smooth text-left">SUVs</button></li>
-              <li><button onClick={() => navigate('/category/classic-cars')} className="hover:text-racing-red transition-smooth text-left">Classic Cars</button></li>
+              <li><button onClick={() => navigate('/category/sports-cars')} className="hover:text-racing-red transition-smooth text-right">מכוניות ספורט</button></li>
+              <li><button onClick={() => navigate('/category/electric-vehicles')} className="hover:text-racing-red transition-smooth text-right">רכבים חשמליים</button></li>
+              <li><button onClick={() => navigate('/category/luxury-sedans')} className="hover:text-racing-red transition-smooth text-right">סדאנים יוקרתיים</button></li>
+              <li><button onClick={() => navigate('/category/suvs')} className="hover:text-racing-red transition-smooth text-right">רכבי שטח</button></li>
+              <li><button onClick={() => navigate('/category/classic-cars')} className="hover:text-racing-red transition-smooth text-right">רכבים קלאסיים</button></li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Stay Updated</h3>
+            <h3 className="text-lg font-semibold">הישאר מעודכן</h3>
             <p className="text-primary-foreground/80">
-              Subscribe to our newsletter for the latest automotive news and reviews.
+              הירשם לניוזלטר שלנו וקבל את החדשות והביקורות האחרונות מעולם הרכב.
             </p>
             <div className="space-y-2">
               <Input
-                placeholder="Enter your email"
-                className="bg-primary-foreground text-primary"
+                placeholder="כתובת המייל שלך"
+                className="bg-primary-foreground text-primary text-right"
               />
               <Button className="w-full btn-racing">
-                Subscribe
+                הירשם
               </Button>
             </div>
           </div>
@@ -80,22 +80,22 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 text-primary-foreground/80">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 rtl:sm:space-x-reverse text-primary-foreground/80">
               <div className="flex items-center">
-                <Mail className="h-4 w-4 mr-2" />
-                <span>contact@autohub.com</span>
+                <Mail className="h-4 w-4 ml-2" />
+                <span>contact@autohub.co.il</span>
               </div>
               <div className="flex items-center">
-                <Phone className="h-4 w-4 mr-2" />
-                <span>+1 (555) 123-4567</span>
+                <Phone className="h-4 w-4 ml-2" />
+                <span>03-555-0123</span>
               </div>
               <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-2" />
-                <span>Los Angeles, CA</span>
+                <MapPin className="h-4 w-4 ml-2" />
+                <span>תל אביב, ישראל</span>
               </div>
             </div>
             <div className="mt-4 md:mt-0 text-primary-foreground/80">
-              <p>&copy; 2024 AutoHub. All rights reserved.</p>
+              <p>&copy; 2024 AutoHub. כל הזכויות שמורות.</p>
             </div>
           </div>
         </div>

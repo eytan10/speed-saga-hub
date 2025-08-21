@@ -434,24 +434,6 @@ export const expandedBrands = [
     headquarters: "טוקיו, יפן"
   },
   {
-    id: "mitsubishi",
-    name: "Mitsubishi",
-    logo: "🔺",
-    description: "יצרנית רכב יפנית היסטורית",
-    founded: 1970,
-    country: "יפן",
-    headquarters: "טוקיו, יפן"
-  },
-  {
-    id: "suzuki",
-    name: "Suzuki",
-    logo: "🅂",
-    description: "יצרנית רכב ואופנועים יפנית",
-    founded: 1909,
-    country: "יפן",
-    headquarters: "המאמאצו, יפן"
-  },
-  {
     id: "daihatsu",
     name: "Daihatsu",
     logo: "🔸",
