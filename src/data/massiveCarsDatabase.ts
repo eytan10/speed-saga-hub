@@ -204,7 +204,7 @@ const createCar = (
   ]
 });
 
-// Massive car database with 400+ vehicles
+// Massive car database with 400+ vehicles - Updated with Israeli prices
 export const massiveCarsDatabase: ExtendedCarDetails[] = [
   // Ferrari Models (15 models)
   createCar("ferrari-488-gtb", "488 GTB", "Ferrari", "מכונית ספורט", "₪1,280,000", 661, 2024, ferrari488Gtb),
