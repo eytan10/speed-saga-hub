@@ -22,14 +22,14 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          <a href="/" className="text-foreground hover:text-racing-red transition-smooth">
+        <div className="hidden md:flex items-center gap-8">
+          <a href="/" className="text-foreground hover:text-racing-red transition-smooth px-2">
             בית
           </a>
           <div className="relative group">
             <button 
               onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
-              className="flex items-center gap-1 text-foreground hover:text-racing-red transition-smooth"
+              className="flex items-center gap-1 text-foreground hover:text-racing-red transition-smooth px-2"
             >
               רכבים
               <ChevronDown className="h-4 w-4" />
