@@ -714,7 +714,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "הנעה אחורית",
       seating: 2,
       cargo: "230 ליטר",
-      price: "$280,000"
+      price: "₪1,036,000"
     },
     features: [
       "בקרת משיכה מתקדמת",
@@ -771,7 +771,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     year: 2024,
     type: "רכב חשמלי",
     image: teslaImage,
-    price: "$135,000",
+    price: "₪499,500",
     rating: 4.6,
     isElectric: true,
     isNew: true,
@@ -788,7 +788,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "4X4",
       seating: 5,
       cargo: "793 ליטר",
-      price: "$135,000"
+      price: "₪499,500"
     },
     features: [
       "אוטופיילוט לנהיגה עצמית מלאה",
