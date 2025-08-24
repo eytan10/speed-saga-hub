@@ -129,7 +129,17 @@ const Categories = () => {
               className="p-4 hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group bg-card text-center"
               onClick={() => handleBrandClick(brand.id)}
             >
-              <div className="text-3xl mb-2">{brand.logo}</div>
+              <div className="mb-2">
+                {typeof brand.logo === 'string' ? (
+                  <div className="text-3xl">{brand.logo}</div>
+                ) : (
+                  <img 
+                    src={brand.logo} 
+                    alt={`${brand.name} logo`} 
+                    className="h-8 w-8 object-contain mx-auto"
+                  />
+                )}
+              </div>
               <h4 className="font-bold text-sm group-hover:text-electric-blue transition-smooth">
                 {brand.name}
               </h4>

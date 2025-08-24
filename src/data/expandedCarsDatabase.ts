@@ -7,6 +7,19 @@ import audiImage from "@/assets/audi-rs6.jpg";
 import mclarenImage from "@/assets/mclaren-720s.jpg";
 import lamborghiniImage from "@/assets/lamborghini-huracan.jpg";
 
+// Brand logos imports
+import ferrariLogo from "@/assets/logos/ferrari-logo.png";
+import teslaLogo from "@/assets/logos/tesla-logo.png";
+import bmwLogo from "@/assets/logos/bmw-logo.png";
+import mercedesLogo from "@/assets/logos/mercedes-logo.png";
+import audiLogo from "@/assets/logos/audi-logo.png";
+import porscheLogo from "@/assets/logos/porsche-logo.png";
+import toyotaLogo from "@/assets/logos/toyota-logo.png";
+import hondaLogo from "@/assets/logos/honda-logo.png";
+import lamborghiniLogo from "@/assets/logos/lamborghini-logo.png";
+import fordLogo from "@/assets/logos/ford-logo.png";
+import nissanLogo from "@/assets/logos/nissan-logo.png";
+
 export interface ExtendedCarSpecs {
   engine: string;
   transmission: string;
@@ -58,7 +71,7 @@ export const expandedBrands = [
   {
     id: "ferrari",
     name: "Ferrari",
-    logo: "🏎️",
+    logo: ferrariLogo,
     description: "יצרנית מכוניות ספורט יוקרה איטלקית",
     founded: 1947,
     country: "איטליה",
@@ -67,7 +80,7 @@ export const expandedBrands = [
   {
     id: "tesla", 
     name: "Tesla",
-    logo: "⚡",
+    logo: teslaLogo,
     description: "יצרנית רכבים חשמליים אמריקנית מובילה",
     founded: 2003,
     country: "ארצות הברית",
@@ -76,7 +89,7 @@ export const expandedBrands = [
   {
     id: "porsche",
     name: "Porsche", 
-    logo: "🚗",
+    logo: porscheLogo,
     description: "יצרנית מכוניות ספורט יוקרה גרמנית",
     founded: 1931,
     country: "גרמניה",
@@ -85,7 +98,7 @@ export const expandedBrands = [
   {
     id: "bmw",
     name: "BMW",
-    logo: "🔷",
+    logo: bmwLogo,
     description: "יצרנית רכבי יוקרה גרמנית", 
     founded: 1916,
     country: "גרמניה",
@@ -94,7 +107,7 @@ export const expandedBrands = [
   {
     id: "mercedes-benz",
     name: "Mercedes-Benz",
-    logo: "⭐",
+    logo: mercedesLogo,
     description: "יצרנית רכבי יוקרה גרמנית עולמית",
     founded: 1926,
     country: "גרמניה",
@@ -103,7 +116,7 @@ export const expandedBrands = [
   {
     id: "audi",
     name: "Audi",
-    logo: "🔴",
+    logo: audiLogo,
     description: "יצרנית רכבי יוקרה גרמנית",
     founded: 1909, 
     country: "גרמניה",
@@ -121,7 +134,7 @@ export const expandedBrands = [
   {
     id: "lamborghini",
     name: "Lamborghini",
-    logo: "🟡",
+    logo: lamborghiniLogo,
     description: "יצרנית סופרקארים איטלקית",
     founded: 1963,
     country: "איטליה",
@@ -148,7 +161,7 @@ export const expandedBrands = [
   {
     id: "toyota",
     name: "Toyota",
-    logo: "🚙",
+    logo: toyotaLogo,
     description: "יצרנית רכב יפנית מובילה עולמית",
     founded: 1937,
     country: "יפן",
@@ -157,7 +170,7 @@ export const expandedBrands = [
   {
     id: "honda",
     name: "Honda",
-    logo: "🅷",
+    logo: hondaLogo,
     description: "יצרנית רכב ואופנועים יפנית",
     founded: 1948,
     country: "יפן",
@@ -166,7 +179,7 @@ export const expandedBrands = [
   {
     id: "nissan",
     name: "Nissan",
-    logo: "⚫",
+    logo: nissanLogo,
     description: "יצרנית רכב יפנית גלובלית",
     founded: 1933,
     country: "יפן",
@@ -211,7 +224,7 @@ export const expandedBrands = [
   {
     id: "ford",
     name: "Ford",
-    logo: "🔷",
+    logo: fordLogo,
     description: "יצרנית רכב אמריקנית היסטורית",
     founded: 1903,
     country: "ארצות הברית",

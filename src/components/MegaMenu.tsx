@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { expandedBrands } from "@/data/massiveCarsDatabase";
+import { useNavigate } from "react-router-dom";
 
 interface MegaMenuProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ interface MegaMenuProps {
 
 const MegaMenu = ({ isOpen, onClose }: MegaMenuProps) => {
   const [activeCategory, setActiveCategory] = useState("luxury");
+  const navigate = useNavigate();
 
   const categories = {
     luxury: {
@@ -96,13 +98,21 @@ const MegaMenu = ({ isOpen, onClose }: MegaMenuProps) => {
                     key={brand.id}
                     className="p-4 hover:shadow-automotive hover:-translate-y-1 transition-smooth cursor-pointer group"
                     onClick={() => {
-                      window.location.href = `/brand/${brand.id}`;
+                      navigate(`/brand/${brand.id}`);
                       onClose();
                     }}
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="text-3xl transform group-hover:scale-110 transition-transform">
-                        {brand.logo}
+                      <div className="transform group-hover:scale-110 transition-transform">
+                        {typeof brand.logo === 'string' ? (
+                          <div className="text-3xl">{brand.logo}</div>
+                        ) : (
+                          <img 
+                            src={brand.logo} 
+                            alt={`${brand.name} logo`} 
+                            className="h-8 w-8 object-contain"
+                          />
+                        )}
                       </div>
                       <div>
                         <h4 className="font-bold group-hover:text-racing-red transition-colors">
@@ -134,20 +144,20 @@ const MegaMenu = ({ isOpen, onClose }: MegaMenuProps) => {
           <div className="mt-8 pt-6 border-t border-border">
             <div className="flex flex-wrap gap-4 justify-center">
               <Button 
-                onClick={() => { window.location.href = '/cars'; onClose(); }}
+                onClick={() => { navigate('/cars'); onClose(); }}
                 className="btn-racing"
               >
                 צפה בכל הרכבים
               </Button>
               <Button 
                 variant="outline"
-                onClick={() => { window.location.href = '/reviews'; onClose(); }}
+                onClick={() => { navigate('/reviews'); onClose(); }}
               >
                 ביקורות מומלצות
               </Button>
               <Button 
                 variant="outline"
-                onClick={() => { window.location.href = '/news'; onClose(); }}
+                onClick={() => { navigate('/news'); onClose(); }}
               >
                 חדשות רכב
               </Button>

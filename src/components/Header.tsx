@@ -16,16 +16,24 @@ const Header = () => {
     <header className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b border-border z-50">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <Car className="h-8 w-8 text-racing-red" />
-          <a href="/" className="text-2xl font-bold hover:text-racing-red transition-smooth cursor-pointer">AutoHub</a>
-        </div>
+          <div className="flex items-center space-x-2">
+            <Car className="h-8 w-8 text-racing-red" />
+            <button 
+              onClick={() => navigate("/")}
+              className="text-2xl font-bold hover:text-racing-red transition-smooth cursor-pointer"
+            >
+              AutoHub
+            </button>
+          </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="/" className="text-foreground hover:text-racing-red transition-smooth px-2">
+          <button 
+            onClick={() => navigate("/")}
+            className="text-foreground hover:text-racing-red transition-smooth px-2"
+          >
             בית
-          </a>
+          </button>
           <div className="relative group">
             <button 
               onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
@@ -35,21 +43,33 @@ const Header = () => {
               <ChevronDown className="h-4 w-4" />
             </button>
           </div>
-          <a href="/reviews" className="text-foreground hover:text-racing-red transition-smooth">
+          <button 
+            onClick={() => navigate("/reviews")}
+            className="text-foreground hover:text-racing-red transition-smooth"
+          >
             ביקורות
-          </a>
-          <a href="/news" className="text-foreground hover:text-racing-red transition-smooth">
+          </button>
+          <button 
+            onClick={() => navigate("/news")}
+            className="text-foreground hover:text-racing-red transition-smooth"
+          >
             חדשות
-          </a>
-          <a href="/community" className="text-foreground hover:text-racing-red transition-smooth">
+          </button>
+          <button 
+            onClick={() => navigate("/community")}
+            className="text-foreground hover:text-racing-red transition-smooth"
+          >
             קהילה
-          </a>
+          </button>
         </div>
 
         {/* Search Bar & Favorites */}
         <div className="hidden md:flex items-center space-x-4">
           <SmartSearch className="w-80" />
-          <a href="/favorites" className="relative">
+          <button
+            onClick={() => navigate("/favorites")}
+            className="relative"
+          >
             <Button variant="ghost" size="icon" className="hover:bg-racing-red/10 hover:text-racing-red transition-smooth">
               <Heart className="h-5 w-5" />
               {favorites.length > 0 && (
@@ -58,7 +78,7 @@ const Header = () => {
                 </span>
               )}
             </Button>
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -78,25 +98,43 @@ const Header = () => {
           <div className="px-4 py-4 space-y-4">
             <SmartSearch />
             <div className="space-y-2">
-              <a href="/" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              <button 
+                onClick={() => navigate("/")}
+                className="block py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
                 בית
-              </a>
-              <a href="/cars" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              </button>
+              <button 
+                onClick={() => navigate("/cars")}
+                className="block py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
                 רכבים
-              </a>
-              <a href="/reviews" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              </button>
+              <button 
+                onClick={() => navigate("/reviews")}
+                className="block py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
                 ביקורות
-              </a>
-              <a href="/news" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              </button>
+              <button 
+                onClick={() => navigate("/news")}
+                className="block py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
                 חדשות
-              </a>
-              <a href="/community" className="block py-2 text-foreground hover:text-racing-red transition-smooth">
+              </button>
+              <button 
+                onClick={() => navigate("/community")}
+                className="block py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
                 קהילה
-              </a>
-              <a href="/favorites" className="flex items-center py-2 text-foreground hover:text-racing-red transition-smooth">
+              </button>
+              <button 
+                onClick={() => navigate("/favorites")}
+                className="flex items-center py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
                 <Heart className="h-4 w-4 ml-2" />
                 מועדפים {favorites.length > 0 && `(${favorites.length})`}
-              </a>
+              </button>
             </div>
           </div>
         </div>
