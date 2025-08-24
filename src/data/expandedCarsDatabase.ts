@@ -19,6 +19,10 @@ import hondaLogo from "@/assets/logos/honda-logo.png";
 import lamborghiniLogo from "@/assets/logos/lamborghini-logo.png";
 import fordLogo from "@/assets/logos/ford-logo.png";
 import nissanLogo from "@/assets/logos/nissan-logo.png";
+import jaguarLogo from "@/assets/logos/jaguar-logo.png";
+import volkswagenLogo from "@/assets/logos/volkswagen-logo.png";
+import kiaLogo from "@/assets/logos/kia-logo.png";
+import mazdaLogo from "@/assets/logos/mazda-logo.png";
 
 export interface ExtendedCarSpecs {
   engine: string;
@@ -188,7 +192,7 @@ export const expandedBrands = [
   {
     id: "mazda",
     name: "Mazda",
-    logo: "🔴",
+    logo: mazdaLogo,
     description: "יצרנית רכב יפנית ייחודית",
     founded: 1920,
     country: "יפן",
@@ -305,7 +309,7 @@ export const expandedBrands = [
   {
     id: "kia",
     name: "Kia",
-    logo: "🅺",
+    logo: kiaLogo,
     description: "יצרנית רכב דרום קוריאנית",
     founded: 1944,
     country: "דרום קוריאה",
@@ -341,7 +345,7 @@ export const expandedBrands = [
   {
     id: "volkswagen",
     name: "Volkswagen",
-    logo: "🔵",
+    logo: volkswagenLogo,
     description: "יצרנית רכב גרמנית עממית",
     founded: 1937,
     country: "גרמניה",
@@ -359,7 +363,7 @@ export const expandedBrands = [
   {
     id: "jaguar",
     name: "Jaguar",
-    logo: "🐆",
+    logo: jaguarLogo,
     description: "יצרנית רכבי יוקרה בריטית",
     founded: 1922,
     country: "בריטניה",

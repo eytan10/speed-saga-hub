@@ -75,7 +75,17 @@ const BrandPage = () => {
             </Button>
             
             <div className="text-center text-white">
-              <div className="text-8xl mb-6">{currentBrand.logo}</div>
+              <div className="mb-6">
+                {typeof currentBrand.logo === 'string' && currentBrand.logo.includes('.png') ? (
+                  <img 
+                    src={currentBrand.logo} 
+                    alt={`${currentBrand.name} logo`} 
+                    className="h-24 w-24 object-contain mx-auto filter brightness-0 invert"
+                  />
+                ) : (
+                  <div className="text-8xl">{currentBrand.logo}</div>
+                )}
+              </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 {currentBrand.name}
               </h1>
