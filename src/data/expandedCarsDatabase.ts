@@ -23,6 +23,9 @@ import jaguarLogo from "@/assets/logos/jaguar-logo.png";
 import volkswagenLogo from "@/assets/logos/volkswagen-logo.png";
 import kiaLogo from "@/assets/logos/kia-logo.png";
 import mazdaLogo from "@/assets/logos/mazda-logo.png";
+import mclarenLogo from "@/assets/logos/mclaren-logo.png";
+import hyundaiLogo from "@/assets/logos/hyundai-logo.png";
+import subaruLogo from "@/assets/logos/subaru-logo.png";
 
 export interface ExtendedCarSpecs {
   engine: string;
@@ -129,7 +132,7 @@ export const expandedBrands = [
   {
     id: "mclaren",
     name: "McLaren",
-    logo: "🧡",
+    logo: mclarenLogo,
     description: "יצרנית סופרקארים בריטית",
     founded: 1985,
     country: "בריטניה",
@@ -300,7 +303,7 @@ export const expandedBrands = [
   {
     id: "hyundai",
     name: "Hyundai",
-    logo: "🅷",
+    logo: hyundaiLogo,
     description: "יצרנית רכב דרום קוריאנית מובילה",
     founded: 1967,
     country: "דרום קוריאה",
@@ -417,7 +420,7 @@ export const expandedBrands = [
   {
     id: "subaru",
     name: "Subaru",
-    logo: "⭐",
+    logo: subaruLogo,
     description: "יצרנית רכב יפנית ייחודית",
     founded: 1953,
     country: "יפן",

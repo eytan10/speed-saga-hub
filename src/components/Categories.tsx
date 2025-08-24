@@ -130,7 +130,7 @@ const Categories = () => {
               onClick={() => handleBrandClick(brand.id)}
             >
               <div className="mb-2">
-                {typeof brand.logo === 'string' ? (
+                {typeof brand.logo === 'string' && !brand.logo.includes('.png') ? (
                   <div className="text-3xl">{brand.logo}</div>
                 ) : (
                   <img 

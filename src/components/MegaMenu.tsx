@@ -104,7 +104,7 @@ const MegaMenu = ({ isOpen, onClose }: MegaMenuProps) => {
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <div className="transform group-hover:scale-110 transition-transform">
-                        {typeof brand.logo === 'string' ? (
+                        {typeof brand.logo === 'string' && !brand.logo.includes('.png') ? (
                           <div className="text-3xl">{brand.logo}</div>
                         ) : (
                           <img 
