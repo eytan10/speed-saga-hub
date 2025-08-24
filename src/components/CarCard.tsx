@@ -191,6 +191,7 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
                 setShowComparison(true);
               }}
               className="hover:bg-racing-red hover:text-white transition-smooth"
+              title="השווה רכב זה עם אחר"
             >
               השווה
             </Button>

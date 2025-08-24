@@ -1,14 +1,16 @@
-import { Search, Menu, Car, Heart, ChevronDown } from "lucide-react";
+import { Search, Menu, Car, Heart, ChevronDown, ArrowLeftRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import MegaMenu from "./MegaMenu";
 import SmartSearch from "./SmartSearch";
+import GlobalCarComparison from "./GlobalCarComparison";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const { favorites } = useFavorites();
   const navigate = useNavigate();
 
@@ -63,9 +65,18 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Search Bar & Favorites */}
+        {/* Search Bar, Comparison & Favorites */}
         <div className="hidden md:flex items-center space-x-4">
           <SmartSearch className="w-80" />
+          <Button 
+            variant="ghost" 
+            size="icon"
+            onClick={() => setIsComparisonOpen(true)}
+            className="hover:bg-racing-red/10 hover:text-racing-red transition-smooth"
+            title="השווה רכבים"
+          >
+            <ArrowLeftRight className="h-5 w-5" />
+          </Button>
           <button
             onClick={() => navigate("/favorites")}
             className="relative"
@@ -129,6 +140,12 @@ const Header = () => {
                 קהילה
               </button>
               <button 
+                onClick={() => setIsComparisonOpen(true)}
+                className="block py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
+                השווה רכבים
+              </button>
+              <button 
                 onClick={() => navigate("/favorites")}
                 className="flex items-center py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
               >
@@ -142,8 +159,12 @@ const Header = () => {
       
       {/* Mega Menu */}
       <MegaMenu 
-        isOpen={isMegaMenuOpen} 
-        onClose={() => setIsMegaMenuOpen(false)} 
+        isOpen={isMegaMenuOpen}
+        onClose={() => setIsMegaMenuOpen(false)}
+      />
+      <GlobalCarComparison 
+        isOpen={isComparisonOpen}
+        onClose={() => setIsComparisonOpen(false)}
       />
     </header>
   );

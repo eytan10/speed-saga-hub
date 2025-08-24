@@ -114,7 +114,15 @@ const CarsPage = () => {
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center space-x-4 rtl:space-x-reverse">
                         <div className="relative">
-                          <div className="text-5xl transform group-hover:scale-110 transition-smooth">{brand.logo}</div>
+                          {typeof brand.logo === 'string' && (brand.logo.includes('.') || brand.logo.startsWith('/')) ? (
+                            <img 
+                              src={brand.logo} 
+                              alt={`${brand.name} logo`}
+                              className="w-16 h-16 object-contain transform group-hover:scale-110 transition-smooth"
+                            />
+                          ) : (
+                            <div className="text-5xl transform group-hover:scale-110 transition-smooth">{brand.logo}</div>
+                          )}
                           <div className="absolute inset-0 bg-gradient-to-r from-racing-red/20 to-electric-blue/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-smooth"></div>
                         </div>
                         <div>
