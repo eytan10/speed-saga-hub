@@ -25,6 +25,8 @@ const BrandPage = () => {
   const currentBrand = expandedBrands.find(b => normalizeBrand(b.id) === brandId);
   // Combine cars from both databases
   const allCars = [...massiveCarsDatabase, ...additionalCarModels];
+codex/add-specific-luxury-mercedes-cars-fxt6h6
+
 < codex/add-specific-luxury-mercedes-cars-g6hpp2
 
  codex/add-specific-luxury-mercedes-cars-trai5e
@@ -37,6 +39,7 @@ const BrandPage = () => {
  main
  main
 > main
+ main
   const brandCars = allCars.filter(car => normalizeBrand(car.brand) === brandId);
   
   const filteredCars = brandCars.filter(car =>

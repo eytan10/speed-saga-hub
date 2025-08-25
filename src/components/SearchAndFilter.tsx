@@ -8,6 +8,10 @@ import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
+ codex/add-specific-luxury-mercedes-cars-fxt6h6
+const MAX_PRICE = 20000000;
+
+
 < codex/add-specific-luxury-mercedes-cars-g6hpp2
 const MAX_PRICE = 20000000;
 
@@ -17,6 +21,7 @@ const MAX_PRICE = 20000000;
 
  main
 > main
+ main
 interface Filters {
   brand: string;
   category: string;

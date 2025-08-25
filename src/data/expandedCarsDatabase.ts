@@ -2,9 +2,12 @@ import ferrariImage from "@/assets/ferrari-red.jpg";
 import teslaImage from "@/assets/tesla-blue.jpg"; 
 import porscheImage from "@/assets/porsche-black.jpg";
 import bmwImage from "@/assets/bmw-m3.jpg";
+ codex/add-specific-luxury-mercedes-cars-fxt6h6
+
 import mercedesImage from "@/assets/mercedes-amg.jpg";
 import mercedesEQS from "@/assets/mercedes-eqs.jpg";
 import mercedesC63s from "@/assets/mercedes-c63s.jpg";
+main
 import audiImage from "@/assets/audi-rs6.jpg";
 import mclarenImage from "@/assets/mclaren-720s.jpg";
 import lamborghiniImage from "@/assets/lamborghini-huracan.jpg";
@@ -986,7 +989,11 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     brand: "Mercedes-Benz",
     year: 2024,
     type: "קופה ספורטיבי יוקרה",
+ codex/add-specific-luxury-mercedes-cars-fxt6h6
+    image: "https://www.netcarshow.com/Mercedes-AMG-GT_63_S-2024-800-01.jpg",
+
     image: mercedesImage,
+ main
     price: "₪1,300,000",
     rating: 4.8,
     isElectric: false,
@@ -1054,7 +1061,11 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     brand: "Mercedes-Benz",
     year: 2024,
     type: "סדאן יוקרה ספורט",
+ codex/add-specific-luxury-mercedes-cars-fxt6h6
+    image: "https://www.netcarshow.com/Mercedes-AMG-S_63_E_Performance-2024-800-01.jpg",
+
     image: mercedesC63s,
+ main
     price: "₪1,600,000",
     rating: 4.9,
     isElectric: false,
@@ -1122,7 +1133,11 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     brand: "Mercedes-Benz",
     year: 2024,
     type: "SUV שטח יוקרה",
+ codex/add-specific-luxury-mercedes-cars-fxt6h6
+    image: "https://www.netcarshow.com/Mercedes-Benz-G_Class-2024-800-01.jpg",
+
     image: mercedesImage,
+ main
     price: "₪1,700,000",
     rating: 4.9,
     isElectric: false,
@@ -1188,7 +1203,11 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     brand: "Mercedes-Benz",
     year: 2024,
     type: "סדאן חשמלי יוקרה",
+ codex/add-specific-luxury-mercedes-cars-fxt6h6
+    image: "https://www.netcarshow.com/Mercedes-Benz-EQS-2024-800-01.jpg",
+
     image: mercedesEQS,
+ main
     price: "₪890,000",
     rating: 4.7,
     isElectric: true,
@@ -1254,7 +1273,11 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     brand: "Mercedes-Benz",
     year: 2024,
     type: "סדאן יוקרה עילית",
+ codex/add-specific-luxury-mercedes-cars-fxt6h6
+    image: "https://www.netcarshow.com/Mercedes-Maybach-S_Class-2024-800-01.jpg",
+
     image: mercedesImage,
+ main
     price: "₪1,800,000",
     rating: 4.9,
     isElectric: false,
