@@ -4,6 +4,7 @@ import porscheImage from "@/assets/porsche-black.jpg";
 import bmwImage from "@/assets/bmw-m3.jpg";
 import mercedesImage from "@/assets/mercedes-amg.jpg";
 import mercedesEQS from "@/assets/mercedes-eqs.jpg";
+import mercedesC63s from "@/assets/mercedes-c63s.jpg";
 import audiImage from "@/assets/audi-rs6.jpg";
 import mclarenImage from "@/assets/mclaren-720s.jpg";
 import lamborghiniImage from "@/assets/lamborghini-huracan.jpg";
@@ -1037,6 +1038,74 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       { name: "אדום", hex: "#8B0000" },
       { name: "חום אספרסו", hex: "#6F4E37" },
       { name: "בז׳ מגנוליה", hex: "#F8F4E6" }
+    ],
+    dealerships: [
+      {
+        name: "מרצדס-בנץ תל אביב",
+        location: "תל אביב, ישראל",
+        phone: "03-555-5678",
+        website: "www.mercedes-telaviv.co.il"
+      }
+    ]
+  },
+  {
+    id: "mercedes-amg-s63",
+    name: "AMG S63",
+    brand: "Mercedes-Benz",
+    year: 2024,
+    type: "סדאן יוקרה ספורט",
+    image: mercedesC63s,
+    price: "₪1,600,000",
+    rating: 4.9,
+    isElectric: false,
+    isNew: true,
+    description: "מרצדס AMG S63 E Performance מציעה שילוב של כוח היברידי ופאר של S-Class.",
+    specs: {
+      engine: "4.0L Twin-Turbo V8 Hybrid",
+      transmission: "9G-TRONIC",
+      acceleration: "0-100 קמ״ש ב-3.3 שניות",
+      topSpeed: "290 קמ״ש",
+      fuel: "12/20 mpg",
+      weight: "2,420 ק״ג",
+      power: 791,
+      torque: "1,055 Nm",
+      drivetrain: "4MATIC+",
+      seating: 5,
+      cargo: "530 ליטר",
+      price: "₪1,600,000"
+    },
+    features: [
+      "מערכת MBUX מתקדמת",
+      "בלמי קרבון-סראמיק",
+      "מתלי אוויר אדפטיביים",
+      "מערכת פליטה ספורטיבית",
+      "מושב עיסוי אחורי",
+      "מערכת סיוע לנהג Drive Pilot"
+    ],
+    pros: [
+      "יוקרה וביצועים מהשורה הראשונה",
+      "פנים מפואר ושקט",
+      "טכנולוגיה מתקדמת",
+      "ביצועים מרשימים לסדאן גדולה"
+    ],
+    cons: [
+      "מחיר גבוה מאוד",
+      "צריכת דלק גבוהה",
+      "ממדים גדולים מקשים על חניה",
+      "עלויות תחזוקה גבוהות"
+    ],
+    colors: [
+      { name: "שחור אובסידיאן", hex: "#36454F" },
+      { name: "לבן דיימונד", hex: "#FFFFF0" },
+      { name: "כסף סלניט", hex: "#C0C0C0" },
+      { name: "כחול נאוטיק", hex: "#1C4E89" },
+      { name: "אפור גרפיט", hex: "#4A4A4A" }
+    ],
+    interiorColors: [
+      { name: "שחור", hex: "#000000" },
+      { name: "בז׳ מגנוליה", hex: "#F8F4E6" },
+      { name: "חום אספרסו", hex: "#6F4E37" },
+      { name: "אפור כסף", hex: "#B2BEB5" }
     ],
     dealerships: [
       {
