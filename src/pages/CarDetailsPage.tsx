@@ -14,6 +14,8 @@ import { useToast } from "@/hooks/use-toast";
 
 const CarDetailsPage = () => {
   const { brand, model } = useParams();
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const { toast } = useToast();
   // Combine cars from both databases
   const allCars = [...massiveCarsDatabase, ...additionalCarModels];
   const car = allCars.find(c => c.id === model);
@@ -31,8 +33,6 @@ const CarDetailsPage = () => {
     );
   }
 
-  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-  const { toast } = useToast();
   const isCarFavorite = isFavorite(car.id);
 
   const handleFavoriteClick = () => {

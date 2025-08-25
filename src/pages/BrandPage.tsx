@@ -12,6 +12,7 @@ import { additionalCarModels } from "@/data/additionalCarModels";
 import { normalizeBrand } from "@/lib/utils";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
+import type { ExtendedCarDetails } from "@/data/massiveCarsDatabase";
 
 const BrandPage = () => {
   const { brand } = useParams();
@@ -31,7 +32,7 @@ const BrandPage = () => {
     car.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleFavoriteClick = (car: any, e: React.MouseEvent) => {
+  const handleFavoriteClick = (car: ExtendedCarDetails, e: React.MouseEvent) => {
     e.stopPropagation();
     const isCarFavorite = isFavorite(car.id);
     

@@ -8,10 +8,20 @@ import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
+interface Filters {
+  brand: string;
+  category: string;
+  fuelType: string;
+  priceRange: [number, number];
+  horsepowerRange: [number, number];
+  year: string;
+  bodyType: string;
+}
+
 interface SearchAndFilterProps {
   searchTerm: string;
   onSearchChange: (value: string) => void;
-  onFiltersChange: (filters: any) => void;
+  onFiltersChange: (filters: Filters) => void;
   totalResults?: number;
 }
 
@@ -21,7 +31,7 @@ const SearchAndFilter = ({
   onFiltersChange,
   totalResults = 0 
 }: SearchAndFilterProps) => {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<Filters>({
     brand: "all",
     category: "all",
     fuelType: "all",
@@ -55,14 +65,14 @@ const SearchAndFilter = ({
     "2024", "2023", "2022", "2021", "2020", "2019", "2018"
   ];
 
-  const updateFilters = (key: string, value: any) => {
+  const updateFilters = (key: keyof Filters, value: Filters[keyof Filters]) => {
     // Keep the display value in the internal state
-    const newFilters = { ...filters, [key]: value };
+    const newFilters = { ...filters, [key]: value } as Filters;
     setFilters(newFilters);
-    
+
     // Convert "all" to empty string only for parent filtering logic
     const filterValueForParent = value === "all" ? "" : value;
-    const filtersForParent = { ...newFilters, [key]: filterValueForParent };
+    const filtersForParent = { ...newFilters, [key]: filterValueForParent } as Filters;
     onFiltersChange(filtersForParent);
 
     // Update active filters for display
@@ -83,9 +93,9 @@ const SearchAndFilter = ({
   };
 
   const clearAllFilters = () => {
-    const resetFilters = {
+    const resetFilters: Filters = {
       brand: "all",
-      category: "all", 
+      category: "all",
       fuelType: "all",
       priceRange: [0, 200000],
       horsepowerRange: [0, 1000],
