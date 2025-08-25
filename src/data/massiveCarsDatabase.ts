@@ -121,6 +121,16 @@ import type { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabas
 // Re-export interfaces for compatibility
 export type { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabase";
 
+// Convert dollar prices to shekels so all entries show Israeli currency
+const formatPrice = (price: string): string => {
+  if (price.includes("$")) {
+    const usd = Number(price.replace(/[^0-9.]/g, ""));
+    const ils = Math.round(usd * 3.6);
+    return `₪${ils.toLocaleString("he-IL")}`;
+  }
+  return price;
+};
+
 // Helper function to create car objects with random additional details
 const createCar = (
   id: string,
@@ -133,79 +143,82 @@ const createCar = (
   image: string,
   isElectric = false,
   isNew = false
-): ExtendedCarDetails => ({
-  id,
-  name,
-  brand,
-  year,
-  type,
-  image,
-  price,
-  rating: 4.0 + Math.random() * 1.0,
-  isElectric,
-  isNew,
-  description: `${brand} ${name} משלב ביצועים מרשימים עם עיצוב מתקדם ורמת נוחות גבוהה.`,
-  specs: {
-    engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
-    transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
-    acceleration: `0-100 קמ״ש תוך ${3 + Math.random() * 4} שניות`,
-    topSpeed: `${200 + Math.random() * 100} קמ״ש`,
-    fuel: isElectric ? `${300 + Math.random() * 200} ק״מ טווח` : `${6 + Math.random() * 4} ליטר/100 ק״מ`,
-    weight: `${1200 + Math.random() * 800} ק״ג`,
-    power,
-    torque: `${Math.round(power * 1.35)} נמ`,
-    drivetrain: Math.random() > 0.5 ? "הנעה קדמית" : "הנעה אחורית",
-    seating: Math.random() > 0.7 ? 7 : Math.random() > 0.3 ? 5 : 2,
-    cargo: `${300 + Math.random() * 500} ליטר`,
-    price
-  },
-  features: [
-    "מערכת בטיחות מתקדמת",
-    "מערכת מולטימדיה",
-    "מושבים מעור",
-    "מיזוג אוטומטי",
-    "מערכת ניווט",
-    "חיישני חניה"
-  ],
-  pros: [
-    "ביצועים מעולים",
-    "עיצוב מושך",
-    "רמת נוחות גבוהה",
-    "טכנולוגיה מתקדמת"
-  ],
-  cons: [
-    "מחיר גבוה",
-    "עלויות תחזוקה",
-    "צריכת דלק",
-    "זמינות חלפים"
-  ],
-  colors: [
-    { name: "שחור", hex: "#000000" },
-    { name: "לבן", hex: "#FFFFFF" },
-    { name: "כסף", hex: "#C0C0C0" },
-    { name: "אדום", hex: "#FF0000" },
-    { name: "כחול", hex: "#0000FF" }
-  ],
-  interiorColors: [
-    { name: "שחור", hex: "#1C1C1C" },
-    { name: "בז'", hex: "#F5F5DC" },
-    { name: "חום", hex: "#8B4513" }
-  ],
-  dealerships: [
-    {
-      name: `${brand} תל אביב`,
-      location: "תל אביב, ישראל",
-      phone: "03-555-0123",
-      website: `www.${brand.toLowerCase()}-telaviv.co.il`
+): ExtendedCarDetails => {
+  const normalizedPrice = formatPrice(price);
+  return {
+    id,
+    name,
+    brand,
+    year,
+    type,
+    image,
+    price: normalizedPrice,
+    rating: 4.0 + Math.random() * 1.0,
+    isElectric,
+    isNew,
+    description: `${brand} ${name} משלב ביצועים מרשימים עם עיצוב מתקדם ורמת נוחות גבוהה.`,
+    specs: {
+      engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
+      transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
+      acceleration: `0-100 קמ״ש תוך ${3 + Math.random() * 4} שניות`,
+      topSpeed: `${200 + Math.random() * 100} קמ״ש`,
+      fuel: isElectric ? `${300 + Math.random() * 200} ק״מ טווח` : `${6 + Math.random() * 4} ליטר/100 ק״מ`,
+      weight: `${1200 + Math.random() * 800} ק״ג`,
+      power,
+      torque: `${Math.round(power * 1.35)} נמ`,
+      drivetrain: Math.random() > 0.5 ? "הנעה קדמית" : "הנעה אחורית",
+      seating: Math.random() > 0.7 ? 7 : Math.random() > 0.3 ? 5 : 2,
+      cargo: `${300 + Math.random() * 500} ליטר`,
+      price: normalizedPrice
     },
-    {
-      name: `${brand} חיפה`,
-      location: "חיפה, ישראל",
-      phone: "04-555-0456",
-      website: `www.${brand.toLowerCase()}-haifa.co.il`
-    }
-  ]
-});
+    features: [
+      "מערכת בטיחות מתקדמת",
+      "מערכת מולטימדיה",
+      "מושבים מעור",
+      "מיזוג אוטומטי",
+      "מערכת ניווט",
+      "חיישני חניה"
+    ],
+    pros: [
+      "ביצועים מעולים",
+      "עיצוב מושך",
+      "רמת נוחות גבוהה",
+      "טכנולוגיה מתקדמת"
+    ],
+    cons: [
+      "מחיר גבוה",
+      "עלויות תחזוקה",
+      "צריכת דלק",
+      "זמינות חלפים"
+    ],
+    colors: [
+      { name: "שחור", hex: "#000000" },
+      { name: "לבן", hex: "#FFFFFF" },
+      { name: "כסף", hex: "#C0C0C0" },
+      { name: "אדום", hex: "#FF0000" },
+      { name: "כחול", hex: "#0000FF" }
+    ],
+    interiorColors: [
+      { name: "שחור", hex: "#1C1C1C" },
+      { name: "בז'", hex: "#F5F5DC" },
+      { name: "חום", hex: "#8B4513" }
+    ],
+    dealerships: [
+      {
+        name: `${brand} תל אביב`,
+        location: "תל אביב, ישראל",
+        phone: "03-555-0123",
+        website: `www.${brand.toLowerCase()}-telaviv.co.il`
+      },
+      {
+        name: `${brand} חיפה`,
+        location: "חיפה, ישראל",
+        phone: "04-555-0456",
+        website: `www.${brand.toLowerCase()}-haifa.co.il`
+      }
+    ]
+  };
+};
 
 // Massive car database with 400+ vehicles - Updated with Israeli prices
 export const massiveCarsDatabase: ExtendedCarDetails[] = [
@@ -273,19 +286,19 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   // Mercedes-Benz Models (18 models)
   createCar("mercedes-c-class", "C-Class", "Mercedes-Benz", "סדאן יוקרה", "₪195,000", 255, 2024, mercedesImage),
   createCar("mercedes-e-class", "E-Class", "Mercedes-Benz", "סדאן יוקרה", "₪250,000", 362, 2024, mercedesImage),
-  createCar("mercedes-s-class", "S-Class", "Mercedes-Benz", "סדאן יוקרה עילית", "₪490,000", 429, 2024, mercedesAmgNew),
+  createCar("mercedes-s-class", "S-Class", "Mercedes-Benz", "סדאן יוקרה עילית", "₪1,100,000", 429, 2024, mercedesAmgNew),
   createCar("mercedes-gle", "GLE", "Mercedes-Benz", "SUV יוקרה", "₪245,000", 362, 2024, mercedesEQC),
   createCar("mercedes-gls", "GLS", "Mercedes-Benz", "SUV יוקרה גדול", "₪340,000", 362, 2024, mercedesEQC),
   createCar("mercedes-glc", "GLC", "Mercedes-Benz", "SUV יוקרה קומפקטי", "₪200,000", 255, 2024, mercedesEQC),
-  createCar("mercedes-g-class", "G-Class", "Mercedes-Benz", "SUV שטח יוקרה", "₪585,000", 416, 2024, mercedesImage),
-  createCar("mercedes-amg-gt", "AMG GT", "Mercedes-Benz", "סופרקאר", "₪525,000", 469, 2024, mercedesAmgNew),
+  createCar("mercedes-g-class", "G-Class", "Mercedes-Benz", "SUV שטח יוקרה", "₪1,700,000", 416, 2024, mercedesImage),
+  createCar("mercedes-amg-gt", "AMG GT", "Mercedes-Benz", "סופרקאר", "₪1,300,000", 469, 2024, mercedesAmgNew),
   createCar("mercedes-amg-c63", "AMG C63 S", "Mercedes-Benz", "סדאן ספורט", "₪335,000", 503, 2024, mercedesC63s),
   createCar("mercedes-amg-e63", "AMG E63 S", "Mercedes-Benz", "סדאן ספורט", "₪480,000", 603, 2024, mercedesAmgNew),
-  createCar("mercedes-amg-s63", "AMG S63", "Mercedes-Benz", "סדאן יוקרה ספורט", "₪820,000", 630, 2024, mercedesC63s),
-  createCar("mercedes-eqs", "EQS", "Mercedes-Benz", "סדאן חשמלי יוקרה", "₪460,000", 516, 2024, mercedesEQS, true),
+  createCar("mercedes-amg-s63", "AMG S63", "Mercedes-Benz", "סדאן יוקרה ספורט", "₪1,600,000", 630, 2024, mercedesC63s),
+  createCar("mercedes-eqs", "EQS", "Mercedes-Benz", "סדאן חשמלי יוקרה", "₪890,000", 516, 2024, mercedesEQS, true),
   createCar("mercedes-eqc", "EQC", "Mercedes-Benz", "SUV חשמלי יוקרה", "₪305,000", 402, 2024, mercedesEQC, true),
   createCar("mercedes-eqe", "EQE", "Mercedes-Benz", "סדאן חשמלי יוקרה", "₪335,000", 288, 2024, mercedesEQS, true),
-  createCar("mercedes-maybach-s-class", "Maybach S-Class", "Mercedes-Benz", "סדאן יוקרה עילית", "₪825,000", 496, 2024, mercedesAmgNew),
+  createCar("mercedes-maybach-s-class", "Maybach S-Class", "Mercedes-Benz", "סדאן יוקרה עילית", "₪1,800,000", 496, 2024, mercedesAmgNew),
   createCar("mercedes-a-class", "A-Class", "Mercedes-Benz", "האצ׳בק יוקרה", "₪145,000", 221, 2024, mercedesImage),
   createCar("mercedes-cla", "CLA", "Mercedes-Benz", "קופה יוקרה", "₪170,000", 221, 2024, mercedesC63s),
   createCar("mercedes-gla", "GLA", "Mercedes-Benz", "SUV קומפקטי יוקרה", "₪165,000", 221, 2024, mercedesEQC),
