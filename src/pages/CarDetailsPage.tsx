@@ -6,14 +6,17 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Car3DViewer from "@/components/Car3DViewer";
+import CarImageGallery from "@/components/CarImageGallery";
 import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
+import { additionalCarModels } from "@/data/additionalCarModels";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
 
 const CarDetailsPage = () => {
   const { brand, model } = useParams();
-  const car = massiveCarsDatabase.find(c => c.id === model);
+  // Combine cars from both databases
+  const allCars = [...massiveCarsDatabase, ...additionalCarModels];
+  const car = allCars.find(c => c.id === model);
 
   if (!car) {
     return (
@@ -145,10 +148,11 @@ const CarDetailsPage = () => {
                 </Button>
               </div>
 
-              {/* Right Side - 3D Viewer */}
+              {/* Right Side - Image Gallery */}
               <div>
-                <Car3DViewer 
+                <CarImageGallery 
                   carName={`${car.brand} ${car.name}`}
+                  mainImage={car.image}
                   colors={car.colors}
                   interiorColors={car.interiorColors}
                 />

@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
+import { additionalCarModels } from "@/data/additionalCarModels";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,7 +19,9 @@ const BrandPage = () => {
   const { toast } = useToast();
   
   const currentBrand = expandedBrands.find(b => b.id === brand);
-  const brandCars = massiveCarsDatabase.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
+  // Combine cars from both databases
+  const allCars = [...massiveCarsDatabase, ...additionalCarModels];
+  const brandCars = allCars.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
   
   const filteredCars = brandCars.filter(car =>
     car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

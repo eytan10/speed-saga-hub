@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SearchAndFilter from "@/components/SearchAndFilter";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
+import { additionalCarModels } from "@/data/additionalCarModels";
 
 const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
