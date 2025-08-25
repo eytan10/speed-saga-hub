@@ -13,7 +13,10 @@ import { additionalCarModels } from "@/data/additionalCarModels";
 const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [filters, setFilters] = useState<any>({});
+  interface CarFilters {
+    brand?: string;
+  }
+  const [filters, setFilters] = useState<CarFilters>({});
   
   // Get search term from URL parameters
   useEffect(() => {
