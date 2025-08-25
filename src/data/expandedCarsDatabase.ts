@@ -2,7 +2,6 @@ import ferrariImage from "@/assets/ferrari-red.jpg";
 import teslaImage from "@/assets/tesla-blue.jpg"; 
 import porscheImage from "@/assets/porsche-black.jpg";
 import bmwImage from "@/assets/bmw-m3.jpg";
-import mercedesImage from "@/assets/mercedes-amg.jpg";
 import audiImage from "@/assets/audi-rs6.jpg";
 import mclarenImage from "@/assets/mclaren-720s.jpg";
 import lamborghiniImage from "@/assets/lamborghini-huracan.jpg";
@@ -697,7 +696,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     year: 2024,
     type: "מכונית ספורט",
     image: ferrariImage,
-    price: "$280,000",
+    price: "₪1,036,000",
     rating: 4.8,
     isElectric: false,
     isNew: false,
@@ -844,7 +843,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     year: 2024,
     type: "מכונית ספורט", 
     image: porscheImage,
-    price: "$230,000",
+    price: "₪851,000",
     rating: 4.9,
     isElectric: false,
     isNew: false,
@@ -861,7 +860,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "4X4",
       seating: 4,
       cargo: "132 ליטר",
-      price: "$230,000"
+      price: "₪851,000"
     },
     features: [
       "ניהול יציבות פורשה",
@@ -918,7 +917,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     year: 2024,
     type: "רכב ספורט יוקרה",
     image: bmwImage,
-    price: "$85,000",
+    price: "₪314,500",
     rating: 4.7,
     isElectric: false,
     isNew: true,
@@ -935,7 +934,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "הנעה אחורית",
       seating: 5,
       cargo: "480 ליטר",
-      price: "$85,000"
+      price: "₪314,500"
     },
     features: [
       "מתלי M אדפטיביים",
@@ -984,8 +983,8 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     brand: "Mercedes-Benz",
     year: 2024,
     type: "קופה ספורטיבי יוקרה",
-    image: mercedesImage,
-    price: "$165,000",
+    image: "https://www.netcarshow.com/Mercedes-AMG-GT_63_S-2024-800-01.jpg",
+    price: "₪1,300,000",
     rating: 4.8,
     isElectric: false,
     isNew: true,
@@ -1002,7 +1001,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "4MATIC+",
       seating: 4,
       cargo: "350 ליטר",
-      price: "$165,000"
+      price: "₪1,300,000"
     },
     features: [
       "מתלי AMG אדפטיביים",
@@ -1047,13 +1046,279 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     ]
   },
   {
+    id: "mercedes-amg-s63",
+    name: "AMG S63",
+    brand: "Mercedes-Benz",
+    year: 2024,
+    type: "סדאן יוקרה ספורט",
+    image: "https://www.netcarshow.com/Mercedes-AMG-S_63_E_Performance-2024-800-01.jpg",
+    price: "₪1,600,000",
+    rating: 4.9,
+    isElectric: false,
+    isNew: true,
+    description: "מרצדס AMG S63 E Performance מציעה שילוב של כוח היברידי ופאר של S-Class.",
+    specs: {
+      engine: "4.0L Twin-Turbo V8 Hybrid",
+      transmission: "9G-TRONIC",
+      acceleration: "0-100 קמ״ש ב-3.3 שניות",
+      topSpeed: "290 קמ״ש",
+      fuel: "12/20 mpg",
+      weight: "2,420 ק״ג",
+      power: 791,
+      torque: "1,055 Nm",
+      drivetrain: "4MATIC+",
+      seating: 5,
+      cargo: "530 ליטר",
+      price: "₪1,600,000"
+    },
+    features: [
+      "מערכת MBUX מתקדמת",
+      "בלמי קרבון-סראמיק",
+      "מתלי אוויר אדפטיביים",
+      "מערכת פליטה ספורטיבית",
+      "מושב עיסוי אחורי",
+      "מערכת סיוע לנהג Drive Pilot"
+    ],
+    pros: [
+      "יוקרה וביצועים מהשורה הראשונה",
+      "פנים מפואר ושקט",
+      "טכנולוגיה מתקדמת",
+      "ביצועים מרשימים לסדאן גדולה"
+    ],
+    cons: [
+      "מחיר גבוה מאוד",
+      "צריכת דלק גבוהה",
+      "ממדים גדולים מקשים על חניה",
+      "עלויות תחזוקה גבוהות"
+    ],
+    colors: [
+      { name: "שחור אובסידיאן", hex: "#36454F" },
+      { name: "לבן דיימונד", hex: "#FFFFF0" },
+      { name: "כסף סלניט", hex: "#C0C0C0" },
+      { name: "כחול נאוטיק", hex: "#1C4E89" },
+      { name: "אפור גרפיט", hex: "#4A4A4A" }
+    ],
+    interiorColors: [
+      { name: "שחור", hex: "#000000" },
+      { name: "בז׳ מגנוליה", hex: "#F8F4E6" },
+      { name: "חום אספרסו", hex: "#6F4E37" },
+      { name: "אפור כסף", hex: "#B2BEB5" }
+    ],
+    dealerships: [
+      {
+        name: "מרצדס-בנץ תל אביב",
+        location: "תל אביב, ישראל",
+        phone: "03-555-5678",
+        website: "www.mercedes-telaviv.co.il"
+      }
+    ]
+  },
+  {
+    id: "mercedes-g-class",
+    name: "G-Class",
+    brand: "Mercedes-Benz",
+    year: 2024,
+    type: "SUV שטח יוקרה",
+    image: "https://www.netcarshow.com/Mercedes-Benz-G_Class-2024-800-01.jpg",
+    price: "₪1,700,000",
+    rating: 4.9,
+    isElectric: false,
+    isNew: true,
+    description: "מרצדס G-Class מציעה שילוב ייחודי של ביצועי שטח קיצוניים עם יוקרה ונוחות ברמה הגבוהה ביותר.",
+    specs: {
+      engine: "4.0L Twin-Turbo V8",
+      transmission: "9G-TRONIC",
+      acceleration: "0-100 קמ״ש ב-4.5 שניות",
+      topSpeed: "220 קמ״ש",
+      fuel: "17/21 mpg",
+      weight: "2,450 ק״ג",
+      power: 577,
+      torque: "627 lb-ft",
+      drivetrain: "4MATIC",
+      seating: 5,
+      cargo: "667 ליטר",
+      price: "₪1,700,000"
+    },
+    features: [
+      "מערכת הנעה כפולה מתקדמת",
+      "מצבי נהיגה לשטח",
+      "מערכת MBUX",
+      "עור נאפה יוקרתי",
+      "חבילת בטיחות אקטיבית"
+    ],
+    pros: [
+      "יכולת שטח יוצאת דופן",
+      "שימור ערך גבוה",
+      "עיצוב אייקוני",
+      "פנים יוקרתי"
+    ],
+    cons: [
+      "צריכת דלק גבוהה",
+      "מחיר רכישה יקר",
+      "גודל מקשה על חניה",
+      "נוחות נסיעה בעיר"
+    ],
+    colors: [
+      { name: "שחור אובסידיאן", hex: "#36454F" },
+      { name: "לבן פולר", hex: "#FFFFF0" },
+      { name: "כסף איריזיום", hex: "#C0C0C0" },
+      { name: "ירוק אזמרלד", hex: "#004D40" },
+      { name: "אדום יופיטר", hex: "#CC0000" }
+    ],
+    interiorColors: [
+      { name: "שחור", hex: "#000000" },
+      { name: "חום שוקולד", hex: "#381819" },
+      { name: "בז׳ מגנוליה", hex: "#F8F4E6" }
+    ],
+    dealerships: [
+      {
+        name: "מרצדס-בנץ תל אביב",
+        location: "תל אביב, ישראל",
+        phone: "03-555-5678",
+        website: "www.mercedes-telaviv.co.il"
+      }
+    ]
+  },
+  {
+    id: "mercedes-eqs",
+    name: "EQS",
+    brand: "Mercedes-Benz",
+    year: 2024,
+    type: "סדאן חשמלי יוקרה",
+    image: "https://www.netcarshow.com/Mercedes-Benz-EQS-2024-800-01.jpg",
+    price: "₪890,000",
+    rating: 4.7,
+    isElectric: true,
+    isNew: true,
+    description: "מרצדס EQS היא ספינת הדגל החשמלית של המותג עם טווח וביצועים מרשימים.",
+    specs: {
+      engine: "שני מנועים חשמליים",
+      transmission: "חד-מהירות",
+      acceleration: "0-100 קמ״ש ב-4.3 שניות",
+      topSpeed: "210 קמ״ש",
+      fuel: "580 ק״מ טווח",
+      weight: "2,480 ק״ג",
+      power: 516,
+      torque: "631 lb-ft",
+      drivetrain: "4MATIC",
+      seating: 5,
+      cargo: "610 ליטר",
+      price: "₪890,000"
+    },
+    features: [
+      "הייפר-סקרין MBUX",
+      "טווח נסיעה ארוך",
+      "טעינה מהירה DC",
+      "תאורת אווירה מתקדמת",
+      "מערכת סינון אוויר HEPA"
+    ],
+    pros: [
+      "נוחות נסיעה מרשימה",
+      "פנים עתידני וטכנולוגי",
+      "שקט מוחלט בתא הנוסעים",
+      "בטיחות מתקדמת"
+    ],
+    cons: [
+      "מחיר גבוה",
+      "משקל כבד",
+      "ממשק משתמש מורכב",
+      "נהיגה דינמית פחות חדה"
+    ],
+    colors: [
+      { name: "שחור אובסידיאן", hex: "#36454F" },
+      { name: "לבן דיאמונד", hex: "#FAF9F6" },
+      { name: "כסף סילבר", hex: "#C0C0C0" },
+      { name: "כחול נפטון", hex: "#001F54" },
+      { name: "אפור גרפיט", hex: "#4B4B4B" }
+    ],
+    interiorColors: [
+      { name: "שחור", hex: "#000000" },
+      { name: "לבן פנינה", hex: "#F5F5F5" },
+      { name: "חום חם", hex: "#8B4513" }
+    ],
+    dealerships: [
+      {
+        name: "מרצדס-בנץ תל אביב",
+        location: "תל אביב, ישראל",
+        phone: "03-555-5678",
+        website: "www.mercedes-telaviv.co.il"
+      }
+    ]
+  },
+  {
+    id: "mercedes-maybach-s-class",
+    name: "Maybach S-Class",
+    brand: "Mercedes-Benz",
+    year: 2024,
+    type: "סדאן יוקרה עילית",
+    image: "https://www.netcarshow.com/Mercedes-Maybach-S_Class-2024-800-01.jpg",
+    price: "₪1,800,000",
+    rating: 4.9,
+    isElectric: false,
+    isNew: true,
+    description: "מרצדס-מייבך S-Class מציעה את חווית הנסיעה היוקרתית ביותר של מרצדס עם רמת נוחות ותוספות שאין שנייה להן.",
+    specs: {
+      engine: "4.0L Twin-Turbo V8",
+      transmission: "9G-TRONIC",
+      acceleration: "0-100 קמ״ש ב-4.8 שניות",
+      topSpeed: "250 קמ״ש",
+      fuel: "14/21 mpg",
+      weight: "2,250 ק״ג",
+      power: 496,
+      torque: "516 lb-ft",
+      drivetrain: "4MATIC",
+      seating: 4,
+      cargo: "505 ליטר",
+      price: "₪1,800,000"
+    },
+    features: [
+      "מושבי עיסוי אחוריים",
+      "מערכת שמע Burmester 4D",
+      "גימורי עץ אמיתיים",
+      "דלתות אחוריות אוטומטיות",
+      "תאורת אווירה פנימית"
+    ],
+    pros: [
+      "רמת נוחות חסרת תחרות",
+      "שקט ובידוד אקוסטי מעולה",
+      "טכנולוגיות בטיחות מתקדמות",
+      "תדמית יוקרתית"
+    ],
+    cons: [
+      "עלות רכישה גבוהה במיוחד",
+      "צריכת דלק גבוהה",
+      "גודל גדול לערים צפופות",
+      "עלות אחזקה גבוהה"
+    ],
+    colors: [
+      { name: "שחור אובסידיאן", hex: "#36454F" },
+      { name: "לבן דיאמונד", hex: "#FAF9F6" },
+      { name: "כסף היי-טק", hex: "#BEBEBE" },
+      { name: "ירוק אמרלד", hex: "#215E21" },
+      { name: "אדום קריסטל", hex: "#A00000" }
+    ],
+    interiorColors: [
+      { name: "שחור", hex: "#000000" },
+      { name: "בז׳ מגנוליה", hex: "#F8F4E6" },
+      { name: "חום ערמוני", hex: "#8B4513" }
+    ],
+    dealerships: [
+      {
+        name: "מרצדס-בנץ תל אביב",
+        location: "תל אביב, ישראל",
+        phone: "03-555-5678",
+        website: "www.mercedes-telaviv.co.il"
+      }
+    ]
+  },
+  {
     id: "audi-rs6-avant",
     name: "RS6 Avant",
     brand: "Audi",
     year: 2024,
     type: "סטיישן וואגון ביצועים",
     image: audiImage,
-    price: "$125,000",
+    price: "₪462,500",
     rating: 4.6,
     isElectric: false,
     isNew: false,
@@ -1070,7 +1335,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "Quattro AWD",
       seating: 5,
       cargo: "565 ליטר",
-      price: "$125,000"
+      price: "₪462,500"
     },
     features: [
       "מתלים אוויריים אדפטיביים",
@@ -1120,7 +1385,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     year: 2024,
     type: "סופרקאר",
     image: mclarenImage,
-    price: "$315,000",
+    price: "₪1,165,500",
     rating: 4.9,
     isElectric: false,
     isNew: false,
@@ -1137,7 +1402,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "הנעה אחורית",
       seating: 2,
       cargo: "150 ליטר",
-      price: "$315,000"
+      price: "₪1,165,500"
     },
     features: [
       "מתלי אדפטיביים פרואקטיב",
@@ -1187,7 +1452,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     year: 2024,
     type: "סופרקאר",
     image: lamborghiniImage,
-    price: "$275,000",
+    price: "₪1,017,500",
     rating: 4.8,
     isElectric: false,
     isNew: true,
@@ -1204,7 +1469,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "4X4",
       seating: 2,
       cargo: "100 ליטר",
-      price: "$275,000"
+      price: "₪1,017,500"
     },
     features: [
       "מערכת LDVI",
