@@ -121,6 +121,16 @@ import type { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabas
 // Re-export interfaces for compatibility
 export type { ExtendedCarSpecs, ExtendedCarDetails } from "./expandedCarsDatabase";
 
+// Convert dollar prices to shekels so all entries show Israeli currency
+const formatPrice = (price: string): string => {
+  if (price.includes("$")) {
+    const usd = Number(price.replace(/[^0-9.]/g, ""));
+    const ils = Math.round(usd * 3.6);
+    return `₪${ils.toLocaleString("he-IL")}`;
+  }
+  return price;
+};
+
 // Helper function to create car objects with random additional details
 const createCar = (
   id: string,
@@ -133,79 +143,82 @@ const createCar = (
   image: string,
   isElectric = false,
   isNew = false
-): ExtendedCarDetails => ({
-  id,
-  name,
-  brand,
-  year,
-  type,
-  image,
-  price,
-  rating: 4.0 + Math.random() * 1.0,
-  isElectric,
-  isNew,
-  description: `${brand} ${name} משלב ביצועים מרשימים עם עיצוב מתקדם ורמת נוחות גבוהה.`,
-  specs: {
-    engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
-    transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
-    acceleration: `0-100 קמ״ש תוך ${3 + Math.random() * 4} שניות`,
-    topSpeed: `${200 + Math.random() * 100} קמ״ש`,
-    fuel: isElectric ? `${300 + Math.random() * 200} ק״מ טווח` : `${6 + Math.random() * 4} ליטר/100 ק״מ`,
-    weight: `${1200 + Math.random() * 800} ק״ג`,
-    power,
-    torque: `${Math.round(power * 1.35)} נמ`,
-    drivetrain: Math.random() > 0.5 ? "הנעה קדמית" : "הנעה אחורית",
-    seating: Math.random() > 0.7 ? 7 : Math.random() > 0.3 ? 5 : 2,
-    cargo: `${300 + Math.random() * 500} ליטר`,
-    price
-  },
-  features: [
-    "מערכת בטיחות מתקדמת",
-    "מערכת מולטימדיה",
-    "מושבים מעור",
-    "מיזוג אוטומטי",
-    "מערכת ניווט",
-    "חיישני חניה"
-  ],
-  pros: [
-    "ביצועים מעולים",
-    "עיצוב מושך",
-    "רמת נוחות גבוהה",
-    "טכנולוגיה מתקדמת"
-  ],
-  cons: [
-    "מחיר גבוה",
-    "עלויות תחזוקה",
-    "צריכת דלק",
-    "זמינות חלפים"
-  ],
-  colors: [
-    { name: "שחור", hex: "#000000" },
-    { name: "לבן", hex: "#FFFFFF" },
-    { name: "כסף", hex: "#C0C0C0" },
-    { name: "אדום", hex: "#FF0000" },
-    { name: "כחול", hex: "#0000FF" }
-  ],
-  interiorColors: [
-    { name: "שחור", hex: "#1C1C1C" },
-    { name: "בז'", hex: "#F5F5DC" },
-    { name: "חום", hex: "#8B4513" }
-  ],
-  dealerships: [
-    {
-      name: `${brand} תל אביב`,
-      location: "תל אביב, ישראל",
-      phone: "03-555-0123",
-      website: `www.${brand.toLowerCase()}-telaviv.co.il`
+): ExtendedCarDetails => {
+  const normalizedPrice = formatPrice(price);
+  return {
+    id,
+    name,
+    brand,
+    year,
+    type,
+    image,
+    price: normalizedPrice,
+    rating: 4.0 + Math.random() * 1.0,
+    isElectric,
+    isNew,
+    description: `${brand} ${name} משלב ביצועים מרשימים עם עיצוב מתקדם ורמת נוחות גבוהה.`,
+    specs: {
+      engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
+      transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
+      acceleration: `0-100 קמ״ש תוך ${3 + Math.random() * 4} שניות`,
+      topSpeed: `${200 + Math.random() * 100} קמ״ש`,
+      fuel: isElectric ? `${300 + Math.random() * 200} ק״מ טווח` : `${6 + Math.random() * 4} ליטר/100 ק״מ`,
+      weight: `${1200 + Math.random() * 800} ק״ג`,
+      power,
+      torque: `${Math.round(power * 1.35)} נמ`,
+      drivetrain: Math.random() > 0.5 ? "הנעה קדמית" : "הנעה אחורית",
+      seating: Math.random() > 0.7 ? 7 : Math.random() > 0.3 ? 5 : 2,
+      cargo: `${300 + Math.random() * 500} ליטר`,
+      price: normalizedPrice
     },
-    {
-      name: `${brand} חיפה`,
-      location: "חיפה, ישראל",
-      phone: "04-555-0456",
-      website: `www.${brand.toLowerCase()}-haifa.co.il`
-    }
-  ]
-});
+    features: [
+      "מערכת בטיחות מתקדמת",
+      "מערכת מולטימדיה",
+      "מושבים מעור",
+      "מיזוג אוטומטי",
+      "מערכת ניווט",
+      "חיישני חניה"
+    ],
+    pros: [
+      "ביצועים מעולים",
+      "עיצוב מושך",
+      "רמת נוחות גבוהה",
+      "טכנולוגיה מתקדמת"
+    ],
+    cons: [
+      "מחיר גבוה",
+      "עלויות תחזוקה",
+      "צריכת דלק",
+      "זמינות חלפים"
+    ],
+    colors: [
+      { name: "שחור", hex: "#000000" },
+      { name: "לבן", hex: "#FFFFFF" },
+      { name: "כסף", hex: "#C0C0C0" },
+      { name: "אדום", hex: "#FF0000" },
+      { name: "כחול", hex: "#0000FF" }
+    ],
+    interiorColors: [
+      { name: "שחור", hex: "#1C1C1C" },
+      { name: "בז'", hex: "#F5F5DC" },
+      { name: "חום", hex: "#8B4513" }
+    ],
+    dealerships: [
+      {
+        name: `${brand} תל אביב`,
+        location: "תל אביב, ישראל",
+        phone: "03-555-0123",
+        website: `www.${brand.toLowerCase()}-telaviv.co.il`
+      },
+      {
+        name: `${brand} חיפה`,
+        location: "חיפה, ישראל",
+        phone: "04-555-0456",
+        website: `www.${brand.toLowerCase()}-haifa.co.il`
+      }
+    ]
+  };
+};
 
 // Massive car database with 400+ vehicles - Updated with Israeli prices
 export const massiveCarsDatabase: ExtendedCarDetails[] = [
