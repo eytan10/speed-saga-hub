@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { carCategories } from "@/data/cars";
 import { useNavigate } from "react-router-dom";
 import { expandedBrands, massiveCarsDatabase } from "@/data/massiveCarsDatabase";
+import { normalizeBrand } from "@/lib/utils";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -39,19 +40,19 @@ const Categories = () => {
   // Get brands that actually have cars in the database with their count
   const getBrandsWithCarCount = () => {
     const brandCounts = new Map<string, number>();
-    
+
     // Count cars for each brand
     massiveCarsDatabase.forEach(car => {
-      const brandId = car.brand.toLowerCase().replace(/[^a-z]/g, '');
+      const brandId = normalizeBrand(car.brand);
       brandCounts.set(brandId, (brandCounts.get(brandId) || 0) + 1);
     });
-    
+
     // Filter brands that have cars and add car count
     return expandedBrands
-      .filter(brand => brandCounts.has(brand.id))
+      .filter(brand => brandCounts.has(normalizeBrand(brand.id)))
       .map(brand => ({
         ...brand,
-        carCount: brandCounts.get(brand.id) || 0
+        carCount: brandCounts.get(normalizeBrand(brand.id)) || 0
       }))
       .sort((a, b) => b.carCount - a.carCount); // Sort by car count (most to least)
   };

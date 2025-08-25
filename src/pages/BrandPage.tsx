@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 import { additionalCarModels } from "@/data/additionalCarModels";
+import { normalizeBrand } from "@/lib/utils";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
 
@@ -21,7 +22,9 @@ const BrandPage = () => {
   const currentBrand = expandedBrands.find(b => b.id === brand);
   // Combine cars from both databases
   const allCars = [...massiveCarsDatabase, ...additionalCarModels];
-  const brandCars = allCars.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
+
+  const brandId = normalizeBrand(brand || '');
+  const brandCars = allCars.filter(car => normalizeBrand(car.brand) === brandId);
   
   const filteredCars = brandCars.filter(car =>
     car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

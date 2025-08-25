@@ -985,7 +985,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
     year: 2024,
     type: "קופה ספורטיבי יוקרה",
     image: mercedesImage,
-    price: "$165,000",
+    price: "₪1,300,000",
     rating: 4.8,
     isElectric: false,
     isNew: true,
@@ -1002,7 +1002,7 @@ export const expandedCarsDatabase: ExtendedCarDetails[] = [
       drivetrain: "4MATIC+",
       seating: 4,
       cargo: "350 ליטר",
-      price: "$165,000"
+      price: "₪1,300,000"
     },
     features: [
       "מתלי AMG אדפטיביים",
