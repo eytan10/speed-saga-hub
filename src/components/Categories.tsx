@@ -39,22 +39,23 @@ const Categories = () => {
 
   // Get brands that actually have cars in the database with their count
   const getBrandsWithCarCount = () => {
-    const brandCounts = new Map<string, number>();
+    const brandCounts = massiveCarsDatabase.reduce<Map<string, number>>(
+      (acc, { brand }) => {
+        if (!brand) return acc;
+        const id = normalizeBrand(brand);
+        acc.set(id, (acc.get(id) ?? 0) + 1);
+        return acc;
+      },
+      new Map()
+    );
 
-    // Count cars for each brand
-    massiveCarsDatabase.forEach(car => {
-      const brandId = normalizeBrand(car.brand);
-      brandCounts.set(brandId, (brandCounts.get(brandId) || 0) + 1);
-    });
-
-    // Filter brands that have cars and add car count
     return expandedBrands
       .filter(brand => brandCounts.has(normalizeBrand(brand.id)))
       .map(brand => ({
         ...brand,
-        carCount: brandCounts.get(normalizeBrand(brand.id)) || 0
+        carCount: brandCounts.get(normalizeBrand(brand.id)) ?? 0
       }))
-      .sort((a, b) => b.carCount - a.carCount); // Sort by car count (most to least)
+      .sort((a, b) => b.carCount - a.carCount);
   };
 
   const leadingBrands = getBrandsWithCarCount();
