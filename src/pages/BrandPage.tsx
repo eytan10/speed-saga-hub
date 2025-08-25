@@ -9,8 +9,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 import { additionalCarModels } from "@/data/additionalCarModels";
+import { normalizeBrand } from "@/lib/utils";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
+import type { ExtendedCarDetails } from "@/data/massiveCarsDatabase";
 
 const BrandPage = () => {
   const { brand } = useParams();
@@ -21,14 +23,16 @@ const BrandPage = () => {
   const currentBrand = expandedBrands.find(b => b.id === brand);
   // Combine cars from both databases
   const allCars = [...massiveCarsDatabase, ...additionalCarModels];
-  const brandCars = allCars.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
+
+  const brandId = normalizeBrand(brand || '');
+  const brandCars = allCars.filter(car => normalizeBrand(car.brand) === brandId);
   
   const filteredCars = brandCars.filter(car =>
     car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     car.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleFavoriteClick = (car: any, e: React.MouseEvent) => {
+  const handleFavoriteClick = (car: ExtendedCarDetails, e: React.MouseEvent) => {
     e.stopPropagation();
     const isCarFavorite = isFavorite(car.id);
     

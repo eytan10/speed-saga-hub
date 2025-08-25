@@ -328,26 +328,31 @@ export const RatingComponent = ({
 };
 
 // Working Bookmark Button
-export const BookmarkButton = ({ 
-  itemId, 
-  itemData 
-}: { 
-  itemId: string; 
-  itemData: any; 
+interface BookmarkItem {
+  id: string;
+  [key: string]: unknown;
+}
+
+export const BookmarkButton = ({
+  itemId,
+  itemData
+}: {
+  itemId: string;
+  itemData: Record<string, unknown>;
 }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const { toast } = useToast();
 
   useState(() => {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-    setIsBookmarked(bookmarks.some((item: any) => item.id === itemId));
+    const bookmarks: BookmarkItem[] = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    setIsBookmarked(bookmarks.some((item) => item.id === itemId));
   });
 
   const handleBookmark = () => {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-    
+    const bookmarks: BookmarkItem[] = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+
     if (isBookmarked) {
-      const updated = bookmarks.filter((item: any) => item.id !== itemId);
+      const updated = bookmarks.filter((item) => item.id !== itemId);
       localStorage.setItem('bookmarks', JSON.stringify(updated));
       setIsBookmarked(false);
       toast({

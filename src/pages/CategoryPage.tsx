@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
+import type { ExtendedCarDetails } from "@/data/massiveCarsDatabase";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
 
@@ -21,7 +22,7 @@ const CategoryPage = () => {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const { toast } = useToast();
 
-  const handleFavoriteClick = (car: any, e: React.MouseEvent) => {
+  const handleFavoriteClick = (car: ExtendedCarDetails, e: React.MouseEvent) => {
     e.stopPropagation();
     const isCarFavorite = isFavorite(car.id);
     
