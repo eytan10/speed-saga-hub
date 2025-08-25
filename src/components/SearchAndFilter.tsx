@@ -8,6 +8,10 @@ import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
+ codex/add-specific-luxury-mercedes-cars-trai5e
+const MAX_PRICE = 20000000;
+
+ main
 interface Filters {
   brand: string;
   category: string;
@@ -35,7 +39,7 @@ const SearchAndFilter = ({
     brand: "all",
     category: "all",
     fuelType: "all",
-    priceRange: [0, 200000],
+    priceRange: [0, MAX_PRICE],
     horsepowerRange: [0, 1000],
     year: "all",
     bodyType: "all"
@@ -82,8 +86,8 @@ const SearchAndFilter = ({
     if (filtersForParent.fuelType) newActiveFilters.push(`דלק: ${filtersForParent.fuelType}`);
     if (filtersForParent.year) newActiveFilters.push(`שנה: ${filtersForParent.year}`);
     if (filtersForParent.bodyType) newActiveFilters.push(`סוג מרכב: ${filtersForParent.bodyType}`);
-    if (filtersForParent.priceRange[0] > 0 || filtersForParent.priceRange[1] < 200000) {
-      newActiveFilters.push(`מחיר: $${filtersForParent.priceRange[0].toLocaleString()}-$${filtersForParent.priceRange[1].toLocaleString()}`);
+    if (filtersForParent.priceRange[0] > 0 || filtersForParent.priceRange[1] < MAX_PRICE) {
+      newActiveFilters.push(`מחיר: ₪${filtersForParent.priceRange[0].toLocaleString()}-₪${filtersForParent.priceRange[1].toLocaleString()}`);
     }
     if (filtersForParent.horsepowerRange[0] > 0 || filtersForParent.horsepowerRange[1] < 1000) {
       newActiveFilters.push(`כוח: ${filtersForParent.horsepowerRange[0]}-${filtersForParent.horsepowerRange[1]} כ"ס`);
@@ -97,7 +101,7 @@ const SearchAndFilter = ({
       brand: "all",
       category: "all",
       fuelType: "all",
-      priceRange: [0, 200000],
+      priceRange: [0, MAX_PRICE],
       horsepowerRange: [0, 1000],
       year: "all",
       bodyType: "all"
@@ -109,7 +113,7 @@ const SearchAndFilter = ({
       brand: "",
       category: "",
       fuelType: "",
-      priceRange: [0, 200000],
+      priceRange: [0, MAX_PRICE],
       horsepowerRange: [0, 1000],
       year: "",
       bodyType: ""
@@ -201,12 +205,12 @@ const SearchAndFilter = ({
       {/* Price Range */}
       <div>
         <label className="block text-sm font-medium mb-2">
-          טווח מחירים: ${filters.priceRange[0].toLocaleString()} - ${filters.priceRange[1].toLocaleString()}
+          טווח מחירים: ₪{filters.priceRange[0].toLocaleString()} - ₪{filters.priceRange[1].toLocaleString()}
         </label>
         <Slider
           value={filters.priceRange}
           onValueChange={(value) => updateFilters("priceRange", value)}
-          max={200000}
+          max={MAX_PRICE}
           min={0}
           step={5000}
           className="w-full"

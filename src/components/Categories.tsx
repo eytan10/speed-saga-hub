@@ -40,7 +40,10 @@ const Categories = () => {
 
   // Get brands that actually have cars in the database with their count
   const getBrandsWithCarCount = () => {
+ codex/add-specific-luxury-mercedes-cars-trai5e
 
+
+ main
     const allCars = [...massiveCarsDatabase, ...additionalCarModels];
     const brandCounts = allCars.reduce<Map<string, number>>((acc, { brand }) => {
       if (!brand) return acc;
@@ -48,6 +51,8 @@ const Categories = () => {
       acc.set(id, (acc.get(id) ?? 0) + 1);
       return acc;
     }, new Map());
+
+ codex/add-specific-luxury-mercedes-cars-trai5e
 
     const brandCounts = new Map<string, number>();
 
@@ -61,14 +66,19 @@ const Categories = () => {
 
     // Filter brands that have cars and add car count
  main
+ main
     return expandedBrands
       .filter(brand => brandCounts.has(normalizeBrand(brand.id)))
       .map(brand => ({
         ...brand,
+ codex/add-specific-luxury-mercedes-cars-trai5e
+        carCount: brandCounts.get(normalizeBrand(brand.id)) ?? 0
+
 codex/add-specific-luxury-mercedes-cars-6541oz
         carCount: brandCounts.get(normalizeBrand(brand.id)) ?? 0
 
         carCount: brandCounts.get(normalizeBrand(brand.id)) || 0
+ main
  main
       }))
       .sort((a, b) => b.carCount - a.carCount);
