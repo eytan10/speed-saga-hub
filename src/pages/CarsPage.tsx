@@ -7,9 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SearchAndFilter from "@/components/SearchAndFilter";
-import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
-import { expandedBrands } from "@/data/expandedCarsDatabase";
-import additionalCarModels from "@/data/additionalCarModels";
+import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 
 const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
