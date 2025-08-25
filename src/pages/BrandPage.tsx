@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Search, ArrowLeft, Star, Zap, Heart } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -9,26 +9,30 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 import { additionalCarModels } from "@/data/additionalCarModels";
+import { normalizeBrand } from "@/lib/utils";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
+import type { ExtendedCarDetails } from "@/data/massiveCarsDatabase";
 
 const BrandPage = () => {
   const { brand } = useParams();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const { toast } = useToast();
-  
-  const currentBrand = expandedBrands.find(b => b.id === brand);
+
+  const brandId = normalizeBrand(brand || "");
+  const currentBrand = expandedBrands.find(b => normalizeBrand(b.id) === brandId);
   // Combine cars from both databases
   const allCars = [...massiveCarsDatabase, ...additionalCarModels];
-  const brandCars = allCars.filter(car => car.brand.toLowerCase().replace(/[^a-z]/g, '') === brand);
+  const brandCars = allCars.filter(car => normalizeBrand(car.brand) === brandId);
   
   const filteredCars = brandCars.filter(car =>
     car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     car.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleFavoriteClick = (car: any, e: React.MouseEvent) => {
+  const handleFavoriteClick = (car: ExtendedCarDetails, e: React.MouseEvent) => {
     e.stopPropagation();
     const isCarFavorite = isFavorite(car.id);
     
@@ -52,7 +56,7 @@ const BrandPage = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">מותג לא נמצא</h1>
-          <Button onClick={() => window.location.href = '/cars'}>
+          <Button onClick={() => navigate('/cars')}>
             חזרה למותגים
           </Button>
         </div>
@@ -71,7 +75,7 @@ const BrandPage = () => {
             <Button 
               variant="ghost" 
               className="text-white mb-6 hover:bg-white/20"
-              onClick={() => window.location.href = '/cars'}
+              onClick={() => navigate('/cars')}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               חזרה למותגים
