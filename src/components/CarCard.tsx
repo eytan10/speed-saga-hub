@@ -45,6 +45,7 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
         price: car.price,
         rating: car.rating,
         isElectric: car.isElectric,
+        isNew: car.year >= 2023,
         description: `${car.brand} ${car.name} משלב ביצועים מעולים עם טכנולוגיה מתקדמת ועיצוב מרשים.`,
         specs: {
           engine: car.isElectric ? "מנוע חשמלי" : "2.0L-4.0L",
@@ -212,6 +213,7 @@ const CarCard = ({ car }: { car: CarCardProps }) => {
           price: car.price,
           rating: car.rating,
           isElectric: car.isElectric,
+          isNew: car.year >= 2023,
           description: `${car.brand} ${car.name} משלב ביצועים מעולים עם טכנולוגיה מתקדמת ועיצוב מרשים.`,
           specs: {
             engine: car.isElectric ? "מנוע חשמלי" : "2.0L-4.0L",
