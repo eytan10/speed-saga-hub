@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { newsArticles } from "@/data/expandedCarsDatabase";
+import { newsArticles } from "@/data/newsArticles";
 import ArticleModal from "@/components/ArticleModal";
 import newsBackground from "@/assets/news-background.jpg";
 import newsTeslaBattery from "@/assets/news-tesla-battery.jpg";
@@ -44,7 +44,7 @@ const NewsPage = () => {
   const filteredNews = allNews.filter(article => {
     const matchesSearch = 
       article.title.includes(searchTerm) ||
-      article.excerpt.includes(searchTerm) ||
+      article.summary.includes(searchTerm) ||
       article.author.includes(searchTerm);
     
     const matchesCategory = 
@@ -235,13 +235,13 @@ const NewsPage = () => {
                       </h3>
 
                       <p className="text-muted-foreground mb-4 line-clamp-3">
-                        {article.excerpt}
+                        {article.summary}
                       </p>
 
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-sm text-muted-foreground">
                           <Calendar className="h-4 w-4 mr-2" />
-                          {new Date(article.date).toLocaleDateString('he-IL')}
+                          {new Date(article.publishDate).toLocaleDateString('he-IL')}
                         </div>
                         <span className="text-xs text-muted-foreground">
                           {article.author}

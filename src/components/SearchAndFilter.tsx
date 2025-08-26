@@ -8,20 +8,7 @@ import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
- codex/add-specific-luxury-mercedes-cars-fxt6h6
 const MAX_PRICE = 20000000;
-
-
-< codex/add-specific-luxury-mercedes-cars-g6hpp2
-const MAX_PRICE = 20000000;
-
-
- codex/add-specific-luxury-mercedes-cars-trai5e
-const MAX_PRICE = 20000000;
-
- main
-> main
- main
 interface Filters {
   brand: string;
   category: string;
@@ -219,7 +206,7 @@ const SearchAndFilter = ({
         </label>
         <Slider
           value={filters.priceRange}
-          onValueChange={(value) => updateFilters("priceRange", value)}
+          onValueChange={(value) => updateFilters("priceRange", value as [number, number])}
           max={MAX_PRICE}
           min={0}
           step={5000}
@@ -234,7 +221,7 @@ const SearchAndFilter = ({
         </label>
         <Slider
           value={filters.horsepowerRange}
-          onValueChange={(value) => updateFilters("horsepowerRange", value)}
+          onValueChange={(value) => updateFilters("horsepowerRange", value as [number, number])}
           max={1000}
           min={0}
           step={10}

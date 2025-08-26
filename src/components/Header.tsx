@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import MegaMenu from "./MegaMenu";
 import SmartSearch from "./SmartSearch";
-import GlobalCarComparison from "./GlobalCarComparison";
+import EnhancedCarComparison from "./EnhancedCarComparison";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -162,7 +162,7 @@ const Header = () => {
         isOpen={isMegaMenuOpen}
         onClose={() => setIsMegaMenuOpen(false)}
       />
-      <GlobalCarComparison 
+      <EnhancedCarComparison 
         isOpen={isComparisonOpen}
         onClose={() => setIsComparisonOpen(false)}
       />

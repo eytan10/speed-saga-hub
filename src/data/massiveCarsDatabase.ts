@@ -290,7 +290,6 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("mercedes-gle", "GLE", "Mercedes-Benz", "SUV יוקרה", "₪245,000", 362, 2024, mercedesEQC),
   createCar("mercedes-gls", "GLS", "Mercedes-Benz", "SUV יוקרה גדול", "₪340,000", 362, 2024, mercedesEQC),
   createCar("mercedes-glc", "GLC", "Mercedes-Benz", "SUV יוקרה קומפקטי", "₪200,000", 255, 2024, mercedesEQC),
- codex/add-specific-luxury-mercedes-cars-fxt6h6
   createCar(
     "mercedes-g-class",
     "G-Class",
@@ -356,7 +355,6 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("mercedes-eqc", "EQC", "Mercedes-Benz", "SUV חשמלי יוקרה", "₪305,000", 402, 2024, mercedesEQC, true),
   createCar("mercedes-eqe", "EQE", "Mercedes-Benz", "סדאן חשמלי יוקרה", "₪335,000", 288, 2024, mercedesEQS, true),
   createCar("mercedes-maybach-s-class", "Maybach S-Class", "Mercedes-Benz", "סדאן יוקרה עילית", "₪1,800,000", 496, 2024, mercedesAmgNew),
- main
   createCar("mercedes-a-class", "A-Class", "Mercedes-Benz", "האצ׳בק יוקרה", "₪145,000", 221, 2024, mercedesImage),
   createCar("mercedes-cla", "CLA", "Mercedes-Benz", "קופה יוקרה", "₪170,000", 221, 2024, mercedesC63s),
   createCar("mercedes-gla", "GLA", "Mercedes-Benz", "SUV קומפקטי יוקרה", "₪165,000", 221, 2024, mercedesEQC),
