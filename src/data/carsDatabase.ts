@@ -83,8 +83,48 @@ export const brands = [
     name: "Audi",
     logo: "🔴",
     description: "German luxury vehicle manufacturer",
-    founded: 1909, 
+    founded: 1909,
     country: "Germany"
+  },
+  {
+    id: "jaguar",
+    name: "Jaguar",
+    logo: "🐆",
+    description: "British luxury and sports car manufacturer",
+    founded: 1935,
+    country: "UK"
+  },
+  {
+    id: "volvo",
+    name: "Volvo",
+    logo: "🚗",
+    description: "Swedish automaker known for safety and innovation",
+    founded: 1927,
+    country: "Sweden"
+  },
+  {
+    id: "chevrolet",
+    name: "Chevrolet",
+    logo: "🚙",
+    description: "American brand offering a wide range of vehicles",
+    founded: 1911,
+    country: "USA"
+  },
+  {
+    id: "jeep",
+    name: "Jeep",
+    logo: "🛻",
+    description: "American manufacturer of off-road vehicles",
+    founded: 1941,
+    country: "USA"
+  },
+  {
+    id: "renault",
+    name: "Renault",
+    logo: "🚘",
+    description: "French automaker producing innovative and reliable cars",
+    founded: 1899,
+    country: "France"
   }
 ];
 
