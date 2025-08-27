@@ -3,6 +3,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { FavoritesProvider } from "./contexts/FavoritesContext";
+import { AuthProvider } from "./components/AuthContext";
+import Chatbot from "./components/Chatbot";
 import Index from "./pages/Index";
 import CarsPage from "./pages/CarsPage";
 import ReviewsPage from "./pages/ReviewsPage";
@@ -19,23 +22,28 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/cars" element={<CarsPage />} />
-          <Route path="/category/:category" element={<CategoryPage />} />
-          <Route path="/brand/:brand" element={<BrandPage />} />
-          <Route path="/car/:brand/:model" element={<CarDetailsPage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/community" element={<CommunityPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <FavoritesProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/cars" element={<CarsPage />} />
+              <Route path="/category/:category" element={<CategoryPage />} />
+              <Route path="/brand/:brand" element={<BrandPage />} />
+              <Route path="/car/:brand/:model" element={<CarDetailsPage />} />
+              <Route path="/reviews" element={<ReviewsPage />} />
+              <Route path="/news" element={<NewsPage />} />
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Chatbot />
+          </BrowserRouter>
+        </FavoritesProvider>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

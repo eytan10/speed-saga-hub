@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "./AuthContext";
 import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react";
 
 interface AuthModalProps {
@@ -38,19 +39,30 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { login } = useAuth();
+      const success = await login(loginData.email, loginData.password);
+      
+      if (success) {
+        toast({
+          title: "התחברות בוצעה בהצלחה!",
+          description: "ברוך הבא ל-AutoHub",
+          duration: 3000,
+        });
+        onClose();
+        // Reset form
+        setLoginData({ email: "", password: "" });
+      }
+    } catch (error) {
       toast({
-        title: "התחברות בוצעה בהצלחה!",
-        description: "ברוך הבא ל-AutoHub",
+        title: "שגיאה בהתחברות",
+        description: "נסה שוב מאוחר יותר",
+        variant: "destructive",
         duration: 3000,
       });
+    } finally {
       setIsLoading(false);
-      onClose();
-      
-      // Reset form
-      setLoginData({ email: "", password: "" });
-    }, 1500);
+    }
   };
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -68,25 +80,42 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
 
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { register } = useAuth();
+      const success = await register(
+        registerData.fullName,
+        registerData.email,
+        registerData.password,
+        registerData.phone
+      );
+      
+      if (success) {
+        toast({
+          title: "הרשמה בוצעה בהצלחה!",
+          description: "חשבון חדש נוצר בהצלחה. ברוך הבא ל-AutoHub!",
+          duration: 3000,
+        });
+        onClose();
+        
+        // Reset form
+        setRegisterData({
+          fullName: "",
+          email: "",
+          phone: "",
+          password: "",
+          confirmPassword: ""
+        });
+      }
+    } catch (error) {
       toast({
-        title: "הרשמה בוצעה בהצלחה!",
-        description: "חשבון חדש נוצר בהצלחה. ברוך הבא ל-AutoHub!",
+        title: "שגיאה בהרשמה",
+        description: "נסה שוב מאוחר יותר",
+        variant: "destructive",
         duration: 3000,
       });
+    } finally {
       setIsLoading(false);
-      onClose();
-      
-      // Reset form
-      setRegisterData({
-        fullName: "",
-        email: "",
-        phone: "",
-        password: "",
-        confirmPassword: ""
-      });
-    }, 1500);
+    }
   };
 
   return (

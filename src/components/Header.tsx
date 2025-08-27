@@ -1,8 +1,10 @@
-import { Search, Menu, Car, Heart, ChevronDown, ArrowLeftRight, User } from "lucide-react";
+import { Search, Menu, Car, Heart, ChevronDown, ArrowLeftRight, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { useAuth } from "@/components/AuthContext";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import MegaMenu from "./MegaMenu";
 import SmartSearch from "./SmartSearch";
 import EnhancedCarComparison from "./EnhancedCarComparison";
@@ -14,6 +16,7 @@ const Header = () => {
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { favorites } = useFavorites();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -92,14 +95,35 @@ const Header = () => {
               )}
             </Button>
           </button>
-          <Button 
-            variant="default"
-            onClick={() => setIsAuthModalOpen(true)}
-            className="bg-racing-red hover:bg-racing-red/90 text-white"
-          >
-            <User className="h-4 w-4 ml-2" />
-            התחבר / הירשם
-          </Button>
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="hidden md:flex items-center gap-2"
+                >
+                  <User className="h-4 w-4" />
+                  {user.name}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={logout}>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  התנתק
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button 
+              variant="default"
+              onClick={() => setIsAuthModalOpen(true)}
+              className="bg-racing-red hover:bg-racing-red/90 text-white"
+            >
+              <User className="h-4 w-4 ml-2" />
+              התחבר / הירשם
+            </Button>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
