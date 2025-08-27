@@ -32,6 +32,9 @@ cd <YOUR_PROJECT_NAME>
 # Step 3: Install the necessary dependencies.
 npm i
 
+# Step 3.5: Configure environment variables.
+cp .env.example .env # and set VITE_OPENAI_API_KEY
+
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```

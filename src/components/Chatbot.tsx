@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { generateChatResponse } from '@/api/chatbot';
 
 interface Message {
   id: string;
@@ -34,49 +35,6 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Simple chatbot responses based on keywords
-  const getBotResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase();
-    
-    if (input.includes('מחיר') || input.includes('כמה עולה')) {
-      return 'המחירים שלנו מתעדכנים בזמן אמת ותלויים במודל הרכב. אתם יכולים לראות את המחירים המדויקים בדף הרכב או לפנות לנציג מכירות בטלפון 03-555-0123.';
-    }
-    
-    if (input.includes('השוואה') || input.includes('השווה')) {
-      return 'אתם יכולים להשתמש בכלי השוואת הרכבים שלנו! פשוט לחצו על "השוואת רכבים מתקדמת" בתפריט העליון ובחרו עד 2 רכבים להשוואה מפורטת.';
-    }
-    
-    if (input.includes('חשמלי') || input.includes('חשמליים')) {
-      return 'יש לנו מגוון רחב של רכבים חשמליים מחברות מובילות כמו טסלה, BMW, מרצדס, אאודי ועוד. המערכת שלנו מאפשרת לסנן רכבים חשמליים בקטגוריות השונות.';
-    }
-    
-    if (input.includes('בדיקת דרכים') || input.includes('נהיגת מבחן')) {
-      return 'כדי לתאם נהיגת מבחן, אנא פנו למוקד הלקוחות שלנו בטלפון 03-555-0123 או השאירו פרטים באתר ונציג יחזור אליכם תוך 24 שעות.';
-    }
-    
-    if (input.includes('מימון') || input.includes('לואינג') || input.includes('ליסינג')) {
-      return 'אנחנו מציעים מגוון פתרונות מימון: ליסינג פרטי, ליסינג מסחרי, מימון בנקאי ותשלומים. לפרטים מלאים פנו לנציג המכירות שלנו.';
-    }
-    
-    if (input.includes('אחריות') || input.includes('שירות')) {
-      return 'כל הרכבים שלנו מגיעים עם אחריות יצרן מלאה. יש לנו רשת שירות רחבה בכל הארץ עם טכנאים מוסמכים ומלאי חלפים זמין.';
-    }
-    
-    if (input.includes('תודה') || input.includes('שלום')) {
-      return 'תודה שפניתם אלינו! אשמח לעזור בכל שאלה נוספת. צוות המכירות שלנו זמין בטלפון 03-555-0123.';
-    }
-    
-    if (input.includes('ספורט') || input.includes('מהירות')) {
-      return 'המבחר שלנו כולל מכוניות ספורט מפרארי, למבורגיני, פורשה, מקלארן ועוד. כל הרכבים מגיעים עם נתונים מפורטים על ביצועים ומהירות.';
-    }
-    
-    if (input.includes('משפחתי') || input.includes('suv') || input.includes('גדול')) {
-      return 'יש לנו מגוון רחב של רכבי SUV ורכבים משפחתיים מחברות מובילות. אתם יכולים לסנן לפי מספר מושבים, גודל מטען ותכונות בטיחות.';
-    }
-    
-    // Default response
-    return 'תודה על השאלה! אם אני לא הבנתי נכון, אנא פנו לנציג הלקוחות שלנו בטלפון 03-555-0123 או כתבו לנו מייל ונחזור אליכם בהקדם.';
-  };
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
@@ -93,18 +51,26 @@ const Chatbot = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot thinking time
-    setTimeout(() => {
+    try {
+      const botText = await generateChatResponse(userMessage.text);
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: getBotResponse(userMessage.text),
+        text: botText || 'מצטער, לא הצלחתי לקבל תשובה כרגע.',
         isBot: true,
         timestamp: new Date()
       };
-
       setMessages(prev => [...prev, botResponse]);
+    } catch {
+      const botResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: 'שגיאה: לא ניתן להתחבר כעת.',
+        isBot: true,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, botResponse]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
