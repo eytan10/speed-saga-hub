@@ -1,4 +1,4 @@
-import { Search, Menu, Car, Heart, ChevronDown, ArrowLeftRight } from "lucide-react";
+import { Search, Menu, Car, Heart, ChevronDown, ArrowLeftRight, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -6,11 +6,13 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 import MegaMenu from "./MegaMenu";
 import SmartSearch from "./SmartSearch";
 import EnhancedCarComparison from "./EnhancedCarComparison";
+import AuthModal from "./AuthModal";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { favorites } = useFavorites();
   const navigate = useNavigate();
 
@@ -65,7 +67,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Search Bar, Comparison & Favorites */}
+        {/* Search Bar, Comparison, Favorites & Auth */}
         <div className="hidden md:flex items-center space-x-4">
           <SmartSearch className="w-80" />
           <Button 
@@ -90,6 +92,14 @@ const Header = () => {
               )}
             </Button>
           </button>
+          <Button 
+            variant="default"
+            onClick={() => setIsAuthModalOpen(true)}
+            className="bg-racing-red hover:bg-racing-red/90 text-white"
+          >
+            <User className="h-4 w-4 ml-2" />
+            התחבר / הירשם
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -152,6 +162,13 @@ const Header = () => {
                 <Heart className="h-4 w-4 ml-2" />
                 מועדפים {favorites.length > 0 && `(${favorites.length})`}
               </button>
+              <button 
+                onClick={() => setIsAuthModalOpen(true)}
+                className="flex items-center py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
+              >
+                <User className="h-4 w-4 ml-2" />
+                התחבר / הירשם
+              </button>
             </div>
           </div>
         </div>
@@ -165,6 +182,10 @@ const Header = () => {
       <EnhancedCarComparison 
         isOpen={isComparisonOpen}
         onClose={() => setIsComparisonOpen(false)}
+      />
+      <AuthModal 
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
       />
     </header>
   );

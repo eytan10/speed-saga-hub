@@ -1,14 +1,18 @@
-import { ArrowRight, Home } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { carCategories } from "@/data/cars";
 import { useNavigate } from "react-router-dom";
-import { expandedBrands, massiveCarsDatabase } from "@/data/massiveCarsDatabase";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Car, Users, Star, ArrowLeft, Search as SearchIcon, Home, ArrowRight } from "lucide-react";
+import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
+import AdvancedSearch from "./AdvancedSearch";
+import { useState } from "react";
+import { carCategories } from "@/data/cars";
 import { additionalCarModels } from "@/data/additionalCarModels";
 import { normalizeBrand } from "@/lib/utils";
 
 const Categories = () => {
   const navigate = useNavigate();
+  const [isAdvancedSearchOpen, setIsAdvancedSearchOpen] = useState(false);
 
   const handleCategoryClick = (categoryName: string) => {
     if (categoryName === "Cars") {
