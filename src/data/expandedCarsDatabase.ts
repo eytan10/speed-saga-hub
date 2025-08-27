@@ -375,5 +375,45 @@ export const expandedBrands: Brand[] = [
     country: "צרפת",
     founded: 1919,
     description: "יצרנית רכב צרפתית חדשנית עם דגמים נוחים ומעוצבים."
+  },
+  {
+    id: "jaguar",
+    name: "Jaguar",
+    logo: "🐆",
+    country: "בריטניה",
+    founded: 1935,
+    description: "יצרנית רכבי יוקרה וספורט בריטית המשלבת ביצועים עם עיצוב אלגנטי."
+  },
+  {
+    id: "volvo",
+    name: "Volvo",
+    logo: "🚙",
+    country: "שוודיה",
+    founded: 1927,
+    description: "יצרנית רכב שוודית הידועה בבטיחות ובאמינות."
+  },
+  {
+    id: "chevrolet",
+    name: "Chevrolet",
+    logo: "🚗",
+    country: "ארצות הברית",
+    founded: 1911,
+    description: "מותג רכב אמריקאי ותיק המציע מגוון רחב של דגמים."
+  },
+  {
+    id: "jeep",
+    name: "Jeep",
+    logo: "🛻",
+    country: "ארצות הברית",
+    founded: 1941,
+    description: "יצרנית רכבי שטח אמריקאית המזוהה עם יכולות עבירות גבוהות."
+  },
+  {
+    id: "renault",
+    name: "Renault",
+    logo: "🚘",
+    country: "צרפת",
+    founded: 1899,
+    description: "יצרנית רכב צרפתית המציעה דגמים חדשניים ואיכותיים."
   }
 ];
