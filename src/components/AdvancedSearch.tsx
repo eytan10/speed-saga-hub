@@ -8,7 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Search, SlidersHorizontal, X } from "lucide-react";
-import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
+import { massiveCarsDatabase, expandedBrands, type ExtendedCarDetails } from "@/data/massiveCarsDatabase";
 import { useNavigate } from "react-router-dom";
 
 interface AdvancedSearchProps {
@@ -31,7 +31,7 @@ const AdvancedSearch = ({ isOpen, onClose }: AdvancedSearchProps) => {
     minRating: 0
   });
 
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<ExtendedCarDetails[]>([]);
 
   const categories = [
     "כל הקטגוריות",
@@ -104,7 +104,7 @@ const AdvancedSearch = ({ isOpen, onClose }: AdvancedSearchProps) => {
     setSearchResults([]);
   };
 
-  const handleCarClick = (car: any) => {
+  const handleCarClick = (car: ExtendedCarDetails) => {
     navigate(`/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.id}`);
     onClose();
   };

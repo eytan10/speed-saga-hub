@@ -19,6 +19,7 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { login, register } = useAuth();
 
   // Login state
   const [loginData, setLoginData] = useState({
@@ -40,7 +41,6 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
     setIsLoading(true);
 
     try {
-      const { login } = useAuth();
       const success = await login(loginData.email, loginData.password);
       
       if (success) {
@@ -81,7 +81,6 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
     setIsLoading(true);
 
     try {
-      const { register } = useAuth();
       const success = await register(
         registerData.fullName,
         registerData.email,
