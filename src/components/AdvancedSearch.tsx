@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { massiveCarsDatabase, expandedBrands, type ExtendedCarDetails } from "@/data/massiveCarsDatabase";
 import { useNavigate } from "react-router-dom";
+import { normalizeBrand } from "@/lib/utils";
 
 interface AdvancedSearchProps {
   isOpen: boolean;
@@ -105,12 +106,18 @@ const AdvancedSearch = ({ isOpen, onClose }: AdvancedSearchProps) => {
   };
 
   const handleCarClick = (car: ExtendedCarDetails) => {
-    navigate(`/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.id}`);
+    navigate(`/car/${normalizeBrand(car.brand)}/${car.id}`);
     onClose();
   };
 
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      onClose();
+    }
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-6xl h-[90vh] overflow-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl flex items-center gap-2">
@@ -303,3 +310,4 @@ const AdvancedSearch = ({ isOpen, onClose }: AdvancedSearchProps) => {
 };
 
 export default AdvancedSearch;
+
