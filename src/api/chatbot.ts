@@ -1,24 +1,29 @@
 export async function generateChatResponse(prompt: string): Promise<string> {
-  const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
-      max_tokens: 150
-    })
-  });
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: prompt }] }]
+      })
+    }
+  );
 
   if (!response.ok) {
     throw new Error(`Chat API request failed: ${response.status}`);
   }
 
   const data = (await response.json()) as {
-    choices?: { message?: { content?: string } }[];
+    candidates?: { content?: { parts?: { text?: string }[] } }[];
   };
-  return data.choices?.[0]?.message?.content?.trim() ?? "";
+  return (
+    data.candidates?.[0]?.content?.parts
+      ?.map((p) => p.text)
+      .join("")
+      .trim() ?? ""
+  );
 }
