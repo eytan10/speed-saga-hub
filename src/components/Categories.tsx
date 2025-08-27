@@ -164,11 +164,17 @@ const Categories = () => {
               >
                 <CardHeader className="text-center pb-2">
                   {brand.logo && (
-                    <img 
-                      src={brand.logo} 
-                      alt={`${brand.name} logo`}
-                      className="w-16 h-16 mx-auto mb-4 object-contain group-hover:scale-110 transition-transform duration-300"
-                    />
+                    typeof brand.logo === "string" && (brand.logo.includes(".") || brand.logo.startsWith("/")) ? (
+                      <img
+                        src={brand.logo}
+                        alt={`${brand.name} logo`}
+                        className="w-16 h-16 mx-auto mb-4 object-contain group-hover:scale-110 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                        {brand.logo}
+                      </div>
+                    )
                   )}
                   <CardTitle className="text-xl group-hover:text-racing-red transition-colors">
                     {brand.name}
