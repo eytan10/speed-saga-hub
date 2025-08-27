@@ -290,62 +290,6 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("mercedes-gle", "GLE", "Mercedes-Benz", "SUV יוקרה", "₪245,000", 362, 2024, mercedesEQC),
   createCar("mercedes-gls", "GLS", "Mercedes-Benz", "SUV יוקרה גדול", "₪340,000", 362, 2024, mercedesEQC),
   createCar("mercedes-glc", "GLC", "Mercedes-Benz", "SUV יוקרה קומפקטי", "₪200,000", 255, 2024, mercedesEQC),
-  createCar(
-    "mercedes-g-class",
-    "G-Class",
-    "Mercedes-Benz",
-    "SUV שטח יוקרה",
-    "₪1,700,000",
-    416,
-    2024,
-    "https://www.netcarshow.com/Mercedes-Benz-G_Class-2024-800-01.jpg"
-  ),
-  createCar(
-    "mercedes-amg-gt",
-    "AMG GT",
-    "Mercedes-Benz",
-    "סופרקאר",
-    "₪1,300,000",
-    469,
-    2024,
-    "https://www.netcarshow.com/Mercedes-AMG-GT-2024-800-01.jpg"
-  ),
-  createCar("mercedes-amg-c63", "AMG C63 S", "Mercedes-Benz", "סדאן ספורט", "₪335,000", 503, 2024, mercedesC63s),
-  createCar("mercedes-amg-e63", "AMG E63 S", "Mercedes-Benz", "סדאן ספורט", "₪480,000", 603, 2024, mercedesAmgNew),
-  createCar(
-    "mercedes-amg-s63",
-    "AMG S63",
-    "Mercedes-Benz",
-    "סדאן יוקרה ספורט",
-    "₪1,600,000",
-    630,
-    2024,
-    "https://www.netcarshow.com/Mercedes-AMG-S_63_E_Performance-2024-800-01.jpg"
-  ),
-  createCar(
-    "mercedes-eqs",
-    "EQS",
-    "Mercedes-Benz",
-    "סדאן חשמלי יוקרה",
-    "₪890,000",
-    516,
-    2024,
-    "https://www.netcarshow.com/Mercedes-Benz-EQS-2024-800-01.jpg",
-    true
-  ),
-  createCar("mercedes-eqc", "EQC", "Mercedes-Benz", "SUV חשמלי יוקרה", "₪305,000", 402, 2024, mercedesEQC, true),
-  createCar("mercedes-eqe", "EQE", "Mercedes-Benz", "סדאן חשמלי יוקרה", "₪335,000", 288, 2024, mercedesEQS, true),
-  createCar(
-    "mercedes-maybach-s-class",
-    "Maybach S-Class",
-    "Mercedes-Benz",
-    "סדאן יוקרה עילית",
-    "₪1,800,000",
-    496,
-    2024,
-    "https://www.netcarshow.com/Mercedes-Maybach-S_Class-2024-800-01.jpg"
-  ),
-
   createCar("mercedes-g-class", "G-Class", "Mercedes-Benz", "SUV שטח יוקרה", "₪1,700,000", 416, 2024, mercedesImage),
   createCar("mercedes-amg-gt", "AMG GT", "Mercedes-Benz", "סופרקאר", "₪1,300,000", 469, 2024, mercedesAmgNew),
   createCar("mercedes-amg-c63", "AMG C63 S", "Mercedes-Benz", "סדאן ספורט", "₪335,000", 503, 2024, mercedesC63s),

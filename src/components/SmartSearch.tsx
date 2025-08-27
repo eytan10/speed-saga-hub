@@ -34,6 +34,7 @@ const SmartSearch = ({
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
   const navigate = useNavigate();
 
   // Load recent searches from localStorage
@@ -103,14 +104,24 @@ const SmartSearch = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
-    
-    // Debounce search
-    setTimeout(() => {
-      if (value === searchTerm) {
-        performSearch(value);
-      }
-    }, 300);
   };
+
+  // Debounced search effect
+  useEffect(() => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+
+    debounceRef.current = setTimeout(() => {
+      performSearch(searchTerm);
+    }, 300);
+
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+    };
+  }, [searchTerm]);
 
   // Handle search submission
   const handleSearch = (term: string = searchTerm) => {
