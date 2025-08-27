@@ -359,5 +359,21 @@ export const expandedBrands: Brand[] = [
     country: "צ׳כיה",
     founded: 1895,
     description: "יצרנית רכב צ׳כית הידועה בפרקטיות, אמינות ויחס מחיר-ערך מעולה."
+  },
+  {
+    id: "peugeot",
+    name: "Peugeot",
+    logo: "🦁",
+    country: "צרפת",
+    founded: 1810,
+    description: "יצרנית רכב צרפתית ידועה בעיצוב אלגנטי וביעילות."
+  },
+  {
+    id: "citroen",
+    name: "Citroën",
+    logo: "⚜️",
+    country: "צרפת",
+    founded: 1919,
+    description: "יצרנית רכב צרפתית חדשנית עם דגמים נוחים ומעוצבים."
   }
 ];

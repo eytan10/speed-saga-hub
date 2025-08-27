@@ -1,5 +1,5 @@
 import { Search, Clock, TrendingUp, Car } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -53,22 +53,24 @@ const SmartSearch = ({
   };
 
   // Perform search
-  const performSearch = (term: string) => {
-    if (!term.trim()) {
+  const normalize = (str: string) =>
+    str.toLowerCase().replace(/[^a-z0-9א-ת\s]/gi, "");
+
+  const performSearch = useCallback((term: string) => {
+    const normalized = normalize(term);
+    if (!normalized.trim()) {
       setResults([]);
       return;
     }
 
     setIsLoading(true);
-    const searchLower = term.toLowerCase();
-    
-    // Search cars
+    const tokens = normalized.split(/\s+/).filter(Boolean);
+
     const carResults: SearchResult[] = massiveCarsDatabase
-      .filter(car => 
-        car.name.toLowerCase().includes(searchLower) ||
-        car.brand.toLowerCase().includes(searchLower) ||
-        car.type.toLowerCase().includes(searchLower)
-      )
+      .filter(car => {
+        const haystack = normalize(`${car.name} ${car.brand} ${car.type}`);
+        return tokens.every(t => haystack.includes(t));
+      })
       .slice(0, 6)
       .map(car => ({
         id: car.id,
@@ -80,13 +82,13 @@ const SmartSearch = ({
         price: car.price
       }));
 
-    // Search brands
     const brandResults: SearchResult[] = expandedBrands
-      .filter(brand => 
-        brand.name.toLowerCase().includes(searchLower) ||
-        brand.description.toLowerCase().includes(searchLower) ||
-        brand.country.toLowerCase().includes(searchLower)
-      )
+      .filter(brand => {
+        const haystack = normalize(
+          `${brand.name} ${brand.description} ${brand.country}`
+        );
+        return tokens.every(t => haystack.includes(t));
+      })
       .slice(0, 4)
       .map(brand => ({
         id: brand.id,
@@ -98,7 +100,7 @@ const SmartSearch = ({
 
     setResults([...carResults, ...brandResults]);
     setIsLoading(false);
-  };
+  }, []);
 
   // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,7 +123,7 @@ const SmartSearch = ({
         clearTimeout(debounceRef.current);
       }
     };
-  }, [searchTerm]);
+  }, [searchTerm, performSearch]);
 
   // Handle search submission
   const handleSearch = (term: string = searchTerm) => {
