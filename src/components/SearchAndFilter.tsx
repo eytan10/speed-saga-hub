@@ -45,9 +45,10 @@ const SearchAndFilter = ({
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const brands = [
-    "Tesla", "BMW", "Mercedes-Benz", "Audi", "Porsche", "Ferrari", 
+    "Tesla", "BMW", "Mercedes-Benz", "Audi", "Porsche", "Ferrari",
     "McLaren", "Lamborghini", "Toyota", "Honda", "Ford", "Volkswagen",
-    "Hyundai", "Kia", "Nissan", "Mazda", "Subaru", "Skoda"
+    "Hyundai", "Kia", "Nissan", "Mazda", "Subaru", "Skoda",
+    "Peugeot", "Citroën"
   ];
 
   const categories = [

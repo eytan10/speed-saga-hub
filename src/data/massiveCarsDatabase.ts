@@ -965,7 +965,15 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("isuzu-trooper", "Trooper", "Isuzu", "SUV שטח", "$25,000", 190, 2023, fordBronco),
   createCar("isuzu-rodeo", "Rodeo", "Isuzu", "SUV", "$22,000", 205, 2023, mazdaCx5),
   createCar("isuzu-ascender", "Ascender", "Isuzu", "SUV גדול", "$28,000", 275, 2023, fordExpedition),
-  createCar("isuzu-npr", "NPR", "Isuzu", "משאית מסחרית", "$45,000", 150, 2024, fordRanger)
+  createCar("isuzu-npr", "NPR", "Isuzu", "משאית מסחרית", "$45,000", 150, 2024, fordRanger),
+  
+  // Peugeot Models (2 models)
+  createCar("peugeot-208", "208", "Peugeot", "האצ׳בק", "₪120,000", 130, 2024, hyundaiElantraWhite),
+  createCar("peugeot-3008", "3008", "Peugeot", "SUV", "₪180,000", 180, 2024, hyundaiTucson2024),
+
+  // Citroën Models (2 models)
+  createCar("citroen-c3", "C3", "Citroën", "האצ׳בק", "₪110,000", 120, 2024, kiaOptimaSilver),
+  createCar("citroen-c5-aircross", "C5 Aircross", "Citroën", "SUV", "₪170,000", 180, 2024, mazdaCx5Blue)
 ];
 
 export { expandedBrands } from "./expandedCarsDatabase";
