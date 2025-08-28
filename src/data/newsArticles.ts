@@ -21,6 +21,7 @@ import hyundaiIoniq5 from "@/assets/hyundai-ioniq5.jpg";
 import newsBackground from "@/assets/news-background.jpg";
 
 export interface NewsArticle {
+  id: string;
   title: string;
   summary: string;
   content: string;
