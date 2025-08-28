@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReviewModal from "@/components/ReviewModal";
 import NewPostModal from "@/components/NewPostModal";
+import { useToast } from "@/hooks/use-toast";
 import communityMeetingImage from "@/assets/community-meeting.jpg";
 import carReviewerImage from "@/assets/car-reviewer.jpg";
 import happyCustomerImage from "@/assets/happy-customer.jpg";
@@ -18,6 +19,7 @@ const CommunityPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showNewPostModal, setShowNewPostModal] = useState(false);
+  const { toast } = useToast();
 
   const communityStats = {
     totalMembers: 52834,
@@ -270,7 +272,10 @@ const CommunityPage = () => {
                     <p className="text-muted-foreground mb-6">
                       כאן תוכל למצוא תשובות לשאלות הטכניות שלך
                     </p>
-                    <Button className="btn-electric">
+                    <Button 
+                      className="btn-electric"
+                      onClick={() => setShowNewPostModal(true)}
+                    >
                       שאל שאלה
                     </Button>
                   </div>
@@ -381,15 +386,35 @@ const CommunityPage = () => {
               <Card className="p-6">
                 <h3 className="text-lg font-semibold mb-4">פעולות מהירות</h3>
                 <div className="space-y-3">
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => {
+                      // Navigate to Q&A tab
+                      const tabButton = document.querySelector('[value="questions"]');
+                      if (tabButton) (tabButton as HTMLElement).click();
+                    }}
+                  >
                     <Plus className="h-4 w-4 mr-2" />
                     שאל שאלה
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => {
+                      setShowNewPostModal(true);
+                    }}
+                  >
                     <MessageCircle className="h-4 w-4 mr-2" />
                     התחל דיון
                   </Button>
-                  <Button variant="outline" className="w-full justify-start">
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start"
+                    onClick={() => {
+                      setShowReviewModal(true);
+                    }}
+                  >
                     <Star className="h-4 w-4 mr-2" />
                     כתוב ביקורת
                   </Button>
@@ -400,12 +425,32 @@ const CommunityPage = () => {
               <Card className="p-6">
                 <h3 className="text-lg font-semibold mb-4">כללי הקהילה</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
+                  <p><strong>מותר:</strong></p>
+                  <p>• שיתוף ביקורות אמיתיות על רכבים</p>
+                  <p>• שאלות טכניות ועזרה מקצועית</p>
                   <p>• התנהג בכבוד כלפי חברי הקהילה</p>
-                  <p>• שתף מידע מדויק ומועיל</p>
-                  <p>• אל תפרסם תוכן פרסומי</p>
+                  <p>• שתף מידע מדויק ומועיל בלבד</p>
                   <p>• עזור לאחרים ותקבל עזרה בחזרה</p>
+                  
+                  <p className="pt-3"><strong>אסור:</strong></p>
+                  <p>• פרסום תוכן פרסומי ללא אישור</p>
+                  <p>• שפה פוגענית או בלתי הולמת</p>
+                  <p>• פרסום מידע כוזב או מטעה</p>
+                  <p>• ספאם או פרסום חוזר של תוכן זהה</p>
+                  <p>• פרסום מידע אישי של אנשים אחרים</p>
+                  <p>• דיונים פוליטיים שלא קשורים לרכבים</p>
                 </div>
-                <Button variant="outline" size="sm" className="w-full mt-4">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full mt-4"
+                  onClick={() => {
+                    toast({
+                      title: "כללי הקהילה המלאים",
+                      description: "ניתן לקרוא את כל הכללים באתר או לפנות לתמיכה",
+                    });
+                  }}
+                >
                   קרא עוד
                 </Button>
               </Card>

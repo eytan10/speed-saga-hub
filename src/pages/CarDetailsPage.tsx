@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CarImageGallery from "@/components/CarImageGallery";
+import CarInfoPanel from "@/components/CarInfoPanel";
 import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
 import { additionalCarModels } from "@/data/additionalCarModels";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -113,7 +114,29 @@ const CarDetailsPage = () => {
                     >
                       <Heart className={`h-4 w-4 ${isCarFavorite ? 'fill-racing-red' : ''}`} />
                     </Button>
-                    <Button size="icon" variant="outline">
+                    <Button 
+                      size="icon" 
+                      variant="outline"
+                      onClick={async () => {
+                        if (navigator.share) {
+                          try {
+                            await navigator.share({
+                              title: `${car.brand} ${car.name}`,
+                              text: `בדוק את הרכב המדהים הזה - ${car.brand} ${car.name}`,
+                              url: window.location.href,
+                            });
+                          } catch (err) {
+                            console.log('Error sharing:', err);
+                          }
+                        } else {
+                          await navigator.clipboard.writeText(window.location.href);
+                          toast({
+                            title: "הקישור הועתק!",
+                            description: "הקישור הועתק ללוח",
+                          });
+                        }
+                      }}
+                    >
                       <Share2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -148,8 +171,47 @@ const CarDetailsPage = () => {
                 </Button>
               </div>
 
-              {/* Right Side - Image Gallery */}
+              {/* Right Side - Car Information */}
               <div>
+                <Card className="p-6 mb-6">
+                  <h3 className="text-xl font-bold mb-4">מידע על הרכב</h3>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-sm text-muted-foreground">יצרן</p>
+                        <p className="font-semibold">{car.brand}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">דגם</p>
+                        <p className="font-semibold">{car.name}</p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-sm text-muted-foreground">שנה</p>
+                        <p className="font-semibold">{car.year}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">סוג רכב</p>
+                        <p className="font-semibold">{car.type}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">מחיר החל מ-</p>
+                      <p className="text-2xl font-bold text-racing-red">{car.price}</p>
+                    </div>
+                    {car.isElectric && (
+                      <div className="flex items-center gap-2">
+                        <Zap className="h-4 w-4 text-electric-blue" />
+                        <span className="text-sm text-electric-blue font-medium">רכב חשמלי</span>
+                      </div>
+                    )}
+                    {car.isNew && (
+                      <Badge className="bg-success text-white">חדש לשנת {new Date().getFullYear()}</Badge>
+                    )}
+                  </div>
+                </Card>
+
                 <CarImageGallery 
                   carName={`${car.brand} ${car.name}`}
                   mainImage={car.image}

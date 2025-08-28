@@ -29,7 +29,7 @@ const EnhancedCarComparison = ({ isOpen, onClose }: EnhancedCarComparisonProps) 
   const selectCar = (car: ExtendedCarDetails) => {
     if (activeSlot === 1) {
       setCar1(car);
-      if (!car2) setActiveSlot(2);
+      setActiveSlot(2);
     } else {
       setCar2(car);
     }
