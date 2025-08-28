@@ -1,15 +1,9 @@
 import carPricesData from "../../cursor_car_prices_il_2025/data/car_prices_il_2025.json";
- codex/add-price-folders-and-images-to-site-lyw6et
 
 const images = import.meta.glob("@/assets/*.{png,jpg,jpeg}", {
   eager: true,
   import: "default",
 }) as Record<string, string>;
-=======
-import toyotaCorolla from "@/assets/toyota-corolla.jpg";
-import hondaCivic from "@/assets/honda-civic-blue.jpg";
-import fordFiesta from "@/assets/ford-fiesta.jpg";
- main
 
 export interface CarPrice {
   make: string;
@@ -30,7 +24,6 @@ export interface CarPrice {
 
 export const carPrices2025 = carPricesData as CarPrice[];
 
- codex/add-price-folders-and-images-to-site-lyw6et
 const normalize = (value: string) =>
   value
     .toLowerCase()
@@ -65,12 +58,3 @@ export const getCarPrice = (make: string, model: string) => {
   const avg = list.reduce((sum, c) => sum + c.price_ils, 0) / list.length;
   return Math.round(avg);
 };
-=======
-const imageMap: Record<string, string> = {
-  "Toyota Corolla": toyotaCorolla,
-  "Honda Civic": hondaCivic,
-  "Ford Fiesta": fordFiesta,
-};
-
-export const getCarImage = (make: string, model: string) => imageMap[`${make} ${model}`];
- main
