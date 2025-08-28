@@ -1,0 +1,51 @@
+
+# il_price_sources_2025.yaml
+# Map ≥40 brands to official Israeli price/model pages (where possible).
+# 'parser' matches a function in fetch_il_car_prices_2025.py.
+# For brands without a dedicated parser yet, leave 'parser: generic' and fill via manual_overrides.csv later.
+
+brands:
+  - { make: "Toyota", parser: "toyota",  source_url: "https://www.toyota.co.il/buy-a-toyota" }
+  - { make: "Hyundai", parser: "hyundai", source_url: "https://www.hyundaimotors.co.il/prices" }
+  - { make: "Kia", parser: "kia", source_url: "https://kia-israel.co.il/%D7%A8%D7%9B%D7%91" }
+  - { make: "Mazda", parser: "mazda", source_url: "https://www.mazda.co.il/car-list" }
+  - { make: "Škoda", parser: "skoda", source_url: "https://www.skoda.co.il/models/" }
+  - { make: "Tesla", parser: "tesla", source_url: "https://www.tesla.com/he_il/model3" }
+  - { make: "Volvo", parser: "volvo", source_url: "https://www.volvocars.com/il/l/pricing/" }
+  - { make: "BYD", parser: "byd", source_url: "https://bydauto.co.il/model/byd-dolphin/" }
+
+  # The following brands are included for coverage (≥40). Most will use 'generic' until you add brand-specific parsers/URLs:
+  - { make: "Audi", parser: "generic", source_url: "https://www.audi.co.il/" }
+  - { make: "Volkswagen", parser: "generic", source_url: "https://www.volkswagen.co.il/" }
+  - { make: "SEAT", parser: "generic", source_url: "https://www.seat.co.il/" }
+  - { make: "CUPRA", parser: "generic", source_url: "https://www.cupraofficial.co.il/" }
+  - { make: "BMW", parser: "generic", source_url: "https://www.bmw.co.il/" }
+  - { make: "Mercedes-Benz", parser: "generic", source_url: "https://www.mercedes-benz.co.il/" }
+  - { make: "Peugeot", parser: "generic", source_url: "https://www.peugeot.co.il/" }
+  - { make: "Citroën", parser: "generic", source_url: "https://www.citroen.co.il/" }
+  - { make: "Opel", parser: "generic", source_url: "https://www.opel-israel.co.il/" }
+  - { make: "Renault", parser: "generic", source_url: "https://www.renault.co.il/" }
+  - { make: "Dacia", parser: "generic", source_url: "https://www.dacia.co.il/" }
+  - { make: "Nissan", parser: "generic", source_url: "https://www.nissan.co.il/" }
+  - { make: "Mitsubishi", parser: "generic", source_url: "https://www.mitsubishi-motors.co.il/" }
+  - { make: "Suzuki", parser: "generic", source_url: "https://www.suzuki-israel.co.il/" }
+  - { make: "Subaru", parser: "generic", source_url: "https://www.subaru.co.il/" }
+  - { make: "Honda", parser: "generic", source_url: "https://www.honda.co.il/cars/" }
+  - { make: "Fiat", parser: "generic", source_url: "https://www.fiat.co.il/" }
+  - { make: "Alfa Romeo", parser: "generic", source_url: "https://www.alfaromeo.co.il/" }
+  - { make: "Jeep", parser: "generic", source_url: "https://www.jeep.co.il/" }
+  - { make: "Porsche", parser: "generic", source_url: "https://www.porsche.co.il/" }
+  - { make: "Jaguar", parser: "generic", source_url: "https://www.jaguar.co.il/" }
+  - { make: "Land Rover", parser: "generic", source_url: "https://www.landrover.co.il/" }
+  - { make: "Mini", parser: "generic", source_url: "https://www.mini.co.il/" }
+  - { make: "Lexus", parser: "generic", source_url: "https://www.lexus.co.il/" }
+  - { make: "Infiniti", parser: "generic", source_url: "https://www.infiniti.co.il/" }
+  - { make: "Geely", parser: "generic", source_url: "https://geely.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F/" }
+  - { make: "Chery", parser: "generic", source_url: "https://www.cheryil.co.il/" }
+  - { make: "JAC", parser: "generic", source_url: "https://jacmotors.co.il/" }
+  - { make: "GAC", parser: "generic", source_url: "https://gac.co.il/" }
+  - { make: "ORA", parser: "generic", source_url: "https://ora.co.il/" }
+  - { make: "HAVAL", parser: "generic", source_url: "https://haval.co.il/" }
+  - { make: "Great Wall", parser: "generic", source_url: "https://gwm.co.il/" }
+  - { make: "Peugeot Scooters", parser: "generic", source_url: "https://www.peugeotscooters.co.il/" }  # will be filtered out (not cars)
+  - { make: "Saab", parser: "generic", source_url: "https://example.com" } # placeholder if brand not sold anymore
