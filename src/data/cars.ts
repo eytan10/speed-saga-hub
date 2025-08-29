@@ -1,6 +1,6 @@
-import ferrariImage from "@/assets/ferrari-red.jpg";
-import teslaImage from "@/assets/tesla-blue.jpg";
-import porscheImage from "@/assets/porsche-black.jpg";
+import ferrariImage from "@/assets/ferrari-488-gtb-new.jpg";
+import teslaImage from "@/assets/tesla-model-s-plaid-new.jpg";
+import porscheImage from "@/assets/porsche-911-turbo-s-new.jpg";
 
 export interface Car {
   id: string;
@@ -32,7 +32,7 @@ export const featuredCars: Car[] = [
     year: 2024,
     type: "Sports Car",
     image: ferrariImage,
-    price: "₪1,036,000",
+    price: "₪1,280,000",
     horsepower: 661,
     topSpeed: "205 mph",
     rating: 4.8,
@@ -53,7 +53,7 @@ export const featuredCars: Car[] = [
     year: 2024,
     type: "Electric Sedan",
     image: teslaImage,
-    price: "₪499,500",
+    price: "₪420,000",
     horsepower: 1020,
     topSpeed: "200 mph",
     rating: 4.6,
@@ -74,7 +74,7 @@ export const featuredCars: Car[] = [
     year: 2024,
     type: "Sports Car",
     image: porscheImage,
-    price: "₪851,000",
+    price: "₪765,000",
     horsepower: 640,
     topSpeed: "205 mph",
     rating: 4.9,

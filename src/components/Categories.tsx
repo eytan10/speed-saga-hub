@@ -6,7 +6,7 @@ import { Car, ArrowLeft, Search as SearchIcon, Home, ArrowRight } from "lucide-r
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
 import AdvancedSearch from "./AdvancedSearch";
 import { useState } from "react";
-import { carCategories } from "@/data/cars";
+import { updatedCarCategories } from "@/data/updatedCarsData";
 import { additionalCarModels } from "@/data/additionalCarModels";
 import { normalizeBrand } from "@/lib/utils";
 
