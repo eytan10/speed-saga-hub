@@ -1,5 +1,18 @@
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { allCarsForUpdate, getCarDescription, getImageSearchTerms } from "./carDatabase.ts";
+import { updateAllCars } from "./updateAllCars.ts";
+
+// Global progress tracking
+let updateProgress = {
+  isUpdating: false,
+  currentStep: '',
+  progress: 0,
+  totalCars: 0,
+  processedCars: 0,
+  errors: [],
+  completedCars: []
+};
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -37,6 +50,13 @@ serve(async (req) => {
         return await updateCarImages(supabase);
       case 'update_single_car':
         return await updateSingleCar(supabase, carData);
+      case 'update_all_cars':
+        return await updateAllCars(supabase, updateProgress);
+      case 'get_progress':
+        return new Response(
+          JSON.stringify(updateProgress),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
       default:
         throw new Error('Unknown action');
     }

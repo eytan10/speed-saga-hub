@@ -20,28 +20,69 @@ class CarDataUpdater {
     }
 
     this.isUpdating = true;
-    toast.info("מתחיל עדכון שיטתי של כל נתוני הרכבים...");
+    toast.info("מתחיל עדכון מקיף של כל הרכבים...");
 
     try {
-      // שלב 1: סריקת מחירים מ-iCar
-      await this.scrapePricesFromIcar();
+      // התחלת עדכון כל הרכבים ברקע
+      const { data, error } = await supabase.functions.invoke('car-data-updater', {
+        body: { action: 'update_all_cars' }
+      });
+
+      if (error) throw error;
       
-      // שלב 2: סריקת מחירים מ-Auto.co.il
-      await this.scrapePricesFromAuto();
+      toast.success(`התחיל עדכון של ${data.total_cars} רכבים - זמן משוער: ${data.estimated_time}`);
       
-      // שלב 3: עדכון תמונות רכבים
-      await this.updateCarImages();
-      
-      // שלב 4: סנכרון עם הנתונים הקיימים
-      await this.synchronizeCarData();
-      
-      toast.success("עדכון כל נתוני הרכבים הושלם בהצלחה!");
+      // התחלת מעקב אחר התקדמות
+      this.startProgressTracking();
       
     } catch (error) {
-      console.error("Error during full update:", error);
-      toast.error("שגיאה בעדכון נתוני הרכבים");
-    } finally {
+      console.error("Error starting full update:", error);
+      toast.error("שגיאה בהתחלת עדכון הרכבים");
       this.isUpdating = false;
+    }
+  }
+
+  private async startProgressTracking(): Promise<void> {
+    const trackProgress = async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke('car-data-updater', {
+          body: { action: 'get_progress' }
+        });
+
+        if (error) throw error;
+
+        if (data.isUpdating) {
+          // המשך מעקב
+          setTimeout(trackProgress, 5000); // בדיקה כל 5 שניות
+        } else {
+          // העדכון הושלם
+          this.isUpdating = false;
+          if (data.errors.length > 0) {
+            toast.warning(`עדכון הושלם עם ${data.errors.length} שגיאות`);
+          } else {
+            toast.success("עדכון כל הרכבים הושלם בהצלחה!");
+          }
+        }
+      } catch (error) {
+        console.error("Error tracking progress:", error);
+        this.isUpdating = false;
+      }
+    };
+
+    trackProgress();
+  }
+
+  async getProgressStatus(): Promise<any> {
+    try {
+      const { data, error } = await supabase.functions.invoke('car-data-updater', {
+        body: { action: 'get_progress' }
+      });
+
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error("Error getting progress:", error);
+      return null;
     }
   }
 
