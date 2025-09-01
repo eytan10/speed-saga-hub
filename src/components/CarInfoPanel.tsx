@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Zap, Car, MapPin, Calendar, Fuel, Gauge } from "lucide-react";
-import { ExtendedCarDetails } from "@/data/massiveCarsDatabase";
+import { CarData } from "@/services/carService";
 
 interface CarInfoPanelProps {
-  car: ExtendedCarDetails;
+  car: CarData;
 }
 
 const CarInfoPanel = ({ car }: CarInfoPanelProps) => {
@@ -27,7 +27,7 @@ const CarInfoPanel = ({ car }: CarInfoPanelProps) => {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">דגם</p>
-            <p className="font-semibold">{car.name}</p>
+            <p className="font-semibold">{car.model}</p>
           </div>
         </div>
         
@@ -48,7 +48,7 @@ const CarInfoPanel = ({ car }: CarInfoPanelProps) => {
         {/* Price Section */}
         <div className="border-t pt-4">
           <p className="text-sm text-muted-foreground mb-1">מחיר החל מ-</p>
-          <p className="text-2xl font-bold text-racing-red">{car.price}</p>
+          <p className="text-2xl font-bold text-racing-red">₪{car.price_ils?.toLocaleString()}</p>
         </div>
 
         {/* Performance Highlights */}
@@ -60,40 +60,35 @@ const CarInfoPanel = ({ car }: CarInfoPanelProps) => {
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div>
               <span className="text-muted-foreground">כוח: </span>
-              <span className="font-medium">{car.specs.power}</span>
+              <span className="font-medium">{car.specs.horsepower || 'N/A'} כ"ס</span>
             </div>
             <div>
               <span className="text-muted-foreground">תאוצה: </span>
-              <span className="font-medium">{car.specs.acceleration}</span>
+              <span className="font-medium">{car.specs.acceleration || 'N/A'}</span>
             </div>
             <div>
               <span className="text-muted-foreground">מהירות מרבית: </span>
-              <span className="font-medium">{car.specs.topSpeed}</span>
+              <span className="font-medium">{car.specs.topSpeed || 'N/A'}</span>
             </div>
             <div>
               <span className="text-muted-foreground flex items-center">
                 <Fuel className="h-3 w-3 mr-1" />
                 צריכה: 
               </span>
-              <span className="font-medium">{car.specs.fuel}</span>
+              <span className="font-medium">{car.specs.fuelType || 'N/A'}</span>
             </div>
           </div>
         </div>
 
         {/* Special Features */}
         <div className="border-t pt-4 flex flex-wrap gap-2">
-          {car.isElectric && (
+          {car.specs.fuelType === 'Electric' && (
             <Badge className="bg-electric-blue text-white">
               <Zap className="h-3 w-3 mr-1" />
               חשמלי
             </Badge>
           )}
-          {car.isNew && (
-            <Badge className="bg-success text-white">
-              חדש לשנת {new Date().getFullYear()}
-            </Badge>
-          )}
-          <Badge variant="outline">{car.specs.seating} מושבים</Badge>
+          <Badge variant="outline">{car.specs.seats || 'N/A'} מושבים</Badge>
           <Badge variant="secondary">{car.type}</Badge>
         </div>
 

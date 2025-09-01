@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, Home, Search, Grid3X3, List, Filter, Heart, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -8,10 +8,30 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
-import type { ExtendedCarDetails } from "@/data/massiveCarsDatabase";
+import { getCarsByType, getCarTypes, CarData } from "@/services/carService";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
+
+// Map URL slugs to DB car type values
+const slugToType: Record<string, string> = {
+  "sports-car": "Sports Car",
+  "classic-car": "Classic Car",
+  "electric-car": "Electric Car"
+};
+
+// Map DB car type values to slugs
+const typeToSlug: Record<string, string> = {
+  "Sports Car": "sports-car",
+  "Classic Car": "classic-car",
+  "Electric Car": "electric-car"
+};
+
+// Map DB car type values to display names (optional, for Hebrew)
+const typeDisplayNames: Record<string, string> = {
+  "Sports Car": "רכב ספורט",
+  "Classic Car": "רכב קלאסי",
+  "Electric Car": "רכב חשמלי"
+};
 
 const CategoryPage = () => {
   const { category } = useParams<{ category: string }>();
@@ -19,10 +39,57 @@ const CategoryPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState("name");
+  const [cars, setCars] = useState<CarData[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(12);
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const { toast } = useToast();
 
-  const handleFavoriteClick = (car: ExtendedCarDetails, e: React.MouseEvent) => {
+  // Always map the slug to the DB value
+  const dbType = category && slugToType[category] ? slugToType[category] : category;
+  console.log('CategoryPage dbType:', dbType); // DEBUG: log the mapped DB value
+
+  // Fetch cars for the category
+  useEffect(() => {
+    const fetchCategoryCars = async () => {
+      if (!dbType) return;
+      setLoading(true);
+      try {
+        const result = await getCarsByType(dbType, page, pageSize); // <--- use dbType here!
+        setCars(result.data);
+        setTotal(result.total);
+      } catch (error) {
+        console.error('Error fetching category cars:', error);
+        toast({
+          title: "שגיאה",
+          description: "לא ניתן לטעון את הרכבים. נסה שוב מאוחר יותר.",
+          variant: "destructive"
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCategoryCars();
+  }, [dbType, page, pageSize, toast]);
+
+  // Fetch all categories for navigation
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const types = await getCarTypes();
+        setCategories(types);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const handleFavoriteClick = (car: CarData, e: React.MouseEvent) => {
     e.stopPropagation();
     const isCarFavorite = isFavorite(car.id);
     
@@ -30,75 +97,44 @@ const CategoryPage = () => {
       removeFromFavorites(car.id);
       toast({
         title: "הוסר מהמועדפים",
-        description: `${car.brand} ${car.name} הוסר מהמועדפים שלך`,
+        description: `${car.brand} ${car.model} הוסר מהמועדפים שלך`,
       });
     } else {
       addToFavorites(car);
       toast({
         title: "נוסף למועדפים",
-        description: `${car.brand} ${car.name} נוסף למועדפים שלך`,
+        description: `${car.brand} ${car.model} נוסף למועדפים שלך`,
       });
     }
   };
   
-  // Define category mappings
-  const categoryMappings: Record<string, string[]> = {
-    "sports-cars": ["מכונית ספורט", "סופרקאר", "קופה ספורט", "רודסטר ספורט", "האצ׳בק ספורט"],
-    "suvs": ["SUV", "SUV קומפקטי", "SUV יוקרה", "SUV גדול", "SUV שטח", "SUV סופר ספורט", "SUV מסלול", "SUV חשמלי"],
-    "electric-vehicles": [],
-    "luxury-sedans": ["סדאן יוקרה", "סדאן יוקרה עילית", "סדאן"],
-    "supercars": ["סופרקאר", "היפרקאר", "סופרקאר מסלול", "סופרקאר ספורט", "היפרקאר היברידי"],
-    "classic-cars": ["סופרקאר קלאסי", "סופרקאר היסטורי", "סופרקאר אייקוני"]
-  };
-
-  // Get category title
+  // Get category title for display
   const getCategoryTitle = (cat: string | undefined) => {
-    switch (cat) {
-      case "sports-cars": return "רכבי ספורט";
-      case "suvs": return "רכבי שטח";
-      case "electric-vehicles": return "רכבים חשמליים";
-      case "luxury-sedans": return "סדאנים יוקרתיים";
-      case "supercars": return "סופרקארים";
-      case "classic-cars": return "רכבים קלאסיים";
-      default: return "רכבים";
-    }
+    if (!cat) return "רכבים";
+    const dbType = slugToType[cat] ? slugToType[cat] : cat;
+    return typeDisplayNames[dbType] || dbType;
   };
 
-  // Filter cars by category
-  const filteredCars = massiveCarsDatabase.filter(car => {
-    // Category filter
-    let matchesCategory = false;
-    if (category === "electric-vehicles") {
-      matchesCategory = car.isElectric === true;
-    } else if (category && categoryMappings[category]) {
-      matchesCategory = categoryMappings[category].includes(car.type);
-    } else {
-      matchesCategory = true;
-    }
-
-    // Search filter
-    const matchesSearch = searchTerm ? 
-      car.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      car.type.toLowerCase().includes(searchTerm.toLowerCase())
-      : true;
-
-    return matchesCategory && matchesSearch;
-  }).sort((a, b) => {
+  // Filter and sort cars
+  const filteredCars = cars.filter(car =>
+    car.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    car.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    car.type.toLowerCase().includes(searchTerm.toLowerCase())
+  ).sort((a, b) => {
     switch (sortBy) {
       case "price":
-        return parseInt(a.price.replace(/[^0-9]/g, '')) - parseInt(b.price.replace(/[^0-9]/g, ''));
+        return a.price_ils - b.price_ils;
       case "rating":
-        return b.rating - a.rating;
+        return b.price_ils - a.price_ils; // Sort by price for now since rating might not exist
       case "power":
-        return b.specs.power - a.specs.power;
+        return b.specs.horsepower - a.specs.horsepower;
       default:
-        return a.name.localeCompare(b.name);
+        return (a.brand + " " + a.model).localeCompare(b.brand + " " + b.model);
     }
   });
 
-  const handleCarClick = (car: typeof massiveCarsDatabase[0]) => {
-    navigate(`/car/${car.brand.toLowerCase()}/${car.id}`);
+  const handleCarClick = (car: CarData) => {
+    navigate(`/car/${car.id}`);
   };
 
   return (
@@ -123,8 +159,21 @@ const CategoryPage = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               גלה את מגוון {getCategoryTitle(category)} המרשים שלנו
             </p>
+            {/* Category Navigation */}
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              {categories.map((cat) => (
+                <Badge
+                  key={cat}
+                  variant={dbType === cat ? "default" : "secondary"}
+                  className="cursor-pointer text-lg px-4 py-2 hover:bg-primary hover:text-primary-foreground transition-colors"
+                  onClick={() => navigate(`/category/${typeToSlug[cat] || cat}`)}
+                >
+                  {typeDisplayNames[cat] || cat}
+                </Badge>
+              ))}
+            </div>
             <Badge variant="secondary" className="mt-4 text-lg px-4 py-2">
-              {filteredCars.length} רכבים זמינים
+              {total} רכבים זמינים
             </Badge>
           </div>
         </section>
@@ -191,12 +240,23 @@ const CategoryPage = () => {
                   נקה חיפוש
                 </Button>
               </div>
+            ) : loading ? (
+              <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {[...Array(8)].map((_, i) => (
+                  <Card key={i} className="p-6 animate-pulse">
+                    <div className="h-48 bg-muted rounded mb-4"></div>
+                    <div className="h-4 bg-muted rounded mb-2"></div>
+                    <div className="h-4 bg-muted rounded w-2/3"></div>
+                  </Card>
+                ))}
+              </div>
             ) : (
-              <div className={`grid gap-6 ${
-                viewMode === "grid" 
-                  ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" 
-                  : "grid-cols-1"
-              }`}>
+              <>
+                <div className={`grid gap-6 ${
+                  viewMode === "grid" 
+                    ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" 
+                    : "grid-cols-1"
+                }`}>
                 {filteredCars.map((car) => (
                   <Card 
                     key={car.id} 
@@ -207,8 +267,8 @@ const CategoryPage = () => {
                   >
                     <div className={viewMode === "list" ? "w-1/3 relative" : "relative"}>
                       <img 
-                        src={car.image} 
-                        alt={car.name}
+                        src="/default-car.jpg" // Always use default placeholder image
+                        alt={`${car.brand} ${car.model}`}
                         className={`w-full object-cover ${
                           viewMode === "list" ? "h-48" : "h-48"
                         }`}
@@ -216,8 +276,8 @@ const CategoryPage = () => {
                       
                       {/* Badges */}
                       <div className="absolute top-4 left-4 flex gap-2">
-                        {car.isElectric && (
-                          <Badge className="bg-electric-blue text-electric-blue-foreground">
+                        {car.specs.fuelType === 'Electric' && (
+                          <Badge className="bg-electric-blue text-white">
                             <Zap className="h-3 w-3 mr-1" />
                             חשמלי
                           </Badge>
@@ -241,19 +301,19 @@ const CategoryPage = () => {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center">
                           <span className="text-yellow-500 mr-1">★</span>
-                          <span className="text-sm">{car.rating.toFixed(1)}</span>
+                          <span className="text-sm">{car.price_ils ? (car.price_ils / 100000).toFixed(1) : 'N/A'}</span>
                         </div>
                       </div>
                       <h3 className="text-xl font-bold mb-2 group-hover:text-electric-blue transition-smooth">
-                        {car.brand} {car.name}
+                        {car.brand} {car.model}
                       </h3>
                       <p className="text-muted-foreground mb-4 text-sm line-clamp-2">
-                        {car.description}
+                        {car.specs.engine || "אין תיאור זמין."}
                       </p>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
                           <span>כוח:</span>
-                          <span>{car.specs.power} כ״ס</span>
+                          <span>{car.specs.horsepower || 'N/A'} כ״ס</span>
                         </div>
                         <div className="flex justify-between">
                           <span>שנה:</span>
@@ -262,9 +322,14 @@ const CategoryPage = () => {
                       </div>
                       <div className="flex items-center justify-between mt-6">
                         <span className="text-2xl font-bold text-racing-red">
-                          {car.price}
+                          ₪{car.price_ils?.toLocaleString()}
                         </span>
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/car/${car.id}`);
+                          }}
+                        >
                           פרטים
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -272,7 +337,39 @@ const CategoryPage = () => {
                     </div>
                   </Card>
                 ))}
-              </div>
+                </div>
+
+                {/* Pagination */}
+                {total > pageSize && (
+                  <div className="flex justify-center mt-8 space-x-2">
+                    <Button
+                      variant="outline"
+                      onClick={() => setPage(p => Math.max(1, p - 1))}
+                      disabled={page === 1}
+                    >
+                      הקודם
+                    </Button>
+                    
+                    {Array.from({ length: Math.ceil(total / pageSize) }, (_, i) => (
+                      <Button
+                        key={i + 1}
+                        variant={page === i + 1 ? "default" : "outline"}
+                        onClick={() => setPage(i + 1)}
+                      >
+                        {i + 1}
+                      </Button>
+                    ))}
+                    
+                    <Button
+                      variant="outline"
+                      onClick={() => setPage(p => Math.min(Math.ceil(total / pageSize), p + 1))}
+                      disabled={page === Math.ceil(total / pageSize)}
+                    >
+                      הבא
+                    </Button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </section>

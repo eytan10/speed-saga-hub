@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { ExtendedCarDetails } from '@/data/massiveCarsDatabase';
+import { CarData } from '@/services/carService';
 
 interface FavoritesContextType {
-  favorites: ExtendedCarDetails[];
-  addToFavorites: (car: ExtendedCarDetails) => void;
+  favorites: CarData[];
+  addToFavorites: (car: CarData) => void;
   removeFromFavorites: (carId: string) => void;
   isFavorite: (carId: string) => boolean;
   clearFavorites: () => void;
@@ -12,7 +12,7 @@ interface FavoritesContextType {
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [favorites, setFavorites] = useState<ExtendedCarDetails[]>(() => {
+  const [favorites, setFavorites] = useState<CarData[]>(() => {
     const saved = localStorage.getItem('favorites');
     return saved ? JSON.parse(saved) : [];
   });
@@ -21,7 +21,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const addToFavorites = (car: ExtendedCarDetails) => {
+  const addToFavorites = (car: CarData) => {
     setFavorites(prev => {
       if (prev.some(fav => fav.id === car.id)) return prev;
       return [...prev, car];

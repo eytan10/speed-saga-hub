@@ -49,25 +49,25 @@ const DEFAULT_CAR_IMAGE = '/placeholder.svg';
 function mapDatabaseRowToCar(row: any, index: number): CarData {
   const brand = row['Company Names'] || 'Unknown';
   const model = row['Cars Names'] || 'Unknown Model';
-  
+
   return {
     id: `${brand.toLowerCase().replace(/\s+/g, '-')}-${model.toLowerCase().replace(/\s+/g, '-')}-${index}`,
     brand,
     model,
-    year: 2024, // Default year since not in DB
-    price_ils: Math.round((row['Price (USD)'] || 0) * 3.7), // Convert USD to ILS
+    year: 2024, // Still default, as year is not in DB
+    price_ils: row['Cars Prices'] ? parseInt(row['Cars Prices'].replace(/[^0-9]/g, '')) : (row['Price (USD)'] ? Math.round(row['Price (USD)'] * 3.7) : 0),
     price_usd: row['Price (USD)'] || 0,
     type: row['Car Type'] || 'Unknown',
-    image_url: DEFAULT_CAR_IMAGE, // Always use placeholder
+    image_url: '/default-car.jpg', // Always use placeholder
     specs: {
-      horsepower: row['HorsePower (hp)'] || 0,
-      torque: row['Torque (Nm)'] || 0,
-      acceleration: row['Performance(0 - 100 )KM/H'] || 'N/A',
+      horsepower: row['HorsePower (hp)'] || row['HorsePower'] || 0,
+      torque: row['Torque (Nm)'] || row['Torque'] || 0,
+      acceleration: row['Performance(0 - 100 )'] || row['Performance(0 - 100 )KM/H'] || 'N/A',
       topSpeed: row['Total Speed'] || 'N/A',
       engine: row['Engines'] || 'N/A',
       fuelType: row['Fuel Types'] || 'N/A',
-      seats: row['Seats (int)'] || 0,
-      capacity: row['CC/Battery Capacity'] || 'N/A'
+      seats: row['Seats (int)'] || row['Seats'] || 0,
+      capacity: row['CC/Battery Capacity'] || 'N/A',
     }
   };
 }
@@ -91,7 +91,8 @@ export async function getCars(
     }
 
     if (filters.search) {
-      query = query.or(`Company Names.ilike.%${filters.search}%,Cars Names.ilike.%${filters.search}%`);
+      // Search only by model (Cars Names)
+      query = query.ilike('Cars Names', `%${filters.search}%`);
     }
 
     // Apply pagination
@@ -99,7 +100,10 @@ export async function getCars(
     const to = from + pageSize - 1;
     query = query.range(from, to);
 
+    // Print the query for debugging before sending
+    console.log('Supabase query:', query);
     const { data, error, count } = await query;
+    console.log('Supabase raw data:', data); // DEBUG: log raw data
 
     if (error) {
       console.error('Error fetching cars:', error);
@@ -158,6 +162,11 @@ export async function getCarById(id: string): Promise<CarData | null> {
 
 // Get unique brands
 export async function getBrands(): Promise<string[]> {
+  return getCarBrands();
+}
+
+// Get unique car brands
+export async function getCarBrands(): Promise<string[]> {
   try {
     const { data, error } = await (supabase as any)
       .from('cars_data')

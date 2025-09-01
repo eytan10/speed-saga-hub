@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Star, Zap, Phone, MapPin, ExternalLink, Heart, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -6,27 +6,61 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CarImageGallery from "@/components/CarImageGallery";
 import CarInfoPanel from "@/components/CarInfoPanel";
-import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
-import { additionalCarModels } from "@/data/additionalCarModels";
+import { getCarById, CarData } from "@/services/carService";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
+import { useState, useEffect } from "react";
 
 const CarDetailsPage = () => {
-  const { brand, model } = useParams();
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const { toast } = useToast();
-  // Combine cars from both databases
-  const allCars = [...massiveCarsDatabase, ...additionalCarModels];
-  const car = allCars.find(c => c.id === model);
+  const [car, setCar] = useState<CarData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (!car) {
+  useEffect(() => {
+    const fetchCarDetails = async () => {
+      if (!id) return;
+      
+      setLoading(true);
+      try {
+        const carData = await getCarById(id);
+        if (carData) {
+          setCar(carData);
+        } else {
+          setError("רכב לא נמצא");
+        }
+      } catch (err) {
+        console.error('Error fetching car details:', err);
+        setError("שגיאה בטעינת פרטי הרכב");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCarDetails();
+  }, [id]);
+
+  if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">רכב לא נמצא</h1>
-          <Button onClick={() => window.location.href = '/cars'}>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-racing-red mx-auto mb-4"></div>
+          <p>טוען פרטי רכב...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !car) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">{error || "רכב לא נמצא"}</h1>
+          <Button onClick={() => navigate('/cars')}>
             חזרה לרכבים
           </Button>
         </div>
@@ -41,13 +75,13 @@ const CarDetailsPage = () => {
       removeFromFavorites(car.id);
       toast({
         title: "הוסר מהמועדפים",
-        description: `${car.brand} ${car.name} הוסר מהמועדפים שלך`,
+        description: `${car.brand} ${car.model} הוסר מהמועדפים שלך`,
       });
     } else {
       addToFavorites(car);
       toast({
         title: "נוסף למועדפים",
-        description: `${car.brand} ${car.name} נוסף למועדפים שלך`,
+        description: `${car.brand} ${car.model} נוסף למועדפים שלך`,
       });
     }
   };
@@ -60,14 +94,14 @@ const CarDetailsPage = () => {
         {/* Breadcrumb */}
         <section className="py-4 bg-card border-b border-border">
           <div className="container mx-auto px-4">
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => window.location.href = `/cars/${brand}`}
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              חזרה ל{car.brand}
-            </Button>
+                          <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => navigate('/cars')}
+              >
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                חזרה לרכבים
+              </Button>
           </div>
         </section>
 
@@ -80,8 +114,8 @@ const CarDetailsPage = () => {
                 {/* Main Image */}
                 <div className="relative mb-8">
                   <img
-                    src={car.image}
-                    alt={`${car.brand} ${car.name}`}
+                    src="/default-car.jpg" // Always use default placeholder image
+                    alt={`${car.brand} ${car.model}`}
                     className="w-full h-96 object-cover rounded-lg shadow-automotive"
                   />
                   <div className="absolute top-4 left-4 flex gap-2">

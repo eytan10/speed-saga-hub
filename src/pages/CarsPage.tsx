@@ -1,4 +1,4 @@
-import { Search, Filter, Grid, List } from "lucide-react";
+import { Search, Filter, Grid, List, Heart, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,16 +7,24 @@ import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SearchAndFilter from "@/components/SearchAndFilter";
-import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
-import { additionalCarModels } from "@/data/additionalCarModels";
+import { getCars, CarData, CarFilters } from "@/services/carService";
+import { useFavorites } from "@/contexts/FavoritesContext";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const CarsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  interface CarFilters {
-    brand?: string;
-  }
   const [filters, setFilters] = useState<CarFilters>({});
+  const [cars, setCars] = useState<CarData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(12);
+  
+  const navigate = useNavigate();
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const { toast } = useToast();
   
   // Get search term from URL parameters
   useEffect(() => {
@@ -27,15 +35,52 @@ const CarsPage = () => {
     }
   }, []);
 
-  const filteredBrands = expandedBrands.filter(brand => {
-    const matchesSearch = brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         brand.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         brand.country.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesBrandFilter = !filters.brand || brand.name === filters.brand;
-    
-    return matchesSearch && matchesBrandFilter;
-  });
+  // Fetch cars when filters, search term, or page changes
+  useEffect(() => {
+    const fetchCars = async () => {
+      setLoading(true);
+      try {
+        const result = await getCars(
+          { 
+            ...filters, 
+            search: searchTerm || undefined 
+          }, 
+          page, 
+          pageSize
+        );
+        setCars(result.data);
+        setTotal(result.total);
+      } catch (error) {
+        console.error('Error fetching cars:', error);
+        toast({
+          title: "שגיאה",
+          description: "לא ניתן לטעון את הרכבים. נסה שוב מאוחר יותר.",
+          variant: "destructive"
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCars();
+  }, [searchTerm, filters, page, pageSize, toast]);
+
+  const handleFavoriteClick = (car: CarData, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isFavorite(car.id)) {
+      removeFromFavorites(car.id);
+      toast({
+        title: "הוסר מהמועדפים",
+        description: `${car.brand} ${car.model} הוסר מהמועדפים שלך`,
+      });
+    } else {
+      addToFavorites(car);
+      toast({
+        title: "נוסף למועדפים",
+        description: `${car.brand} ${car.model} נוסף למועדפים שלך`,
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -85,108 +130,180 @@ const CarsPage = () => {
               searchTerm={searchTerm}
               onSearchChange={setSearchTerm}
               onFiltersChange={setFilters}
-              totalResults={filteredBrands.length}
+              totalResults={total}
             />
           </div>
         </section>
 
-        {/* Brands Grid */}
+        {/* Cars Grid */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold mb-4">מותגי רכב מובילים</h2>
-              <p className="text-muted-foreground">
-                בחר מותג כדי לראות את כל הדגמים והמידע המלא
-              </p>
-            </div>
-
-            <div className={`grid gap-6 ${
-              viewMode === "grid" 
-                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
-                : "grid-cols-1"
-            }`}>
-              {filteredBrands.map((brand) => (
-                <Card 
-                  key={brand.id} 
-                  className="relative overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group"
-                  onClick={() => window.location.href = `/brand/${brand.id}`}
+            <div className="mb-8 flex items-center justify-between">
+              <div>
+                <h2 className="text-3xl font-bold mb-4">רכבים זמינים</h2>
+                <p className="text-muted-foreground">
+                  נמצאו {total} רכבים מתאימים
+                </p>
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  variant={viewMode === "grid" ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setViewMode("grid")}
                 >
-                  {/* Background gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/20 group-hover:to-primary/10 transition-smooth"></div>
-                  
-                  <div className="relative p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                        <div className="relative">
-                          {typeof brand.logo === 'string' && (brand.logo.includes('.') || brand.logo.startsWith('/')) ? (
-                            <img 
-                              src={brand.logo} 
-                              alt={`${brand.name} logo`}
-                              className="w-16 h-16 object-contain transform group-hover:scale-110 transition-smooth"
-                            />
-                          ) : (
-                            <div className="text-5xl transform group-hover:scale-110 transition-smooth">{brand.logo}</div>
+                  <Grid className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant={viewMode === "list" ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setViewMode("list")}
+                >
+                  <List className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+
+            {loading ? (
+              <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                {[...Array(6)].map((_, i) => (
+                  <Card key={i} className="p-6 animate-pulse">
+                    <div className="h-48 bg-muted rounded mb-4"></div>
+                    <div className="h-4 bg-muted rounded mb-2"></div>
+                    <div className="h-4 bg-muted rounded w-2/3"></div>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <>
+                <div className={`grid gap-6 ${
+                  viewMode === "grid" 
+                    ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" 
+                    : "grid-cols-1"
+                }`}>
+                  {cars.map((car) => (
+                    <Card 
+                      key={car.id} 
+                      className={`overflow-hidden hover:shadow-automotive hover:-translate-y-2 transition-smooth cursor-pointer group ${
+                        viewMode === "list" ? "flex" : ""
+                      }`}
+                      onClick={() => navigate(`/car/${car.id}`)}
+                    >
+                      <div className={viewMode === "list" ? "w-1/3 relative" : "relative"}>
+                        <img 
+                          src="/default-car.jpg" 
+                          alt={`${car.brand} ${car.model}`}
+                          className={`w-full object-cover ${
+                            viewMode === "list" ? "h-full" : "h-48"
+                          }`}
+                        />
+                        
+                        {/* Badges */}
+                        <div className="absolute top-4 left-4 flex gap-2">
+                          {car.specs.fuelType === 'Electric' && (
+                            <Badge className="bg-electric-blue text-white">
+                              <Zap className="h-3 w-3 mr-1" />
+                              חשמלי
+                            </Badge>
                           )}
-                          <div className="absolute inset-0 bg-gradient-to-r from-racing-red/20 to-electric-blue/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-smooth"></div>
+                          <Badge variant="secondary">{car.type}</Badge>
                         </div>
-                        <div>
-                          <h3 className="text-2xl font-bold group-hover:text-racing-red transition-smooth">
-                            {brand.name}
+
+                        {/* Favorite Button */}
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          className={`absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white ${
+                            isFavorite(car.id) ? 'text-racing-red' : ''
+                          }`}
+                          onClick={(e) => handleFavoriteClick(car, e)}
+                        >
+                          <Heart className={`h-4 w-4 ${isFavorite(car.id) ? 'fill-racing-red' : ''}`} />
+                        </Button>
+                      </div>
+
+                      <div className={`p-6 ${viewMode === "list" ? "flex-1" : ""}`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="text-xl font-bold group-hover:text-racing-red transition-smooth">
+                            {car.brand} {car.model}
                           </h3>
-                          <p className="text-sm text-muted-foreground flex items-center gap-2">
-                            <span className="inline-block w-2 h-2 rounded-full bg-racing-red"></span>
-                            נוסדה {brand.founded} • {brand.country}
-                          </p>
+                          <div className="text-sm text-muted-foreground">
+                            {car.year}
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2 text-sm mb-4">
+                          <div className="flex justify-between">
+                            <span>כוח:</span>
+                            <span>{car.specs.horsepower} כ"ס</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>מנוע:</span>
+                            <span>{car.specs.engine}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>מושבים:</span>
+                            <span>{car.specs.seats}</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                          <div className="text-2xl font-bold text-racing-red">
+                            ₪{car.price_ils.toLocaleString()}
+                          </div>
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/car/${car.id}`);
+                            }}
+                          >
+                            פרטים
+                          </Button>
                         </div>
                       </div>
-                      <div className="flex flex-col items-end gap-2">
-                        <Badge className="bg-gradient-to-r from-racing-red to-electric-blue text-white border-0">
-                          מותג יוקרה
-                        </Badge>
-                        <div className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-smooth">
-                          ⭐ דירוג 4.8/5
-                        </div>
-                      </div>
-                    </div>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Pagination */}
+                {total > pageSize && (
+                  <div className="flex justify-center mt-8 space-x-2">
+                    <Button
+                      variant="outline"
+                      onClick={() => setPage(p => Math.max(1, p - 1))}
+                      disabled={page === 1}
+                    >
+                      הקודם
+                    </Button>
                     
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {brand.description}
-                    </p>
-
-            <div className="flex items-center justify-between border-t border-border pt-4">
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  🚗 <span className="font-medium">דגמים רבים</span>
-                </span>
-                <span className="flex items-center gap-1">
-                  ⚡ <span className="font-medium">חדשנות</span>
-                </span>
-              </div>
-              <Button 
-                variant="ghost" 
-                className="text-racing-red hover:bg-racing-red hover:text-white transform group-hover:scale-105 transition-smooth"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  window.location.href = `/brand/${brand.id}`;
-                }}
-              >
-                עיין בדגמים →
-              </Button>
-            </div>
+                    {Array.from({ length: Math.ceil(total / pageSize) }, (_, i) => (
+                      <Button
+                        key={i + 1}
+                        variant={page === i + 1 ? "default" : "outline"}
+                        onClick={() => setPage(i + 1)}
+                      >
+                        {i + 1}
+                      </Button>
+                    ))}
+                    
+                    <Button
+                      variant="outline"
+                      onClick={() => setPage(p => Math.min(Math.ceil(total / pageSize), p + 1))}
+                      disabled={page === Math.ceil(total / pageSize)}
+                    >
+                      הבא
+                    </Button>
                   </div>
-                  
-                  {/* Decorative elements */}
-                  <div className="absolute top-2 right-2 w-20 h-20 bg-gradient-to-br from-racing-red/10 to-electric-blue/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-smooth"></div>
-                  <div className="absolute bottom-2 left-2 w-16 h-16 bg-gradient-to-tr from-electric-blue/10 to-racing-red/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-smooth delay-100"></div>
-                </Card>
-              ))}
-            </div>
+                )}
 
-            {filteredBrands.length === 0 && (
-              <div className="text-center py-16">
-                <h3 className="text-2xl font-bold mb-4">לא נמצאו תוצאות</h3>
-                <p className="text-muted-foreground">נסה לחפש במילים אחרות</p>
-              </div>
+                {cars.length === 0 && !loading && (
+                  <div className="text-center py-16">
+                    <h3 className="text-2xl font-bold mb-4">לא נמצאו רכבים</h3>
+                    <p className="text-muted-foreground">נסה לשנות את מילות החיפוש או הסינון</p>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </section>
@@ -196,16 +313,16 @@ const CarsPage = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-racing-red mb-2">150+</div>
-                <div className="text-muted-foreground">מותגי רכב</div>
+                <div className="text-4xl font-bold text-racing-red mb-2">{total}+</div>
+                <div className="text-muted-foreground">רכבים זמינים</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-electric-blue mb-2">2,500+</div>
-                <div className="text-muted-foreground">דגמים זמינים</div>
+                <div className="text-4xl font-bold text-electric-blue mb-2">100+</div>
+                <div className="text-muted-foreground">מותגים</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-racing-red mb-2">50k+</div>
-                <div className="text-muted-foreground">ביקורות</div>
+                <div className="text-4xl font-bold text-racing-red mb-2">50+</div>
+                <div className="text-muted-foreground">קטגוריות</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-electric-blue mb-2">24/7</div>

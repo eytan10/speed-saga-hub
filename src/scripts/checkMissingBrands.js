@@ -1,3 +1,6 @@
+// Script disabled - static data replaced with Supabase
+// This script has been disabled as part of refactoring to use Supabase as single source of truth
+/*
 // Script to check which brands have logos but no car models
 import { massiveCarsDatabase } from '../data/massiveCarsDatabase.js';
 
@@ -32,3 +35,4 @@ massiveCarsDatabase.forEach(car => {
 });
 
 console.log('Models per brand:', brandCounts);
+*/
