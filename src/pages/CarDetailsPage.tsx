@@ -16,6 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 const CarDetailsPage = () => {
   const { brand, model } = useParams();
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+
+  const carKey = getCarKey({ id: car.id, brand: car.brand, name: car.name, year: car.year });
   const { toast } = useToast();
   // Combine cars from both databases
   const allCars = [...massiveCarsDatabase, ...additionalCarModels];
@@ -406,6 +408,11 @@ const CarDetailsPage = () => {
               </TabsContent>
             </Tabs>
           </div>
+        </section>
+
+        {/* Reviews Section */}
+        <section className="mt-12">
+          <ReviewsSection carKey={carKey} />
         </section>
       </main>
 

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import { useAuth } from "@/components/AuthContext";
+import { useAuth } from '@/contexts/AuthContext';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import MegaMenu from "./MegaMenu";
 import SmartSearch from "./SmartSearch";
@@ -16,7 +16,7 @@ const Header = () => {
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { favorites } = useFavorites();
-  const { user, logout } = useAuth();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -104,11 +104,11 @@ const Header = () => {
                   className="hidden md:flex items-center gap-2"
                 >
                   <User className="h-4 w-4" />
-                  {user.name}
+                  {user.displayName || user.email}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={logout}>
+                <DropdownMenuItem onClick={() => signOut()}>
                   <LogOut className="h-4 w-4 mr-2" />
                   התנתק
                 </DropdownMenuItem>
@@ -116,8 +116,7 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <Button 
-              variant="default"
-              onClick={() => setIsAuthModalOpen(true)}
+              onClick={() => navigate("/auth/sign-in")}
               className="bg-racing-red hover:bg-racing-red/90 text-white"
             >
               <User className="h-4 w-4 ml-2" />
