@@ -14,7 +14,147 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cars_data: {
+        Row: {
+          "Car Type": string | null
+          "Cars Names": string | null
+          "Cars Prices": string | null
+          "CC/Battery Capacity": string | null
+          "Company Names": string | null
+          Engines: string | null
+          "Fuel Types": string | null
+          HorsePower: string | null
+          "HorsePower (hp)": number | null
+          "Image URL": string | null
+          "Performance(0 - 100 )KM/H": string | null
+          "Price (USD)": number | null
+          Seats: string | null
+          "Seats (int)": number | null
+          Torque: string | null
+          "Torque (Nm)": number | null
+          "Total Speed": string | null
+        }
+        Insert: {
+          "Car Type"?: string | null
+          "Cars Names"?: string | null
+          "Cars Prices"?: string | null
+          "CC/Battery Capacity"?: string | null
+          "Company Names"?: string | null
+          Engines?: string | null
+          "Fuel Types"?: string | null
+          HorsePower?: string | null
+          "HorsePower (hp)"?: number | null
+          "Image URL"?: string | null
+          "Performance(0 - 100 )KM/H"?: string | null
+          "Price (USD)"?: number | null
+          Seats?: string | null
+          "Seats (int)"?: number | null
+          Torque?: string | null
+          "Torque (Nm)"?: number | null
+          "Total Speed"?: string | null
+        }
+        Update: {
+          "Car Type"?: string | null
+          "Cars Names"?: string | null
+          "Cars Prices"?: string | null
+          "CC/Battery Capacity"?: string | null
+          "Company Names"?: string | null
+          Engines?: string | null
+          "Fuel Types"?: string | null
+          HorsePower?: string | null
+          "HorsePower (hp)"?: number | null
+          "Image URL"?: string | null
+          "Performance(0 - 100 )KM/H"?: string | null
+          "Price (USD)"?: number | null
+          Seats?: string | null
+          "Seats (int)"?: number | null
+          Torque?: string | null
+          "Torque (Nm)"?: number | null
+          "Total Speed"?: string | null
+        }
+        Relationships: []
+      }
+      favorites: {
+        Row: {
+          car_key: string
+          created_at: string
+          id: number
+          user_id: string
+        }
+        Insert: {
+          car_key: string
+          created_at?: string
+          id?: number
+          user_id: string
+        }
+        Update: {
+          car_key?: string
+          created_at?: string
+          id?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          body: string
+          car_key: string
+          created_at: string
+          id: number
+          rating: number
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          car_key: string
+          created_at?: string
+          id?: number
+          rating: number
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          car_key?: string
+          created_at?: string
+          id?: number
+          rating?: number
+          title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
