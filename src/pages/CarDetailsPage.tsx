@@ -12,13 +12,14 @@ import { massiveCarsDatabase } from "@/data/massiveCarsDatabase";
 import { additionalCarModels } from "@/data/additionalCarModels";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useToast } from "@/hooks/use-toast";
+import { getCarKey } from "@/utils/carKey";
+import { ReviewsSection } from "@/components/Reviews/ReviewsSection";
 
 const CarDetailsPage = () => {
   const { brand, model } = useParams();
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-
-  const carKey = getCarKey({ id: car.id, brand: car.brand, name: car.name, year: car.year });
   const { toast } = useToast();
+  
   // Combine cars from both databases
   const allCars = [...massiveCarsDatabase, ...additionalCarModels];
   const car = allCars.find(c => c.id === model);
@@ -36,6 +37,7 @@ const CarDetailsPage = () => {
     );
   }
 
+  const carKey = getCarKey({ id: car.id, brand: car.brand, name: car.name, year: car.year });
   const isCarFavorite = isFavorite(car.id);
 
   const handleFavoriteClick = () => {
@@ -411,8 +413,10 @@ const CarDetailsPage = () => {
         </section>
 
         {/* Reviews Section */}
-        <section className="mt-12">
-          <ReviewsSection carKey={carKey} />
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <ReviewsSection carKey={carKey} />
+          </div>
         </section>
       </main>
 
