@@ -193,9 +193,9 @@ export const reviewsApi = {
       .select('*')
       .eq('car_key', carKey)
       .eq('user_id', user.id)
-      .single();
+      .maybeSingle();
 
-    if (error && error.code !== 'PGRST116') throw error;
+    if (error) throw error;
 
     return data as Review | null;
   }
