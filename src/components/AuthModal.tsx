@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react";
 
 interface AuthModalProps {
@@ -19,7 +19,7 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const { login, register } = useAuth();
+  const { signIn, signUp } = useAuth();
 
   // Login state
   const [loginData, setLoginData] = useState({
@@ -41,9 +41,9 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
     setIsLoading(true);
 
     try {
-      const success = await login(loginData.email, loginData.password);
+      const { error } = await signIn(loginData.email, loginData.password);
       
-      if (success) {
+      if (!error) {
         toast({
           title: "התחברות בוצעה בהצלחה!",
           description: "ברוך הבא ל-AutoHub",
@@ -52,6 +52,13 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
         onClose();
         // Reset form
         setLoginData({ email: "", password: "" });
+      } else {
+        toast({
+          title: "שגיאה בהתחברות",
+          description: error.message || "נסה שוב מאוחר יותר",
+          variant: "destructive",
+          duration: 3000,
+        });
       }
     } catch (error) {
       toast({
@@ -81,17 +88,16 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
     setIsLoading(true);
 
     try {
-      const success = await register(
-        registerData.fullName,
+      const { error } = await signUp(
         registerData.email,
         registerData.password,
-        registerData.phone
+        registerData.fullName
       );
       
-      if (success) {
+      if (!error) {
         toast({
           title: "הרשמה בוצעה בהצלחה!",
-          description: "חשבון חדש נוצר בהצלחה. ברוך הבא ל-AutoHub!",
+          description: "נשלח אליך אימייל עם קישור לאימות החשבון",
           duration: 3000,
         });
         onClose();
@@ -103,6 +109,13 @@ const AuthModal = ({ isOpen, onClose, defaultTab = "login" }: AuthModalProps) =>
           phone: "",
           password: "",
           confirmPassword: ""
+        });
+      } else {
+        toast({
+          title: "שגיאה בהרשמה",
+          description: error.message || "נסה שוב מאוחר יותר",
+          variant: "destructive",
+          duration: 3000,
         });
       }
     } catch (error) {
