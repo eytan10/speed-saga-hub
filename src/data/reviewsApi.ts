@@ -93,7 +93,7 @@ export const reviewsApi = {
         body: row.body,
         created_at: row.created_at,
         updated_at: row.updated_at,
-        profiles: null // Profiles join removed temporarily
+        profiles: row.profiles
       })) || [],
       total: count || 0,
       page,
@@ -193,9 +193,9 @@ export const reviewsApi = {
       .select('*')
       .eq('car_key', carKey)
       .eq('user_id', user.id)
-      .maybeSingle();
+      .single();
 
-    if (error) throw error;
+    if (error && error.code !== 'PGRST116') throw error;
 
     return data as Review | null;
   }
