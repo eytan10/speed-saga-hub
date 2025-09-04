@@ -1,7 +1,7 @@
 import { Review } from '@/data/reviewsApi';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Star, Edit, Trash2 } from 'lucide-react';
 
 interface ReviewItemProps {
@@ -20,7 +20,8 @@ export const ReviewItem = ({ review, isOwner, onEdit, onDelete }: ReviewItemProp
     });
   };
 
-  const displayName = review.profiles?.display_name || review.user_id.slice(0, 8);
+  // Show masked user ID for privacy (first 6 characters)
+  const displayName = review.user_id.slice(0, 6) + '...';
 
   return (
     <Card>
@@ -28,9 +29,8 @@ export const ReviewItem = ({ review, isOwner, onEdit, onDelete }: ReviewItemProp
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10">
-              <AvatarImage src={review.profiles?.avatar_url} />
               <AvatarFallback>
-                {displayName.charAt(0).toUpperCase()}
+                {review.user_id.charAt(0).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             
