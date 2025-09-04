@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { reviewsApi, Review, ReviewAggregates } from '@/data/reviewsApi';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Edit } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Star, MessageSquare, Edit, Trash2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import { ReviewForm } from './ReviewForm';
@@ -19,7 +20,6 @@ export const ReviewsSection = ({ carKey }: ReviewsSectionProps) => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [aggregates, setAggregates] = useState<ReviewAggregates | null>(null);
   const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [editingReview, setEditingReview] = useState<Review | null>(null);
   const [sortBy, setSortBy] = useState<'latest' | 'highest_rating' | 'lowest_rating'>('latest');
@@ -32,31 +32,22 @@ export const ReviewsSection = ({ carKey }: ReviewsSectionProps) => {
   const loadReviews = async () => {
     try {
       setLoading(true);
-      setErrorMsg('');
-      
-      const [reviewsResult, aggregatesResult, userReviewResult] = await Promise.all([
+      const [reviewsData, aggregatesData, userReviewData] = await Promise.all([
         reviewsApi.listReviews(carKey, { sortBy, pageSize: 20 }),
         reviewsApi.getReviewAggregates(carKey),
         user ? reviewsApi.getUserReviewForCar(carKey) : Promise.resolve(null)
       ]);
 
-      // Handle reviews result
-      if (reviewsResult.error) {
-        setErrorMsg(reviewsResult.error);
-        setReviews([]);
-      } else {
-        setReviews(reviewsResult.reviews);
-      }
-
-      // Aggregates and user review should always work (they return defaults on error)
-      setAggregates(aggregatesResult);
-      setUserReview(userReviewResult);
-      
+      setReviews(reviewsData.reviews);
+      setAggregates(aggregatesData);
+      setUserReview(userReviewData);
     } catch (error) {
       console.error('Error loading reviews:', error);
-      setErrorMsg('שגיאה בטעינת ביקורות');
-      setReviews([]);
-      setAggregates({ count: 0, avgRating: 0, distributionByStar: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 } });
+      toast({
+        title: "שגיאה",
+        description: "לא ניתן לטעון את הביקורות",
+        variant: "destructive"
+      });
     } finally {
       setLoading(false);
     }
@@ -99,51 +90,46 @@ export const ReviewsSection = ({ carKey }: ReviewsSectionProps) => {
       return;
     }
 
-    const result = await reviewsApi.deleteReview(reviewId);
-    
-    if (result.success) {
+    try {
+      await reviewsApi.deleteReview(reviewId);
       await loadReviews();
       toast({
         title: "הביקורת נמחקה",
         description: "הביקורת הוסרה בהצלחה"
       });
-    } else {
+    } catch (error) {
       toast({
         title: "שגיאה",
-        description: result.error || "לא ניתן למחוק את הביקורת",
+        description: "לא ניתן למחוק את הביקורת",
         variant: "destructive"
       });
     }
   };
 
-  // Loading state - short skeleton that always resolves
   if (loading) {
     return (
-      <div className="space-y-4">
-        <div className="animate-pulse">
-          <div className="h-6 bg-muted rounded w-48 mb-4"></div>
-          <div className="h-4 bg-muted rounded w-full mb-2"></div>
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-        </div>
-      </div>
+      <Card>
+        <CardContent className="p-6">
+          <div className="animate-pulse space-y-4">
+            <div className="h-6 bg-muted rounded w-1/3"></div>
+            <div className="space-y-2">
+              <div className="h-4 bg-muted rounded w-full"></div>
+              <div className="h-4 bg-muted rounded w-2/3"></div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
     <div className="space-y-6">
-      {/* Error Banner */}
-      {errorMsg && (
-        <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3">
-          <p className="text-sm text-destructive">שגיאה בטעינת ביקורות: {errorMsg}</p>
-        </div>
-      )}
-
       {/* Review Statistics */}
       {aggregates && aggregates.count > 0 && (
         <ReviewAggregateStats aggregates={aggregates} />
       )}
 
-      {/* Header with Write Review Button */}
+      {/* Write Review Button */}
       <div className="flex justify-between items-center">
         <h3 className="text-xl font-semibold flex items-center gap-2">
           <MessageSquare className="h-5 w-5" />
@@ -178,7 +164,7 @@ export const ReviewsSection = ({ carKey }: ReviewsSectionProps) => {
         />
       )}
 
-      {/* Reviews List or Empty State */}
+      {/* Reviews List */}
       {reviews.length > 0 ? (
         <>
           {/* Sort Controls */}

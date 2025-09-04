@@ -9,6 +9,10 @@ export interface Review {
   body: string;
   created_at: string;
   updated_at: string;
+  profiles?: {
+    display_name: string;
+    avatar_url?: string;
+  };
 }
 
 export interface ReviewAggregates {
@@ -36,247 +40,163 @@ export interface ListReviewsParams {
   sortBy?: 'latest' | 'highest_rating' | 'lowest_rating';
 }
 
-export interface ReviewsResult {
-  reviews: Review[];
-  total: number;
-  page: number;
-  pageSize: number;
-  totalPages: number;
-  error?: string;
-}
-
 export const reviewsApi = {
-  async listReviews(carKey: string, params: ListReviewsParams = {}): Promise<ReviewsResult> {
-    try {
-      const { page = 1, pageSize = 20, sortBy = 'latest' } = params;
-      const offset = (page - 1) * pageSize;
+  async listReviews(carKey: string, params: ListReviewsParams = {}) {
+    const { page = 1, pageSize = 10, sortBy = 'latest' } = params;
+    const offset = (page - 1) * pageSize;
 
-      let query = supabase
-        .from('reviews')
-        .select('*', { count: 'exact' })
-        .eq('car_key', carKey);
+    let query = supabase
+      .from('reviews')
+      .select(`
+        id,
+        car_key,
+        user_id,
+        rating,
+        title,
+        body,
+        created_at,
+        updated_at,
+        profiles!reviews_user_id_fkey (
+          display_name,
+          avatar_url
+        )
+      `)
+      .eq('car_key', carKey);
 
-      // Apply sorting
-      switch (sortBy) {
-        case 'highest_rating':
-          query = query.order('rating', { ascending: false }).order('created_at', { ascending: false });
-          break;
-        case 'lowest_rating':
-          query = query.order('rating', { ascending: true }).order('created_at', { ascending: false });
-          break;
-        case 'latest':
-        default:
-          query = query.order('created_at', { ascending: false });
-          break;
-      }
-
-      query = query.range(offset, offset + pageSize - 1);
-
-      const { data, error, count } = await query;
-
-      if (error) {
-        console.error('Reviews API - listReviews error:', error);
-        return {
-          reviews: [],
-          total: 0,
-          page,
-          pageSize,
-          totalPages: 0,
-          error: error.message
-        };
-      }
-
-      const totalPages = Math.ceil((count || 0) / pageSize);
-
-      return {
-        reviews: (data as Review[]) || [],
-        total: count || 0,
-        page,
-        pageSize,
-        totalPages
-      };
-    } catch (err) {
-      console.error('Reviews API - listReviews catch:', err);
-      return {
-        reviews: [],
-        total: 0,
-        page: params.page || 1,
-        pageSize: params.pageSize || 20,
-        totalPages: 0,
-        error: 'Unknown error occurred'
-      };
+    // Apply sorting
+    switch (sortBy) {
+      case 'highest_rating':
+        query = query.order('rating', { ascending: false });
+        break;
+      case 'lowest_rating':
+        query = query.order('rating', { ascending: true });
+        break;
+      case 'latest':
+      default:
+        query = query.order('created_at', { ascending: false });
+        break;
     }
+
+    query = query.range(offset, offset + pageSize - 1);
+
+    const { data, error, count } = await query;
+
+    if (error) throw error;
+
+    return {
+      reviews: (data as any[])?.map(row => ({
+        id: row.id,
+        car_key: row.car_key,
+        user_id: row.user_id,
+        rating: row.rating,
+        title: row.title,
+        body: row.body,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+        profiles: row.profiles
+      })) || [],
+      total: count || 0,
+      page,
+      pageSize,
+      totalPages: Math.ceil((count || 0) / pageSize)
+    };
   },
 
   async getReviewAggregates(carKey: string): Promise<ReviewAggregates> {
-    try {
-      const { data, error } = await supabase
-        .from('reviews')
-        .select('rating')
-        .eq('car_key', carKey);
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('rating')
+      .eq('car_key', carKey);
 
-      if (error) {
-        console.error('Reviews API - getReviewAggregates error:', error);
-        return {
-          count: 0,
-          avgRating: 0,
-          distributionByStar: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }
-        };
-      }
+    if (error) throw error;
 
-      const count = data.length;
-      
-      if (count === 0) {
-        return {
-          count: 0,
-          avgRating: 0,
-          distributionByStar: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }
-        };
-      }
-
-      const sum = data.reduce((acc, review) => acc + review.rating, 0);
-      const avgRating = Math.round((sum / count) * 10) / 10;
-
-      const distributionByStar = data.reduce((acc, review) => {
-        acc[review.rating] = (acc[review.rating] || 0) + 1;
-        return acc;
-      }, {} as Record<number, number>);
-
-      // Ensure all ratings 1-5 are represented
-      for (let i = 1; i <= 5; i++) {
-        if (!distributionByStar[i]) {
-          distributionByStar[i] = 0;
-        }
-      }
-
-      return {
-        count,
-        avgRating,
-        distributionByStar
-      };
-    } catch (err) {
-      console.error('Reviews API - getReviewAggregates catch:', err);
+    const count = data.length;
+    
+    if (count === 0) {
       return {
         count: 0,
         avgRating: 0,
         distributionByStar: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }
       };
     }
+
+    const sum = data.reduce((acc, review) => acc + review.rating, 0);
+    const avgRating = Math.round((sum / count) * 10) / 10;
+
+    const distributionByStar = data.reduce((acc, review) => {
+      acc[review.rating] = (acc[review.rating] || 0) + 1;
+      return acc;
+    }, {} as Record<number, number>);
+
+    // Ensure all ratings 1-5 are represented
+    for (let i = 1; i <= 5; i++) {
+      if (!distributionByStar[i]) {
+        distributionByStar[i] = 0;
+      }
+    }
+
+    return {
+      count,
+      avgRating,
+      distributionByStar
+    };
   },
 
-  async createReview(data: CreateReviewData): Promise<{ success: boolean; error?: string }> {
-    try {
-      // Validate rating
-      if (data.rating < 1 || data.rating > 5) {
-        return { success: false, error: 'דירוג חייב להיות בין 1 ל-5' };
-      }
-
-      // Validate body length
-      if (data.body.length < 20) {
-        return { success: false, error: 'הביקורת חייבת להכיל לפחות 20 תווים' };
-      }
-
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        return { success: false, error: 'User not authenticated' };
-      }
-
-      const { error } = await supabase
-        .from('reviews')
-        .insert({
-          car_key: data.carKey,
-          user_id: user.id,
-          rating: data.rating,
-          title: data.title,
-          body: data.body
-        });
-
-      if (error) {
-        console.error('Reviews API - createReview error:', error);
-        return { success: false, error: error.message };
-      }
-
-      return { success: true };
-    } catch (err) {
-      console.error('Reviews API - createReview catch:', err);
-      return { success: false, error: 'אירעה שגיאה לא צפויה' };
+  async createReview(data: CreateReviewData) {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      throw new Error('User not authenticated');
     }
+
+    const { error } = await supabase
+      .from('reviews')
+      .insert({
+        car_key: data.carKey,
+        user_id: user.id,
+        rating: data.rating,
+        title: data.title,
+        body: data.body
+      });
+
+    if (error) throw error;
   },
 
-  async updateReview(reviewId: number, data: UpdateReviewData): Promise<{ success: boolean; error?: string }> {
-    try {
-      // Validate rating if provided
-      if (data.rating !== undefined && (data.rating < 1 || data.rating > 5)) {
-        return { success: false, error: 'דירוג חייב להיות בין 1 ל-5' };
-      }
+  async updateReview(reviewId: number, data: UpdateReviewData) {
+    const { error } = await supabase
+      .from('reviews')
+      .update({
+        ...data,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', reviewId);
 
-      // Validate body length if provided
-      if (data.body !== undefined && data.body.length < 20) {
-        return { success: false, error: 'הביקורת חייבת להכיל לפחות 20 תווים' };
-      }
-
-      const { error } = await supabase
-        .from('reviews')
-        .update({
-          ...data,
-          updated_at: new Date().toISOString()
-        })
-        .eq('id', reviewId);
-
-      if (error) {
-        console.error('Reviews API - updateReview error:', error);
-        return { success: false, error: error.message };
-      }
-
-      return { success: true };
-    } catch (err) {
-      console.error('Reviews API - updateReview catch:', err);
-      return { success: false, error: 'אירעה שגיאה לא צפויה' };
-    }
+    if (error) throw error;
   },
 
-  async deleteReview(reviewId: number): Promise<{ success: boolean; error?: string }> {
-    try {
-      const { error } = await supabase
-        .from('reviews')
-        .delete()
-        .eq('id', reviewId);
+  async deleteReview(reviewId: number) {
+    const { error } = await supabase
+      .from('reviews')
+      .delete()
+      .eq('id', reviewId);
 
-      if (error) {
-        console.error('Reviews API - deleteReview error:', error);
-        return { success: false, error: error.message };
-      }
-
-      return { success: true };
-    } catch (err) {
-      console.error('Reviews API - deleteReview catch:', err);
-      return { success: false, error: 'אירעה שגיאה לא צפויה' };
-    }
+    if (error) throw error;
   },
 
-  async getUserReviewForCar(carKey: string): Promise<Review | null> {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) return null;
+  async getUserReviewForCar(carKey: string) {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) return null;
 
-      const { data, error } = await supabase
-        .from('reviews')
-        .select('*')
-        .eq('car_key', carKey)
-        .eq('user_id', user.id)
-        .maybeSingle();
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .eq('car_key', carKey)
+      .eq('user_id', user.id)
+      .single();
 
-      if (error) {
-        console.error('Reviews API - getUserReviewForCar error:', error);
-        return null;
-      }
+    if (error && error.code !== 'PGRST116') throw error;
 
-      return data as Review | null;
-    } catch (err) {
-      console.error('Reviews API - getUserReviewForCar catch:', err);
-      return null;
-    }
+    return data as Review | null;
   }
 };
