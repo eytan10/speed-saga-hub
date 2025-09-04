@@ -148,18 +148,18 @@ const FavoritesPage = () => {
                   <Badge variant="secondary">{car.type}</Badge>
                 </div>
 
-                {/* Remove Button */}
+                {/* Favorite Button */}
                 <Button
                   size="icon"
                   variant="ghost"
-                  className="absolute top-4 right-4 bg-black/20 hover:bg-red-500 text-white transition-colors"
+                  className="absolute top-4 right-4 z-20 bg-black/20 hover:bg-black/40 text-white transition-all text-racing-red scale-110"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     removeFromFavorites(car.id);
                   }}
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Heart className="h-4 w-4 transition-all fill-racing-red animate-pulse" />
                 </Button>
 
                 {/* Overlay on hover */}
