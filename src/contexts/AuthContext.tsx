@@ -39,27 +39,44 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     // Set up auth state listener FIRST
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      (event, session) => {
         setSession(session);
         
         if (session?.user) {
-          // Fetch user profile from our profiles table
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('display_name, avatar_url')
-            .eq('user_id', session.user.id)
-            .single();
+          // Defer profile fetch to avoid blocking auth state change
+          setTimeout(async () => {
+            try {
+              const { data: profile, error } = await supabase
+                .from('profiles')
+                .select('display_name, avatar_url')
+                .eq('user_id', session.user.id)
+                .maybeSingle();
 
-          setUser({
-            id: session.user.id,
-            email: session.user.email || '',
-            displayName: profile?.display_name || session.user.email?.split('@')[0] || 'משתמש',
-            avatarUrl: profile?.avatar_url
-          });
+              if (error) {
+                console.error('Profile fetch error:', error);
+              }
+
+              setUser({
+                id: session.user.id,
+                email: session.user.email || '',
+                displayName: profile?.display_name || session.user.email?.split('@')[0] || 'משתמש',
+                avatarUrl: profile?.avatar_url
+              });
+            } catch (err) {
+              console.error('Profile fetch failed:', err);
+              // Still set user with basic info if profile fetch fails
+              setUser({
+                id: session.user.id,
+                email: session.user.email || '',
+                displayName: session.user.email?.split('@')[0] || 'משתמש'
+              });
+            }
+          }, 0);
         } else {
           setUser(null);
         }
         
+        // Always clear loading immediately after auth state change
         setLoading(false);
       }
     );
