@@ -51,6 +51,12 @@ import audiRs6New from "@/assets/audi-rs6-new.jpg";
 import audiRs6AvantGray from "@/assets/audi-rs6-avant-gray.jpg";
 import mclaren720sNew from "@/assets/mclaren-720s-new.jpg";
 import mclaren720sOrange from "@/assets/mclaren-720s-orange.jpg";
+import mclarenMp412c from "@/assets/mclaren-mp4-12c.jpg";
+import rollsRoycePhantom from "@/assets/rolls-royce-phantom.jpg";
+import bentleyContinentalGt from "@/assets/bentley-continental-gt.jpg";
+import bugattiChiron from "@/assets/bugatti-chiron.jpg";
+import koenigseggJesko from "@/assets/koenigsegg-jesko.jpg";
+import paganiHuayra from "@/assets/pagani-huayra.jpg";
 import lamborghiniHuracanEvoYellow from "@/assets/lamborghini-huracan-evo-yellow.jpg";
 import fordMustangGt from "@/assets/ford-mustang-gt-2024.jpg";
 import fordMustangRed from "@/assets/ford-mustang-red.jpg";
@@ -160,7 +166,7 @@ const createCar = (
     specs: {
       engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
       transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
-      acceleration: `0-100 קמ״ש תוך ${3 + Math.random() * 4} שניות`,
+      acceleration: `${(2.5 + Math.random() * 6).toFixed(1)} שניות (0-100 קמ״ש)`,
       topSpeed: `${200 + Math.random() * 100} קמ״ש`,
       fuel: isElectric ? `${300 + Math.random() * 200} ק״מ טווח` : `${6 + Math.random() * 4} ליטר/100 ק״מ`,
       weight: `${1200 + Math.random() * 800} ק״ג`,
@@ -220,6 +226,9 @@ const createCar = (
   };
 };
 
+// Import additional hypercar database
+import { hyperCarsDatabase } from "./hyperCarsDatabase";
+
 // Massive car database with 400+ vehicles - Updated with Israeli prices
 export const massiveCarsDatabase: ExtendedCarDetails[] = [
   // Ferrari Models (15 models)
@@ -253,10 +262,10 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
   createCar("lamborghini-aventador-svj", "Aventador SVJ", "Lamborghini", "מכונית מסלול", "₪2,370,000", 759, 2024, lamborghiniImage),
   createCar("lamborghini-sterrato", "Huracán Sterrato", "Lamborghini", "סופרקאר שטח", "₪1,210,000", 602, 2024, lamborghiniHuracanEvoYellow, false, true),
 
-  // Bentley Models (12 models) - Using existing luxury car images temporarily
-  createCar("bentley-continental-gt", "Continental GT", "Bentley", "GT יוקרה", "₪1,050,000", 626, 2024, mercedesAmgNew),
-  createCar("bentley-continental-gtc", "Continental GTC", "Bentley", "קברולייט יוקרה", "₪1,220,000", 626, 2024, mercedesC63s),
-  createCar("bentley-flying-spur", "Flying Spur", "Bentley", "סדאן יוקרה", "₪980,000", 626, 2024, mercedesImage),
+  // Bentley Models (12 models) - Using actual Bentley images
+  createCar("bentley-continental-gt", "Continental GT", "Bentley", "GT יוקרה", "₪1,050,000", 626, 2024, bentleyContinentalGt),
+  createCar("bentley-continental-gtc", "Continental GTC", "Bentley", "קברולייט יוקרה", "₪1,220,000", 626, 2024, bentleyContinentalGt),
+  createCar("bentley-flying-spur", "Flying Spur", "Bentley", "סדאן יוקרה", "₪980,000", 626, 2024, rollsRoycePhantom),
   createCar("bentley-bentayga", "Bentayga", "Bentley", "SUV יוקרה", "₪810,000", 542, 2024, mercedesEQC),
   createCar("bentley-mulsanne", "Mulsanne", "Bentley", "סדאן יוקרה עילית", "₪1,420,000", 505, 2023, mercedesAmgNew),
   createCar("bentley-bacalar", "Bacalar", "Bentley", "מהדורה מוגבלת", "₪9,200,000", 650, 2024, mercedesC63s),
@@ -973,7 +982,10 @@ export const massiveCarsDatabase: ExtendedCarDetails[] = [
 
   // Citroën Models (2 models)
   createCar("citroen-c3", "C3", "Citroën", "האצ׳בק", "₪110,000", 120, 2024, kiaOptimaSilver),
-  createCar("citroen-c5-aircross", "C5 Aircross", "Citroën", "SUV", "₪170,000", 180, 2024, mazdaCx5Blue)
+  createCar("citroen-c5-aircross", "C5 Aircross", "Citroën", "SUV", "₪170,000", 180, 2024, mazdaCx5Blue),
+
+  // Add hypercars from separate database
+  ...hyperCarsDatabase,
 ];
 
 export { expandedBrands } from "./expandedCarsDatabase";

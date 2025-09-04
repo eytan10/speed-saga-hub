@@ -19,6 +19,11 @@ import teslaRoadster from "@/assets/tesla-roadster.jpg";
 import kiaEV6 from "@/assets/kia-ev6.jpg";
 import hyundaiIoniq5 from "@/assets/hyundai-ioniq5.jpg";
 import newsBackground from "@/assets/news-background.jpg";
+import electricVehiclesFuture from "@/assets/electric-vehicles-future.jpg";
+import autonomousDrivingTech from "@/assets/autonomous-driving-technology.jpg";
+import luxuryCarShowroom from "@/assets/luxury-car-showroom.jpg";
+import japaneseCarManufacturing from "@/assets/japanese-car-manufacturing.jpg";
+import winterDrivingSafety from "@/assets/winter-driving-safety.jpg";
 
 export interface NewsArticle {
   id: string;
@@ -82,7 +87,7 @@ export const newsArticles: NewsArticle[] = [
     title: "מכירות רכבים חשמליים בישראל עלו ב-150% השנה",
     summary: "נתונים חדשים מראים גידול דרמטי ברכישת רכבים חשמליים בישראל",
     content: "לפי נתונים שפורסמו על ידי איגוד יבואני הרכב, מכירות הרכבים החשמליים בישראל עלו השנה ב-150% לעומת השנה הקודמת. הגידול מיוחס בעיקר לירידה במחירי הסוללות, הרחבת רשת עמדות הטעינה ולמדיניות ממשלתית מעודדת. דגמים פופולריים כוללים את טסלה מודל 3, יונדאי אייוניק 5 וקיה EV6.",
-    image: "/assets/hero-electric-future.jpg",
+    image: electricVehiclesFuture,
     author: "שרה כהן",
     publishDate: "2024-01-16",
     category: "שוק",
@@ -93,7 +98,7 @@ export const newsArticles: NewsArticle[] = [
     title: "משרד התחבורה מאשר ניסויים ברכבים אוטונומיים",
     summary: "ישראל מצטרפת למדינות החלוצות בתחום הרכבים האוטונומיים",
     content: "משרד התחבורה הישראלי אישר השקת תוכנית ניסוי לרכבים אוטונומיים על כבישים ציבוריים נבחרים. הניסויים יתבצעו בשיתוף עם חברות הטכנולוגיה המובילות בתחום, כולל מובילאיי ואינטל. המטרה היא לבחן את הבטיחות והיעילות של טכנולוגיות נהיגה אוטונומית בתנאים ישראליים ייחודיים.",
-    image: "/assets/hero-modern-showroom.jpg",
+    image: autonomousDrivingTech,
     author: "אמיר לוי",
     publishDate: "2024-01-14",
     category: "טכנולוגיה",
@@ -104,7 +109,7 @@ export const newsArticles: NewsArticle[] = [
     title: "מגמות בשוק רכבי היוקרה: מה קונים הישראלים?",
     summary: "סקירה של מגמות הקנייה בשוק רכבי היוקרה הישראלי",
     content: "בשוק רכבי היוקרה הישראלי ניתן לזהות מגמות מעניינות: עלייה ברכישת רכבי יוקרה חשמליים, גידול בביקוש לרכבי שטח יוקרתיים ועדיפות לדגמים עם טכנולוגיות בטיחות מתקדמות. מרצדס, BMW ואאודי ממשיכים להוביל בפלח זה, עם כניסה מתחזקת של מותגים כמו גנסיס ופולסטאר.",
-    image: "/assets/mercedes-amg.jpg",
+    image: luxuryCarShowroom,
     author: "דנה אברהם",
     publishDate: "2024-01-13",
     category: "יוקרה",
@@ -115,7 +120,7 @@ export const newsArticles: NewsArticle[] = [
     title: "למה רכבים יפניים כל כך פופולריים בישראל?",
     summary: "ניתוח הסיבות לפופולריות הגבוהה של רכבים יפניים בשוק הישראלי",
     content: "רכבים יפניים כמו טויוטה, הונדה וניסאן ממשיכים להוביל את השוק הישראלי. הסיבות כוללות אמינות גבוהה, עלויות תחזוקה נמוכות, רשת שירות נרחבת וערך שייר מעולה. דגמים כמו טויוטה קורולה, הונדה סיוויק וניסאן מיקרה נחשבים לבחירות הבטוחות של הקונים הישראליים.",
-    image: "/assets/toyota-camry.jpg",
+    image: japaneseCarManufacturing,
     author: "מיכאל כהן",
     publishDate: "2024-01-11",
     category: "ניתוח",
@@ -137,7 +142,7 @@ export const newsArticles: NewsArticle[] = [
     title: "נהיגה בטוחה בחורף: מדריך מעודכן",
     summary: "טיפים חיוניים לנהיגה בטוחה בתנאי מזג אוויר קשים",
     content: "עם הגעת החורף, חשוב להיערך לנהיגה בתנאים קשים. המלצות עיקריות: בדיקת מצב הצמיגים והחלפה לצמיגי חורף במידת הצורך, בדיקת מערכת החימום והמזגן, החלפת נוזל שמשות, בדיקת סוללה ומערכת הבלמים. בנהיגה עצמה - הקפדה על מרחק בטיחות מוגדל והימנעות מתמרונים פתאומיים.",
-    image: "/assets/hero-racing-track.jpg",
+    image: winterDrivingSafety,
     author: "גיא אורן",
     publishDate: "2024-01-08",
     category: "בטיחות",

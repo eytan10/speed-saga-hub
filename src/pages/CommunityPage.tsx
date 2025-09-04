@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReviewModal from "@/components/ReviewModal";
 import NewPostModal from "@/components/NewPostModal";
+import DiscussionModal from "@/components/DiscussionModal";
 import { useToast } from "@/hooks/use-toast";
 import communityMeetingImage from "@/assets/community-meeting.jpg";
 import carReviewerImage from "@/assets/car-reviewer.jpg";
@@ -19,6 +20,8 @@ const CommunityPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [showNewPostModal, setShowNewPostModal] = useState(false);
+  const [selectedDiscussion, setSelectedDiscussion] = useState(null);
+  const [showDiscussionModal, setShowDiscussionModal] = useState(false);
   const { toast } = useToast();
 
   const communityStats = {
@@ -258,7 +261,14 @@ const CommunityPage = () => {
                           </div>
                         </div>
                         
-                        <Button variant="outline" size="sm">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => {
+                            setSelectedDiscussion(discussion);
+                            setShowDiscussionModal(true);
+                          }}
+                        >
                           הצטרף לדיון
                         </Button>
                       </div>
@@ -468,6 +478,13 @@ const CommunityPage = () => {
       <NewPostModal 
         isOpen={showNewPostModal} 
         onClose={() => setShowNewPostModal(false)} 
+      />
+
+      {/* Discussion Modal */}
+      <DiscussionModal 
+        discussion={selectedDiscussion}
+        isOpen={showDiscussionModal} 
+        onClose={() => setShowDiscussionModal(false)} 
       />
 
       <Footer />

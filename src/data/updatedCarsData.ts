@@ -53,7 +53,7 @@ const createCarWithIsraeliPrice = (
     specs: {
       engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
       transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
-      acceleration: `0-100 קמ״ש תוך ${(2.5 + Math.random() * 5).toFixed(1)} שניות`,
+      acceleration: `${(2.0 + Math.random() * 6).toFixed(1)} שניות (0-100 קמ״ש)`,
       topSpeed: `${Math.round(180 + Math.random() * 120)} קמ״ש`,
       fuel: isElectric ? `${Math.round(300 + Math.random() * 300)} ק״מ טווח` : `${(5 + Math.random() * 8).toFixed(1)} ליטר/100 ק״מ`,
       weight: `${Math.round(1200 + Math.random() * 1200)} ק״ג`,

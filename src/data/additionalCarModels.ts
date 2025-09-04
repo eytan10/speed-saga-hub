@@ -74,7 +74,7 @@ const createCar = (
   specs: {
     engine: isElectric ? "מנוע חשמלי" : "מנוע בנזין",
     transmission: isElectric ? "חד-מהירותי" : "אוטומטי",
-    acceleration: `0-100 קמ״ש תוך ${3 + Math.random() * 6} שניות`,
+    acceleration: `${(2.8 + Math.random() * 4).toFixed(1)} שניות (0-100 קמ״ש)`,
     topSpeed: `${180 + Math.random() * 80} קמ״ש`,
     fuel: isElectric ? `${400 + Math.random() * 200} ק״מ טווח` : `${6 + Math.random() * 4} ליטר/100 ק״מ`,
     weight: `${1200 + Math.random() * 800} ק״ג`,
