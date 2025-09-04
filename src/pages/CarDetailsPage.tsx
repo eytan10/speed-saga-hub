@@ -227,7 +227,7 @@ const CarDetailsPage = () => {
                      <div className="space-y-4">
                        <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
                          <p className="text-gray-300 text-sm mb-1 font-medium">כוח</p>
-                         <p className="font-bold text-lg text-racing-red">{parseFloat(car.specs.power).toFixed(3)} כ"ס</p>
+                         <p className="font-bold text-lg text-racing-red">{Number(car.specs.power).toFixed(3)} כ"ס</p>
                        </div>
                        <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
                          <p className="text-gray-300 text-sm mb-1 font-medium">מומנט</p>
@@ -239,7 +239,7 @@ const CarDetailsPage = () => {
                        </div>
                        <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
                          <p className="text-gray-300 text-sm mb-1 font-medium">דירוג</p>
-                         <p className="font-bold text-lg text-racing-red">{parseFloat(car.rating).toFixed(3)} ⭐</p>
+                         <p className="font-bold text-lg text-racing-red">{Number(car.rating).toFixed(3)} ⭐</p>
                        </div>
                      </div>
                    </div>

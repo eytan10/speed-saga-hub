@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { ExtendedCarDetails } from '@/data/massiveCarsDatabase';
+import { ExtendedCarDetails, massiveCarsDatabase } from '@/data/massiveCarsDatabase';
+import { favoritesApi } from '@/data/favoritesApi';
+import { getCarKey } from '@/utils/carKey';
+import { useAuth } from './AuthContext';
+import { toast } from '@/hooks/use-toast';
 
 interface FavoritesContextType {
   favorites: ExtendedCarDetails[];
@@ -7,37 +11,135 @@ interface FavoritesContextType {
   removeFromFavorites: (carId: string) => void;
   isFavorite: (carId: string) => boolean;
   clearFavorites: () => void;
+  loading: boolean;
 }
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
+// Utility to find car by car_key in hardcoded database
+const findCarByKey = (carKey: string): ExtendedCarDetails | null => {
+  return massiveCarsDatabase.find(car => getCarKey(car) === carKey) || null;
+};
+
 export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [favorites, setFavorites] = useState<ExtendedCarDetails[]>(() => {
-    const saved = localStorage.getItem('favorites');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [favorites, setFavorites] = useState<ExtendedCarDetails[]>([]);
+  const [loading, setLoading] = useState(false);
+  const { user } = useAuth();
 
+  // Load favorites from database when user changes
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
+    if (user) {
+      loadFavorites();
+    } else {
+      setFavorites([]);
+    }
+  }, [user]);
 
-  const addToFavorites = (car: ExtendedCarDetails) => {
-    setFavorites(prev => {
-      if (prev.some(fav => fav.id === car.id)) return prev;
-      return [...prev, car];
-    });
+  const loadFavorites = async () => {
+    if (!user) return;
+    
+    setLoading(true);
+    try {
+      const favoriteRecords = await favoritesApi.getUserFavorites();
+      const favoriteCards = favoriteRecords
+        .map(fav => findCarByKey(fav.car_key))
+        .filter((car): car is ExtendedCarDetails => car !== null);
+      
+      setFavorites(favoriteCards);
+    } catch (error) {
+      console.error('Failed to load favorites:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load favorites",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const removeFromFavorites = (carId: string) => {
-    setFavorites(prev => prev.filter(car => car.id !== carId));
+  const addToFavorites = async (car: ExtendedCarDetails) => {
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please sign in to add favorites",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const carKey = getCarKey(car);
+    
+    try {
+      await favoritesApi.addToFavorites(carKey);
+      setFavorites(prev => {
+        if (prev.some(fav => fav.id === car.id)) return prev;
+        return [...prev, car];
+      });
+      toast({
+        title: "Added to Favorites",
+        description: `${car.brand} ${car.name} added to your favorites`
+      });
+    } catch (error) {
+      console.error('Failed to add favorite:', error);
+      toast({
+        title: "Error",
+        description: "Failed to add to favorites",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const removeFromFavorites = async (carId: string) => {
+    if (!user) return;
+
+    const car = favorites.find(fav => fav.id === carId);
+    if (!car) return;
+
+    const carKey = getCarKey(car);
+    
+    try {
+      await favoritesApi.removeFromFavorites(carKey);
+      setFavorites(prev => prev.filter(car => car.id !== carId));
+      toast({
+        title: "Removed from Favorites",
+        description: `${car.brand} ${car.name} removed from your favorites`
+      });
+    } catch (error) {
+      console.error('Failed to remove favorite:', error);
+      toast({
+        title: "Error", 
+        description: "Failed to remove from favorites",
+        variant: "destructive"
+      });
+    }
   };
 
   const isFavorite = (carId: string) => {
     return favorites.some(car => car.id === carId);
   };
 
-  const clearFavorites = () => {
-    setFavorites([]);
+  const clearFavorites = async () => {
+    if (!user) return;
+
+    try {
+      // Remove all favorites from database
+      await Promise.all(
+        favorites.map(car => favoritesApi.removeFromFavorites(getCarKey(car)))
+      );
+      setFavorites([]);
+      toast({
+        title: "Favorites Cleared",
+        description: "All favorites have been removed"
+      });
+    } catch (error) {
+      console.error('Failed to clear favorites:', error);
+      toast({
+        title: "Error",
+        description: "Failed to clear favorites", 
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -46,7 +148,8 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       addToFavorites,
       removeFromFavorites,
       isFavorite,
-      clearFavorites
+      clearFavorites,
+      loading
     }}>
       {children}
     </FavoritesContext.Provider>
