@@ -4,15 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Car, ArrowLeft, Search as SearchIcon, Home, ArrowRight } from "lucide-react";
 import { massiveCarsDatabase, expandedBrands } from "@/data/massiveCarsDatabase";
-import AdvancedSearch from "./AdvancedSearch";
-import { useState } from "react";
 import { updatedCarCategories } from "@/data/updatedCarsData";
 import { additionalCarModels } from "@/data/additionalCarModels";
 import { normalizeBrand } from "@/lib/utils";
 
 const Categories = () => {
   const navigate = useNavigate();
-  const [isAdvancedSearchOpen, setIsAdvancedSearchOpen] = useState(false);
 
   // Define categories in Hebrew
   const categories = [
@@ -75,47 +72,11 @@ const Categories = () => {
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-racing-red via-racing-red/90 to-racing-red/80 text-white">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <Button 
-                variant="ghost" 
-                onClick={() => navigate("/")}
-                className="text-white hover:bg-white/20 mb-4"
-              >
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                חזרה לעמוד הבית
-              </Button>
-              <h1 className="text-4xl font-bold mb-2">גלה את הרכב המושלם עבורך</h1>
-              <p className="text-xl opacity-90">חפש לפי קטגוריה, מותג או השתמש בחיפוש המתקדם</p>
-            </div>
-            <div className="hidden md:block">
-              <Button 
-                onClick={() => setIsAdvancedSearchOpen(true)}
-                className="bg-white text-racing-red hover:bg-white/90"
-                size="lg"
-              >
-                <SearchIcon className="h-5 w-5 mr-2" />
-                חיפוש מתקדם
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto px-4 py-8">
-        {/* Mobile Advanced Search Button */}
-        <div className="md:hidden mb-6">
-          <Button 
-            onClick={() => setIsAdvancedSearchOpen(true)}
-            className="w-full bg-racing-red hover:bg-racing-red/90"
-            size="lg"
-          >
-            <SearchIcon className="h-5 w-5 mr-2" />
-            חיפוש מתקדם
-          </Button>
+        {/* Page Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold mb-4">גלה את הרכב המושלם עבורך</h1>
+          <p className="text-xl text-muted-foreground">חפש לפי קטגוריה, מותג או השתמש בחיפוש המתקדם</p>
         </div>
 
         {/* Categories Section */}
@@ -216,12 +177,6 @@ const Categories = () => {
           </Card>
         </div>
       </div>
-
-      {/* Advanced Search Modal */}
-      <AdvancedSearch 
-        isOpen={isAdvancedSearchOpen}
-        onClose={() => setIsAdvancedSearchOpen(false)}
-      />
     </div>
   );
 };
