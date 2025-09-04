@@ -43,7 +43,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setSession(session);
         
         if (session?.user) {
-          // Defer profile fetch to avoid blocking auth state change
+          // Set basic user immediately - no delay
+          const basicUser = {
+            id: session.user.id,
+            email: session.user.email || '',
+            displayName: session.user.email?.split('@')[0] || 'משתמש'
+          };
+          setUser(basicUser);
+          setLoading(false); // Clear loading now that user is set
+          
+          // Enhance with profile data in background
           setTimeout(async () => {
             try {
               const { data: profile, error } = await supabase
@@ -56,28 +65,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 console.error('Profile fetch error:', error);
               }
 
-              setUser({
-                id: session.user.id,
-                email: session.user.email || '',
-                displayName: profile?.display_name || session.user.email?.split('@')[0] || 'משתמש',
-                avatarUrl: profile?.avatar_url
-              });
+              // Update user with profile data if available
+              if (profile) {
+                setUser({
+                  ...basicUser,
+                  displayName: profile.display_name || basicUser.displayName,
+                  avatarUrl: profile.avatar_url
+                });
+              }
             } catch (err) {
               console.error('Profile fetch failed:', err);
-              // Still set user with basic info if profile fetch fails
-              setUser({
-                id: session.user.id,
-                email: session.user.email || '',
-                displayName: session.user.email?.split('@')[0] || 'משתמש'
-              });
             }
           }, 0);
         } else {
           setUser(null);
+          setLoading(false);
         }
-        
-        // Always clear loading immediately after auth state change
-        setLoading(false);
       }
     );
 
