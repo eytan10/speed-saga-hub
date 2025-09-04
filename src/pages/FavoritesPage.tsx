@@ -152,8 +152,12 @@ const FavoritesPage = () => {
                 <Button
                   size="icon"
                   variant="ghost"
-                  className="absolute top-4 right-4 bg-black/20 hover:bg-red-500 text-white"
-                  onClick={() => removeFromFavorites(car.id)}
+                  className="absolute top-4 right-4 bg-black/20 hover:bg-red-500 text-white transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    removeFromFavorites(car.id);
+                  }}
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
