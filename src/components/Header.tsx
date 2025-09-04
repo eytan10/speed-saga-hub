@@ -7,13 +7,13 @@ import { useAuth } from '@/contexts/AuthContext';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import MegaMenu from "./MegaMenu";
 import SmartSearch from "./SmartSearch";
-import EnhancedCarComparison from "./EnhancedCarComparison";
+// import EnhancedCarComparison from "./EnhancedCarComparison";
 import AuthModal from "./AuthModal";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
-  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
+  // const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { favorites } = useFavorites();
   const { user, signOut } = useAuth();
@@ -70,18 +70,9 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Search Bar, Comparison, Favorites & Auth */}
+        {/* Search Bar, Favorites & Auth */}
         <div className="hidden md:flex items-center space-x-4">
           <SmartSearch className="w-80" />
-          <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={() => setIsComparisonOpen(true)}
-            className="hover:bg-racing-red/10 hover:text-racing-red transition-smooth"
-            title="השווה רכבים"
-          >
-            <ArrowLeftRight className="h-5 w-5" />
-          </Button>
           <button
             onClick={() => navigate("/favorites")}
             className="relative"
@@ -173,12 +164,6 @@ const Header = () => {
                 קהילה
               </button>
               <button 
-                onClick={() => setIsComparisonOpen(true)}
-                className="block py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
-              >
-                השווה רכבים
-              </button>
-              <button 
                 onClick={() => navigate("/favorites")}
                 className="flex items-center py-2 text-foreground hover:text-racing-red transition-smooth w-full text-right"
               >
@@ -201,10 +186,6 @@ const Header = () => {
       <MegaMenu 
         isOpen={isMegaMenuOpen}
         onClose={() => setIsMegaMenuOpen(false)}
-      />
-      <EnhancedCarComparison 
-        isOpen={isComparisonOpen}
-        onClose={() => setIsComparisonOpen(false)}
       />
       <AuthModal 
         isOpen={isAuthModalOpen}
