@@ -160,7 +160,7 @@ const FavoritesPage = () => {
 
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Link to={`/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}/${car.year}`}>
+                  <Link to={`/car/${car.brand.toLowerCase().replace(/[^a-z]/g, '')}/${car.id}`}>
                     <Button>
                       View Details
                     </Button>
