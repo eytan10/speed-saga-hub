@@ -175,9 +175,78 @@ const CarDetailsPage = () => {
                 </Button>
               </div>
 
-              {/* Right Side - Car Information */}
-              <div>
-                <Card className="p-6 mb-6">
+                             {/* Right Side - Technical Specifications */}
+               <div>
+                 <Card className="p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white mb-6 shadow-2xl">
+                   <div className="text-center mb-8">
+                     <h3 className="text-3xl font-bold mb-2">מפרטים טכניים</h3>
+                     <div className="w-24 h-1 bg-gradient-to-r from-racing-red to-red-600 mx-auto rounded-full"></div>
+                   </div>
+                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                     {/* Column 1 - Engine & Performance */}
+                     <div className="space-y-4">
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">מנוע</p>
+                         <p className="font-bold text-lg">{car.specs.engine}</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">תיבת הילוכים</p>
+                         <p className="font-bold text-lg">{car.specs.transmission}</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">הנעה</p>
+                         <p className="font-bold text-lg">{car.specs.drivetrain}</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">מושבים</p>
+                         <p className="font-bold text-lg">{car.specs.seating}</p>
+                       </div>
+                     </div>
+                     
+                     {/* Column 2 - Performance */}
+                     <div className="space-y-4">
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">תאוצה 0-100</p>
+                         <p className="font-bold text-lg">{parseFloat(car.specs.acceleration).toFixed(3)} שניות</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">מהירות מרבית</p>
+                         <p className="font-bold text-lg">{parseFloat(car.specs.topSpeed).toFixed(3)} קמ"ש</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">משקל</p>
+                         <p className="font-bold text-lg">{parseFloat(car.specs.weight).toFixed(3)} ק"ג</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">נפח תא מטען</p>
+                         <p className="font-bold text-lg">{parseFloat(car.specs.cargo).toFixed(3)} ליטר</p>
+                       </div>
+                     </div>
+                     
+                     {/* Column 3 - Power & Fuel */}
+                     <div className="space-y-4">
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">כוח</p>
+                         <p className="font-bold text-lg text-racing-red">{parseFloat(car.specs.power).toFixed(3)} כ"ס</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">מומנט</p>
+                         <p className="font-bold text-lg">{parseFloat(car.specs.torque).toFixed(3)} נמ</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">צריכת דלק</p>
+                         <p className="font-bold text-lg">{parseFloat(car.specs.fuel).toFixed(3)} ליטר/100 ק"מ</p>
+                       </div>
+                       <div className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 p-4 rounded-xl border border-gray-600/30 hover:border-gray-500/50 transition-all hover:scale-105">
+                         <p className="text-gray-300 text-sm mb-1 font-medium">דירוג</p>
+                         <p className="font-bold text-lg text-racing-red">{parseFloat(car.rating).toFixed(3)} ⭐</p>
+                       </div>
+                     </div>
+                   </div>
+                 </Card>
+
+                {/* Car Info Card */}
+                <Card className="p-6">
                   <h3 className="text-xl font-bold mb-4">מידע על הרכב</h3>
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
@@ -215,13 +284,6 @@ const CarDetailsPage = () => {
                     )}
                   </div>
                 </Card>
-
-                <CarImageGallery 
-                  carName={`${car.brand} ${car.name}`}
-                  mainImage={car.image}
-                  colors={car.colors}
-                  interiorColors={car.interiorColors}
-                />
               </div>
             </div>
           </div>
@@ -230,74 +292,14 @@ const CarDetailsPage = () => {
         {/* Detailed Info Tabs */}
         <section className="py-16 bg-secondary/20">
           <div className="container mx-auto px-4">
-            <Tabs defaultValue="specs" className="w-full">
-              <TabsList className="grid w-full grid-cols-5">
-                <TabsTrigger value="specs">מפרטים</TabsTrigger>
-                <TabsTrigger value="features">תכונות</TabsTrigger>
-                <TabsTrigger value="colors">צבעים</TabsTrigger>
-                <TabsTrigger value="pros-cons">יתרונות וחסרונות</TabsTrigger>
-                <TabsTrigger value="dealers">נציגויות</TabsTrigger>
-              </TabsList>
+                         <Tabs defaultValue="features" className="w-full">
+               <TabsList className="grid w-full grid-cols-3">
+                 <TabsTrigger value="features">תכונות</TabsTrigger>
+                 <TabsTrigger value="pros-cons">יתרונות וחסרונות</TabsTrigger>
+                 <TabsTrigger value="dealers">נציגויות</TabsTrigger>
+               </TabsList>
 
-              <TabsContent value="specs" className="mt-8">
-                <Card className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">מפרטים טכניים</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-sm text-muted-foreground">מנוע</p>
-                        <p className="font-semibold">{car.specs.engine}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">תיבת הילוכים</p>
-                        <p className="font-semibold">{car.specs.transmission}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">הנעה</p>
-                        <p className="font-semibold">{car.specs.drivetrain}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">מושבים</p>
-                        <p className="font-semibold">{car.specs.seating}</p>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-sm text-muted-foreground">תאוצה 0-100</p>
-                        <p className="font-semibold">{car.specs.acceleration}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">מהירות מרבית</p>
-                        <p className="font-semibold">{car.specs.topSpeed}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">משקל</p>
-                        <p className="font-semibold">{car.specs.weight}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">נפח תא מטען</p>
-                        <p className="font-semibold">{car.specs.cargo}</p>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-sm text-muted-foreground">כוח</p>
-                        <p className="font-semibold">{car.specs.power} כ"ס</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">מומנט</p>
-                        <p className="font-semibold">{car.specs.torque}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">צריכת דלק</p>
-                        <p className="font-semibold">{car.specs.fuel}</p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </TabsContent>
-
-              <TabsContent value="features" className="mt-8">
+                             <TabsContent value="features" className="mt-8">
                 <Card className="p-8">
                   <h3 className="text-2xl font-bold mb-6">תכונות מרכזיות</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -311,41 +313,7 @@ const CarDetailsPage = () => {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="colors" className="mt-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <Card className="p-8">
-                    <h3 className="text-2xl font-bold mb-6">צבעי גוף הרכב</h3>
-                    <div className="grid grid-cols-3 gap-4">
-                      {car.colors.map((color, index) => (
-                        <div key={index} className="text-center">
-                          <div 
-                            className="w-16 h-16 rounded-full mx-auto mb-2 border-4 border-gray-200"
-                            style={{ backgroundColor: color.hex }}
-                          />
-                          <p className="text-sm font-medium">{color.name}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </Card>
-                  
-                  <Card className="p-8">
-                    <h3 className="text-2xl font-bold mb-6">צבעי פנים הרכב</h3>
-                    <div className="grid grid-cols-2 gap-4">
-                      {car.interiorColors.map((color, index) => (
-                        <div key={index} className="text-center">
-                          <div 
-                            className="w-16 h-16 rounded-lg mx-auto mb-2 border-4 border-gray-200"
-                            style={{ backgroundColor: color.hex }}
-                          />
-                          <p className="text-sm font-medium">{color.name}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </Card>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="pros-cons" className="mt-8">
+                             <TabsContent value="pros-cons" className="mt-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <Card className="p-8">
                     <h3 className="text-2xl font-bold mb-6 text-success">יתרונות</h3>
