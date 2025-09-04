@@ -43,9 +43,6 @@ const App = () => (
               <Route path="/community" element={<CommunityPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/prices" element={<PricesPage />} />
-              <Route path="/auth/sign-in" element={<SignInPage />} />
-              <Route path="/auth/sign-up" element={<SignUpPage />} />
-              <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
