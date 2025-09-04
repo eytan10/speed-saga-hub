@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Trash2, Star, Fuel, Zap, Gauge, Heart } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const FavoritesPage = () => {
   const { favorites, removeFromFavorites, clearFavorites, loading } = useFavorites();
@@ -15,81 +17,95 @@ const FavoritesPage = () => {
   // Show sign-in prompt for unauthenticated users
   if (!user) {
     return (
-      <div className="min-h-screen bg-background pt-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-            <Heart className="h-16 w-16 text-muted-foreground mb-4" />
-            <h1 className="text-4xl font-bold text-foreground mb-4">
-              Favorites
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-md">
-              Please sign in to view and manage your favorite cars
-            </p>
-            <Button 
-              onClick={() => navigate('/auth')}
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              Sign In
-            </Button>
+      <>
+        <Header />
+        <div className="min-h-screen bg-background pt-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+              <Heart className="h-16 w-16 text-muted-foreground mb-4" />
+              <h1 className="text-4xl font-bold text-foreground mb-4">
+                Favorites
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8 max-w-md">
+                Please sign in to view and manage your favorite cars
+              </p>
+              <Button 
+                onClick={() => navigate('/auth')}
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Sign In
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 
   // Show loading state
   if (loading) {
     return (
-      <div className="min-h-screen bg-background pt-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <Skeleton className="h-12 w-48" />
-            <Skeleton className="h-10 w-24" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <Card key={i} className="h-[400px]">
-                <Skeleton className="h-48 w-full" />
-                <CardContent className="p-4 space-y-3">
-                  <Skeleton className="h-6 w-3/4" />
-                  <Skeleton className="h-4 w-1/2" />
-                  <Skeleton className="h-4 w-2/3" />
-                </CardContent>
-              </Card>
-            ))}
+      <>
+        <Header />
+        <div className="min-h-screen bg-background pt-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex justify-between items-center mb-8">
+              <Skeleton className="h-12 w-48" />
+              <Skeleton className="h-10 w-24" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <Card key={i} className="h-[400px]">
+                  <Skeleton className="h-48 w-full" />
+                  <CardContent className="p-4 space-y-3">
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-4 w-1/2" />
+                    <Skeleton className="h-4 w-2/3" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 
   if (favorites.length === 0) {
     return (
-      <div className="min-h-screen bg-background pt-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
-            <Heart className="h-16 w-16 text-muted-foreground mb-4" />
-            <h1 className="text-4xl font-bold text-foreground mb-4">
-              My Favorites
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-md">
-              You haven't added any cars to your favorites yet
-            </p>
-            <Link to="/cars">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                Browse Cars
-              </Button>
-            </Link>
+      <>
+        <Header />
+        <div className="min-h-screen bg-background pt-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+              <Heart className="h-16 w-16 text-muted-foreground mb-4" />
+              <h1 className="text-4xl font-bold text-foreground mb-4">
+                My Favorites
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8 max-w-md">
+                You haven't added any cars to your favorites yet
+              </p>
+              <Link to="/cars">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  Browse Cars
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background pt-20 px-4">
-      <div className="max-w-7xl mx-auto">
+    <>
+      <Header />
+      <div className="min-h-screen bg-background pt-20 px-4">
+        <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
@@ -192,9 +208,11 @@ const FavoritesPage = () => {
               </CardContent>
             </Card>
           ))}
+         </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
