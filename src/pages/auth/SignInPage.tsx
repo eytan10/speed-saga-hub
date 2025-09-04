@@ -36,9 +36,10 @@ export default function SignInPage() {
     
     if (error) {
       setError('שגיאה בהתחברות. אנא בדוק את הפרטים ונסה שוב.');
+      setLoading(false);
     }
-    
-    setLoading(false);
+    // Don't set loading to false on success - let the useEffect handle navigation
+    // and the loading will be reset when component unmounts or user state changes
   };
 
   return (
